@@ -15,6 +15,9 @@ dependencies:
   cupertino_icons: ^1.0.4
   provider: ^6.0.1
   sqflite: ^2.0.0+4
+  path_provider: ^2.0.6
+  salomon_bottom_bar: ^3.1.0
+  flutter_svg: ^0.23.0+1
 
 dev_dependencies:
   flutter_test:
@@ -25,3 +28,16 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+
+  assets:
+    - assets/audios/
+    - assets/databases/
+    - assets/icons/
+
+  fonts:
+    - family: Gilroy
+      fonts:
+        - asset: assets/fonts/gilroy_medium.ttf
+    - family: Hafs
+      fonts:
+        - asset: assets/fonts/hafs.ttf
