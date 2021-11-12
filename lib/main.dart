@@ -1,5 +1,7 @@
+import 'package:arabicinyourhands/provider/main_bottom_navigation_state.dart';
 import 'package:arabicinyourhands/router/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(Main());
@@ -12,12 +14,17 @@ class Main extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Арабский в твоих руках',
-      theme: ThemeData(primarySwatch: Colors.blueGrey),
-      onGenerateRoute: _appRouter.appGeneratorRoute,
-      initialRoute: '/',
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => MainBottomNavigationState()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Арабский в твоих руках',
+        theme: ThemeData(primarySwatch: Colors.purple),
+        onGenerateRoute: _appRouter.appGeneratorRoute,
+        initialRoute: '/',
+      ),
     );
   }
 }
