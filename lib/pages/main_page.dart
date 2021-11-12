@@ -5,12 +5,13 @@ import 'package:arabicinyourhands/provider/main_bottom_navigation_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
 
   final _mainWidgets = [
-    const VolumeOne(),
+    VolumeOne(),
     const VolumeTwo(),
     const Dictionary(),
   ];
@@ -18,39 +19,46 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFF5F9D78),
       appBar: AppBar(
-        elevation: 0,
-        backgroundColor: const Color(0xFF5F9D78),
+        elevation: 1,
+        backgroundColor: const Color(0xFF243743),
         actions: [
           IconButton(
-            icon: const Icon(Icons.apps, color: Color(0xFF365253)),
+            icon: const Icon(Icons.apps, color: Color(0xFF28B78D)),
             onPressed: () {},
           ),
         ],
+        leading: const Icon(Icons.language, color: Color(0xFFFAFAFA)),
       ),
       body: _mainWidgets[context.watch<MainBottomNavigationState>().getSelectedIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        elevation: 0,
-        backgroundColor: const Color(0xFF5F9D78),
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.filter_1),
-            label: 'Том 1',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.filter_2),
-            label: 'Том 2',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add),
-            label: 'Словарь',
-          ),
-        ],
-        selectedItemColor: const Color(0xFF365253),
-        unselectedItemColor: const Color(0xFFF7DA8A),
-        currentIndex: context.watch<MainBottomNavigationState>().getSelectedIndex,
-        onTap: context.read<MainBottomNavigationState>().changeBottomNavigationIndex,
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.all(8),
+        decoration: const BoxDecoration(
+          color: Color(0xFF243743),
+            borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(50),
+          topRight: Radius.circular(50),
+        )),
+        child: SalomonBottomBar(
+          items: [
+            SalomonBottomBarItem(
+              icon: const Icon(Icons.filter_1_outlined),
+              title: const Text("Том 1"),
+            ),
+            SalomonBottomBarItem(
+              icon: const Icon(Icons.filter_2_outlined),
+              title: const Text("Том 2"),
+            ),
+            SalomonBottomBarItem(
+              icon: const Icon(Icons.add),
+              title: const Text("Словарь"),
+            ),
+          ],
+          selectedItemColor: const Color(0xFF37FFC2),
+          unselectedItemColor: const Color(0xFF28B78D),
+          currentIndex: context.watch<MainBottomNavigationState>().getSelectedIndex,
+          onTap: context.read<MainBottomNavigationState>().changeBottomNavigationIndex,
+        ),
       ),
     );
   }

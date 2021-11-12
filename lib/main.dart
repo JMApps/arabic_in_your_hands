@@ -21,7 +21,7 @@ class Main extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Арабский в твоих руках',
-        theme: ThemeData(primarySwatch: Colors.purple),
+        theme: ThemeData(primarySwatch: Colors.blueGrey, fontFamily: 'Gilroy'),
         onGenerateRoute: _appRouter.appGeneratorRoute,
         initialRoute: '/',
       ),
