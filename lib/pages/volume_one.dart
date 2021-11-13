@@ -17,15 +17,19 @@ class VolumeOne extends StatelessWidget {
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return snapshot.hasData
             ? Scrollbar(
-              child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  padding: EdgeInsets.zero,
-                  itemCount: snapshot.data.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return FirstVolumeChapterList(item: snapshot.data![index]);
-                  },
+                child: SingleChildScrollView(
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(),
+                    padding: EdgeInsets.zero,
+                    itemCount: snapshot.data.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return FirstVolumeChapterList(
+                          item: snapshot.data![index]);
+                    },
+                  ),
                 ),
-            )
+              )
             : Platform.isIOS
                 ? const CupertinoActivityIndicator()
                 : const CircularProgressIndicator();
