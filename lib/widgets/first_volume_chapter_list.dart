@@ -19,14 +19,23 @@ class FirstVolumeChapterList extends StatelessWidget {
       future: _databaseQuery.getAllFirstSubChapters(item.id!),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return snapshot.hasData
-            ? Column(
-                children: [
-                  Card(
-                    margin: const EdgeInsets.symmetric(vertical: 8),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 16, top: 8, right: 16),
-                      child: Row(
+            ? Card(
+                margin: const EdgeInsets.only(left: 8, top: 8, bottom: 4),
+                elevation: 2,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(25),
+                    bottomLeft: Radius.circular(25),
+                    topRight: Radius.circular(25),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  child: Column(
+                    children: [
+                      Row(
                         children: [
+                          const SizedBox(width: 16),
                           Text(
                             '${item.id}',
                             style: const TextStyle(
@@ -53,7 +62,6 @@ class FirstVolumeChapterList extends StatelessWidget {
                                     color: Color(0xFF243743),
                                     fontWeight: FontWeight.bold),
                               ),
-                              const SizedBox(height: 8),
                               Text(
                                 '${item.chapterTitleArabic}',
                                 style: const TextStyle(
@@ -68,12 +76,10 @@ class FirstVolumeChapterList extends StatelessWidget {
                           ),
                         ],
                       ),
-                    ),
+                      FirstVolumeSubChapterList(snapshot: snapshot),
+                    ],
                   ),
-                  const SizedBox(height: 8),
-                  FirstVolumeSubChapterList(snapshot: snapshot),
-                  const SizedBox(height: 8),
-                ],
+                ),
               )
             : Platform.isIOS
                 ? const CupertinoActivityIndicator()
