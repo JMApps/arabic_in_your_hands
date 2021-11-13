@@ -19,6 +19,7 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFFAFAFA),
       appBar: AppBar(
         elevation: 1,
         backgroundColor: const Color(0xFF243743),
@@ -28,17 +29,21 @@ class MainPage extends StatelessWidget {
             onPressed: () {},
           ),
         ],
-        leading: const Icon(Icons.language, color: Color(0xFFFAFAFA)),
+        leading: Transform.scale(
+          scale: 0.7,
+          child: Image.asset('assets/icons/arabic_in_origin.png'),
+        ),
       ),
-      body: _mainWidgets[context.watch<MainBottomNavigationState>().getSelectedIndex],
+      body: _mainWidgets[
+          context.watch<MainBottomNavigationState>().getSelectedIndex],
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(8),
         decoration: const BoxDecoration(
-          color: Color(0xFF243743),
+            color: Color(0xFF243743),
             borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(50),
-          topRight: Radius.circular(50),
-        )),
+              topLeft: Radius.circular(50),
+              topRight: Radius.circular(50),
+            )),
         child: SalomonBottomBar(
           items: [
             SalomonBottomBarItem(
