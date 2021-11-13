@@ -34,8 +34,7 @@ class MainPage extends StatelessWidget {
           child: Image.asset('assets/icons/arabic_in_origin.png'),
         ),
       ),
-      body: _mainWidgets[
-          context.watch<MainBottomNavigationState>().getSelectedIndex],
+      body: _mainWidgets[context.watch<MainBottomNavigationState>().getSelectedIndex],
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(8),
         decoration: const BoxDecoration(

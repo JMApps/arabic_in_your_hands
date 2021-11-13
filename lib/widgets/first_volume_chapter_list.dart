@@ -26,10 +26,18 @@ class FirstVolumeChapterList extends StatelessWidget {
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(25),
                     bottomLeft: Radius.circular(25),
-                    topRight: Radius.circular(25),
                   ),
                 ),
-                child: Padding(
+                child: Container(
+                  decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(25),
+                        bottomLeft: Radius.circular(25),
+                      ),
+                      gradient: LinearGradient(colors: [
+                        Color(0xFFD5FFEF),
+                        Color(0xFFFFFFFF),
+                      ])),
                   padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Column(
                     children: [
