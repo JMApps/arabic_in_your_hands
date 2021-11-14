@@ -9,7 +9,7 @@ class FirstVolumeSubChapterList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 120,
+      height: 150,
       child: GridView.builder(
         padding: EdgeInsets.zero,
         scrollDirection: Axis.horizontal,

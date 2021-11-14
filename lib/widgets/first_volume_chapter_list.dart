@@ -18,45 +18,65 @@ class FirstVolumeChapterList extends StatelessWidget {
     return FutureBuilder<List>(
       future: _databaseQuery.getAllFirstSubChapters(item.id!),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return snapshot.hasData
-            ? Card(
-                margin: const EdgeInsets.only(left: 8, top: 8, bottom: 4),
-                elevation: 2,
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    bottomLeft: Radius.circular(25),
-                  ),
+        if (snapshot.hasData) {
+          return Card(
+            elevation: 2,
+            margin: const EdgeInsets.only(left: 8, top: 8),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                bottomLeft: Radius.circular(20),
+              ),
+            ),
+            child: Container(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(25),
+                  bottomLeft: Radius.circular(25),
                 ),
-                child: Container(
-                  decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(25),
-                        bottomLeft: Radius.circular(25),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Column(
+                children: [
+                  Card(
+                    elevation: 1,
+                    margin: const EdgeInsets.only(right: 16, bottom: 16),
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                      topRight: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    )),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                        color: Color(0xFFD5FFEF),
                       ),
-                      gradient: LinearGradient(colors: [
-                        Color(0xFFD5FFEF),
-                        Color(0xFFFFFFFF),
-                      ])),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
-                  child: Column(
-                    children: [
-                      Row(
+                      child: Row(
                         children: [
                           const SizedBox(width: 16),
-                          Text(
-                            '${item.id}',
-                            style: const TextStyle(
-                              fontSize: 18,
-                              color: Color(0xFF243743),
+                          Container(
+                            padding: const EdgeInsets.all(12),
+                            decoration: const BoxDecoration(
+                                color: Color(0xFF243743),
+                                shape: BoxShape.circle),
+                            child: Text(
+                              '${item.id}',
+                              style: const TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
                             ),
                           ),
                           const SizedBox(width: 16),
                           SvgPicture.asset(
                             'assets/icons/${item.chapterIcon}.svg',
-                            width: 35,
-                            height: 35,
-                            color: const Color(0xFF28B78D),
+                            width: 40,
+                            height: 40,
+                            color: const Color(0xFF219271),
                           ),
                           const SizedBox(width: 16),
                           Column(
@@ -84,14 +104,18 @@ class FirstVolumeChapterList extends StatelessWidget {
                           ),
                         ],
                       ),
-                      FirstVolumeSubChapterList(snapshot: snapshot),
-                    ],
+                    ),
                   ),
-                ),
-              )
-            : Platform.isIOS
-                ? const CupertinoActivityIndicator()
-                : const CircularProgressIndicator();
+                  FirstVolumeSubChapterList(snapshot: snapshot),
+                ],
+              ),
+            ),
+          );
+        } else {
+          return Platform.isIOS
+              ? const CupertinoActivityIndicator()
+              : const CircularProgressIndicator();
+        }
       },
     );
   }

@@ -11,25 +11,63 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 2,
-      margin: const EdgeInsets.only(left: 16, right: 8),
-      color: const Color(0xFF8A949B),
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      color: const Color(0xFF28B78D),
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25),
-        side: const BorderSide(width: 1, color: Color(0xFF243743)),
+        borderRadius: BorderRadius.circular(20),
+        //side: const BorderSide(width: 1, color: Color(0xFF243743)),
       ),
       child: InkWell(
-        child: Container(
-          padding: const EdgeInsets.all(16),
-          child: Center(
-            child: Text(
-              '${item.dialogTitle}',
-              style: const TextStyle(color: Colors.white, fontSize: 18),
-              textAlign: TextAlign.center,
+        child: Column(
+          children: [
+            Align(
+              alignment: Alignment.topCenter,
+              child: Card(
+                elevation: 2,
+                margin: const EdgeInsets.symmetric(horizontal: 16),
+                color: const Color(0xFFFAFAFA),
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(20),
+                    bottomRight: Radius.circular(20),
+                  ),
+                ),
+                child: Container(
+                  padding: const EdgeInsets.all(10),
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    ),
+                    gradient: LinearGradient(colors: [
+                      Color(0xFFD5FFEF),
+                      Color(0xFFFFFFFF),
+                    ]),
+                  ),
+                  child: Text(
+                    '${item.dialog}',
+                    style: const TextStyle(color: Color(0xFF243743), fontSize: 18),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
             ),
-          ),
+            Expanded(
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Text(
+                    '${item.dialogTitle}',
+                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
-        splashColor: const Color(0xFF696F76),
-        borderRadius: BorderRadius.circular(25),
+        splashColor: const Color(0xFF1D795F),
+        borderRadius: BorderRadius.circular(20),
         onTap: () {},
       ),
     );
