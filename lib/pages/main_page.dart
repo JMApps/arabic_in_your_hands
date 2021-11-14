@@ -54,7 +54,12 @@ class MainPage extends StatelessWidget {
           child: Image.asset('assets/icons/arabic_in_origin.png'),
         ),
       ),
-      body: _mainWidgets[context.watch<MainBottomNavigationState>().getSelectedIndex],
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 350),
+        child: _mainWidgets[context.watch<MainBottomNavigationState>().getSelectedIndex],
+        switchInCurve: Curves.easeInCubic,
+        switchOutCurve: Curves.easeOutCubic,
+      ),
       bottomNavigationBar: Container(
         padding: const EdgeInsets.all(8),
         decoration: const BoxDecoration(
