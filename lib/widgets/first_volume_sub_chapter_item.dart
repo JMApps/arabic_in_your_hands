@@ -15,7 +15,6 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
       color: const Color(0xFF28B78D),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
-        //side: const BorderSide(width: 1, color: Color(0xFF243743)),
       ),
       child: InkWell(
         child: Column(
@@ -46,7 +45,8 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
                   ),
                   child: Text(
                     '${item.dialog}',
-                    style: const TextStyle(color: Color(0xFF243743), fontSize: 18),
+                    style:
+                        const TextStyle(color: Color(0xFF243743), fontSize: 18),
                     textAlign: TextAlign.center,
                   ),
                 ),
