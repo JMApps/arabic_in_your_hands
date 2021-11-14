@@ -16,7 +16,7 @@ class MainPage extends StatelessWidget {
 
   final _mainWidgets = [
     VolumeOne(),
-    const VolumeTwo(),
+    VolumeTwo(),
     const VolumeThree(),
     const Dictionary(),
   ];
