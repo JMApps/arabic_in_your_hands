@@ -31,8 +31,8 @@ class FirstVolumeChapterList extends StatelessWidget {
             child: Container(
               decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(25),
-                  bottomLeft: Radius.circular(25),
+                  topLeft: Radius.circular(20),
+                  bottomLeft: Radius.circular(20),
                 ),
               ),
               padding: const EdgeInsets.symmetric(vertical: 20),
@@ -40,18 +40,18 @@ class FirstVolumeChapterList extends StatelessWidget {
                 children: [
                   Card(
                     elevation: 1,
-                    margin: const EdgeInsets.only(right: 16, bottom: 16),
+                    margin: const EdgeInsets.only(left: 16, bottom: 16),
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
-                      topRight: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
+                      topLeft: Radius.circular(20),
+                      bottomLeft: Radius.circular(20),
                     )),
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       decoration: const BoxDecoration(
                         borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
+                          topLeft: Radius.circular(20),
+                          bottomLeft: Radius.circular(20),
                         ),
                         color: Color(0xFFD5FFEF),
                       ),
