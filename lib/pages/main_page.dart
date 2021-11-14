@@ -1,11 +1,15 @@
+import 'dart:io';
+
 import 'package:arabicinyourhands/pages/dictionary.dart';
 import 'package:arabicinyourhands/pages/volume_one.dart';
+import 'package:arabicinyourhands/pages/volume_three.dart';
 import 'package:arabicinyourhands/pages/volume_two.dart';
 import 'package:arabicinyourhands/provider/main_bottom_navigation_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MainPage extends StatelessWidget {
   MainPage({Key? key}) : super(key: key);
@@ -13,7 +17,15 @@ class MainPage extends StatelessWidget {
   final _mainWidgets = [
     VolumeOne(),
     const VolumeTwo(),
+    const VolumeThree(),
     const Dictionary(),
+  ];
+
+  final _mainTitles = [
+    'Том 1',
+    'Том 2',
+    'Том 3',
+    'Словарь',
   ];
 
   @override
@@ -22,11 +34,19 @@ class MainPage extends StatelessWidget {
       backgroundColor: const Color(0xFFFAFAFA),
       appBar: AppBar(
         elevation: 1,
+        centerTitle: true,
+        title: Text(_mainTitles[context.watch<MainBottomNavigationState>().getSelectedIndex]),
         backgroundColor: const Color(0xFF243743),
         actions: [
           IconButton(
             icon: const Icon(Icons.apps, color: Color(0xFF28B78D)),
-            onPressed: () {},
+            onPressed: () async {
+              await launch(
+                Platform.isIOS
+                    ? 'https://apps.apple.com/ru/developer/imanil-binyaminov/id1564920953'
+                    : 'https://play.google.com/store/apps/dev?id=8649252597553656018',
+              );
+            },
           ),
         ],
         leading: Transform.scale(
@@ -54,12 +74,16 @@ class MainPage extends StatelessWidget {
               title: const Text("Том 2"),
             ),
             SalomonBottomBarItem(
+              icon: const Icon(Icons.filter_3_outlined),
+              title: const Text("Том 3"),
+            ),
+            SalomonBottomBarItem(
               icon: const Icon(Icons.add),
               title: const Text("Словарь"),
             ),
           ],
           selectedItemColor: const Color(0xFF37FFC2),
-          unselectedItemColor: const Color(0xFF28B78D),
+          unselectedItemColor: const Color(0xFF1F8D6E),
           currentIndex: context.watch<MainBottomNavigationState>().getSelectedIndex,
           onTap: context.read<MainBottomNavigationState>().changeBottomNavigationIndex,
         ),
