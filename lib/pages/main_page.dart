@@ -24,7 +24,6 @@ class MainPage extends StatelessWidget {
   final _mainTitles = [
     'Том 1',
     'Том 2',
-    'Том 3',
     'Словарь',
   ];
 
@@ -77,10 +76,6 @@ class MainPage extends StatelessWidget {
             SalomonBottomBarItem(
               icon: const Icon(Icons.filter_2_outlined),
               title: const Text("Том 2"),
-            ),
-            SalomonBottomBarItem(
-              icon: const Icon(Icons.filter_3_outlined),
-              title: const Text("Том 3"),
             ),
             SalomonBottomBarItem(
               icon: const Icon(Icons.add),
