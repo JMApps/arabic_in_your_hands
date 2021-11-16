@@ -1,3 +1,4 @@
+import 'package:arabicinyourhands/model/content_volume_one_arguments.dart';
 import 'package:arabicinyourhands/model/volume_first_item_sub_chapter_model.dart';
 import 'package:flutter/material.dart';
 
@@ -68,7 +69,13 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
         ),
         splashColor: const Color(0xFF1D795F),
         borderRadius: BorderRadius.circular(20),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(
+            context,
+            '/content_volume_one',
+            arguments: ContentVolumeOneArguments(item.id),
+          );
+        },
       ),
     );
   }
