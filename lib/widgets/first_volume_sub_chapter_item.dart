@@ -73,7 +73,7 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
           Navigator.pushNamed(
             context,
             '/content_volume_one',
-            arguments: ContentVolumeOneArguments(item.id),
+            arguments: ContentVolumeOneArguments(item.id, item.dialog),
           );
         },
       ),
