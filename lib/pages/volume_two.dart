@@ -20,12 +20,11 @@ class VolumeTwo extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: ListView.builder(
                     shrinkWrap: true,
-                    physics: const BouncingScrollPhysics(),
+                    physics: const ScrollPhysics(),
                     padding: EdgeInsets.zero,
                     itemCount: snapshot.data.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return SecondVolumeChapterList(
-                          item: snapshot.data![index]);
+                      return SecondVolumeChapterList(item: snapshot.data![index]);
                     },
                   ),
                 ),
