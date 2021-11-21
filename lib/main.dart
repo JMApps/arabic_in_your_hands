@@ -20,7 +20,7 @@ class Main extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Арабский в твоих руках',
+        title: 'Арабский перед тобой',
         theme: ThemeData(primarySwatch: Colors.blueGrey, fontFamily: 'Gilroy'),
         onGenerateRoute: _appRouter.appGeneratorRoute,
         initialRoute: '/',
