@@ -15,10 +15,10 @@ dependencies:
   cupertino_icons: ^1.0.4
   provider: ^6.0.1
   sqflite: ^2.0.0+4
-  path_provider: ^2.0.6
+  path_provider: ^2.0.7
   salomon_bottom_bar: ^3.1.0
   flutter_svg: ^0.23.0+1
-  url_launcher: ^6.0.12
+  url_launcher: ^6.0.15
 
 dev_dependencies:
   flutter_test:
@@ -31,8 +31,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/audios/
     - assets/databases/
+    - assets/audios/
     - assets/icons/
 
   fonts:
