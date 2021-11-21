@@ -15,23 +15,34 @@ class VolumeOne extends StatelessWidget {
     return FutureBuilder<List>(
       future: _databaseQuery.getAllFirstChapters(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return snapshot.hasData
-            ? Scrollbar(
-                child: SingleChildScrollView(
-                  child: ListView.builder(
-                    shrinkWrap: true,
-                    physics: const ScrollPhysics(),
-                    padding: EdgeInsets.zero,
-                    itemCount: snapshot.data.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return FirstVolumeChapterList(item: snapshot.data![index]);
-                    },
+        return snapshot.hasError
+            ? Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Text(
+                    '${snapshot.error}',
+                    style: const TextStyle(fontSize: 18),
                   ),
                 ),
               )
-            : Platform.isIOS
-                ? const CupertinoActivityIndicator()
-                : const CircularProgressIndicator();
+            : snapshot.hasData
+                ? Scrollbar(
+                    child: SingleChildScrollView(
+                      child: ListView.builder(
+                        shrinkWrap: true,
+                        physics: const ScrollPhysics(),
+                        padding: EdgeInsets.zero,
+                        itemCount: snapshot.data.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          return FirstVolumeChapterList(
+                              item: snapshot.data![index]);
+                        },
+                      ),
+                    ),
+                  )
+                : Platform.isIOS
+                    ? const CupertinoActivityIndicator()
+                    : const CircularProgressIndicator();
       },
     );
   }
