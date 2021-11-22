@@ -4,6 +4,7 @@ import 'package:arabicinyourhands/data/database_query.dart';
 import 'package:arabicinyourhands/widgets/first_volume_chapter_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
 class VolumeOne extends StatelessWidget {
   VolumeOne({Key? key}) : super(key: key);
@@ -28,15 +29,26 @@ class VolumeOne extends StatelessWidget {
             : snapshot.hasData
                 ? Scrollbar(
                     child: SingleChildScrollView(
-                      child: ListView.builder(
-                        shrinkWrap: true,
-                        physics: const ScrollPhysics(),
-                        padding: EdgeInsets.zero,
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          return FirstVolumeChapterList(
-                              item: snapshot.data![index]);
-                        },
+                      child: AnimationLimiter(
+                        child: ListView.builder(
+                          shrinkWrap: true,
+                          physics: const ScrollPhysics(),
+                          padding: EdgeInsets.zero,
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return AnimationConfiguration.staggeredList(
+                              position: index,
+                              duration: const Duration(milliseconds: 375),
+                              child: SlideAnimation(
+                                verticalOffset: 50,
+                                child: FadeInAnimation(
+                                  child: FirstVolumeChapterList(
+                                      item: snapshot.data![index]),
+                                ),
+                              ),
+                            );
+                          },
+                        ),
                       ),
                     ),
                   )

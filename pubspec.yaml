@@ -19,6 +19,8 @@ dependencies:
   salomon_bottom_bar: ^3.1.0
   flutter_svg: ^0.23.0+1
   url_launcher: ^6.0.15
+  scrollable_positioned_list: ^0.2.3
+  flutter_staggered_animations: ^1.0.0
 
 dev_dependencies:
   flutter_test:
@@ -31,8 +33,8 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/databases/
     - assets/audios/
+    - assets/databases/
     - assets/icons/
 
   fonts:
