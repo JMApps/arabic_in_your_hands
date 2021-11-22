@@ -43,10 +43,13 @@ class SecondVolumeChapterList extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Container(
-                            padding: const EdgeInsets.all(12),
+                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                             decoration: const BoxDecoration(
-                                color: Color(0xFF243743),
-                                shape: BoxShape.circle),
+                              color: Color(0xFF243743),
+                              borderRadius: BorderRadius.all(
+                                Radius.circular(10),
+                              ),
+                            ),
                             child: Text(
                               '${item.id}',
                               style: const TextStyle(
