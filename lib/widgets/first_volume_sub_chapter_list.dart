@@ -12,6 +12,7 @@ class FirstVolumeSubChapterList extends StatelessWidget {
       height: 150,
       child: GridView.builder(
         padding: EdgeInsets.zero,
+        physics: const BouncingScrollPhysics(),
         scrollDirection: Axis.horizontal,
         itemCount: snapshot.data!.length,
         itemBuilder: (BuildContext context, int index) {

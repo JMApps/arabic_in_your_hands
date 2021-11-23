@@ -27,12 +27,12 @@ class VolumeTwo extends StatelessWidget {
                 ),
               )
             : snapshot.hasData
-                ? Scrollbar(
+                ? CupertinoScrollbar(
                     child: SingleChildScrollView(
                       child: AnimationLimiter(
                         child: ListView.builder(
                           shrinkWrap: true,
-                          physics: const ScrollPhysics(),
+                          physics: const BouncingScrollPhysics(),
                           padding: EdgeInsets.zero,
                           itemCount: snapshot.data.length,
                           itemBuilder: (BuildContext context, int index) {

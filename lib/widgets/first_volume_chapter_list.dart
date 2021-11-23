@@ -79,7 +79,7 @@ class FirstVolumeChapterList extends StatelessWidget {
                             'assets/icons/${item.chapterIcon}.svg',
                             width: 40,
                             height: 40,
-                            color: const Color(0xFF219271),
+                            color: const Color(0xFF006D50),
                           ),
                           const SizedBox(width: 16),
                           Column(
@@ -97,7 +97,7 @@ class FirstVolumeChapterList extends StatelessWidget {
                                 '${item.chapterTitleArabic}',
                                 style: const TextStyle(
                                     fontSize: 22,
-                                    color: Color(0xFF28B78D),
+                                    color: Color(0xFF006D50),
                                     fontWeight: FontWeight.bold,
                                     fontFamily: 'Hafs'),
                                 textDirection: TextDirection.rtl,
