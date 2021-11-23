@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/provider/main_bottom_navigation_state.dart';
+import 'package:arabicinyourhands/provider/volume_content_dialog_visibility_state.dart';
 import 'package:arabicinyourhands/router/app_router.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,7 @@ class Main extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => MainBottomNavigationState()),
+        ChangeNotifierProvider(create: (_) => VolumeContentDialogVisibilityState()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
