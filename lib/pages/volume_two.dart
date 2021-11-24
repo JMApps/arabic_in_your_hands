@@ -29,21 +29,22 @@ class VolumeTwo extends StatelessWidget {
             : snapshot.hasData
                 ? CupertinoScrollbar(
                     child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
                       child: AnimationLimiter(
                         child: ListView.builder(
                           shrinkWrap: true,
-                          physics: const BouncingScrollPhysics(),
                           padding: EdgeInsets.zero,
+                          physics: const BouncingScrollPhysics(),
                           itemCount: snapshot.data.length,
                           itemBuilder: (BuildContext context, int index) {
                             return AnimationConfiguration.staggeredList(
                               position: index,
                               duration: const Duration(milliseconds: 375),
                               child: SlideAnimation(
-                                verticalOffset: 50,
+                                verticalOffset: 150,
                                 child: FadeInAnimation(
-                                    child: SecondVolumeChapterList(
-                                        item: snapshot.data![index])),
+                                  child: SecondVolumeChapterList(item: snapshot.data![index]),
+                                ),
                               ),
                             );
                           },
