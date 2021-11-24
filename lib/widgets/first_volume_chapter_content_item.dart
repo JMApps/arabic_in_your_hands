@@ -48,61 +48,78 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
                   colors: [Color(0xFFFFFFFF), Color(0xFFE6ECFF)],
                 ),
         ),
-        child: Column(
+        child: Stack(
+          alignment: Alignment.center,
           children: [
-            Visibility(
-              child: Text('${item.arabicName}',
-                style: const TextStyle(
-                  fontSize: 20,
-                  color: Color(0xFF1F8D6E),
+            Align(
+                alignment: item.id!.isOdd
+                    ? Alignment.centerLeft
+                    : Alignment.centerRight,
+                child: Icon(
+                  item.id!.isOdd
+                      ? CupertinoIcons.speaker_zzz_fill
+                      : CupertinoIcons.speaker_zzz_fill_rtl,
+                  size: 20,
+                  color: const Color(0xFF243743),
+                )),
+            Column(
+              children: [
+                Visibility(
+                  child: Text(
+                    '${item.arabicName}',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      color: Color(0xFF1F8D6E),
+                    ),
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.center,
+                  ),
+                  visible: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
+                  maintainAnimation: true,
+                  maintainSize: true,
+                  maintainState: true,
                 ),
-                textDirection: TextDirection.rtl,
-                textAlign: TextAlign.center,
-              ),
-              visible: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
-              maintainAnimation: true,
-              maintainSize: true,
-              maintainState: true,
-            ),
-            const SizedBox(height: 4),
-            Visibility(
-              child: Text(
-                '${item.arabicContent}',
-                style: const TextStyle(fontSize: 20),
-                textDirection: TextDirection.rtl,
-                textAlign: TextAlign.center,
-              ),
-              visible: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
-              maintainAnimation: true,
-              maintainSize: true,
-              maintainState: true,
-            ),
-            const SizedBox(height: 8),
-            Visibility(
-              child: Text(
-                '${item.translationName}',
-                style: const TextStyle(
-                  fontSize: 18,
-                  color: Color(0xFF696F76),
+                const SizedBox(height: 4),
+                Visibility(
+                  child: Text(
+                    '${item.arabicContent}',
+                    style: const TextStyle(fontSize: 20),
+                    textDirection: TextDirection.rtl,
+                    textAlign: TextAlign.center,
+                  ),
+                  visible: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
+                  maintainAnimation: true,
+                  maintainSize: true,
+                  maintainState: true,
                 ),
-                textAlign: TextAlign.center,
-              ),
-              visible: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
-              maintainAnimation: true,
-              maintainSize: true,
-              maintainState: true,
-            ),
-            const SizedBox(height: 4),
-            Visibility(
-              child: Text(
-                '${item.translationContent}',
-                style: const TextStyle(fontSize: 18),
-                textAlign: TextAlign.center,
-              ),
-              visible: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
-              maintainAnimation: true,
-              maintainSize: true,
-              maintainState: true,
+                const SizedBox(height: 8),
+                Visibility(
+                  child: Text(
+                    '${item.translationName}',
+                    style: const TextStyle(
+                      fontSize: 18,
+                      color: Color(0xFF696F76),
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  visible: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
+                  maintainAnimation: true,
+                  maintainSize: true,
+                  maintainState: true,
+                ),
+                const SizedBox(height: 4),
+                Visibility(
+                  child: Text(
+                    '${item.translationContent}',
+                    style: const TextStyle(fontSize: 18),
+                    textAlign: TextAlign.center,
+                  ),
+                  visible: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
+                  maintainAnimation: true,
+                  maintainSize: true,
+                  maintainState: true,
+                ),
+              ],
             ),
           ],
         ),

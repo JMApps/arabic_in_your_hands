@@ -26,7 +26,7 @@ class ContentPlayer extends StatelessWidget {
             IconButton(
               icon: const Icon(
                 CupertinoIcons.arrow_2_squarepath,
-                color: Color(0xFF37FFC2),
+                color: Colors.white,
               ),
               onPressed: () {},
             ),
@@ -55,7 +55,7 @@ class ContentPlayer extends StatelessWidget {
             IconButton(
               icon: const Icon(
                 CupertinoIcons.arrow_3_trianglepath,
-                color: Color(0xFF37FFC2),
+                color: Colors.white,
               ),
               onPressed: () {},
             ),
