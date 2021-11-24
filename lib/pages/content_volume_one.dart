@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:arabicinyourhands/data/database_query.dart';
 import 'package:arabicinyourhands/model/content_volume_one_arguments.dart';
 import 'package:arabicinyourhands/widgets/content_player.dart';
+import 'package:arabicinyourhands/widgets/content_settings.dart';
 import 'package:arabicinyourhands/widgets/first_volume_chapter_content_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -49,7 +50,14 @@ class ContentVolumeOne extends StatelessWidget {
                                 CupertinoIcons.settings,
                                 color: Colors.white,
                               ),
-                              onPressed: () {},
+                              onPressed: () {
+                                showCupertinoModalPopup(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return const ContentSettings();
+                                  },
+                                );
+                              },
                             ),
                           ],
                         ),
