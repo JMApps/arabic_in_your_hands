@@ -26,7 +26,10 @@ class ContentSettings extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   TextButton.icon(
-                    icon: const Icon(CupertinoIcons.textformat_size),
+                    icon: const Icon(
+                      CupertinoIcons.textformat_size,
+                      color: Color(0xFF1F8D6E),
+                    ),
                     label: const Text(
                       'Размер арабского текста',
                       style: TextStyle(fontSize: 18, color: Colors.black54),
@@ -46,12 +49,15 @@ class ContentSettings extends StatelessWidget {
                       const SizedBox(width: 8),
                       const Text(
                         '18',
-                        style: TextStyle(fontSize: 18, color: Colors.black54),
+                        style: TextStyle(fontSize: 18, color: Color(0xFF243743)),
                       ),
                     ],
                   ),
                   TextButton.icon(
-                    icon: const Icon(CupertinoIcons.textformat_size),
+                    icon: const Icon(
+                      CupertinoIcons.textformat_size,
+                      color: Color(0xFF1F8D6E),
+                    ),
                     label: const Text(
                       'Размер текста перевода',
                       style: TextStyle(fontSize: 18, color: Colors.black54),
@@ -71,12 +77,15 @@ class ContentSettings extends StatelessWidget {
                       const SizedBox(width: 8),
                       const Text(
                         '18',
-                        style: TextStyle(fontSize: 18, color: Colors.black54),
+                        style: TextStyle(fontSize: 18, color: Color(0xFF243743)),
                       ),
                     ],
                   ),
                   TextButton.icon(
-                    icon: const Icon(CupertinoIcons.textformat),
+                    icon: const Icon(
+                      CupertinoIcons.textformat,
+                      color: Color(0xFF1F8D6E),
+                    ),
                     label: const Text(
                       'Шрифт арабского текста',
                       style: TextStyle(
@@ -94,6 +103,7 @@ class ContentSettings extends StatelessWidget {
                       Flexible(
                         flex: 1,
                         child: Radio(
+                          activeColor: const Color(0xFF243743),
                           value: true,
                           groupValue: 0,
                           onChanged: (value) {},
@@ -102,7 +112,8 @@ class ContentSettings extends StatelessWidget {
                       Flexible(
                         flex: 1,
                         child: Radio(
-                          value: true,
+                          activeColor: const Color(0xFF243743),
+                          value: false,
                           groupValue: 0,
                           onChanged: (value) {},
                         ),
@@ -110,7 +121,8 @@ class ContentSettings extends StatelessWidget {
                       Flexible(
                         flex: 1,
                         child: Radio(
-                          value: true,
+                          activeColor: const Color(0xFF243743),
+                          value: false,
                           groupValue: 0,
                           onChanged: (value) {},
                         ),
@@ -119,7 +131,10 @@ class ContentSettings extends StatelessWidget {
                   ),
                   const Divider(),
                   TextButton.icon(
-                    icon: const Icon(CupertinoIcons.textformat),
+                    icon: const Icon(
+                      CupertinoIcons.textformat,
+                      color: Color(0xFF1F8D6E),
+                    ),
                     label: const Text(
                       'Шрифт текста перевода',
                       style: TextStyle(
@@ -137,6 +152,16 @@ class ContentSettings extends StatelessWidget {
                       Flexible(
                         flex: 1,
                         child: Radio(
+                          activeColor: const Color(0xFF243743),
+                          value: true,
+                          groupValue: 0,
+                          onChanged: (value) {},
+                        ),
+                      ),
+                      Flexible(
+                        flex: 1,
+                        child: Radio(
+                          activeColor: const Color(0xFF243743),
                           value: false,
                           groupValue: 0,
                           onChanged: (value) {},
@@ -145,14 +170,7 @@ class ContentSettings extends StatelessWidget {
                       Flexible(
                         flex: 1,
                         child: Radio(
-                          value: false,
-                          groupValue: 0,
-                          onChanged: (value) {},
-                        ),
-                      ),
-                      Flexible(
-                        flex: 1,
-                        child: Radio(
+                          activeColor: const Color(0xFF243743),
                           value: false,
                           groupValue: 0,
                           onChanged: (value) {},
@@ -162,7 +180,10 @@ class ContentSettings extends StatelessWidget {
                   ),
                   const Divider(),
                   TextButton.icon(
-                    icon: const Icon(CupertinoIcons.textformat),
+                    icon: const Icon(
+                      CupertinoIcons.textformat,
+                      color: Color(0xFF1F8D6E),
+                    ),
                     label: const Text(
                       'Расположение текста',
                       style: TextStyle(
@@ -188,7 +209,7 @@ class ContentSettings extends StatelessWidget {
                     contentPadding: const EdgeInsets.symmetric(horizontal: 8),
                     value: true,
                     onChanged: (value) {},
-                    activeColor: Colors.blueGrey,
+                    activeColor: const Color(0xFF243743),
                     title: const Text(
                       'Отображать арабский текст',
                       style: TextStyle(fontSize: 18, color: Colors.black54),
@@ -199,7 +220,7 @@ class ContentSettings extends StatelessWidget {
                     contentPadding: const EdgeInsets.symmetric(horizontal: 8),
                     value: true,
                     onChanged: (value) {},
-                    activeColor: Colors.blueGrey,
+                    activeColor: const Color(0xFF243743),
                     title: const Text(
                       'Отображать текст перевода',
                       style: TextStyle(fontSize: 18, color: Colors.black54),

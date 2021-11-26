@@ -54,7 +54,8 @@ class ContentVolumeOne extends StatelessWidget {
                                 showCupertinoModalPopup(
                                   context: context,
                                   builder: (BuildContext context) {
-                                    return const ContentSettings();
+                                    return const SingleChildScrollView(
+                                        child: ContentSettings());
                                   },
                                 );
                               },
