@@ -251,38 +251,11 @@ class ContentSettings extends StatelessWidget {
                       Icon(Icons.format_align_left),
                       Icon(Icons.format_align_center),
                       Icon(Icons.format_align_right),
-                      Icon(Icons.format_align_justify),
                     ],
                     isSelected: context.watch<ContentSettingsState>().getIsSelected,
                     onPressed: (index) {
                       context.read<ContentSettingsState>().updateToggleTextLayout(index);
                     },
-                  ),
-                  const Divider(),
-                  SwitchListTile(
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-                    value: context.watch<ContentSettingsState>().getTextArabicShowState,
-                    onChanged: (value) {
-                      context.read<ContentSettingsState>().updateTextArabicShow(value);
-                    },
-                    activeColor: const Color(0xFF243743),
-                    title: const Text(
-                      'Отображать арабский текст',
-                      style: TextStyle(fontSize: 18, color: Colors.black54),
-                    ),
-                  ),
-                  const Divider(),
-                  SwitchListTile(
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-                    value: context.watch<ContentSettingsState>().getTextTranslationShowState,
-                    onChanged: (value) {
-                      context.read<ContentSettingsState>().updateTextTranslationShow(value);
-                    },
-                    activeColor: const Color(0xFF243743),
-                    title: const Text(
-                      'Отображать текст перевода',
-                      style: TextStyle(fontSize: 18, color: Colors.black54),
-                    ),
                   ),
                   const Divider(),
                   MaterialButton(

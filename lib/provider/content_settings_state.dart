@@ -17,21 +17,13 @@ class ContentSettingsState with ChangeNotifier {
 
   int get getTranslationFontRadioGroupValue => _translationFontRadioGroupValue;
 
-  final List<bool> _isSelected = [true, false, false, false];
+  final List<bool> _isSelected = [false, true, false];
 
-  int _toggleButtonIndex = 0;
+  int _toggleButtonIndex = 1;
 
   int get getToggleButtonIndex => _toggleButtonIndex;
 
   List<bool> get getIsSelected => _isSelected;
-
-  bool _textArabicShowState = true;
-
-  bool get getTextArabicShowState => _textArabicShowState;
-
-  bool _textTranslationShowState = true;
-
-  bool get getTextTranslationShowState => _textTranslationShowState;
 
   updateTextArabicSize(int newSize) {
     _textArabicSize = newSize;
@@ -58,16 +50,6 @@ class ContentSettingsState with ChangeNotifier {
     for (int i = 0; i < _isSelected.length; i++) {
       _isSelected[i] = i == _toggleButtonIndex;
     }
-    notifyListeners();
-  }
-
-  updateTextArabicShow(bool state) {
-    _textArabicShowState = state;
-    notifyListeners();
-  }
-
-  updateTextTranslationShow(bool state) {
-    _textTranslationShowState = state;
     notifyListeners();
   }
 }
