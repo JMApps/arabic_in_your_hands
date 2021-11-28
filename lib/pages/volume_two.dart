@@ -33,8 +33,8 @@ class VolumeTwo extends StatelessWidget {
                       child: AnimationLimiter(
                         child: ListView.builder(
                           shrinkWrap: true,
-                          padding: EdgeInsets.zero,
                           physics: const BouncingScrollPhysics(),
+                          padding: const EdgeInsets.only(bottom: 12),
                           itemCount: snapshot.data.length,
                           itemBuilder: (BuildContext context, int index) {
                             return AnimationConfiguration.staggeredList(
