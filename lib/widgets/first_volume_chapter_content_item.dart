@@ -1,14 +1,26 @@
 import 'package:arabicinyourhands/model/volume_first_item_chapter_content_model.dart';
+import 'package:arabicinyourhands/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/provider/volume_content_dialog_visibility_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class FirstVolumeChapterContentItem extends StatelessWidget {
-  const FirstVolumeChapterContentItem({Key? key, required this.item})
+  FirstVolumeChapterContentItem({Key? key, required this.item})
       : super(key: key);
 
   final VolumeFirstItemChapterContentModel item;
+  final List<TextAlign> _getTextAlignOne = [
+    TextAlign.left,
+    TextAlign.center,
+    TextAlign.right,
+  ];
+
+  final List<TextAlign> _getTextAlignTwo = [
+    TextAlign.right,
+    TextAlign.center,
+    TextAlign.left,
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -48,78 +60,93 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
                   colors: [Color(0xFFFFFFFF), Color(0xFFE6ECFF)],
                 ),
         ),
-        child: Stack(
-          alignment: Alignment.center,
+        child: Column(
           children: [
-            Align(
-                alignment: item.id!.isOdd
-                    ? Alignment.centerLeft
-                    : Alignment.centerRight,
-                child: Icon(
-                  item.id!.isOdd
-                      ? CupertinoIcons.speaker_zzz_fill
-                      : CupertinoIcons.speaker_zzz_fill_rtl,
-                  size: 20,
-                  color: const Color(0xFF243743),
-                )),
-            Column(
-              children: [
-                Visibility(
-                  child: Text(
-                    '${item.arabicName}',
-                    style: const TextStyle(
-                      fontSize: 20,
-                      color: Color(0xFF1F8D6E),
-                    ),
-                    textDirection: TextDirection.rtl,
-                    textAlign: TextAlign.center,
+            SizedBox(
+              width: double.maxFinite,
+              child: Visibility(
+                child: Text(
+                  '${item.arabicName}',
+                  style: TextStyle(
+                    fontSize: context.watch<ContentSettingsState>().getTextArabicSize.toDouble(),
+                    color: const Color(0xFF1F8D6E),
                   ),
-                  visible: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
-                  maintainAnimation: true,
-                  maintainSize: true,
-                  maintainState: true,
+                  textDirection: TextDirection.rtl,
+                  textAlign: _getTextAlignOne[context.watch<ContentSettingsState>().getToggleButtonIndex],
                 ),
-                const SizedBox(height: 4),
-                Visibility(
-                  child: Text(
-                    '${item.arabicContent}',
-                    style: const TextStyle(fontSize: 20),
-                    textDirection: TextDirection.rtl,
-                    textAlign: TextAlign.center,
+                visible: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
+                maintainAnimation: true,
+                maintainSize: true,
+                maintainState: true,
+              ),
+            ),
+            const SizedBox(height: 4),
+            SizedBox(
+              width: double.maxFinite,
+              child: Visibility(
+                child: Text(
+                  '${item.arabicContent}',
+                  style: TextStyle(
+                      fontSize: context.watch<ContentSettingsState>().getTextArabicSize.toDouble(),
+                      color: Colors.black54),
+                  textDirection: TextDirection.rtl,
+                  textAlign: _getTextAlignOne[context.watch<ContentSettingsState>().getToggleButtonIndex],
+                ),
+                visible: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
+                maintainAnimation: true,
+                maintainSize: true,
+                maintainState: true,
+              ),
+            ),
+            const SizedBox(height: 2),
+            Visibility(
+              child: Icon(
+                item.id!.isOdd
+                    ? CupertinoIcons.speaker_zzz_fill
+                    : CupertinoIcons.speaker_zzz_fill_rtl,
+                size: 20,
+                color: const Color(0xFF243743),
+              ),
+              visible: true,
+              maintainAnimation: true,
+              maintainSize: true,
+              maintainState: true,
+            ),
+            const SizedBox(height: 2),
+            SizedBox(
+              width: double.maxFinite,
+              child: Visibility(
+                child: Text(
+                  '${item.translationName}',
+                  style: TextStyle(
+                    fontSize: context.watch<ContentSettingsState>().getTextTranslationSize.toDouble(),
+                    color: const Color(0xFF696F76),
                   ),
-                  visible: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
-                  maintainAnimation: true,
-                  maintainSize: true,
-                  maintainState: true,
+                  textAlign: _getTextAlignTwo[context.watch<ContentSettingsState>().getToggleButtonIndex],
                 ),
-                const SizedBox(height: 8),
-                Visibility(
-                  child: Text(
-                    '${item.translationName}',
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: Color(0xFF696F76),
-                    ),
-                    textAlign: TextAlign.center,
+                visible: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
+                maintainAnimation: true,
+                maintainSize: true,
+                maintainState: true,
+              ),
+            ),
+            const SizedBox(height: 4),
+            SizedBox(
+              width: double.maxFinite,
+              child: Visibility(
+                child: Text(
+                  '${item.translationContent}',
+                  style: TextStyle(
+                    fontSize: context.watch<ContentSettingsState>().getTextTranslationSize.toDouble(),
+                    color: Colors.black54,
                   ),
-                  visible: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
-                  maintainAnimation: true,
-                  maintainSize: true,
-                  maintainState: true,
+                  textAlign: _getTextAlignTwo[context.watch<ContentSettingsState>().getToggleButtonIndex],
                 ),
-                const SizedBox(height: 4),
-                Visibility(
-                  child: Text(
-                    '${item.translationContent}',
-                    style: const TextStyle(fontSize: 18),
-                    textAlign: TextAlign.center,
-                  ),
-                  visible: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
-                  maintainAnimation: true,
-                  maintainSize: true,
-                  maintainState: true,
-                ),
-              ],
+                visible: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
+                maintainAnimation: true,
+                maintainSize: true,
+                maintainState: true,
+              ),
             ),
           ],
         ),
