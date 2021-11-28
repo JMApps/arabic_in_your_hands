@@ -245,22 +245,26 @@ class ContentSettings extends StatelessWidget {
                     ),
                     onPressed: () {},
                   ),
-                  // ToggleButtons(
-                  //   selectedColor: Colors.blueGrey[800],
-                  //   children: const [
-                  //     Icon(Icons.format_align_left),
-                  //     Icon(Icons.format_align_center),
-                  //     Icon(Icons.format_align_right),
-                  //     Icon(Icons.format_align_justify),
-                  //   ],
-                  //   isSelected: ,
-                  //   onPressed: (index) {},
-                  // ),
+                  ToggleButtons(
+                    selectedColor: Colors.blueGrey[800],
+                    children: const [
+                      Icon(Icons.format_align_left),
+                      Icon(Icons.format_align_center),
+                      Icon(Icons.format_align_right),
+                      Icon(Icons.format_align_justify),
+                    ],
+                    isSelected: context.watch<ContentSettingsState>().getIsSelected,
+                    onPressed: (index) {
+                      context.read<ContentSettingsState>().updateToggleTextLayout(index);
+                    },
+                  ),
                   const Divider(),
                   SwitchListTile(
                     contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-                    value: true,
-                    onChanged: (value) {},
+                    value: context.watch<ContentSettingsState>().getTextArabicShowState,
+                    onChanged: (value) {
+                      context.read<ContentSettingsState>().updateTextArabicShow(value);
+                    },
                     activeColor: const Color(0xFF243743),
                     title: const Text(
                       'Отображать арабский текст',
@@ -270,8 +274,10 @@ class ContentSettings extends StatelessWidget {
                   const Divider(),
                   SwitchListTile(
                     contentPadding: const EdgeInsets.symmetric(horizontal: 8),
-                    value: true,
-                    onChanged: (value) {},
+                    value: context.watch<ContentSettingsState>().getTextTranslationShowState,
+                    onChanged: (value) {
+                      context.read<ContentSettingsState>().updateTextTranslationShow(value);
+                    },
                     activeColor: const Color(0xFF243743),
                     title: const Text(
                       'Отображать текст перевода',
