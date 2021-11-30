@@ -62,7 +62,7 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
         ),
         child: Column(
           children: [
-            SizedBox(
+            item.arabicName != null ? SizedBox(
               width: double.maxFinite,
               child: Visibility(
                 child: Text(
@@ -79,9 +79,9 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
                 maintainSize: true,
                 maintainState: true,
               ),
-            ),
+            ) : const SizedBox(),
             const SizedBox(height: 4),
-            SizedBox(
+            item.arabicContent != null ? SizedBox(
               width: double.maxFinite,
               child: Visibility(
                 child: Text(
@@ -97,7 +97,7 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
                 maintainSize: true,
                 maintainState: true,
               ),
-            ),
+            ) : const SizedBox(),
             const SizedBox(height: 2),
             Visibility(
               child: Icon(
@@ -113,7 +113,7 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
               maintainState: true,
             ),
             const SizedBox(height: 2),
-            SizedBox(
+            item.translationName != null ? SizedBox(
               width: double.maxFinite,
               child: Visibility(
                 child: Text(
@@ -129,9 +129,9 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
                 maintainSize: true,
                 maintainState: true,
               ),
-            ),
+            ) : const SizedBox(),
             const SizedBox(height: 4),
-            SizedBox(
+            item.translationContent != null ? SizedBox(
               width: double.maxFinite,
               child: Visibility(
                 child: Text(
@@ -147,7 +147,7 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
                 maintainSize: true,
                 maintainState: true,
               ),
-            ),
+            ) : const SizedBox(),
           ],
         ),
       ),
