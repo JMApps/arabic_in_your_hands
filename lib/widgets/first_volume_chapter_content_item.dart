@@ -120,7 +120,7 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
                   '${item.translationName}',
                   style: TextStyle(
                     fontSize: context.watch<ContentSettingsState>().getTextTranslationSize.toDouble(),
-                    color: const Color(0xFF696F76),
+                    color: const Color(0xFF243743),
                   ),
                   textAlign: _getTextAlignTwo[context.watch<ContentSettingsState>().getToggleButtonIndex],
                 ),
