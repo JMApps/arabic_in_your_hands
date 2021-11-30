@@ -37,7 +37,7 @@ class ContentSettings extends StatelessWidget {
                       'Размер арабского текста',
                       style: TextStyle(fontSize: 18, color: Colors.black54),
                     ),
-                    onPressed: () {},
+                    onPressed: null,
                   ),
                   Row(
                     children: [
@@ -47,9 +47,14 @@ class ContentSettings extends StatelessWidget {
                           activeColor: const Color(0xFF243743),
                           min: 14,
                           max: 50,
-                          value: context.watch<ContentSettingsState>().getTextArabicSize.toDouble(),
+                          value: context
+                              .watch<ContentSettingsState>()
+                              .getTextArabicSize
+                              .toDouble(),
                           onChanged: (value) {
-                            context.read<ContentSettingsState>().updateTextArabicSize(value.toInt());
+                            context
+                                .read<ContentSettingsState>()
+                                .updateTextArabicSize(value.toInt());
                           },
                         ),
                       ),
@@ -73,7 +78,7 @@ class ContentSettings extends StatelessWidget {
                       'Размер текста перевода',
                       style: TextStyle(fontSize: 18, color: Colors.black54),
                     ),
-                    onPressed: () {},
+                    onPressed: null,
                   ),
                   Row(
                     children: [
@@ -83,9 +88,14 @@ class ContentSettings extends StatelessWidget {
                           activeColor: const Color(0xFF243743),
                           min: 14,
                           max: 50,
-                          value: context.watch<ContentSettingsState>().getTextTranslationSize.toDouble(),
+                          value: context
+                              .watch<ContentSettingsState>()
+                              .getTextTranslationSize
+                              .toDouble(),
                           onChanged: (value) {
-                            context.read<ContentSettingsState>().updateTextTranslationSize(value.toInt());
+                            context
+                                .read<ContentSettingsState>()
+                                .updateTextTranslationSize(value.toInt());
                           },
                         ),
                       ),
@@ -112,7 +122,7 @@ class ContentSettings extends StatelessWidget {
                         color: Colors.black54,
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: null,
                   ),
                   const Divider(),
                   Row(
@@ -124,9 +134,13 @@ class ContentSettings extends StatelessWidget {
                         child: Radio(
                           activeColor: const Color(0xFF243743),
                           value: 0,
-                          groupValue: context.watch<ContentSettingsState>().getArabicFontRadioGroupValue,
+                          groupValue: context
+                              .watch<ContentSettingsState>()
+                              .getArabicFontRadioGroupValue,
                           onChanged: (value) {
-                            context.read<ContentSettingsState>().updateArabicRadioValue(0);
+                            context
+                                .read<ContentSettingsState>()
+                                .updateArabicRadioValue(0);
                           },
                         ),
                       ),
@@ -135,9 +149,13 @@ class ContentSettings extends StatelessWidget {
                         child: Radio(
                           activeColor: const Color(0xFF243743),
                           value: 1,
-                          groupValue: context.watch<ContentSettingsState>().getArabicFontRadioGroupValue,
+                          groupValue: context
+                              .watch<ContentSettingsState>()
+                              .getArabicFontRadioGroupValue,
                           onChanged: (value) {
-                            context.read<ContentSettingsState>().updateArabicRadioValue(1);
+                            context
+                                .read<ContentSettingsState>()
+                                .updateArabicRadioValue(1);
                           },
                         ),
                       ),
@@ -146,23 +164,36 @@ class ContentSettings extends StatelessWidget {
                         child: Radio(
                           activeColor: const Color(0xFF243743),
                           value: 2,
-                          groupValue: context.watch<ContentSettingsState>().getArabicFontRadioGroupValue,
+                          groupValue: context
+                              .watch<ContentSettingsState>()
+                              .getArabicFontRadioGroupValue,
                           onChanged: (value) {
-                            context.read<ContentSettingsState>().updateArabicRadioValue(2);
+                            context
+                                .read<ContentSettingsState>()
+                                .updateArabicRadioValue(2);
                           },
                         ),
                       ),
                     ],
                   ),
                   const Divider(),
-                  const Center(
-                    child: Text(
-                      'السلام عليكم!',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Color(0xFF243743),
+                  Center(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 8,
+                        horizontal: 16,
                       ),
-                      textDirection: TextDirection.rtl,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(15)),
+                      child: const Text(
+                        'السلام عليكم!',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Color(0xFF243743),
+                        ),
+                        textDirection: TextDirection.rtl,
+                      ),
                     ),
                   ),
                   const Divider(),
@@ -190,9 +221,13 @@ class ContentSettings extends StatelessWidget {
                         child: Radio(
                           activeColor: const Color(0xFF243743),
                           value: 0,
-                          groupValue: context.watch<ContentSettingsState>().getTranslationFontRadioGroupValue,
+                          groupValue: context
+                              .watch<ContentSettingsState>()
+                              .getTranslationFontRadioGroupValue,
                           onChanged: (value) {
-                            context.read<ContentSettingsState>().updateTranslationRadioValue(0);
+                            context
+                                .read<ContentSettingsState>()
+                                .updateTranslationRadioValue(0);
                           },
                         ),
                       ),
@@ -201,9 +236,13 @@ class ContentSettings extends StatelessWidget {
                         child: Radio(
                           activeColor: const Color(0xFF243743),
                           value: 1,
-                          groupValue: context.watch<ContentSettingsState>().getTranslationFontRadioGroupValue,
+                          groupValue: context
+                              .watch<ContentSettingsState>()
+                              .getTranslationFontRadioGroupValue,
                           onChanged: (value) {
-                            context.read<ContentSettingsState>().updateTranslationRadioValue(1);
+                            context
+                                .read<ContentSettingsState>()
+                                .updateTranslationRadioValue(1);
                           },
                         ),
                       ),
@@ -212,21 +251,34 @@ class ContentSettings extends StatelessWidget {
                         child: Radio(
                           activeColor: const Color(0xFF243743),
                           value: 2,
-                          groupValue: context.watch<ContentSettingsState>().getTranslationFontRadioGroupValue,
+                          groupValue: context
+                              .watch<ContentSettingsState>()
+                              .getTranslationFontRadioGroupValue,
                           onChanged: (value) {
-                            context.read<ContentSettingsState>().updateTranslationRadioValue(2);
+                            context
+                                .read<ContentSettingsState>()
+                                .updateTranslationRadioValue(2);
                           },
                         ),
                       ),
                     ],
                   ),
                   const Divider(),
-                  const Center(
-                    child: Text(
-                      'Ассаляму аляйкум!',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Color(0xFF243743),
+                  Center(
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        vertical: 8,
+                        horizontal: 16,
+                      ),
+                      decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(15)),
+                      child: const Text(
+                        'Ассаляму аляйкум!',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Color(0xFF243743),
+                        ),
                       ),
                     ),
                   ),
@@ -252,17 +304,20 @@ class ContentSettings extends StatelessWidget {
                       Icon(Icons.format_align_center),
                       Icon(Icons.format_align_right),
                     ],
-                    isSelected: context.watch<ContentSettingsState>().getIsSelected,
+                    isSelected:
+                        context.watch<ContentSettingsState>().getIsSelected,
                     onPressed: (index) {
-                      context.read<ContentSettingsState>().updateToggleTextLayout(index);
+                      context
+                          .read<ContentSettingsState>()
+                          .updateToggleTextLayout(index);
                     },
                   ),
                   const Divider(),
                   MaterialButton(
                     color: const Color(0xFF243743),
+                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10)
-                    ),
+                        borderRadius: BorderRadius.circular(10)),
                     child: const Text(
                       'Закрыть',
                       style: TextStyle(
