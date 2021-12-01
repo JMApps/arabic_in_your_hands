@@ -80,8 +80,8 @@ class ContentVolumeOne extends StatelessWidget {
                     decoration: const BoxDecoration(
                       color: Color(0xFF243743),
                       borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(50),
-                        topRight: Radius.circular(50),
+                        topLeft: Radius.circular(20),
+                        topRight: Radius.circular(20),
                       ),
                     ),
                     child: const ContentPlayer(),

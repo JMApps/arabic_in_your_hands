@@ -27,7 +27,9 @@ class DatabaseHelper {
         ? await getExternalStorageDirectory()
         : await getApplicationSupportDirectory();
 
+
     String _path = join(documentDirectory!.path, 'ArabicInYourHandsDB.db');
+    await deleteDatabase(_path);
 
     //String _toDelete_1 = '${documentDirectory.path}/fortress_db_2.db';
 

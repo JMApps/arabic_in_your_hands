@@ -40,116 +40,130 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
                 bottomRight: Radius.circular(25),
               ),
       ),
-      child: Container(
-        padding: const EdgeInsets.all(16),
-        decoration: BoxDecoration(
-          borderRadius: item.id!.isOdd
-              ? const BorderRadius.only(
-                  topLeft: Radius.circular(25),
-                  bottomLeft: Radius.circular(25),
-                )
-              : const BorderRadius.only(
-                  topRight: Radius.circular(25),
-                  bottomRight: Radius.circular(25),
-                ),
-          gradient: item.id!.isOdd
-              ? const LinearGradient(
-                  colors: [Color(0xFFE6FFEC), Color(0xFFFFFFFF)],
-                )
-              : const LinearGradient(
-                  colors: [Color(0xFFFFFFFF), Color(0xFFE6ECFF)],
-                ),
+      child: InkWell(
+        borderRadius: item.id!.isOdd
+            ? const BorderRadius.only(
+          topLeft: Radius.circular(25),
+          bottomLeft: Radius.circular(25),
+        )
+            : const BorderRadius.only(
+          topRight: Radius.circular(25),
+          bottomRight: Radius.circular(25),
         ),
-        child: Column(
-          children: [
-            item.arabicName != null ? SizedBox(
-              width: double.maxFinite,
-              child: Visibility(
-                child: Text(
-                  '${item.arabicName}',
-                  style: TextStyle(
-                    fontSize: context.watch<ContentSettingsState>().getTextArabicSize.toDouble(),
-                    color: const Color(0xFF1F8D6E),
+        child: Container(
+          padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            borderRadius: item.id!.isOdd
+                ? const BorderRadius.only(
+                    topLeft: Radius.circular(25),
+                    bottomLeft: Radius.circular(25),
+                  )
+                : const BorderRadius.only(
+                    topRight: Radius.circular(25),
+                    bottomRight: Radius.circular(25),
                   ),
-                  textDirection: TextDirection.rtl,
-                  textAlign: _getTextAlignOne[context.watch<ContentSettingsState>().getToggleButtonIndex],
-                ),
-                visible: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
-                maintainAnimation: true,
-                maintainSize: true,
-                maintainState: true,
-              ),
-            ) : const SizedBox(),
-            const SizedBox(height: 4),
-            item.arabicContent != null ? SizedBox(
-              width: double.maxFinite,
-              child: Visibility(
-                child: Text(
-                  '${item.arabicContent}',
-                  style: TextStyle(
+            gradient: item.id!.isOdd
+                ? const LinearGradient(
+                    colors: [Color(0xFFE6FFEC), Color(0xFFFFFFFF)],
+                  )
+                : const LinearGradient(
+                    colors: [Color(0xFFFFFFFF), Color(0xFFE6ECFF)],
+                  ),
+          ),
+          child: Column(
+            children: [
+              item.arabicName != null ? SizedBox(
+                width: double.maxFinite,
+                child: Visibility(
+                  child: Text(
+                    '${item.arabicName}',
+                    style: TextStyle(
                       fontSize: context.watch<ContentSettingsState>().getTextArabicSize.toDouble(),
-                      color: Colors.black54),
-                  textDirection: TextDirection.rtl,
-                  textAlign: _getTextAlignOne[context.watch<ContentSettingsState>().getToggleButtonIndex],
-                ),
-                visible: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
-                maintainAnimation: true,
-                maintainSize: true,
-                maintainState: true,
-              ),
-            ) : const SizedBox(),
-            const SizedBox(height: 2),
-            Visibility(
-              child: Icon(
-                item.id!.isOdd
-                    ? CupertinoIcons.speaker_zzz_fill
-                    : CupertinoIcons.speaker_zzz_fill_rtl,
-                size: 20,
-                color: const Color(0xFF243743),
-              ),
-              visible: true,
-              maintainAnimation: true,
-              maintainSize: true,
-              maintainState: true,
-            ),
-            const SizedBox(height: 2),
-            item.translationName != null ? SizedBox(
-              width: double.maxFinite,
-              child: Visibility(
-                child: Text(
-                  '${item.translationName}',
-                  style: TextStyle(
-                    fontSize: context.watch<ContentSettingsState>().getTextTranslationSize.toDouble(),
-                    color: const Color(0xFF243743),
+                      color: const Color(0xFF1F8D6E),
+                    ),
+                    textDirection: TextDirection.rtl,
+                    textAlign: _getTextAlignOne[context.watch<ContentSettingsState>().getToggleButtonIndex],
                   ),
-                  textAlign: _getTextAlignTwo[context.watch<ContentSettingsState>().getToggleButtonIndex],
+                  visible: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
+                  maintainAnimation: true,
+                  maintainSize: true,
+                  maintainState: true,
                 ),
-                visible: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
-                maintainAnimation: true,
-                maintainSize: true,
-                maintainState: true,
-              ),
-            ) : const SizedBox(),
-            const SizedBox(height: 4),
-            item.translationContent != null ? SizedBox(
-              width: double.maxFinite,
-              child: Visibility(
-                child: Text(
-                  '${item.translationContent}',
-                  style: TextStyle(
-                    fontSize: context.watch<ContentSettingsState>().getTextTranslationSize.toDouble(),
-                    color: Colors.black54,
+              ) : const SizedBox(),
+              const SizedBox(height: 4),
+              item.arabicContent != null ? SizedBox(
+                width: double.maxFinite,
+                child: Visibility(
+                  child: Text(
+                    '${item.arabicContent}',
+                    style: TextStyle(
+                        fontSize: context.watch<ContentSettingsState>().getTextArabicSize.toDouble(),
+                        color: Colors.black54),
+                    textDirection: TextDirection.rtl,
+                    textAlign: _getTextAlignOne[context.watch<ContentSettingsState>().getToggleButtonIndex],
                   ),
-                  textAlign: _getTextAlignTwo[context.watch<ContentSettingsState>().getToggleButtonIndex],
+                  visible: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
+                  maintainAnimation: true,
+                  maintainSize: true,
+                  maintainState: true,
                 ),
-                visible: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
+              ) : const SizedBox(),
+              const SizedBox(height: 2),
+              Visibility(
+                child: Icon(
+                  item.id!.isOdd
+                      ? CupertinoIcons.speaker_zzz_fill
+                      : CupertinoIcons.speaker_zzz_fill_rtl,
+                  size: 20,
+                  color: const Color(0xFF243743),
+                ),
+                visible: true,
                 maintainAnimation: true,
                 maintainSize: true,
                 maintainState: true,
               ),
-            ) : const SizedBox(),
-          ],
+              const SizedBox(height: 2),
+              item.translationName != null ? SizedBox(
+                width: double.maxFinite,
+                child: Visibility(
+                  child: Text(
+                    '${item.translationName}',
+                    style: TextStyle(
+                      fontSize: context.watch<ContentSettingsState>().getTextTranslationSize.toDouble(),
+                      color: const Color(0xFF243743),
+                    ),
+                    textAlign: _getTextAlignTwo[context.watch<ContentSettingsState>().getToggleButtonIndex],
+                  ),
+                  visible: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
+                  maintainAnimation: true,
+                  maintainSize: true,
+                  maintainState: true,
+                ),
+              ) : const SizedBox(),
+              const SizedBox(height: 4),
+              item.translationContent != null ? SizedBox(
+                width: double.maxFinite,
+                child: Visibility(
+                  child: Text(
+                    '${item.translationContent}',
+                    style: TextStyle(
+                      fontSize: context.watch<ContentSettingsState>().getTextTranslationSize.toDouble(),
+                      color: Colors.black54,
+                    ),
+                    textAlign: _getTextAlignTwo[context.watch<ContentSettingsState>().getToggleButtonIndex],
+                  ),
+                  visible: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
+                  maintainAnimation: true,
+                  maintainSize: true,
+                  maintainState: true,
+                ),
+              ) : const SizedBox(),
+            ],
+          ),
         ),
+        onTap: () {
+          print('${item.id}');
+        },
       ),
     );
   }
