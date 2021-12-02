@@ -1,15 +1,19 @@
 import 'package:arabicinyourhands/model/volume_first_item_chapter_content_model.dart';
 import 'package:arabicinyourhands/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/provider/volume_content_dialog_visibility_state.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class FirstVolumeChapterContentItem extends StatelessWidget {
-  FirstVolumeChapterContentItem({Key? key, required this.item})
+  FirstVolumeChapterContentItem({Key? key, required this.item, required this.index, required this.player})
       : super(key: key);
 
   final VolumeFirstItemChapterContentModel item;
+  final int index;
+  final AssetsAudioPlayer player;
+
   final List<TextAlign> _getTextAlignOne = [
     TextAlign.left,
     TextAlign.center,
@@ -24,51 +28,44 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: item.id!.isOdd
-          ? const EdgeInsets.only(left: 16, top: 8, bottom: 8)
-          : const EdgeInsets.only(right: 16, top: 8, bottom: 8),
-      elevation: 2,
-      shape: RoundedRectangleBorder(
-        borderRadius: item.id!.isOdd
-            ? const BorderRadius.only(
-                topLeft: Radius.circular(25),
-                bottomLeft: Radius.circular(25),
-              )
-            : const BorderRadius.only(
-                topRight: Radius.circular(25),
-                bottomRight: Radius.circular(25),
-              ),
-      ),
-      child: InkWell(
-        borderRadius: item.id!.isOdd
-            ? const BorderRadius.only(
-          topLeft: Radius.circular(25),
-          bottomLeft: Radius.circular(25),
-        )
-            : const BorderRadius.only(
-          topRight: Radius.circular(25),
-          bottomRight: Radius.circular(25),
+    return player.builderRealtimePlayingInfos(builder: (BuildContext context, realtimePlayingInfo) {
+      return Card(
+        margin: item.id!.isOdd
+            ? const EdgeInsets.only(left: 16, top: 8, bottom: 8)
+            : const EdgeInsets.only(right: 16, top: 8, bottom: 8),
+        elevation: 2,
+        shape: RoundedRectangleBorder(
+          borderRadius: item.id!.isOdd
+              ? const BorderRadius.only(
+            topLeft: Radius.circular(25),
+            bottomLeft: Radius.circular(25),
+          )
+              : const BorderRadius.only(
+            topRight: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
         ),
-        child: Container(
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 750),
+          curve: Curves.fastOutSlowIn,
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
+            color: item.id!.isOdd ?
+            realtimePlayingInfo.isPlaying &&
+                player.readingPlaylist!.currentIndex == index ?
+            Colors.green[200] : Colors.green[50] :
+            realtimePlayingInfo.isPlaying &&
+                player.readingPlaylist!.currentIndex == index ?
+            Colors.blue[200] : Colors.blue[50],
             borderRadius: item.id!.isOdd
                 ? const BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    bottomLeft: Radius.circular(25),
-                  )
+              topLeft: Radius.circular(25),
+              bottomLeft: Radius.circular(25),
+            )
                 : const BorderRadius.only(
-                    topRight: Radius.circular(25),
-                    bottomRight: Radius.circular(25),
-                  ),
-            gradient: item.id!.isOdd
-                ? const LinearGradient(
-                    colors: [Color(0xFFE6FFEC), Color(0xFFFFFFFF)],
-                  )
-                : const LinearGradient(
-                    colors: [Color(0xFFFFFFFF), Color(0xFFE6ECFF)],
-                  ),
+              topRight: Radius.circular(25),
+              bottomRight: Radius.circular(25),
+            ),
           ),
           child: Column(
             children: [
@@ -161,10 +158,8 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
             ],
           ),
         ),
-        onTap: () {
-          print('${item.id}');
-        },
-      ),
+      );
+    },
     );
   }
 }
