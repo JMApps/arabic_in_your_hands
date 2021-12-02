@@ -53,9 +53,11 @@ class VolumeOne extends StatelessWidget {
                       ),
                     ),
                   )
-                : Platform.isIOS
-                    ? const CupertinoActivityIndicator()
-                    : const CircularProgressIndicator();
+                : Center(
+                    child: Platform.isIOS
+                        ? const CupertinoActivityIndicator()
+                        : const CircularProgressIndicator(),
+                  );
       },
     );
   }
