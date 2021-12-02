@@ -36,8 +36,8 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
                     ),
                     gradient: LinearGradient(colors: [
                       Color(0xFFD5FFEF),
