@@ -1,3 +1,4 @@
+import 'package:arabicinyourhands/provider/content_player_state.dart';
 import 'package:arabicinyourhands/provider/volume_content_dialog_visibility_state.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,6 +16,9 @@ class ContentPlayer extends StatefulWidget {
 }
 
 class _ContentPlayerState extends State<ContentPlayer> {
+
+  bool _loopState = false;
+  bool _playListState = false;
 
   @override
   void initState() {
@@ -51,11 +55,14 @@ class _ContentPlayerState extends State<ContentPlayer> {
                   ),
                 ),
                 IconButton(
-                  icon: const Icon(
+                  icon: Icon(
                     CupertinoIcons.arrow_2_squarepath,
-                    color: Colors.white,
+                    color: context.watch<ContentPlayerState>().getLoopState ? Colors.red[300] : Colors.white,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<ContentPlayerState>().changeLoopState(_loopState = !_loopState);
+                    widget.player.setLoopMode(context.watch<ContentPlayerState>().getLoopState ? LoopMode.single : LoopMode.none);
+                  },
                 ),
                 IconButton(
                   icon: const Icon(
@@ -86,11 +93,13 @@ class _ContentPlayerState extends State<ContentPlayer> {
                   },
                 ),
                 IconButton(
-                  icon: const Icon(
+                  icon: Icon(
                     CupertinoIcons.arrow_3_trianglepath,
-                    color: Colors.white,
+                    color: context.watch<ContentPlayerState>().getPlayListState ? Colors.red[300] : Colors.white,
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    context.read<ContentPlayerState>().changePlayListState(_playListState = !_playListState);
+                  },
                 ),
                 Transform.scale(
                   scale: 0.7,

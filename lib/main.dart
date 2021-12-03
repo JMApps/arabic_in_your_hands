@@ -1,3 +1,4 @@
+import 'package:arabicinyourhands/provider/content_player_state.dart';
 import 'package:arabicinyourhands/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/provider/main_bottom_navigation_state.dart';
 import 'package:arabicinyourhands/provider/volume_content_dialog_visibility_state.dart';
@@ -21,6 +22,7 @@ class Main extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => MainBottomNavigationState()),
         ChangeNotifierProvider(create: (_) => VolumeContentDialogVisibilityState()),
         ChangeNotifierProvider(create: (_) => ContentSettingsState()),
+        ChangeNotifierProvider(create: (_) => ContentPlayerState()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
