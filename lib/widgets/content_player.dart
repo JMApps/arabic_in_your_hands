@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ContentPlayer extends StatefulWidget {
-  const ContentPlayer({Key? key, required this.snapshot, required this.player}) : super(key: key);
+  const ContentPlayer({Key? key, required this.snapshot, required this.player})
+      : super(key: key);
 
   final AsyncSnapshot snapshot;
   final AssetsAudioPlayer player;
@@ -16,22 +17,18 @@ class ContentPlayer extends StatefulWidget {
 }
 
 class _ContentPlayerState extends State<ContentPlayer> {
-
   bool _loopState = false;
   bool _playListState = false;
 
   @override
   void initState() {
-    // widget.player.playlistAudioFinished.listen((event) {
-    //   context.read<MainPlayerState>().setCurrentIndex(widget.player.readingPlaylist!.currentIndex);
-    //   context.read<MainPlayerState>().toIndex(widget.player.readingPlaylist!.currentIndex);
-    // });
-    // widget.player.playlistFinished.listen((playlistFinished) {
-    //   if (playlistFinished) {
-    //     context.read<MainPlayerState>().toIndex(0);
-    //     context.read<MainPlayerState>().setCurrentIndex(-1);
-    //   }
-    // });
+    widget.player.playlistAudioFinished.listen((event) {
+
+    });
+    widget.player.playlistFinished.listen((playlistFinished) {
+      if (playlistFinished) {
+      }
+    });
     super.initState();
   }
 
@@ -48,20 +45,28 @@ class _ContentPlayerState extends State<ContentPlayer> {
                   scale: 0.7,
                   child: CupertinoSwitch(
                     activeColor: const Color(0xFF1F8D6E),
-                    value: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
+                    value: context
+                        .watch<VolumeContentDialogVisibilityState>()
+                        .getFirstDialogVisibility,
                     onChanged: (value) {
-                      context.read<VolumeContentDialogVisibilityState>().updateFirstVisibilityState(value);
+                      context
+                          .read<VolumeContentDialogVisibilityState>()
+                          .updateFirstVisibilityState(value);
                     },
                   ),
                 ),
-                IconButton(
-                  icon: Icon(
-                    CupertinoIcons.arrow_2_squarepath,
-                    color: context.watch<ContentPlayerState>().getLoopState ? Colors.red[300] : Colors.white,
-                  ),
-                  onPressed: () {
-                    context.read<ContentPlayerState>().changeLoopState(_loopState = !_loopState);
-                    widget.player.setLoopMode(context.watch<ContentPlayerState>().getLoopState ? LoopMode.single : LoopMode.none);
+                Consumer<ContentPlayerState>(
+                  builder: (BuildContext context, value, Widget? child) {
+                    return IconButton(
+                      icon: Icon(
+                        CupertinoIcons.arrow_2_squarepath,
+                        color: value.getLoopState ? Colors.red[300] : Colors.white,
+                      ),
+                      onPressed: () {
+                        value.changeLoopState(_loopState = !_loopState);
+                        widget.player.setLoopMode(value.getLoopState ? LoopMode.single : LoopMode.none);
+                      },
+                    );
                   },
                 ),
                 IconButton(
@@ -75,7 +80,9 @@ class _ContentPlayerState extends State<ContentPlayer> {
                 ),
                 IconButton(
                   icon: Icon(
-                    realTimePlayingInfo.isPlaying ? CupertinoIcons.pause_solid : CupertinoIcons.play_arrow,
+                    realTimePlayingInfo.isPlaying
+                        ? CupertinoIcons.pause_solid
+                        : CupertinoIcons.play_arrow,
                     size: 35,
                     color: const Color(0xFF37FFC2),
                   ),
@@ -92,22 +99,31 @@ class _ContentPlayerState extends State<ContentPlayer> {
                     widget.player.next(stopIfLast: true);
                   },
                 ),
-                IconButton(
-                  icon: Icon(
-                    CupertinoIcons.arrow_3_trianglepath,
-                    color: context.watch<ContentPlayerState>().getPlayListState ? Colors.red[300] : Colors.white,
-                  ),
-                  onPressed: () {
-                    context.read<ContentPlayerState>().changePlayListState(_playListState = !_playListState);
+                Consumer<ContentPlayerState>(
+                  builder: (BuildContext context, value, Widget? widget) {
+                    return IconButton(
+                      icon: Icon(
+                        CupertinoIcons.arrow_3_trianglepath,
+                        color:
+                        value.getPlayListState ? Colors.red[300] : Colors.white,
+                      ),
+                      onPressed: () {
+                        value.changePlayListState(_playListState = !_playListState);
+                      },
+                    );
                   },
                 ),
                 Transform.scale(
                   scale: 0.7,
                   child: CupertinoSwitch(
                     activeColor: const Color(0xFF1F8D6E),
-                    value: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
+                    value: context
+                        .watch<VolumeContentDialogVisibilityState>()
+                        .getSecondDialogVisibility,
                     onChanged: (value) {
-                      context.read<VolumeContentDialogVisibilityState>().updateSecondVisibilityState(value);
+                      context
+                          .read<VolumeContentDialogVisibilityState>()
+                          .updateSecondVisibilityState(value);
                     },
                   ),
                 ),
