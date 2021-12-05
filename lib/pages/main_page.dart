@@ -64,8 +64,8 @@ class MainPage extends StatelessWidget {
         decoration: const BoxDecoration(
             color: Color(0xFF243743),
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(50),
-              topRight: Radius.circular(50),
+              topLeft: Radius.circular(25),
+              topRight: Radius.circular(25),
             )),
         child: SalomonBottomBar(
           items: [
@@ -82,6 +82,7 @@ class MainPage extends StatelessWidget {
               title: const Text("Словарь"),
             ),
           ],
+          itemShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
           selectedItemColor: const Color(0xFF37FFC2),
           unselectedItemColor: const Color(0xFF1F8D6E),
           currentIndex: context.watch<MainBottomNavigationState>().getSelectedIndex,
