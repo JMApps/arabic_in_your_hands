@@ -23,12 +23,6 @@ class SecondVolumeChapterList extends StatelessWidget {
             elevation: 2,
             margin: const EdgeInsets.only(top: 8),
             child: Container(
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(25),
-                  bottomLeft: Radius.circular(25),
-                ),
-              ),
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: Column(
                 children: [
@@ -37,11 +31,11 @@ class SecondVolumeChapterList extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 16),
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 8),
-                      color: const Color(0xFFD5FFEF),
+                        color: const Color(0xFFD5FFEF),
                       child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                          const SizedBox(width: 16),
                           Container(
                             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                             decoration: const BoxDecoration(

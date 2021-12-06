@@ -28,12 +28,13 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
                 color: const Color(0xFFFAFAFA),
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
+                    bottomLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15),
                   ),
                 ),
                 child: Container(
-                  padding: const EdgeInsets.all(10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(15),

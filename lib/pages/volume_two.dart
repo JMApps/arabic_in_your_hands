@@ -43,7 +43,8 @@ class VolumeTwo extends StatelessWidget {
                               child: SlideAnimation(
                                 verticalOffset: 150,
                                 child: FadeInAnimation(
-                                  child: SecondVolumeChapterList(item: snapshot.data![index]),
+                                  child: SecondVolumeChapterList(
+                                      item: snapshot.data![index]),
                                 ),
                               ),
                             );
@@ -52,9 +53,11 @@ class VolumeTwo extends StatelessWidget {
                       ),
                     ),
                   )
-                : Platform.isIOS
-                    ? const CupertinoActivityIndicator()
-                    : const CircularProgressIndicator();
+                : Center(
+                    child: Platform.isIOS
+                        ? const CupertinoActivityIndicator()
+                        : const CircularProgressIndicator(),
+                  );
       },
     );
   }

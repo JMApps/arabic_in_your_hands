@@ -2,7 +2,8 @@ import 'package:arabicinyourhands/widgets/second_volume_sub_chapter_item.dart';
 import 'package:flutter/material.dart';
 
 class SecondVolumeSubChapterList extends StatelessWidget {
-  const SecondVolumeSubChapterList({Key? key, required this.snapshot}) : super(key: key);
+  const SecondVolumeSubChapterList({Key? key, required this.snapshot})
+      : super(key: key);
 
   final AsyncSnapshot snapshot;
 

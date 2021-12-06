@@ -1,3 +1,4 @@
+import 'package:arabicinyourhands/model/content_volume_two_arguments.dart';
 import 'package:arabicinyourhands/model/volume_second_item_sub_chapter_model.dart';
 import 'package:flutter/material.dart';
 
@@ -27,16 +28,17 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
                 color: const Color(0xFFFAFAFA),
                 shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(20),
-                    bottomRight: Radius.circular(20),
+                    bottomLeft: Radius.circular(15),
+                    bottomRight: Radius.circular(15),
                   ),
                 ),
                 child: Container(
-                  padding: const EdgeInsets.all(10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(20),
-                      bottomRight: Radius.circular(20),
+                      bottomLeft: Radius.circular(15),
+                      bottomRight: Radius.circular(15),
                     ),
                     gradient: LinearGradient(colors: [
                       Color(0xFFD5FFEF),
@@ -58,7 +60,7 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
                   padding: const EdgeInsets.all(8),
                   child: Text(
                     '${item.dialogTitle}',
-                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                    style: const TextStyle(color: Colors.white, fontSize: 20),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -68,7 +70,13 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
         ),
         splashColor: const Color(0xFF1D795F),
         borderRadius: BorderRadius.circular(20),
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(
+            context,
+            '/content_volume_two',
+            arguments: ContentVolumeTwoArguments(item.id, item.dialog),
+          );
+        },
       ),
     );
   }
