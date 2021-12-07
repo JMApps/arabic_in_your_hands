@@ -107,9 +107,11 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                         snapshot: snapshot, player: _assetsAudioPlayer),
                   ),
                 )
-              : Platform.isAndroid
-                  ? const CircularProgressIndicator()
-                  : const CupertinoActivityIndicator();
+              : Center(
+                  child: Platform.isAndroid
+                      ? const CircularProgressIndicator()
+                      : const CupertinoActivityIndicator(),
+                );
         }
       },
     );

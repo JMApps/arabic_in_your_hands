@@ -23,10 +23,14 @@ class _ContentPlayerState extends State<ContentPlayer> {
   @override
   void initState() {
     widget.player.playlistAudioFinished.listen((event) {
-
+      if (!_playListState) {
+        // Отключить последовательное воспроизведение
+      }
     });
+
     widget.player.playlistFinished.listen((playlistFinished) {
       if (playlistFinished) {
+        // Прокрутить до начала
       }
     });
     super.initState();
@@ -81,7 +85,7 @@ class _ContentPlayerState extends State<ContentPlayer> {
                 IconButton(
                   icon: Icon(
                     realTimePlayingInfo.isPlaying
-                        ? CupertinoIcons.pause_solid
+                        ? CupertinoIcons.pause
                         : CupertinoIcons.play_arrow,
                     size: 35,
                     color: const Color(0xFF37FFC2),
@@ -104,8 +108,7 @@ class _ContentPlayerState extends State<ContentPlayer> {
                     return IconButton(
                       icon: Icon(
                         CupertinoIcons.arrow_3_trianglepath,
-                        color:
-                        value.getPlayListState ? Colors.red[300] : Colors.white,
+                        color: value.getPlayListState ? Colors.red[300] : Colors.white,
                       ),
                       onPressed: () {
                         value.changePlayListState(_playListState = !_playListState);
@@ -117,13 +120,9 @@ class _ContentPlayerState extends State<ContentPlayer> {
                   scale: 0.7,
                   child: CupertinoSwitch(
                     activeColor: const Color(0xFF1F8D6E),
-                    value: context
-                        .watch<VolumeContentDialogVisibilityState>()
-                        .getSecondDialogVisibility,
+                    value: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
                     onChanged: (value) {
-                      context
-                          .read<VolumeContentDialogVisibilityState>()
-                          .updateSecondVisibilityState(value);
+                      context.read<VolumeContentDialogVisibilityState>().updateSecondVisibilityState(value);
                     },
                   ),
                 ),

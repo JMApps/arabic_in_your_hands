@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:arabicinyourhands/pages/dictionary.dart';
 import 'package:arabicinyourhands/pages/volume_one.dart';
-import 'package:arabicinyourhands/pages/volume_three.dart';
 import 'package:arabicinyourhands/pages/volume_two.dart';
 import 'package:arabicinyourhands/provider/main_bottom_navigation_state.dart';
 import 'package:flutter/cupertino.dart';
@@ -17,7 +16,6 @@ class MainPage extends StatelessWidget {
   final _mainWidgets = [
     VolumeOne(),
     VolumeTwo(),
-    const VolumeThree(),
     const Dictionary(),
   ];
 
@@ -48,8 +46,8 @@ class MainPage extends StatelessWidget {
             },
           ),
         ],
-        leading: Transform.scale(
-          scale: 0.7,
+        leading: Container(
+          margin: const EdgeInsets.symmetric(horizontal: 8),
           child: Image.asset('assets/icons/arabic_in_origin.png'),
         ),
       ),
@@ -71,18 +69,18 @@ class MainPage extends StatelessWidget {
           items: [
             SalomonBottomBarItem(
               icon: const Icon(Icons.filter_1_outlined),
-              title: const Text("Том 1"),
+              title: const Text('Том 1'),
             ),
             SalomonBottomBarItem(
               icon: const Icon(Icons.filter_2_outlined),
-              title: const Text("Том 2"),
+              title: const Text('Том 2'),
             ),
             SalomonBottomBarItem(
               icon: const Icon(Icons.add),
-              title: const Text("Словарь"),
+              title: const Text('Словарь'),
             ),
           ],
-          itemShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
+          itemShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.5)),
           selectedItemColor: const Color(0xFF37FFC2),
           unselectedItemColor: const Color(0xFF1F8D6E),
           currentIndex: context.watch<MainBottomNavigationState>().getSelectedIndex,

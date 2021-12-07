@@ -107,9 +107,11 @@ class _ContentVolumeTwoState extends State<ContentVolumeTwo> {
                         snapshot: snapshot, player: _assetsAudioPlayer),
                   ),
                 )
-              : Platform.isAndroid
-                  ? const CircularProgressIndicator()
-                  : const CupertinoActivityIndicator();
+              : Center(
+                  child: Platform.isAndroid
+                      ? const CircularProgressIndicator()
+                      : const CupertinoActivityIndicator(),
+                );
         }
       },
     );

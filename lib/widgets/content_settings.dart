@@ -285,7 +285,7 @@ class ContentSettings extends StatelessWidget {
                   const Divider(),
                   TextButton.icon(
                     icon: const Icon(
-                      CupertinoIcons.textformat,
+                      CupertinoIcons.text_aligncenter,
                       color: Color(0xFF1F8D6E),
                     ),
                     label: const Text(
