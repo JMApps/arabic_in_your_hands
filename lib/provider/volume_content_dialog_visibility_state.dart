@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 class VolumeContentDialogVisibilityState with ChangeNotifier {
-
   bool _firstDialogVisibility = true;
 
   bool get getFirstDialogVisibility => _firstDialogVisibility;

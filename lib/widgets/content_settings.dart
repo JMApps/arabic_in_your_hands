@@ -315,7 +315,8 @@ class ContentSettings extends StatelessWidget {
                   const Divider(),
                   MaterialButton(
                     color: const Color(0xFF243743),
-                    padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     child: const Text(

@@ -92,7 +92,9 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
                                   .watch<ContentSettingsState>()
                                   .getToggleButtonIndex],
                             ),
-                            visible: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
+                            visible: context
+                                .watch<VolumeContentDialogVisibilityState>()
+                                .getFirstDialogVisibility,
                             maintainAnimation: true,
                             maintainSize: true,
                             maintainState: true,
@@ -107,12 +109,19 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
                             child: Text(
                               '${item.arabicContent}',
                               style: TextStyle(
-                                  fontSize: context.watch<ContentSettingsState>().getTextArabicSize.toDouble(),
+                                  fontSize: context
+                                      .watch<ContentSettingsState>()
+                                      .getTextArabicSize
+                                      .toDouble(),
                                   color: Colors.black54),
                               textDirection: TextDirection.rtl,
-                              textAlign: _getTextAlignOne[context.watch<ContentSettingsState>().getToggleButtonIndex],
+                              textAlign: _getTextAlignOne[context
+                                  .watch<ContentSettingsState>()
+                                  .getToggleButtonIndex],
                             ),
-                            visible: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
+                            visible: context
+                                .watch<VolumeContentDialogVisibilityState>()
+                                .getFirstDialogVisibility,
                             maintainAnimation: true,
                             maintainSize: true,
                             maintainState: true,
@@ -144,12 +153,19 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
                             child: Text(
                               '${item.translationName}',
                               style: TextStyle(
-                                fontSize: context.watch<ContentSettingsState>().getTextTranslationSize.toDouble(),
+                                fontSize: context
+                                    .watch<ContentSettingsState>()
+                                    .getTextTranslationSize
+                                    .toDouble(),
                                 color: const Color(0xFF243743),
                               ),
-                              textAlign: _getTextAlignTwo[context.watch<ContentSettingsState>().getToggleButtonIndex],
+                              textAlign: _getTextAlignTwo[context
+                                  .watch<ContentSettingsState>()
+                                  .getToggleButtonIndex],
                             ),
-                            visible: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
+                            visible: context
+                                .watch<VolumeContentDialogVisibilityState>()
+                                .getSecondDialogVisibility,
                             maintainAnimation: true,
                             maintainSize: true,
                             maintainState: true,
@@ -164,12 +180,19 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
                             child: Text(
                               '${item.translationContent}',
                               style: TextStyle(
-                                fontSize: context.watch<ContentSettingsState>().getTextTranslationSize.toDouble(),
+                                fontSize: context
+                                    .watch<ContentSettingsState>()
+                                    .getTextTranslationSize
+                                    .toDouble(),
                                 color: Colors.black54,
                               ),
-                              textAlign: _getTextAlignTwo[context.watch<ContentSettingsState>().getToggleButtonIndex],
+                              textAlign: _getTextAlignTwo[context
+                                  .watch<ContentSettingsState>()
+                                  .getToggleButtonIndex],
                             ),
-                            visible: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
+                            visible: context
+                                .watch<VolumeContentDialogVisibilityState>()
+                                .getSecondDialogVisibility,
                             maintainAnimation: true,
                             maintainSize: true,
                             maintainState: true,

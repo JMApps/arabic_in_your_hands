@@ -4,7 +4,8 @@ class VolumeSecondItemSubChapterModel {
   String? dialog;
   String? dialogTitle;
 
-  VolumeSecondItemSubChapterModel(this.id, this.dialogPicture, this.dialog, this.dialogTitle);
+  VolumeSecondItemSubChapterModel(
+      this.id, this.dialogPicture, this.dialog, this.dialogTitle);
 
   VolumeSecondItemSubChapterModel.fromMap(dynamic object) {
     id = object['_id'];

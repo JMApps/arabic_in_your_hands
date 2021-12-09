@@ -59,7 +59,8 @@ class FirstVolumeChapterList extends StatelessWidget {
                         children: [
                           const SizedBox(width: 16),
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 8),
                             decoration: const BoxDecoration(
                               color: Color(0xFF243743),
                               borderRadius: BorderRadius.all(

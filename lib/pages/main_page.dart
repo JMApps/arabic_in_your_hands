@@ -32,7 +32,8 @@ class MainPage extends StatelessWidget {
       appBar: AppBar(
         elevation: 1,
         centerTitle: true,
-        title: Text(_mainTitles[context.watch<MainBottomNavigationState>().getSelectedIndex]),
+        title: Text(_mainTitles[
+            context.watch<MainBottomNavigationState>().getSelectedIndex]),
         backgroundColor: const Color(0xFF243743),
         actions: [
           IconButton(
@@ -53,7 +54,8 @@ class MainPage extends StatelessWidget {
       ),
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 350),
-        child: _mainWidgets[context.watch<MainBottomNavigationState>().getSelectedIndex],
+        child: _mainWidgets[
+            context.watch<MainBottomNavigationState>().getSelectedIndex],
         switchInCurve: Curves.easeInCubic,
         switchOutCurve: Curves.easeOutCubic,
       ),
@@ -80,11 +82,15 @@ class MainPage extends StatelessWidget {
               title: const Text('Словарь'),
             ),
           ],
-          itemShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.5)),
+          itemShape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.5)),
           selectedItemColor: const Color(0xFF37FFC2),
           unselectedItemColor: const Color(0xFF1F8D6E),
-          currentIndex: context.watch<MainBottomNavigationState>().getSelectedIndex,
-          onTap: context.read<MainBottomNavigationState>().changeBottomNavigationIndex,
+          currentIndex:
+              context.watch<MainBottomNavigationState>().getSelectedIndex,
+          onTap: context
+              .read<MainBottomNavigationState>()
+              .changeBottomNavigationIndex,
         ),
       ),
     );

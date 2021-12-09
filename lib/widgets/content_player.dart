@@ -64,11 +64,14 @@ class _ContentPlayerState extends State<ContentPlayer> {
                     return IconButton(
                       icon: Icon(
                         CupertinoIcons.arrow_2_squarepath,
-                        color: value.getLoopState ? Colors.red[300] : Colors.white,
+                        color:
+                            value.getLoopState ? Colors.red[300] : Colors.white,
                       ),
                       onPressed: () {
                         value.changeLoopState(_loopState = !_loopState);
-                        widget.player.setLoopMode(value.getLoopState ? LoopMode.single : LoopMode.none);
+                        widget.player.setLoopMode(value.getLoopState
+                            ? LoopMode.single
+                            : LoopMode.none);
                       },
                     );
                   },
@@ -108,10 +111,13 @@ class _ContentPlayerState extends State<ContentPlayer> {
                     return IconButton(
                       icon: Icon(
                         CupertinoIcons.arrow_3_trianglepath,
-                        color: value.getPlayListState ? Colors.red[300] : Colors.white,
+                        color: value.getPlayListState
+                            ? Colors.red[300]
+                            : Colors.white,
                       ),
                       onPressed: () {
-                        value.changePlayListState(_playListState = !_playListState);
+                        value.changePlayListState(
+                            _playListState = !_playListState);
                       },
                     );
                   },
@@ -120,9 +126,13 @@ class _ContentPlayerState extends State<ContentPlayer> {
                   scale: 0.7,
                   child: CupertinoSwitch(
                     activeColor: const Color(0xFF1F8D6E),
-                    value: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
+                    value: context
+                        .watch<VolumeContentDialogVisibilityState>()
+                        .getSecondDialogVisibility,
                     onChanged: (value) {
-                      context.read<VolumeContentDialogVisibilityState>().updateSecondVisibilityState(value);
+                      context
+                          .read<VolumeContentDialogVisibilityState>()
+                          .updateSecondVisibilityState(value);
                     },
                   ),
                 ),

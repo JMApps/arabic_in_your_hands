@@ -31,13 +31,14 @@ class SecondVolumeChapterList extends StatelessWidget {
                     margin: const EdgeInsets.only(bottom: 16),
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 8),
-                        color: const Color(0xFFD5FFEF),
+                      color: const Color(0xFFD5FFEF),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           const SizedBox(width: 16),
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 8),
                             decoration: const BoxDecoration(
                               color: Color(0xFF243743),
                               borderRadius: BorderRadius.all(

@@ -4,7 +4,8 @@ class VolumeFirstItemSubChapterModel {
   String? dialog;
   String? dialogTitle;
 
-  VolumeFirstItemSubChapterModel(this.id, this.dialogPicture, this.dialog, this.dialogTitle);
+  VolumeFirstItemSubChapterModel(
+      this.id, this.dialogPicture, this.dialog, this.dialogTitle);
 
   VolumeFirstItemSubChapterModel.fromMap(dynamic object) {
     id = object['_id'];

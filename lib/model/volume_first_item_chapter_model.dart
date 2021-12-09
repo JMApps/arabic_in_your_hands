@@ -4,7 +4,8 @@ class VolumeFirstItemChapterModel {
   String? chapterTitle;
   String? chapterTitleArabic;
 
-  VolumeFirstItemChapterModel(this.id, this.chapterIcon, this.chapterTitle, this.chapterTitleArabic);
+  VolumeFirstItemChapterModel(
+      this.id, this.chapterIcon, this.chapterTitle, this.chapterTitleArabic);
 
   VolumeFirstItemChapterModel.fromMap(dynamic object) {
     id = object['_id'];
