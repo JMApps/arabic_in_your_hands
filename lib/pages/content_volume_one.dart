@@ -28,8 +28,7 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
 
   @override
   Widget build(BuildContext context) {
-    final _arguments = ModalRoute.of(context)!.settings.arguments
-        as ContentVolumeOneArguments?;
+    final _arguments = ModalRoute.of(context)!.settings.arguments as ContentVolumeOneArguments?;
     return FutureBuilder<List>(
       future: _databaseQuery.getAllVolumeFirstChapterContent(_arguments!.id!),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -52,11 +51,10 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                   backgroundColor: const Color(0xFFFAFAFA),
                   body: CupertinoScrollbar(
                     child: CustomScrollView(
+                      physics: const BouncingScrollPhysics(),
                       slivers: [
                         SliverAppBar(
                           floating: true,
-                          pinned: false,
-                          snap: false,
                           centerTitle: true,
                           backgroundColor: const Color(0xFF243743),
                           title: Text('${_arguments.dialog}'),

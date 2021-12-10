@@ -4,7 +4,6 @@ import 'package:arabicinyourhands/pages/dictionary.dart';
 import 'package:arabicinyourhands/pages/volume_one.dart';
 import 'package:arabicinyourhands/pages/volume_two.dart';
 import 'package:arabicinyourhands/provider/main_bottom_navigation_state.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
