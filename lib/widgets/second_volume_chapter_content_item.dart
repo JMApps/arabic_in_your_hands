@@ -100,7 +100,7 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
                           .watch<ContentSettingsState>()
                           .getTextArabicSize
                           .toDouble(),
-                      fontFamily: _getArabicFonts[context.read<ContentSettingsState>().getArabicFontRadioGroupValue],
+                      fontFamily: _getArabicFonts[context.watch<ContentSettingsState>().getArabicFontRadioGroupValue],
                       color: const Color(0xFF1F8D6E),
                     ),
                     textDirection: TextDirection.rtl,
@@ -129,8 +129,8 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
                             .watch<ContentSettingsState>()
                             .getTextArabicSize
                             .toDouble(),
-                        fontFamily: _getArabicFonts[context.read<ContentSettingsState>().getArabicFontRadioGroupValue],
-                        color: Colors.black54),
+                        fontFamily: _getArabicFonts[context.watch<ContentSettingsState>().getArabicFontRadioGroupValue],
+                        color: Colors.black),
                     textDirection: TextDirection.rtl,
                     textAlign: _getTextAlignOne[context
                         .watch<ContentSettingsState>()
@@ -174,7 +174,7 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
                           .watch<ContentSettingsState>()
                           .getTextTranslationSize
                           .toDouble(),
-                      fontFamily: _getTranslationFonts[context.read<ContentSettingsState>().getTranslationFontRadioGroupValue],
+                      fontFamily: _getTranslationFonts[context.watch<ContentSettingsState>().getTranslationFontRadioGroupValue],
                       color: const Color(0xFF243743),
                     ),
                     textAlign: _getTextAlignTwo[context
@@ -202,7 +202,7 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
                           .watch<ContentSettingsState>()
                           .getTextTranslationSize
                           .toDouble(),
-                      fontFamily: _getTranslationFonts[context.read<ContentSettingsState>().getTranslationFontRadioGroupValue],
+                      fontFamily: _getTranslationFonts[context.watch<ContentSettingsState>().getTranslationFontRadioGroupValue],
                       color: Colors.black54,
                     ),
                     textAlign: _getTextAlignTwo[context
