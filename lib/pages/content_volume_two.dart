@@ -50,49 +50,52 @@ class _ContentVolumeTwoState extends State<ContentVolumeTwo> {
           return snapshot.hasData
               ? Scaffold(
                   backgroundColor: const Color(0xFFFAFAFA),
-                  body: CupertinoScrollbar(
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverAppBar(
-                          floating: true,
-                          pinned: false,
-                          snap: false,
-                          centerTitle: true,
-                          backgroundColor: const Color(0xFF243743),
-                          title: Text('${_arguments.dialog}'),
-                          actions: [
-                            IconButton(
-                              icon: const Icon(
-                                CupertinoIcons.settings,
-                                color: Colors.white,
+                  body: _assetsAudioPlayer.builderRealtimePlayingInfos(
+                      builder: (context, realtimePlayingInfo) {
+                    return CupertinoScrollbar(
+                      child: CustomScrollView(
+                        physics: const BouncingScrollPhysics(),
+                        slivers: [
+                          SliverAppBar(
+                            floating: true,
+                            centerTitle: true,
+                            backgroundColor: const Color(0xFF243743),
+                            title: Text('${_arguments.dialog}'),
+                            actions: [
+                              IconButton(
+                                icon: const Icon(
+                                  CupertinoIcons.settings,
+                                  color: Colors.white,
+                                ),
+                                onPressed: () {
+                                  showCupertinoModalPopup(
+                                    context: context,
+                                    builder: (BuildContext context) {
+                                      return SingleChildScrollView(
+                                          child: ContentSettings());
+                                    },
+                                  );
+                                },
                               ),
-                              onPressed: () {
-                                showCupertinoModalPopup(
-                                  context: context,
-                                  builder: (BuildContext context) {
-                                    return const SingleChildScrollView(
-                                        child: ContentSettings());
-                                  },
+                            ],
+                          ),
+                          SliverList(
+                            delegate: SliverChildBuilderDelegate(
+                              (BuildContext context, int index) {
+                                return SecondVolumeChapterContentItem(
+                                  item: snapshot.data![index],
+                                  index: index,
+                                  player: _assetsAudioPlayer,
+                                  realtimePlayingInfo: realtimePlayingInfo,
                                 );
                               },
+                              childCount: snapshot.data!.length,
                             ),
-                          ],
-                        ),
-                        SliverList(
-                          delegate: SliverChildBuilderDelegate(
-                            (BuildContext context, int index) {
-                              return SecondVolumeChapterContentItem(
-                                item: snapshot.data![index],
-                                index: index,
-                                player: _assetsAudioPlayer,
-                              );
-                            },
-                            childCount: snapshot.data!.length,
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
+                        ],
+                      ),
+                    );
+                  }),
                   bottomNavigationBar: Container(
                     height: 65,
                     padding: const EdgeInsets.symmetric(horizontal: 16),
