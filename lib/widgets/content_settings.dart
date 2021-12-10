@@ -4,7 +4,19 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ContentSettings extends StatelessWidget {
-  const ContentSettings({Key? key}) : super(key: key);
+  ContentSettings({Key? key}) : super(key: key);
+
+  final List<String> _getArabicFonts = [
+    'Scheherazade',
+    'Markazi',
+    'Lateef',
+  ];
+
+  final List<String> _getTranslationFonts = [
+    'Gilroy',
+    'Play',
+    'Roboto',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -185,11 +197,14 @@ class ContentSettings extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.grey[200],
                           borderRadius: BorderRadius.circular(15)),
-                      child: const Text(
+                      child: Text(
                         'السلام عليكم!',
                         style: TextStyle(
                           fontSize: 18,
-                          color: Color(0xFF243743),
+                          fontFamily: _getArabicFonts[context
+                              .watch<ContentSettingsState>()
+                              .getArabicFontRadioGroupValue],
+                          color: const Color(0xFF243743),
                         ),
                         textDirection: TextDirection.rtl,
                       ),
@@ -272,11 +287,12 @@ class ContentSettings extends StatelessWidget {
                       decoration: BoxDecoration(
                           color: Colors.grey[200],
                           borderRadius: BorderRadius.circular(15)),
-                      child: const Text(
+                      child: Text(
                         'Ассаляму аляйкум!',
                         style: TextStyle(
                           fontSize: 18,
-                          color: Color(0xFF243743),
+                          fontFamily: _getTranslationFonts[context.read<ContentSettingsState>().getTranslationFontRadioGroupValue],
+                          color: const Color(0xFF243743),
                         ),
                       ),
                     ),

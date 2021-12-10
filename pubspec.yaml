@@ -14,11 +14,11 @@ dependencies:
 
   cupertino_icons: ^1.0.4
   provider: ^6.0.1
-  sqflite: ^2.0.0+4
-  path_provider: ^2.0.7
-  salomon_bottom_bar: ^3.1.0
-  flutter_svg: ^0.23.0+1
-  url_launcher: ^6.0.16
+  sqflite: ^2.0.1
+  path_provider: ^2.0.8
+  salomon_bottom_bar: ^3.2.0
+  flutter_svg: ^1.0.0
+  url_launcher: ^6.0.17
   scrollable_positioned_list: ^0.2.3
   flutter_staggered_animations: ^1.0.0
   assets_audio_player: ^3.0.3+6
@@ -39,9 +39,21 @@ flutter:
     - assets/icons/
 
   fonts:
+    - family: Scheherazade
+      fonts:
+        - asset: assets/fonts/scheherazade.ttf
+    - family: Markazi
+      fonts:
+        - asset: assets/fonts/markazi.ttf
+    - family: Lateef
+      fonts:
+        - asset: assets/fonts/lateef.ttf
     - family: Gilroy
       fonts:
         - asset: assets/fonts/gilroy_medium.ttf
-    - family: Hafs
+    - family: Play
       fonts:
-        - asset: assets/fonts/hafs.ttf
+        - asset: assets/fonts/play.ttf
+    - family: Roboto
+      fonts:
+        - asset: assets/fonts/roboto_slab.ttf
