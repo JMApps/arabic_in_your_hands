@@ -58,6 +58,7 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                         slivers: [
                           SliverAppBar(
                             floating: true,
+                            stretch: true,
                             centerTitle: true,
                             backgroundColor: const Color(0xFF243743),
                             title: Text('${_arguments.dialog}'),
