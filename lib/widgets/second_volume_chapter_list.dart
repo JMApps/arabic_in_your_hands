@@ -21,20 +21,74 @@ class SecondVolumeChapterList extends StatelessWidget {
         if (snapshot.hasData) {
           return Card(
             elevation: 2,
-            margin: const EdgeInsets.only(top: 8),
+            margin: const EdgeInsets.only(right: 8, top: 8),
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topRight: Radius.circular(20),
+                bottomRight: Radius.circular(20),
+              ),
+            ),
             child: Container(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(20),
+                  bottomRight: Radius.circular(20),
+                ),
+              ),
               padding: const EdgeInsets.symmetric(vertical: 20),
               child: Column(
                 children: [
                   Card(
                     elevation: 1,
-                    margin: const EdgeInsets.only(bottom: 16),
+                    margin: const EdgeInsets.only(right: 16, bottom: 16),
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        )),
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 8),
-                      color: const Color(0xFFD5FFEF),
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(20),
+                          bottomRight: Radius.circular(20),
+                        ),
+                        color: Color(0xFFD5FFEF),
+                      ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.end,
                         children: [
+                          SvgPicture.asset(
+                            'assets/icons/${item.chapterIcon}.svg',
+                            width: 40,
+                            height: 40,
+                            color: const Color(0xFF006D50),
+                          ),
+                          const SizedBox(width: 16),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                '${item.chapterTitle}',
+                                style: const TextStyle(
+                                    fontSize: 18,
+                                    color: Color(0xFF243743),
+                                    fontWeight: FontWeight.bold),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                '${item.chapterTitleArabic}',
+                                style: const TextStyle(
+                                    fontSize: 20,
+                                    color: Color(0xFF006D50),
+                                    fontWeight: FontWeight.bold,
+                                    fontFamily: 'Scheherazade'),
+                                textDirection: TextDirection.rtl,
+                                textAlign: TextAlign.end,
+                              ),
+                            ],
+                          ),
                           const SizedBox(width: 16),
                           Container(
                             padding: const EdgeInsets.symmetric(
@@ -54,36 +108,6 @@ class SecondVolumeChapterList extends StatelessWidget {
                             ),
                           ),
                           const SizedBox(width: 16),
-                          SvgPicture.asset(
-                            'assets/icons/${item.chapterIcon}.svg',
-                            width: 40,
-                            height: 40,
-                            color: const Color(0xFF006D50),
-                          ),
-                          const SizedBox(width: 16),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                '${item.chapterTitle}',
-                                style: const TextStyle(
-                                    fontSize: 18,
-                                    color: Color(0xFF243743),
-                                    fontWeight: FontWeight.bold),
-                              ),
-                              Text(
-                                '${item.chapterTitleArabic}',
-                                style: const TextStyle(
-                                    fontSize: 22,
-                                    color: Color(0xFF006D50),
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Hafs'),
-                                textDirection: TextDirection.rtl,
-                                textAlign: TextAlign.end,
-                              ),
-                            ],
-                          ),
                         ],
                       ),
                     ),

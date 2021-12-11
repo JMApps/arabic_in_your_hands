@@ -94,13 +94,14 @@ class FirstVolumeChapterList extends StatelessWidget {
                                     color: Color(0xFF243743),
                                     fontWeight: FontWeight.bold),
                               ),
+                              const SizedBox(height: 4),
                               Text(
                                 '${item.chapterTitleArabic}',
                                 style: const TextStyle(
-                                    fontSize: 22,
+                                    fontSize: 20,
                                     color: Color(0xFF006D50),
                                     fontWeight: FontWeight.bold,
-                                    fontFamily: 'Hafs'),
+                                    fontFamily: 'Scheherazade'),
                                 textDirection: TextDirection.rtl,
                                 textAlign: TextAlign.end,
                               ),
