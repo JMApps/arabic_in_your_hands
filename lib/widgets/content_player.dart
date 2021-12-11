@@ -63,9 +63,7 @@ class _ContentPlayerState extends State<ContentPlayer> {
                       ),
                       onPressed: () {
                         value.changeLoopState(_loopState = !_loopState);
-                        if (value.getLoopState) {
-                          value.changePlayListState(false);
-                        }
+                        widget.player.setLoopMode(value.getLoopState ? LoopMode.single : LoopMode.none);
                       },
                     );
                   },
@@ -111,9 +109,7 @@ class _ContentPlayerState extends State<ContentPlayer> {
                       ),
                       onPressed: () {
                         value.changePlayListState(_playListState = !_playListState);
-                        if (value.getPlayListState) {
-                          value.changeLoopState(false);
-                        }
+                        widget.player.setLoopMode(value.getPlayListState ? LoopMode.playlist : LoopMode.none);
                       },
                     );
                   },

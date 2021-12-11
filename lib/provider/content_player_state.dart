@@ -11,10 +11,20 @@ class ContentPlayerState with ChangeNotifier {
 
   changeLoopState(bool state) {
     _loopState = state;
+    if (_loopState) {
+      if (_playListState) {
+        _playListState = false;
+      }
+    }
     notifyListeners();
   }
 
   changePlayListState(bool state) {
+    if (state) {
+      if (_loopState) {
+        _loopState = false;
+      }
+    }
     _playListState = state;
     notifyListeners();
   }
