@@ -54,15 +54,16 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: item.id!.isOdd
             ? const BorderRadius.only(
-          topLeft: Radius.circular(25),
-          bottomLeft: Radius.circular(25),
-        )
+                topLeft: Radius.circular(25),
+                bottomLeft: Radius.circular(25),
+              )
             : const BorderRadius.only(
-          topRight: Radius.circular(25),
-          bottomRight: Radius.circular(25),
-        ),
+                topRight: Radius.circular(25),
+                bottomRight: Radius.circular(25),
+              ),
       ),
       child: InkWell(
+        borderRadius: BorderRadius.circular(25),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 750),
           curve: Curves.fastOutSlowIn,
@@ -70,80 +71,84 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
           decoration: BoxDecoration(
             color: item.id!.isOdd
                 ? realtimePlayingInfo.isPlaying &&
-                player.readingPlaylist!.currentIndex == index
-                ? Colors.green[200]
-                : Colors.green[50]
+                        player.readingPlaylist!.currentIndex == index
+                    ? Colors.green[200]
+                    : Colors.green[50]
                 : realtimePlayingInfo.isPlaying &&
-                player.readingPlaylist!.currentIndex == index
-                ? Colors.blue[200]
-                : Colors.blue[50],
+                        player.readingPlaylist!.currentIndex == index
+                    ? Colors.blue[200]
+                    : Colors.blue[50],
             borderRadius: item.id!.isOdd
                 ? const BorderRadius.only(
-              topLeft: Radius.circular(25),
-              bottomLeft: Radius.circular(25),
-            )
+                    topLeft: Radius.circular(25),
+                    bottomLeft: Radius.circular(25),
+                  )
                 : const BorderRadius.only(
-              topRight: Radius.circular(25),
-              bottomRight: Radius.circular(25),
-            ),
+                    topRight: Radius.circular(25),
+                    bottomRight: Radius.circular(25),
+                  ),
           ),
           child: Column(
             children: [
               item.arabicName != null
                   ? SizedBox(
-                width: double.maxFinite,
-                child: Visibility(
-                  child: Text(
-                    '${item.arabicName}',
-                    style: TextStyle(
-                      fontSize: context
-                          .watch<ContentSettingsState>()
-                          .getTextArabicSize
-                          .toDouble(),
-                      fontFamily: _getArabicFonts[context.watch<ContentSettingsState>().getArabicFontRadioGroupValue],
-                      color: const Color(0xFF1F8D6E),
-                    ),
-                    textDirection: TextDirection.rtl,
-                    textAlign: _getTextAlignOne[context
-                        .watch<ContentSettingsState>()
-                        .getToggleButtonIndex],
-                  ),
-                  visible: context
-                      .watch<VolumeContentDialogVisibilityState>()
-                      .getFirstDialogVisibility,
-                  maintainAnimation: true,
-                  maintainSize: true,
-                  maintainState: true,
-                ),
-              )
+                      width: double.maxFinite,
+                      child: Visibility(
+                        child: Text(
+                          '${item.arabicName}',
+                          style: TextStyle(
+                            fontSize: context
+                                .watch<ContentSettingsState>()
+                                .getTextArabicSize
+                                .toDouble(),
+                            fontFamily: _getArabicFonts[context
+                                .watch<ContentSettingsState>()
+                                .getArabicFontRadioGroupValue],
+                            color: const Color(0xFF1F8D6E),
+                          ),
+                          textDirection: TextDirection.rtl,
+                          textAlign: _getTextAlignOne[context
+                              .watch<ContentSettingsState>()
+                              .getToggleButtonIndex],
+                        ),
+                        visible: context
+                            .watch<VolumeContentDialogVisibilityState>()
+                            .getFirstDialogVisibility,
+                        maintainAnimation: true,
+                        maintainSize: true,
+                        maintainState: true,
+                      ),
+                    )
                   : const SizedBox(),
               const SizedBox(height: 4),
               item.arabicContent != null
                   ? SizedBox(
-                width: double.maxFinite,
-                child: Visibility(
-                  child: Text(
-                    '${item.arabicContent}',
-                    style: TextStyle(
-                        fontSize: context
-                            .watch<ContentSettingsState>()
-                            .getTextArabicSize
-                            .toDouble(),
-                        fontFamily: _getArabicFonts[context.watch<ContentSettingsState>().getArabicFontRadioGroupValue],
-                        color: Colors.black),
-                    textDirection: TextDirection.rtl,
-                    textAlign: _getTextAlignOne[context
-                        .watch<ContentSettingsState>()
-                        .getToggleButtonIndex],
-                  ),
-                  visible: context
-                      .watch<VolumeContentDialogVisibilityState>()
-                      .getFirstDialogVisibility,
-                  maintainAnimation: true,
-                  maintainSize: true,
-                  maintainState: true,
-                ),
-              )
+                      width: double.maxFinite,
+                      child: Visibility(
+                        child: Text(
+                          '${item.arabicContent}',
+                          style: TextStyle(
+                              fontSize: context
+                                  .watch<ContentSettingsState>()
+                                  .getTextArabicSize
+                                  .toDouble(),
+                              fontFamily: _getArabicFonts[context
+                                  .watch<ContentSettingsState>()
+                                  .getArabicFontRadioGroupValue],
+                              color: Colors.black),
+                          textDirection: TextDirection.rtl,
+                          textAlign: _getTextAlignOne[context
+                              .watch<ContentSettingsState>()
+                              .getToggleButtonIndex],
+                        ),
+                        visible: context
+                            .watch<VolumeContentDialogVisibilityState>()
+                            .getFirstDialogVisibility,
+                        maintainAnimation: true,
+                        maintainSize: true,
+                        maintainState: true,
+                      ),
+                    )
                   : const SizedBox(),
               const SizedBox(height: 2),
               Visibility(
@@ -155,7 +160,7 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
                   color: const Color(0xFF243743),
                 ),
                 visible: realtimePlayingInfo.isPlaying &&
-                    player.readingPlaylist!.currentIndex == index
+                        player.readingPlaylist!.currentIndex == index
                     ? true
                     : false,
                 maintainAnimation: true,
@@ -165,58 +170,62 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
               const SizedBox(height: 2),
               item.translationName != null
                   ? SizedBox(
-                width: double.maxFinite,
-                child: Visibility(
-                  child: Text(
-                    '${item.translationName}',
-                    style: TextStyle(
-                      fontSize: context
-                          .watch<ContentSettingsState>()
-                          .getTextTranslationSize
-                          .toDouble(),
-                      fontFamily: _getTranslationFonts[context.watch<ContentSettingsState>().getTranslationFontRadioGroupValue],
-                      color: const Color(0xFF243743),
-                    ),
-                    textAlign: _getTextAlignTwo[context
-                        .watch<ContentSettingsState>()
-                        .getToggleButtonIndex],
-                  ),
-                  visible: context
-                      .watch<VolumeContentDialogVisibilityState>()
-                      .getSecondDialogVisibility,
-                  maintainAnimation: true,
-                  maintainSize: true,
-                  maintainState: true,
-                ),
-              )
+                      width: double.maxFinite,
+                      child: Visibility(
+                        child: Text(
+                          '${item.translationName}',
+                          style: TextStyle(
+                            fontSize: context
+                                .watch<ContentSettingsState>()
+                                .getTextTranslationSize
+                                .toDouble(),
+                            fontFamily: _getTranslationFonts[context
+                                .watch<ContentSettingsState>()
+                                .getTranslationFontRadioGroupValue],
+                            color: const Color(0xFF243743),
+                          ),
+                          textAlign: _getTextAlignTwo[context
+                              .watch<ContentSettingsState>()
+                              .getToggleButtonIndex],
+                        ),
+                        visible: context
+                            .watch<VolumeContentDialogVisibilityState>()
+                            .getSecondDialogVisibility,
+                        maintainAnimation: true,
+                        maintainSize: true,
+                        maintainState: true,
+                      ),
+                    )
                   : const SizedBox(),
               const SizedBox(height: 4),
               item.translationContent != null
                   ? SizedBox(
-                width: double.maxFinite,
-                child: Visibility(
-                  child: Text(
-                    '${item.translationContent}',
-                    style: TextStyle(
-                      fontSize: context
-                          .watch<ContentSettingsState>()
-                          .getTextTranslationSize
-                          .toDouble(),
-                      fontFamily: _getTranslationFonts[context.watch<ContentSettingsState>().getTranslationFontRadioGroupValue],
-                      color: Colors.black54,
-                    ),
-                    textAlign: _getTextAlignTwo[context
-                        .watch<ContentSettingsState>()
-                        .getToggleButtonIndex],
-                  ),
-                  visible: context
-                      .watch<VolumeContentDialogVisibilityState>()
-                      .getSecondDialogVisibility,
-                  maintainAnimation: true,
-                  maintainSize: true,
-                  maintainState: true,
-                ),
-              )
+                      width: double.maxFinite,
+                      child: Visibility(
+                        child: Text(
+                          '${item.translationContent}',
+                          style: TextStyle(
+                            fontSize: context
+                                .watch<ContentSettingsState>()
+                                .getTextTranslationSize
+                                .toDouble(),
+                            fontFamily: _getTranslationFonts[context
+                                .watch<ContentSettingsState>()
+                                .getTranslationFontRadioGroupValue],
+                            color: Colors.black54,
+                          ),
+                          textAlign: _getTextAlignTwo[context
+                              .watch<ContentSettingsState>()
+                              .getToggleButtonIndex],
+                        ),
+                        visible: context
+                            .watch<VolumeContentDialogVisibilityState>()
+                            .getSecondDialogVisibility,
+                        maintainAnimation: true,
+                        maintainSize: true,
+                        maintainState: true,
+                      ),
+                    )
                   : const SizedBox(),
             ],
           ),

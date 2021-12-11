@@ -63,6 +63,7 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
               ),
       ),
       child: InkWell(
+        borderRadius: BorderRadius.circular(25),
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 750),
           curve: Curves.fastOutSlowIn,
