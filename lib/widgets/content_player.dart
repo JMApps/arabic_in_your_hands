@@ -43,19 +43,14 @@ class _ContentPlayerState extends State<ContentPlayer> {
         return Column(
           children: [
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Transform.scale(
                   scale: 0.7,
                   child: CupertinoSwitch(
                     activeColor: const Color(0xFF1F8D6E),
-                    value: context
-                        .watch<VolumeContentDialogVisibilityState>()
-                        .getFirstDialogVisibility,
+                    value: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
                     onChanged: (value) {
-                      context
-                          .read<VolumeContentDialogVisibilityState>()
-                          .updateFirstVisibilityState(value);
+                      context.read<VolumeContentDialogVisibilityState>().updateFirstVisibilityState(value);
                     },
                   ),
                 ),
@@ -63,15 +58,14 @@ class _ContentPlayerState extends State<ContentPlayer> {
                   builder: (BuildContext context, value, Widget? child) {
                     return IconButton(
                       icon: Icon(
-                        CupertinoIcons.arrow_2_squarepath,
-                        color:
-                            value.getLoopState ? Colors.red[300] : Colors.white,
+                        CupertinoIcons.repeat,
+                        color: value.getLoopState ? Colors.red[300] : Colors.white,
                       ),
                       onPressed: () {
                         value.changeLoopState(_loopState = !_loopState);
-                        widget.player.setLoopMode(value.getLoopState
-                            ? LoopMode.single
-                            : LoopMode.none);
+                        if (value.getLoopState) {
+                          value.changePlayListState(false);
+                        }
                       },
                     );
                   },
@@ -107,17 +101,19 @@ class _ContentPlayerState extends State<ContentPlayer> {
                   },
                 ),
                 Consumer<ContentPlayerState>(
-                  builder: (BuildContext context, value, Widget? widget) {
+                  builder: (BuildContext context, value, Widget? child) {
                     return IconButton(
                       icon: Icon(
-                        CupertinoIcons.arrow_3_trianglepath,
+                        CupertinoIcons.loop,
                         color: value.getPlayListState
                             ? Colors.red[300]
                             : Colors.white,
                       ),
                       onPressed: () {
-                        value.changePlayListState(
-                            _playListState = !_playListState);
+                        value.changePlayListState(_playListState = !_playListState);
+                        if (value.getPlayListState) {
+                          value.changeLoopState(false);
+                        }
                       },
                     );
                   },
