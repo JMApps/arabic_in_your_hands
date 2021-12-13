@@ -23,8 +23,8 @@ class _ContentPlayerState extends State<ContentPlayer> {
   @override
   void initState() {
     widget.player.playlistAudioFinished.listen((event) {
-      if (!_playListState) {
-        // Отключить последовательное воспроизведение
+      if (_playListState) {
+        // Включать и отключать последовательное воспроизведение
       }
     });
 
@@ -109,7 +109,7 @@ class _ContentPlayerState extends State<ContentPlayer> {
                       ),
                       onPressed: () {
                         value.changePlayListState(_playListState = !_playListState);
-                        widget.player.setLoopMode(value.getPlayListState ? LoopMode.playlist : LoopMode.none);
+                        widget.player.setLoopMode(value.getLoopState ? LoopMode.playlist : LoopMode.none);
                       },
                     );
                   },
