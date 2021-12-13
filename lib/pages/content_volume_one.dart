@@ -61,7 +61,9 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                             stretch: true,
                             centerTitle: true,
                             backgroundColor: const Color(0xFF243743),
-                            title: Text('${_arguments.dialog}'),
+                            flexibleSpace: FlexibleSpaceBar(
+                              title: Text('${_arguments.dialog}'),
+                            ),
                             actions: [
                               IconButton(
                                 icon: const Icon(
