@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wakelock/wakelock.dart';
 
 class ContentSettingsState with ChangeNotifier {
   int _textArabicSize = 18;
@@ -25,6 +26,10 @@ class ContentSettingsState with ChangeNotifier {
 
   List<bool> get getIsSelected => _isSelected;
 
+  bool _isScreenWakeLock = false;
+
+  bool get getScreenWakelock => _isScreenWakeLock;
+
   updateTextArabicSize(int newSize) {
     _textArabicSize = newSize;
     notifyListeners();
@@ -50,6 +55,12 @@ class ContentSettingsState with ChangeNotifier {
     for (int i = 0; i < _isSelected.length; i++) {
       _isSelected[i] = i == _toggleButtonIndex;
     }
+    notifyListeners();
+  }
+
+  updateScreenWakeLock(bool state) {
+    _isScreenWakeLock = state;
+    _isScreenWakeLock ? Wakelock.enable() : Wakelock.disable();
     notifyListeners();
   }
 }

@@ -291,7 +291,9 @@ class ContentSettings extends StatelessWidget {
                         'Ассаляму аляйкум!',
                         style: TextStyle(
                           fontSize: 18,
-                          fontFamily: _getTranslationFonts[context.read<ContentSettingsState>().getTranslationFontRadioGroupValue],
+                          fontFamily: _getTranslationFonts[context
+                              .read<ContentSettingsState>()
+                              .getTranslationFontRadioGroupValue],
                           color: const Color(0xFF243743),
                         ),
                       ),
@@ -325,6 +327,18 @@ class ContentSettings extends StatelessWidget {
                       context
                           .read<ContentSettingsState>()
                           .updateToggleTextLayout(index);
+                    },
+                  ),
+                  const Divider(),
+                  SwitchListTile(
+
+                    title: const Text(
+                      'Не отключать дисплей',
+                      style: TextStyle(fontSize: 18, color: Colors.black54),
+                    ),
+                    value: context.watch<ContentSettingsState>().getScreenWakelock,
+                    onChanged: (value) {
+                      context.read<ContentSettingsState>().updateScreenWakeLock(value);
                     },
                   ),
                   const Divider(),
