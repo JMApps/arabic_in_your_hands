@@ -82,6 +82,46 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                               ),
                             ],
                           ),
+                          SliverToBoxAdapter(
+                            child: Wrap(
+                              alignment: WrapAlignment.center,
+                              children: [
+                                Card(
+                                  margin: const EdgeInsets.only(
+                                      left: 16, right: 16, bottom: 8),
+                                  elevation: 2,
+                                  shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                      bottomLeft: Radius.circular(20),
+                                      bottomRight: Radius.circular(20),
+                                    ),
+                                  ),
+                                  child: Container(
+                                    decoration: const BoxDecoration(
+                                      borderRadius: BorderRadius.only(
+                                        bottomLeft: Radius.circular(20),
+                                        bottomRight: Radius.circular(20),
+                                      ),
+                                      gradient: LinearGradient(colors: [
+                                        Color(0xFFD5FFEF),
+                                        Color(0xFFFFFFFF),
+                                      ]),
+                                    ),
+                                    padding: const EdgeInsets.all(16),
+                                    child: Text(
+                                      '${_arguments.dialogTitle}',
+                                      style: const TextStyle(
+                                        fontSize: 20,
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold
+                                      ),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
                           SliverList(
                             delegate: SliverChildBuilderDelegate(
                               (BuildContext context, int index) {
