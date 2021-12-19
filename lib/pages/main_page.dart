@@ -81,15 +81,13 @@ class MainPage extends StatelessWidget {
               title: const Text('Словарь'),
             ),
           ],
-          itemShape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.5)),
+          itemShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.5)),
           selectedItemColor: const Color(0xFF37FFC2),
           unselectedItemColor: const Color(0xFF1F8D6E),
-          currentIndex:
-              context.watch<MainBottomNavigationState>().getSelectedIndex,
-          onTap: context
-              .read<MainBottomNavigationState>()
-              .changeBottomNavigationIndex,
+          currentIndex: context.watch<MainBottomNavigationState>().getSelectedIndex,
+          onTap: (currentIndex) {
+            context.read<MainBottomNavigationState>().changeBottomNavigationIndex(currentIndex);
+          },
         ),
       ),
     );
