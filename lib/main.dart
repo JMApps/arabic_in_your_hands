@@ -1,3 +1,4 @@
+import 'package:arabicinyourhands/provider/app_list_index_state.dart';
 import 'package:arabicinyourhands/provider/content_player_state.dart';
 import 'package:arabicinyourhands/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/provider/main_bottom_navigation_state.dart';
@@ -20,6 +21,7 @@ class Main extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider(create: (_) => AppListIndexState()),
         ChangeNotifierProvider(create: (_) => MainBottomNavigationState()),
         ChangeNotifierProvider(create: (_) => VolumeContentDialogVisibilityState()),
         ChangeNotifierProvider(create: (_) => ContentSettingsState()),
