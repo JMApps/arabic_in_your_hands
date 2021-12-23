@@ -74,12 +74,12 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
             color: item.id!.isOdd
                 ? realtimePlayingInfo.isPlaying &&
                         player.readingPlaylist!.currentIndex == index
-                    ? Colors.green[200]
-                    : Colors.green[50]
+                    ? Colors.green[100]
+                    : Colors.white
                 : realtimePlayingInfo.isPlaying &&
                         player.readingPlaylist!.currentIndex == index
-                    ? Colors.blue[200]
-                    : Colors.blue[50],
+                    ? Colors.blue[100]
+                    : Colors.white,
             borderRadius: item.id!.isOdd
                 ? const BorderRadius.only(
                     topLeft: Radius.circular(25),
@@ -184,7 +184,7 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
                             fontFamily: _getTranslationFonts[context
                                 .read<ContentSettingsState>()
                                 .getTranslationFontRadioGroupValue],
-                            color: const Color(0xFF243743),
+                            color: Colors.black54,
                           ),
                           textAlign: _getTextAlignTwo[context
                               .watch<ContentSettingsState>()
@@ -214,7 +214,7 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
                             fontFamily: _getTranslationFonts[context
                                 .read<ContentSettingsState>()
                                 .getTranslationFontRadioGroupValue],
-                            color: Colors.black54,
+                            color: Colors.black,
                           ),
                           textAlign: _getTextAlignTwo[context
                               .watch<ContentSettingsState>()
