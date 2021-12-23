@@ -17,7 +17,6 @@ class ContentPlayer extends StatefulWidget {
 }
 
 class _ContentPlayerState extends State<ContentPlayer> {
-
   @override
   void initState() {
     widget.player.playlistAudioFinished.listen((event) {
@@ -60,12 +59,16 @@ class _ContentPlayerState extends State<ContentPlayer> {
                 IconButton(
                   icon: Icon(
                     CupertinoIcons.repeat,
-                    color: context.watch<ContentPlayerState>().getLoopState ? Colors.red[300] : Colors.white,
+                    color: context.watch<ContentPlayerState>().getLoopState
+                        ? Colors.red[300]
+                        : Colors.white,
                   ),
                   onPressed: () {
                     context.read<ContentPlayerState>().changeLoopState();
                     widget.player.setLoopMode(
-                        context.read<ContentPlayerState>().getLoopState ? LoopMode.single : LoopMode.none);
+                        context.read<ContentPlayerState>().getLoopState
+                            ? LoopMode.single
+                            : LoopMode.none);
                   },
                 ),
                 IconButton(
@@ -106,9 +109,7 @@ class _ContentPlayerState extends State<ContentPlayer> {
                         : Colors.white,
                   ),
                   onPressed: () {
-                    context
-                        .read<ContentPlayerState>()
-                        .changePlayListState();
+                    context.read<ContentPlayerState>().changePlayListState();
                     widget.player.setLoopMode(
                         context.read<ContentPlayerState>().getPlayListState
                             ? LoopMode.playlist
