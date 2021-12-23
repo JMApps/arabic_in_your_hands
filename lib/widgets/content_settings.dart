@@ -63,9 +63,10 @@ class ContentSettings extends StatelessWidget {
                               .getTextArabicSize
                               .toDouble(),
                           onChanged: (value) {
-                            context
-                                .read<ContentSettingsState>()
-                                .updateTextArabicSize(value.toInt());
+                            context.read<ContentSettingsState>().updateTextArabicSize(value.toInt());
+                          },
+                          onChangeEnd: (value) {
+                            context.read<ContentSettingsState>().saveTextArabicSize();
                           },
                         ),
                       ),
@@ -108,6 +109,9 @@ class ContentSettings extends StatelessWidget {
                                 .read<ContentSettingsState>()
                                 .updateTextTranslationSize(value.toInt());
                           },
+                          onChangeEnd: (value) {
+                            context.read<ContentSettingsState>().saveTextTranslationSize();
+                          },
                         ),
                       ),
                       const SizedBox(width: 8),
@@ -149,9 +153,8 @@ class ContentSettings extends StatelessWidget {
                               .watch<ContentSettingsState>()
                               .getArabicFontRadioGroupValue,
                           onChanged: (value) {
-                            context
-                                .read<ContentSettingsState>()
-                                .updateArabicRadioValue(0);
+                            context.read<ContentSettingsState>().updateArabicRadioValue(0);
+                            context.read<ContentSettingsState>().saveArabicRadioValue();
                           },
                         ),
                       ),
@@ -167,6 +170,7 @@ class ContentSettings extends StatelessWidget {
                             context
                                 .read<ContentSettingsState>()
                                 .updateArabicRadioValue(1);
+                            context.read<ContentSettingsState>().saveArabicRadioValue();
                           },
                         ),
                       ),
@@ -182,6 +186,7 @@ class ContentSettings extends StatelessWidget {
                             context
                                 .read<ContentSettingsState>()
                                 .updateArabicRadioValue(2);
+                            context.read<ContentSettingsState>().saveArabicRadioValue();
                           },
                         ),
                       ),
@@ -242,6 +247,7 @@ class ContentSettings extends StatelessWidget {
                             context
                                 .read<ContentSettingsState>()
                                 .updateTranslationRadioValue(0);
+                            context.read<ContentSettingsState>().saveTranslationRadioValue();
                           },
                         ),
                       ),
@@ -257,6 +263,7 @@ class ContentSettings extends StatelessWidget {
                             context
                                 .read<ContentSettingsState>()
                                 .updateTranslationRadioValue(1);
+                            context.read<ContentSettingsState>().saveTranslationRadioValue();
                           },
                         ),
                       ),
@@ -272,6 +279,7 @@ class ContentSettings extends StatelessWidget {
                             context
                                 .read<ContentSettingsState>()
                                 .updateTranslationRadioValue(2);
+                            context.read<ContentSettingsState>().saveTranslationRadioValue();
                           },
                         ),
                       ),
@@ -324,14 +332,12 @@ class ContentSettings extends StatelessWidget {
                     isSelected:
                         context.watch<ContentSettingsState>().getIsSelected,
                     onPressed: (index) {
-                      context
-                          .read<ContentSettingsState>()
-                          .updateToggleTextLayout(index);
+                      context.read<ContentSettingsState>().updateToggleTextLayout(index);
+                      context.read<ContentSettingsState>().saveToggleTextLayout();
                     },
                   ),
                   const Divider(),
                   SwitchListTile(
-
                     title: const Text(
                       'Не отключать дисплей',
                       style: TextStyle(fontSize: 18, color: Colors.black54),
@@ -339,6 +345,7 @@ class ContentSettings extends StatelessWidget {
                     value: context.watch<ContentSettingsState>().getScreenWakelock,
                     onChanged: (value) {
                       context.read<ContentSettingsState>().updateScreenWakeLock(value);
+                      context.read<ContentSettingsState>().saveScreenWakeLock();
                     },
                   ),
                   const Divider(),

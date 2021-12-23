@@ -3,14 +3,27 @@ import 'dart:io';
 import 'package:arabicinyourhands/pages/dictionary.dart';
 import 'package:arabicinyourhands/pages/volume_one.dart';
 import 'package:arabicinyourhands/pages/volume_two.dart';
+import 'package:arabicinyourhands/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/provider/main_bottom_navigation_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class MainPage extends StatelessWidget {
-  MainPage({Key? key}) : super(key: key);
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+
+  @override
+  void initState() {
+    context.read<ContentSettingsState>().initSettings();
+    super.initState();
+  }
 
   final _mainWidgets = [
     VolumeOne(),

@@ -100,7 +100,7 @@ class _ContentPlayerState extends State<ContentPlayer> {
                 ),
                 IconButton(
                   icon: Icon(
-                    CupertinoIcons.loop,
+                    Icons.all_inclusive,
                     color: context.watch<ContentPlayerState>().getPlayListState
                         ? Colors.red[300]
                         : Colors.white,
