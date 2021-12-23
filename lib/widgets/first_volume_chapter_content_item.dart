@@ -52,7 +52,7 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
       margin: item.id!.isOdd
           ? const EdgeInsets.only(left: 16, top: 8, bottom: 8)
           : const EdgeInsets.only(right: 16, top: 8, bottom: 8),
-      elevation: 2,
+      elevation: 5,
       shape: RoundedRectangleBorder(
         borderRadius: item.id!.isOdd
             ? const BorderRadius.only(
@@ -71,15 +71,18 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
           curve: Curves.fastOutSlowIn,
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: item.id!.isOdd
-                ? realtimePlayingInfo.isPlaying &&
-                        player.readingPlaylist!.currentIndex == index
-                    ? Colors.green[100]
-                    : Colors.white
-                : realtimePlayingInfo.isPlaying &&
-                        player.readingPlaylist!.currentIndex == index
-                    ? Colors.blue[100]
-                    : Colors.white,
+            gradient: LinearGradient(
+              colors: item.id!.isOdd
+              ? [
+                const Color(0xFFD5FFF1),
+                const Color(0xFFE9FFF5),
+                const Color(0xFFFFFFFF),
+              ] : [
+                const Color(0xFFFFFFFF),
+                const Color(0xFFECF7FF),
+                const Color(0xFFD5EFFF),
+              ],
+            ),
             borderRadius: item.id!.isOdd
                 ? const BorderRadius.only(
                     topLeft: Radius.circular(25),
@@ -263,13 +266,16 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
                                   TextStyle(fontSize: 18, color: Colors.black),
                             ),
                             onTap: () {
-                              Share.share('${item.arabicName != null ? '${item.arabicName}\n${item.arabicContent}\n' : '${item.arabicContent}\n'}'
+                              Share.share(
+                                  '${item.arabicName != null ? '${item.arabicName}\n${item.arabicContent}\n' : '${item.arabicContent}\n'}'
                                   '${item.translationName != null ? '${item.translationName}\n${item.translationContent}' : '${item.translationContent}'}');
                               Navigator.of(context).pop();
                             },
                           ),
-                          SnackBarCopyMessage(content: '${item.arabicName != null ? '${item.arabicName}\n${item.arabicContent}\n' : '${item.arabicContent}\n'}'
-                              '${item.translationName != null ? '${item.translationName}\n${item.translationContent}' : '${item.translationContent}'}'),
+                          SnackBarCopyMessage(
+                              content:
+                                  '${item.arabicName != null ? '${item.arabicName}\n${item.arabicContent}\n' : '${item.arabicContent}\n'}'
+                                  '${item.translationName != null ? '${item.translationName}\n${item.translationContent}' : '${item.translationContent}'}'),
                         ],
                       ),
                     ),
