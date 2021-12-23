@@ -17,15 +17,11 @@ class ContentPlayer extends StatefulWidget {
 }
 
 class _ContentPlayerState extends State<ContentPlayer> {
-  bool _loopState = false;
-  bool _playListState = false;
 
   @override
   void initState() {
     widget.player.playlistAudioFinished.listen((event) {
-      if (_playListState) {
-        // Включать и отключать последовательное воспроизведение
-      }
+      // Включать и отключать последовательное воспроизведение
     });
 
     widget.player.playlistFinished.listen((playlistFinished) {
@@ -43,29 +39,33 @@ class _ContentPlayerState extends State<ContentPlayer> {
         return Column(
           children: [
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Transform.scale(
                   scale: 0.7,
                   child: CupertinoSwitch(
+                    thumbColor: Colors.white,
+                    trackColor: Colors.grey,
                     activeColor: const Color(0xFF1F8D6E),
-                    value: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
+                    value: context
+                        .watch<VolumeContentDialogVisibilityState>()
+                        .getFirstDialogVisibility,
                     onChanged: (value) {
-                      context.read<VolumeContentDialogVisibilityState>().updateFirstVisibilityState(value);
+                      context
+                          .read<VolumeContentDialogVisibilityState>()
+                          .updateFirstVisibilityState(value);
                     },
                   ),
                 ),
-                Consumer<ContentPlayerState>(
-                  builder: (BuildContext context, value, Widget? child) {
-                    return IconButton(
-                      icon: Icon(
-                        CupertinoIcons.repeat,
-                        color: value.getLoopState ? Colors.red[300] : Colors.white,
-                      ),
-                      onPressed: () {
-                        value.changeLoopState(_loopState = !_loopState);
-                        widget.player.setLoopMode(value.getLoopState ? LoopMode.single : LoopMode.none);
-                      },
-                    );
+                IconButton(
+                  icon: Icon(
+                    CupertinoIcons.repeat,
+                    color: context.watch<ContentPlayerState>().getLoopState ? Colors.red[300] : Colors.white,
+                  ),
+                  onPressed: () {
+                    context.read<ContentPlayerState>().changeLoopState();
+                    widget.player.setLoopMode(
+                        context.read<ContentPlayerState>().getLoopState ? LoopMode.single : LoopMode.none);
                   },
                 ),
                 IconButton(
@@ -98,25 +98,28 @@ class _ContentPlayerState extends State<ContentPlayer> {
                     widget.player.next(stopIfLast: true);
                   },
                 ),
-                Consumer<ContentPlayerState>(
-                  builder: (BuildContext context, value, Widget? child) {
-                    return IconButton(
-                      icon: Icon(
-                        CupertinoIcons.loop,
-                        color: value.getPlayListState
-                            ? Colors.red[300]
-                            : Colors.white,
-                      ),
-                      onPressed: () {
-                        value.changePlayListState(_playListState = !_playListState);
-                        widget.player.setLoopMode(value.getLoopState ? LoopMode.playlist : LoopMode.none);
-                      },
-                    );
+                IconButton(
+                  icon: Icon(
+                    CupertinoIcons.loop,
+                    color: context.watch<ContentPlayerState>().getPlayListState
+                        ? Colors.red[300]
+                        : Colors.white,
+                  ),
+                  onPressed: () {
+                    context
+                        .read<ContentPlayerState>()
+                        .changePlayListState();
+                    widget.player.setLoopMode(
+                        context.read<ContentPlayerState>().getPlayListState
+                            ? LoopMode.playlist
+                            : LoopMode.none);
                   },
                 ),
                 Transform.scale(
                   scale: 0.7,
                   child: CupertinoSwitch(
+                    thumbColor: Colors.white,
+                    trackColor: Colors.grey,
                     activeColor: const Color(0xFF1F8D6E),
                     value: context
                         .watch<VolumeContentDialogVisibilityState>()
