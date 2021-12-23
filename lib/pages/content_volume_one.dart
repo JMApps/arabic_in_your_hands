@@ -61,8 +61,9 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                             stretch: true,
                             centerTitle: true,
                             backgroundColor: const Color(0xFF243743),
-                            flexibleSpace: FlexibleSpaceBar(
-                              title: Text('${_arguments.dialog}'),
+                            flexibleSpace: const FlexibleSpaceBar(
+                              centerTitle: false,
+                              title: Text('к главам'),
                             ),
                             actions: [
                               IconButton(
@@ -80,6 +81,10 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                                   );
                                 },
                               ),
+                              IconButton(
+                                icon: const Icon(CupertinoIcons.forward),
+                                onPressed: () {},
+                              ),
                             ],
                           ),
                           SliverToBoxAdapter(
@@ -88,7 +93,10 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                               children: [
                                 Card(
                                   margin: const EdgeInsets.only(
-                                      left: 16, right: 16, bottom: 8),
+                                    left: 16,
+                                    right: 16,
+                                    bottom: 8,
+                                  ),
                                   elevation: 2,
                                   shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.only(
@@ -102,20 +110,32 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                                         bottomLeft: Radius.circular(20),
                                         bottomRight: Radius.circular(20),
                                       ),
-                                      gradient: LinearGradient(colors: [
-                                        Color(0xFFD5FFEF),
-                                        Color(0xFFFFFFFF),
-                                      ]),
+                                      color: Color(0xFF1F8D6E),
                                     ),
-                                    padding: const EdgeInsets.all(16),
-                                    child: Text(
-                                      '${_arguments.dialogTitle}',
-                                      style: const TextStyle(
-                                        fontSize: 20,
-                                        color: Colors.black,
-                                        fontWeight: FontWeight.bold
-                                      ),
-                                      textAlign: TextAlign.center,
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal: 16,
+                                      vertical: 12,
+                                    ),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                          '${_arguments.dialog}',
+                                          style: const TextStyle(
+                                              fontSize: 18,
+                                              color: Color(0xFF243743),
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                        const SizedBox(height: 8),
+                                        Text(
+                                          '${_arguments.dialogTitle}',
+                                          style: const TextStyle(
+                                            fontSize: 20,
+                                            color: Colors.white,
+                                            fontFamily: 'Play',
+                                          ),
+                                          textAlign: TextAlign.center,
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 )
