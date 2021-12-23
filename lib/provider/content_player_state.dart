@@ -9,8 +9,8 @@ class ContentPlayerState with ChangeNotifier {
 
   bool get getPlayListState => _playListState;
 
-  changeLoopState(bool state) {
-    _loopState = state;
+  changeLoopState() {
+    _loopState = !_loopState;
     if (_loopState) {
       if (_playListState) {
         _playListState = false;
@@ -19,13 +19,13 @@ class ContentPlayerState with ChangeNotifier {
     notifyListeners();
   }
 
-  changePlayListState(bool state) {
-    if (state) {
+  changePlayListState() {
+    _playListState = !_playListState;
+    if (_playListState) {
       if (_loopState) {
         _loopState = false;
       }
     }
-    _playListState = state;
     notifyListeners();
   }
 }
