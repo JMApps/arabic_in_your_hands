@@ -8,7 +8,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FirstVolumeChapterList extends StatelessWidget {
-  FirstVolumeChapterList({Key? key, required this.item}) : super(key: key);
+  FirstVolumeChapterList({
+    Key? key,
+    required this.item,
+  }) : super(key: key);
 
   final VolumeFirstItemChapterModel item;
   final _databaseQuery = DatabaseQuery();
@@ -111,7 +114,10 @@ class FirstVolumeChapterList extends StatelessWidget {
                       ),
                     ),
                   ),
-                  FirstVolumeSubChapterList(snapshot: snapshot),
+                  FirstVolumeSubChapterList(
+                    snapshot: snapshot,
+                    chapterId: item.id!,
+                  ),
                 ],
               ),
             ),

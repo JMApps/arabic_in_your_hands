@@ -1,7 +1,11 @@
 class ContentVolumeOneArguments {
-  int? id;
-  String? dialog;
-  String? dialogTitle;
+  int? subChapterId;
+  int? subChapterIndex;
+  int? chapterId;
 
-  ContentVolumeOneArguments(this.id, this.dialog, this.dialogTitle);
+  ContentVolumeOneArguments(
+    this.subChapterId,
+    this.subChapterIndex,
+    this.chapterId,
+  );
 }

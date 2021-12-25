@@ -43,8 +43,7 @@ class VolumeOne extends StatelessWidget {
                               child: SlideAnimation(
                                 verticalOffset: 150,
                                 child: FadeInAnimation(
-                                  child: FirstVolumeChapterList(
-                                      item: snapshot.data![index]),
+                                  child: FirstVolumeChapterList(item: snapshot.data![index]),
                                 ),
                               ),
                             );
