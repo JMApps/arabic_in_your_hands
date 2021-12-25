@@ -73,15 +73,30 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: item.id!.isOdd
-              ? [
-                const Color(0xFFD5FFF1),
-                const Color(0xFFE9FFF5),
-                const Color(0xFFFFFFFF),
-              ] : [
-                const Color(0xFFFFFFFF),
-                const Color(0xFFECF7FF),
-                const Color(0xFFD5EFFF),
-              ],
+                  ? player.readingPlaylist!.currentIndex == index &&
+                          realtimePlayingInfo.isPlaying
+                      ? [
+                          const Color(0xFFFFF5D5),
+                          const Color(0xFFFFF8E9),
+                          const Color(0xFFFFFFFF),
+                        ]
+                      : [
+                          const Color(0xFFD5FFF1),
+                          const Color(0xFFE9FFF5),
+                          const Color(0xFFFFFFFF),
+                        ]
+                  : player.readingPlaylist!.currentIndex == index &&
+                          realtimePlayingInfo.isPlaying
+                      ? [
+                          const Color(0xFFFFFFFF),
+                          const Color(0xFFFFF8E9),
+                          const Color(0xFFFFF5D5),
+                        ]
+                      : [
+                          const Color(0xFFFFFFFF),
+                          const Color(0xFFECF7FF),
+                          const Color(0xFFD5EFFF),
+                        ],
             ),
             borderRadius: item.id!.isOdd
                 ? const BorderRadius.only(
