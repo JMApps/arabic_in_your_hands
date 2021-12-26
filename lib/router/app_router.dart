@@ -8,7 +8,7 @@ class AppRouter {
     switch (routeSettings.name) {
       case '/':
         return MaterialPageRoute(
-            builder: (_) => MainPage(), settings: routeSettings);
+            builder: (_) => const MainPage(), settings: routeSettings);
       case '/content_volume_one':
         return MaterialPageRoute(
             builder: (_) => const ContentVolumeOne(), settings: routeSettings);
