@@ -76,8 +76,8 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
                   ? player.readingPlaylist!.currentIndex == index &&
                           realtimePlayingInfo.isPlaying
                       ? [
-                          const Color(0xFFFFF5D5),
-                          const Color(0xFFFFF8E9),
+                          const Color(0xFFFFF3BA),
+                          const Color(0xFFFFF0D0),
                           const Color(0xFFFFFFFF),
                         ]
                       : [
@@ -89,8 +89,8 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
                           realtimePlayingInfo.isPlaying
                       ? [
                           const Color(0xFFFFFFFF),
-                          const Color(0xFFFFF8E9),
-                          const Color(0xFFFFF5D5),
+                          const Color(0xFFFFF0D0),
+                          const Color(0xFFFFF3BA),
                         ]
                       : [
                           const Color(0xFFFFFFFF),
