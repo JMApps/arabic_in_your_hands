@@ -1,6 +1,11 @@
 class ContentVolumeTwoArguments {
-  int? id;
-  String? dialog;
+  int? subChapterId;
+  int? subChapterIndex;
+  int? chapterId;
 
-  ContentVolumeTwoArguments(this.id, this.dialog);
+  ContentVolumeTwoArguments(
+    this.subChapterId,
+    this.subChapterIndex,
+    this.chapterId,
+  );
 }

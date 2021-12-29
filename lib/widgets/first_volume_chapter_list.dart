@@ -8,10 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class FirstVolumeChapterList extends StatelessWidget {
-  FirstVolumeChapterList({
-    Key? key,
-    required this.item,
-  }) : super(key: key);
+  FirstVolumeChapterList({Key? key, required this.item}) : super(key: key);
 
   final VolumeFirstItemChapterModel item;
   final _databaseQuery = DatabaseQuery();
@@ -63,7 +60,9 @@ class FirstVolumeChapterList extends StatelessWidget {
                           const SizedBox(width: 16),
                           Container(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 8),
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
                             decoration: const BoxDecoration(
                               color: Color(0xFF243743),
                               borderRadius: BorderRadius.all(
@@ -101,10 +100,11 @@ class FirstVolumeChapterList extends StatelessWidget {
                               Text(
                                 '${item.chapterTitleArabic}',
                                 style: const TextStyle(
-                                    fontSize: 20,
-                                    color: Color(0xFF006D50),
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Scheherazade'),
+                                  fontSize: 20,
+                                  color: Color(0xFF006D50),
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Scheherazade',
+                                ),
                                 textDirection: TextDirection.rtl,
                                 textAlign: TextAlign.end,
                               ),

@@ -1,10 +1,12 @@
 import 'package:arabicinyourhands/model/volume_second_item_chapter_content_model.dart';
 import 'package:arabicinyourhands/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/provider/volume_content_dialog_visibility_state.dart';
+import 'package:arabicinyourhands/widgets/snackbar_copy_message.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class SecondVolumeChapterContentItem extends StatelessWidget {
   SecondVolumeChapterContentItem({
@@ -69,15 +71,33 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
           curve: Curves.fastOutSlowIn,
           padding: const EdgeInsets.all(16),
           decoration: BoxDecoration(
-            color: item.id!.isOdd
-                ? realtimePlayingInfo.isPlaying &&
-                        player.readingPlaylist!.currentIndex == index
-                    ? Colors.green[200]
-                    : Colors.green[50]
-                : realtimePlayingInfo.isPlaying &&
-                        player.readingPlaylist!.currentIndex == index
-                    ? Colors.blue[200]
-                    : Colors.blue[50],
+            gradient: LinearGradient(
+              colors: item.id!.isOdd
+                  ? player.readingPlaylist!.currentIndex == index &&
+                          realtimePlayingInfo.isPlaying
+                      ? [
+                          const Color(0xFFFFF3BA),
+                          const Color(0xFFFFF0D0),
+                          const Color(0xFFFFFFFF),
+                        ]
+                      : [
+                          const Color(0xFFD5FFF1),
+                          const Color(0xFFE9FFF5),
+                          const Color(0xFFFFFFFF),
+                        ]
+                  : player.readingPlaylist!.currentIndex == index &&
+                          realtimePlayingInfo.isPlaying
+                      ? [
+                          const Color(0xFFFFFFFF),
+                          const Color(0xFFFFF0D0),
+                          const Color(0xFFFFF3BA),
+                        ]
+                      : [
+                          const Color(0xFFFFFFFF),
+                          const Color(0xFFECF7FF),
+                          const Color(0xFFD5EFFF),
+                        ],
+            ),
             borderRadius: item.id!.isOdd
                 ? const BorderRadius.only(
                     topLeft: Radius.circular(25),
@@ -232,6 +252,52 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
         ),
         onTap: () {
           player.playlistPlayAtIndex(index);
+        },
+        onLongPress: () {
+          showCupertinoModalPopup(
+            context: context,
+            builder: (BuildContext context) {
+              return Wrap(
+                children: [
+                  Container(
+                    margin: const EdgeInsets.only(bottom: 8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    padding: const EdgeInsets.all(16),
+                    child: Material(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Column(
+                        children: [
+                          ListTile(
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            leading: const Icon(CupertinoIcons.share),
+                            title: const Text(
+                              'Поделиться',
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.black),
+                            ),
+                            onTap: () {
+                              Share.share(
+                                  '${item.arabicName != null ? '${item.arabicName}\n${item.arabicContent}\n' : '${item.arabicContent}\n'}'
+                                  '${item.translationName != null ? '${item.translationName}\n${item.translationContent}' : '${item.translationContent}'}');
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                          SnackBarCopyMessage(
+                              content:
+                                  '${item.arabicName != null ? '${item.arabicName}\n${item.arabicContent}\n' : '${item.arabicContent}\n'}'
+                                  '${item.translationName != null ? '${item.translationName}\n${item.translationContent}' : '${item.translationContent}'}'),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          );
         },
       ),
     );

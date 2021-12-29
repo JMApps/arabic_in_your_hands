@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:arabicinyourhands/data/database_query.dart';
 import 'package:arabicinyourhands/model/content_volume_one_arguments.dart';
-import 'package:arabicinyourhands/provider/sub_chapter_selected_item_state.dart';
+import 'package:arabicinyourhands/provider/one_sub_chapter_selected_item_state.dart';
 import 'package:arabicinyourhands/widgets/content_player.dart';
 import 'package:arabicinyourhands/widgets/content_settings.dart';
 import 'package:arabicinyourhands/widgets/first_volume_chapter_content_item.dart';
@@ -52,8 +52,8 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
               ? Scaffold(
                   backgroundColor: const Color(0xFFFAFAFA),
                   body: _assetsAudioPlayer.builderRealtimePlayingInfos(
-                      builder: (context, realtimePlayingInfo) {
-                    return FutureBuilder<List>(
+                    builder: (context, realtimePlayingInfo) {
+                      return FutureBuilder<List>(
                         future: _databaseQuery.getAllFirstSubChapters(_arguments.chapterId!),
                         builder: (BuildContext context,
                             AsyncSnapshot subChapterSnapshot) {
@@ -80,7 +80,8 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                                             onPressed: () {
                                               showCupertinoModalPopup(
                                                 context: context,
-                                                builder: (BuildContext context) {
+                                                builder:
+                                                    (BuildContext context) {
                                                   return SingleChildScrollView(
                                                     child: ContentSettings(),
                                                   );
@@ -94,7 +95,7 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                                                     CupertinoIcons.forward,
                                                   ),
                                                   onPressed: () {
-                                                    context.read<SubChapterSelectedItemState>().updateState(_arguments.subChapterId! + 1);
+                                                    context.read<OneSubChapterSelectedItemState>().updateState(_arguments.subChapterId! + 1);
                                                     Navigator.pushReplacementNamed(
                                                       context,
                                                       '/content_volume_one',
@@ -120,7 +121,8 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                                                 bottom: 8,
                                               ),
                                               elevation: 2,
-                                              shape: const RoundedRectangleBorder(
+                                              shape:
+                                                  const RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.only(
                                                   bottomLeft:
                                                       Radius.circular(20),
@@ -130,13 +132,17 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                                               ),
                                               child: Container(
                                                 decoration: const BoxDecoration(
-                                                  borderRadius: BorderRadius.only(
-                                                    bottomLeft: Radius.circular(20),
-                                                    bottomRight: Radius.circular(20),
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    bottomLeft:
+                                                        Radius.circular(20),
+                                                    bottomRight:
+                                                        Radius.circular(20),
                                                   ),
                                                   color: Color(0xFF1F8D6E),
                                                 ),
-                                                padding: const EdgeInsets.symmetric(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
                                                   horizontal: 16,
                                                   vertical: 12,
                                                 ),
@@ -146,11 +152,14 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                                                       '${subChapterSnapshot.data![_arguments.subChapterIndex].dialog}',
                                                       style: const TextStyle(
                                                           fontSize: 18,
-                                                          color: Color(0xFF243743),
-                                                          fontWeight: FontWeight.bold),
+                                                          color:
+                                                              Color(0xFF243743),
+                                                          fontWeight:
+                                                              FontWeight.bold),
                                                     ),
                                                     const SizedBox(height: 8),
-                                                    Text('${subChapterSnapshot.data![_arguments.subChapterIndex].dialogTitle}',
+                                                    Text(
+                                                      '${subChapterSnapshot.data![_arguments.subChapterIndex].dialogTitle}',
                                                       style: const TextStyle(
                                                         fontSize: 20,
                                                         color: Colors.white,
@@ -188,8 +197,10 @@ class _ContentVolumeOneState extends State<ContentVolumeOne> {
                                       ? const CircularProgressIndicator()
                                       : const CupertinoActivityIndicator(),
                                 );
-                        });
-                  }),
+                        },
+                      );
+                    },
+                  ),
                   bottomNavigationBar: Container(
                     height: 65,
                     padding: const EdgeInsets.symmetric(horizontal: 16),

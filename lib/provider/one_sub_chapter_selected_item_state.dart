@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SubChapterSelectedItemState with ChangeNotifier {
+class OneSubChapterSelectedItemState with ChangeNotifier {
   int _currentSelectedItem = -1;
 
   int get getCurrentSelectedItem => _currentSelectedItem;

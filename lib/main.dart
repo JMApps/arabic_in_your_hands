@@ -1,7 +1,8 @@
 import 'package:arabicinyourhands/provider/content_player_state.dart';
 import 'package:arabicinyourhands/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/provider/main_bottom_navigation_state.dart';
-import 'package:arabicinyourhands/provider/sub_chapter_selected_item_state.dart';
+import 'package:arabicinyourhands/provider/one_sub_chapter_selected_item_state.dart';
+import 'package:arabicinyourhands/provider/two_sub_chapter_selected_item_state.dart';
 import 'package:arabicinyourhands/provider/volume_content_dialog_visibility_state.dart';
 import 'package:arabicinyourhands/router/app_router.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +25,8 @@ class Main extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => VolumeContentDialogVisibilityState()),
         ChangeNotifierProvider(create: (_) => ContentSettingsState()),
         ChangeNotifierProvider(create: (_) => ContentPlayerState()),
-        ChangeNotifierProvider(create: (_) => SubChapterSelectedItemState()),
+        ChangeNotifierProvider(create: (_) => OneSubChapterSelectedItemState()),
+        ChangeNotifierProvider(create: (_) => TwoSubChapterSelectedItemState()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

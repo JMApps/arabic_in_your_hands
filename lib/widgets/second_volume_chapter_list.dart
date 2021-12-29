@@ -43,9 +43,9 @@ class SecondVolumeChapterList extends StatelessWidget {
                     margin: const EdgeInsets.only(right: 16, bottom: 16),
                     shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(20),
-                          bottomRight: Radius.circular(20),
-                        )),
+                      topRight: Radius.circular(20),
+                      bottomRight: Radius.circular(20),
+                    )),
                     child: Container(
                       padding: const EdgeInsets.symmetric(vertical: 8),
                       decoration: const BoxDecoration(
@@ -80,10 +80,11 @@ class SecondVolumeChapterList extends StatelessWidget {
                               Text(
                                 '${item.chapterTitleArabic}',
                                 style: const TextStyle(
-                                    fontSize: 20,
-                                    color: Color(0xFF006D50),
-                                    fontWeight: FontWeight.bold,
-                                    fontFamily: 'Scheherazade'),
+                                  fontSize: 20,
+                                  color: Color(0xFF006D50),
+                                  fontWeight: FontWeight.bold,
+                                  fontFamily: 'Scheherazade',
+                                ),
                                 textDirection: TextDirection.rtl,
                                 textAlign: TextAlign.end,
                               ),
@@ -92,7 +93,9 @@ class SecondVolumeChapterList extends StatelessWidget {
                           const SizedBox(width: 16),
                           Container(
                             padding: const EdgeInsets.symmetric(
-                                horizontal: 16, vertical: 8),
+                              horizontal: 16,
+                              vertical: 8,
+                            ),
                             decoration: const BoxDecoration(
                               color: Color(0xFF243743),
                               borderRadius: BorderRadius.all(
@@ -112,7 +115,10 @@ class SecondVolumeChapterList extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SecondVolumeSubChapterList(snapshot: snapshot),
+                  SecondVolumeSubChapterList(
+                    snapshot: snapshot,
+                    chapterId: item.id!,
+                  ),
                 ],
               ),
             ),

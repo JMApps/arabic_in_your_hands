@@ -250,7 +250,6 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
             ],
           ),
         ),
-        splashColor: Colors.red,
         onTap: () {
           player.playlistPlayAtIndex(index);
         },

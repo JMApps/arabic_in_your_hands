@@ -1,6 +1,6 @@
 import 'package:arabicinyourhands/model/content_volume_one_arguments.dart';
 import 'package:arabicinyourhands/model/volume_first_item_sub_chapter_model.dart';
-import 'package:arabicinyourhands/provider/sub_chapter_selected_item_state.dart';
+import 'package:arabicinyourhands/provider/one_sub_chapter_selected_item_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +22,7 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
       elevation: 2,
       margin: const EdgeInsets.symmetric(horizontal: 16),
       color:
-          context.watch<SubChapterSelectedItemState>().getCurrentSelectedItem ==
+          context.watch<OneSubChapterSelectedItemState>().getCurrentSelectedItem ==
                   item.id
               ? const Color(0xFF243743)
               : const Color(0xFF28B78D),
@@ -52,15 +52,19 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
                       bottomLeft: Radius.circular(15),
                       bottomRight: Radius.circular(15),
                     ),
-                    gradient: LinearGradient(colors: [
-                      Color(0xFFD5FFEF),
-                      Color(0xFFFFFFFF),
-                    ]),
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xFFD5FFEF),
+                        Color(0xFFFFFFFF),
+                      ],
+                    ),
                   ),
                   child: Text(
                     '${item.dialog}',
-                    style:
-                        const TextStyle(color: Color(0xFF243743), fontSize: 18),
+                    style: const TextStyle(
+                      color: Color(0xFF243743),
+                      fontSize: 18,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -72,7 +76,10 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
                   padding: const EdgeInsets.all(8),
                   child: Text(
                     '${item.dialogTitle}',
-                    style: const TextStyle(color: Colors.white, fontSize: 18),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -83,11 +90,15 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
         splashColor: const Color(0xFF243743),
         borderRadius: BorderRadius.circular(20),
         onTap: () {
-          context.read<SubChapterSelectedItemState>().updateState(item.id!);
+          context.read<OneSubChapterSelectedItemState>().updateState(item.id!);
           Navigator.pushNamed(
             context,
             '/content_volume_one',
-            arguments: ContentVolumeOneArguments(item.id, subChapterIndex, chapterId),
+            arguments: ContentVolumeOneArguments(
+              item.id,
+              subChapterIndex,
+              chapterId,
+            ),
           );
         },
       ),
