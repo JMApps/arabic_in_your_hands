@@ -87,7 +87,7 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
             ),
           ],
         ),
-        splashColor: const Color(0xFF1D795F),
+        splashColor: const Color(0xFF243743),
         borderRadius: BorderRadius.circular(20),
         onTap: () {
           context.read<TwoSubChapterSelectedItemState>().updateState(item.id!);

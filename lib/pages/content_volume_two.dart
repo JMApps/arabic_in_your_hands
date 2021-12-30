@@ -143,7 +143,7 @@ class _ContentVolumeTwoState extends State<ContentVolumeTwo> {
                                                 padding:
                                                 const EdgeInsets.symmetric(
                                                   horizontal: 16,
-                                                  vertical: 12,
+                                                  vertical: 10,
                                                 ),
                                                 child: Column(
                                                   children: [
@@ -156,7 +156,6 @@ class _ContentVolumeTwoState extends State<ContentVolumeTwo> {
                                                           fontWeight:
                                                           FontWeight.bold),
                                                     ),
-                                                    const SizedBox(height: 8),
                                                     Text(
                                                       '${subChapterSnapshot.data![_arguments.subChapterIndex].dialogTitle}',
                                                       style: const TextStyle(
