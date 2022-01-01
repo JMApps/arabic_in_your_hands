@@ -36,7 +36,7 @@ class FirstVolumeChapterContentItem extends StatelessWidget {
 
   final List<String> _getArabicFonts = [
     'Scheherazade',
-    'Markazi',
+    'Calibri',
     'Lateef',
   ];
 

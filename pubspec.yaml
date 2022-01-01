@@ -47,9 +47,9 @@ flutter:
     - family: Scheherazade
       fonts:
         - asset: assets/fonts/scheherazade.ttf
-    - family: Markazi
+    - family: Calibri
       fonts:
-        - asset: assets/fonts/markazi.ttf
+        - asset: assets/fonts/calibri.ttf
     - family: Lateef
       fonts:
         - asset: assets/fonts/lateef.ttf
