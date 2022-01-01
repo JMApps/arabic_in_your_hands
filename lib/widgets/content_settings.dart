@@ -7,14 +7,14 @@ class ContentSettings extends StatelessWidget {
   ContentSettings({Key? key}) : super(key: key);
 
   final List<String> _getArabicFonts = [
-    'Scheherazade',
     'Calibri',
+    'Scheherazade',
     'Lateef',
   ];
 
   final List<String> _getTranslationFonts = [
-    'Gilroy',
     'Play',
+    'Gilroy',
     'Roboto',
   ];
 

@@ -35,14 +35,14 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
   ];
 
   final List<String> _getArabicFonts = [
-    'Scheherazade',
     'Calibri',
+    'Scheherazade',
     'Lateef',
   ];
 
   final List<String> _getTranslationFonts = [
-    'Gilroy',
     'Play',
+    'Gilroy',
     'Roboto',
   ];
 
