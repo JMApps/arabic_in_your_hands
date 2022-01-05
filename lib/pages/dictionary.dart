@@ -1,28 +1,41 @@
+import 'package:arabicinyourhands/data/dictionary_database_query.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Dictionary extends StatelessWidget {
-  const Dictionary({Key? key}) : super(key: key);
+  Dictionary({Key? key}) : super(key: key);
+
+  final _dictionaryDatabaseQuery = DictionaryDatabaseQuery();
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: const EdgeInsets.all(32),
-        child: TextButton.icon(
-          label: const Text(
-            'На стадии разработки',
-            style: TextStyle(
-              fontSize: 20,
-              color: Color(0xFF243743),
-            ),
-          ),
-          icon: const Icon(
-            CupertinoIcons.chevron_left_slash_chevron_right,
-            color: Color(0xFF243743),
-          ),
-          onPressed: null,
-        ),
+    return Scaffold(
+      body: FutureBuilder<List>(
+        future: _dictionaryDatabaseQuery.getAllCategories(),
+        builder: (BuildContext context, AsyncSnapshot snapshot) {
+          return snapshot.hasData
+              ? Container()
+              : Center(
+                  child: TextButton.icon(
+                    onPressed: null,
+                    icon: const Icon(Icons.add),
+                    label: const Text(
+                      'Добавьте первую категорию',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Color(0xFF243743),
+                      ),
+                    ),
+                  ),
+                );
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xFF1F8D6E),
+        child: const Icon(Icons.add),
+        onPressed: () {
+
+        },
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:arabicinyourhands/pages/dictionary.dart';
 import 'package:arabicinyourhands/pages/volume_one.dart';
 import 'package:arabicinyourhands/pages/volume_two.dart';
 import 'package:arabicinyourhands/provider/content_settings_state.dart';
@@ -27,7 +28,7 @@ class _MainPageState extends State<MainPage> {
   final _mainWidgets = [
     VolumeOne(),
     VolumeTwo(),
-    //const Dictionary(),
+    Dictionary(),
   ];
 
   final _mainTitles = [
@@ -88,10 +89,10 @@ class _MainPageState extends State<MainPage> {
               icon: const Icon(Icons.filter_2_outlined),
               title: const Text('Том 2'),
             ),
-            // SalomonBottomBarItem(
-            //   icon: const Icon(Icons.add),
-            //   title: const Text('Словарь'),
-            // ),
+            SalomonBottomBarItem(
+              icon: const Icon(Icons.add),
+              title: const Text('Словарь'),
+            ),
           ],
           itemShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.5)),
           selectedItemColor: const Color(0xFF37FFC2),
