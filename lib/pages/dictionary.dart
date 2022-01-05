@@ -14,7 +14,7 @@ class Dictionary extends StatelessWidget {
         future: _dictionaryDatabaseQuery.getAllCategories(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return snapshot.hasData
-              ? Container()
+              ? snapshot.data == 'waiting' ? const CircularProgressIndicator() : Container()
               : Center(
                   child: TextButton.icon(
                     onPressed: null,
@@ -31,6 +31,10 @@ class Dictionary extends StatelessWidget {
         },
       ),
       floatingActionButton: FloatingActionButton(
+        mini: true,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
         backgroundColor: const Color(0xFF1F8D6E),
         child: const Icon(Icons.add),
         onPressed: () {
