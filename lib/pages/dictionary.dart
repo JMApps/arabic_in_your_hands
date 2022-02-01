@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/data/dictionary_database_query.dart';
+import 'package:arabicinyourhands/widgets/add_cateogry_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -14,7 +15,9 @@ class Dictionary extends StatelessWidget {
         future: _dictionaryDatabaseQuery.getAllCategories(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           return snapshot.hasData
-              ? snapshot.data == 'waiting' ? const CircularProgressIndicator() : Container()
+              ? snapshot.data == 'waiting'
+                  ? const CircularProgressIndicator()
+                  : Container()
               : Center(
                   child: TextButton.icon(
                     onPressed: null,
@@ -30,15 +33,21 @@ class Dictionary extends StatelessWidget {
                 );
         },
       ),
+      floatingActionButtonLocation:
+          FloatingActionButtonLocation.miniCenterFloat,
       floatingActionButton: FloatingActionButton(
-        mini: true,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
         backgroundColor: const Color(0xFF1F8D6E),
         child: const Icon(Icons.add),
         onPressed: () {
-
+          showCupertinoModalPopup(
+            context: context,
+            builder: (BuildContext context) {
+              return AddCategoryDialog();
+            },
+          );
         },
       ),
     );
