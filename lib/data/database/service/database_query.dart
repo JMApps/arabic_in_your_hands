@@ -1,9 +1,10 @@
-import 'package:arabicinyourhands/model/volume_first_item_chapter_content_model.dart';
-import 'package:arabicinyourhands/model/volume_first_item_chapter_model.dart';
-import 'package:arabicinyourhands/model/volume_first_item_sub_chapter_model.dart';
-import 'package:arabicinyourhands/model/volume_second_item_chapter_content_model.dart';
-import 'package:arabicinyourhands/model/volume_second_item_chapter_model.dart';
-import 'package:arabicinyourhands/model/volume_second_item_sub_chapter_model.dart';
+
+import 'package:arabicinyourhands/data/database/model/volume_first_item_chapter_content_model.dart';
+import 'package:arabicinyourhands/data/database/model/volume_first_item_chapter_model.dart';
+import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_model.dart';
+import 'package:arabicinyourhands/data/database/model/volume_second_item_chapter_content_model.dart';
+import 'package:arabicinyourhands/data/database/model/volume_second_item_chapter_model.dart';
+import 'package:arabicinyourhands/data/database/model/volume_second_item_sub_chapter_model.dart';
 
 import 'database_helper.dart';
 
