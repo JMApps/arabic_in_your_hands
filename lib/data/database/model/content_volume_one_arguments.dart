@@ -1,11 +1,11 @@
 class ContentVolumeOneArguments {
-  int? subChapterId;
-  int? subChapterIndex;
-  int? chapterId;
+  final int chapterId;
+  final int subChapterId;
+  final int subChapterIndex;
 
   ContentVolumeOneArguments(
+    this.chapterId,
     this.subChapterId,
     this.subChapterIndex,
-    this.chapterId,
   );
 }
