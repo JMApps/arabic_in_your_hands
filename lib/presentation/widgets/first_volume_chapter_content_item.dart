@@ -1,23 +1,23 @@
-import 'package:arabicinyourhands/model/volume_second_item_chapter_content_model.dart';
-import 'package:arabicinyourhands/provider/content_settings_state.dart';
-import 'package:arabicinyourhands/provider/volume_content_dialog_visibility_state.dart';
-import 'package:arabicinyourhands/widgets/snackbar_copy_message.dart';
+import 'package:arabicinyourhands/data/database/model/volume_first_item_chapter_content_model.dart';
+import 'package:arabicinyourhands/domain/state/provider/content_settings_state.dart';
+import 'package:arabicinyourhands/domain/state/provider/volume_content_dialog_visibility_state.dart';
+import 'package:arabicinyourhands/presentation/widgets/snackbar_copy_message.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
-class SecondVolumeChapterContentItem extends StatelessWidget {
-  SecondVolumeChapterContentItem({
-    Key? key,
-    required this.item,
-    required this.index,
-    required this.player,
-    required this.realtimePlayingInfo,
-  }) : super(key: key);
+class FirstVolumeChapterContentItem extends StatelessWidget {
+  FirstVolumeChapterContentItem(
+      {Key? key,
+      required this.item,
+      required this.index,
+      required this.player,
+      required this.realtimePlayingInfo})
+      : super(key: key);
 
-  final VolumeSecondItemChapterContentModel item;
+  final VolumeFirstItemChapterContentModel item;
   final int index;
   final AssetsAudioPlayer player;
   final RealtimePlayingInfos realtimePlayingInfo;
@@ -52,7 +52,7 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
       margin: item.id!.isOdd
           ? const EdgeInsets.only(left: 16, top: 8, bottom: 8)
           : const EdgeInsets.only(right: 16, top: 8, bottom: 8),
-      elevation: 2,
+      elevation: 5,
       shape: RoundedRectangleBorder(
         borderRadius: item.id!.isOdd
             ? const BorderRadius.only(
@@ -179,8 +179,8 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
                   size: 20,
                   color: const Color(0xFF243743),
                 ),
-                visible: realtimePlayingInfo.isPlaying &&
-                        player.readingPlaylist!.currentIndex == index
+                visible: player.readingPlaylist!.currentIndex == index &&
+                        realtimePlayingInfo.isPlaying
                     ? true
                     : false,
                 maintainAnimation: true,
@@ -200,9 +200,9 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
                                 .getTextTranslationSize
                                 .toDouble(),
                             fontFamily: _getTranslationFonts[context
-                                .watch<ContentSettingsState>()
+                                .read<ContentSettingsState>()
                                 .getTranslationFontRadioGroupValue],
-                            color: const Color(0xFF243743),
+                            color: Colors.black54,
                           ),
                           textAlign: _getTextAlignTwo[context
                               .watch<ContentSettingsState>()
@@ -230,9 +230,9 @@ class SecondVolumeChapterContentItem extends StatelessWidget {
                                 .getTextTranslationSize
                                 .toDouble(),
                             fontFamily: _getTranslationFonts[context
-                                .watch<ContentSettingsState>()
+                                .read<ContentSettingsState>()
                                 .getTranslationFontRadioGroupValue],
-                            color: Colors.black54,
+                            color: Colors.black,
                           ),
                           textAlign: _getTextAlignTwo[context
                               .watch<ContentSettingsState>()

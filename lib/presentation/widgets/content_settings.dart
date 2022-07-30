@@ -1,4 +1,4 @@
-import 'package:arabicinyourhands/provider/content_settings_state.dart';
+import 'package:arabicinyourhands/domain/state/provider/content_settings_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -1,24 +1,24 @@
 import 'dart:io';
 
-import 'package:arabicinyourhands/data/database_query.dart';
-import 'package:arabicinyourhands/model/content_volume_two_arguments.dart';
-import 'package:arabicinyourhands/provider/two_sub_chapter_selected_item_state.dart';
-import 'package:arabicinyourhands/widgets/content_player.dart';
-import 'package:arabicinyourhands/widgets/content_settings.dart';
-import 'package:arabicinyourhands/widgets/second_volume_chapter_content_item.dart';
+import 'package:arabicinyourhands/data/database/service/database_query.dart';
+import 'package:arabicinyourhands/data/database/model/content_volume_one_arguments.dart';
+import 'package:arabicinyourhands/domain/state/provider/one_sub_chapter_selected_item_state.dart';
+import 'package:arabicinyourhands/presentation/widgets/content_player.dart';
+import 'package:arabicinyourhands/presentation/widgets/content_settings.dart';
+import 'package:arabicinyourhands/presentation/widgets/first_volume_chapter_content_item.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ContentVolumeTwo extends StatefulWidget {
-  const ContentVolumeTwo({Key? key}) : super(key: key);
+class ContentVolumeOne extends StatefulWidget {
+  const ContentVolumeOne({Key? key}) : super(key: key);
 
   @override
-  _ContentVolumeTwoState createState() => _ContentVolumeTwoState();
+  _ContentVolumeOneState createState() => _ContentVolumeOneState();
 }
 
-class _ContentVolumeTwoState extends State<ContentVolumeTwo> {
+class _ContentVolumeOneState extends State<ContentVolumeOne> {
   final _databaseQuery = DatabaseQuery();
   final _assetsAudioPlayer = AssetsAudioPlayer();
 
@@ -30,9 +30,9 @@ class _ContentVolumeTwoState extends State<ContentVolumeTwo> {
 
   @override
   Widget build(BuildContext context) {
-    final _arguments = ModalRoute.of(context)!.settings.arguments as ContentVolumeTwoArguments?;
+    final _arguments = ModalRoute.of(context)!.settings.arguments as ContentVolumeOneArguments?;
     return FutureBuilder<List>(
-      future: _databaseQuery.getAllVolumeSecondChapterContent(_arguments!.subChapterId!),
+      future: _databaseQuery.getAllVolumeFirstChapterContent(_arguments!.subChapterId!),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         if (snapshot.hasData) {
           _setupPlayList(snapshot);
@@ -54,7 +54,7 @@ class _ContentVolumeTwoState extends State<ContentVolumeTwo> {
                   body: _assetsAudioPlayer.builderRealtimePlayingInfos(
                     builder: (context, realtimePlayingInfo) {
                       return FutureBuilder<List>(
-                        future: _databaseQuery.getAllSecondSubChapters(_arguments.chapterId!),
+                        future: _databaseQuery.getAllFirstSubChapters(_arguments.chapterId!),
                         builder: (BuildContext context,
                             AsyncSnapshot subChapterSnapshot) {
                           return subChapterSnapshot.hasData
@@ -83,29 +83,30 @@ class _ContentVolumeTwoState extends State<ContentVolumeTwo> {
                                                 builder:
                                                     (BuildContext context) {
                                                   return SingleChildScrollView(
-                                                      child: ContentSettings());
+                                                    child: ContentSettings(),
+                                                  );
                                                 },
                                               );
                                             },
                                           ),
                                           _arguments.subChapterIndex! + 1 < subChapterSnapshot.data.length
                                               ? IconButton(
-                                            icon: const Icon(
-                                              CupertinoIcons.forward,
-                                            ),
-                                            onPressed: () {
-                                              context.read<TwoSubChapterSelectedItemState>().updateState(_arguments.subChapterId! + 1);
-                                              Navigator.pushReplacementNamed(
-                                                context,
-                                                '/content_volume_two',
-                                                arguments: ContentVolumeTwoArguments(
-                                                  _arguments.subChapterId! + 1,
-                                                  _arguments.subChapterIndex! + 1,
-                                                  _arguments.chapterId,
-                                                ),
-                                              );
-                                            },
-                                          )
+                                                  icon: const Icon(
+                                                    CupertinoIcons.forward,
+                                                  ),
+                                                  onPressed: () {
+                                                    context.read<OneSubChapterSelectedItemState>().updateState(_arguments.subChapterId! + 1);
+                                                    Navigator.pushReplacementNamed(
+                                                      context,
+                                                      '/content_volume_one',
+                                                      arguments: ContentVolumeOneArguments(
+                                                        _arguments.subChapterId! + 1,
+                                                        _arguments.subChapterIndex! + 1,
+                                                        _arguments.chapterId,
+                                                      ),
+                                                    );
+                                                  },
+                                                )
                                               : const SizedBox()
                                         ],
                                       ),
@@ -121,27 +122,27 @@ class _ContentVolumeTwoState extends State<ContentVolumeTwo> {
                                               ),
                                               elevation: 2,
                                               shape:
-                                              const RoundedRectangleBorder(
+                                                  const RoundedRectangleBorder(
                                                 borderRadius: BorderRadius.only(
                                                   bottomLeft:
-                                                  Radius.circular(20),
+                                                      Radius.circular(20),
                                                   bottomRight:
-                                                  Radius.circular(20),
+                                                      Radius.circular(20),
                                                 ),
                                               ),
                                               child: Container(
                                                 decoration: const BoxDecoration(
                                                   borderRadius:
-                                                  BorderRadius.only(
+                                                      BorderRadius.only(
                                                     bottomLeft:
-                                                    Radius.circular(20),
+                                                        Radius.circular(20),
                                                     bottomRight:
-                                                    Radius.circular(20),
+                                                        Radius.circular(20),
                                                   ),
                                                   color: Color(0xFF1F8D6E),
                                                 ),
                                                 padding:
-                                                const EdgeInsets.symmetric(
+                                                    const EdgeInsets.symmetric(
                                                   horizontal: 16,
                                                   vertical: 10,
                                                 ),
@@ -152,9 +153,9 @@ class _ContentVolumeTwoState extends State<ContentVolumeTwo> {
                                                       style: const TextStyle(
                                                           fontSize: 18,
                                                           color:
-                                                          Color(0xFF243743),
+                                                              Color(0xFF243743),
                                                           fontWeight:
-                                                          FontWeight.bold),
+                                                              FontWeight.bold),
                                                     ),
                                                     Text(
                                                       '${subChapterSnapshot.data![_arguments.subChapterIndex].dialogTitle}',
@@ -164,7 +165,7 @@ class _ContentVolumeTwoState extends State<ContentVolumeTwo> {
                                                         fontFamily: 'Play',
                                                       ),
                                                       textAlign:
-                                                        TextAlign.center,
+                                                          TextAlign.center,
                                                     ),
                                                   ],
                                                 ),
@@ -176,7 +177,7 @@ class _ContentVolumeTwoState extends State<ContentVolumeTwo> {
                                       SliverList(
                                         delegate: SliverChildBuilderDelegate(
                                           (BuildContext context, int index) {
-                                            return SecondVolumeChapterContentItem(
+                                            return FirstVolumeChapterContentItem(
                                               item: snapshot.data![index],
                                               index: index,
                                               player: _assetsAudioPlayer,

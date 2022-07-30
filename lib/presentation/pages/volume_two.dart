@@ -1,20 +1,20 @@
 import 'dart:io';
 
-import 'package:arabicinyourhands/data/database_query.dart';
-import 'package:arabicinyourhands/widgets/first_volume_chapter_list.dart';
+import 'package:arabicinyourhands/data/database/service/database_query.dart';
+import 'package:arabicinyourhands/presentation/widgets/second_volume_chapter_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
-class VolumeOne extends StatelessWidget {
-  VolumeOne({Key? key}) : super(key: key);
+class VolumeTwo extends StatelessWidget {
+  VolumeTwo({Key? key}) : super(key: key);
 
   final _databaseQuery = DatabaseQuery();
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List>(
-      future: _databaseQuery.getAllFirstChapters(),
+      future: _databaseQuery.getAllSecondChapters(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return snapshot.hasError
             ? Center(
@@ -43,7 +43,7 @@ class VolumeOne extends StatelessWidget {
                               child: SlideAnimation(
                                 verticalOffset: 150,
                                 child: FadeInAnimation(
-                                  child: FirstVolumeChapterList(item: snapshot.data![index]),
+                                  child: SecondVolumeChapterList(item: snapshot.data![index]),
                                 ),
                               ),
                             );

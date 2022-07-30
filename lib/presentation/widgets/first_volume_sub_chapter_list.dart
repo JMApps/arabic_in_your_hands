@@ -1,4 +1,4 @@
-import 'package:arabicinyourhands/widgets/first_volume_sub_chapter_item.dart';
+import 'package:arabicinyourhands/presentation/widgets/first_volume_sub_chapter_item.dart';
 import 'package:flutter/material.dart';
 
 class FirstVolumeSubChapterList extends StatelessWidget {

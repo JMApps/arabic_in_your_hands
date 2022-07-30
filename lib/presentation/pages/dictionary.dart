@@ -1,5 +1,5 @@
 import 'package:arabicinyourhands/data/database/service/dictionary_database_query.dart';
-import 'package:arabicinyourhands/widgets/add_cateogry_dialog.dart';
+import 'package:arabicinyourhands/presentation/widgets/add_cateogry_dialog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

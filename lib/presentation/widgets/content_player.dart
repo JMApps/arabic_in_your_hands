@@ -1,5 +1,5 @@
-import 'package:arabicinyourhands/provider/content_player_state.dart';
-import 'package:arabicinyourhands/provider/volume_content_dialog_visibility_state.dart';
+import 'package:arabicinyourhands/domain/state/provider/content_player_state.dart';
+import 'package:arabicinyourhands/domain/state/provider/volume_content_dialog_visibility_state.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

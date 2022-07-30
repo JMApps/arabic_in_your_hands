@@ -1,18 +1,18 @@
-import 'package:arabicinyourhands/model/content_volume_one_arguments.dart';
-import 'package:arabicinyourhands/model/volume_first_item_sub_chapter_model.dart';
-import 'package:arabicinyourhands/provider/one_sub_chapter_selected_item_state.dart';
+import 'package:arabicinyourhands/data/database/model/content_volume_two_arguments.dart';
+import 'package:arabicinyourhands/data/database/model/volume_second_item_sub_chapter_model.dart';
+import 'package:arabicinyourhands/domain/state/provider/two_sub_chapter_selected_item_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FirstVolumeSubChapterItem extends StatelessWidget {
-  const FirstVolumeSubChapterItem({
+class SecondVolumeSubChapterItem extends StatelessWidget {
+  const SecondVolumeSubChapterItem({
     Key? key,
     required this.item,
     required this.subChapterIndex,
     required this.chapterId,
   }) : super(key: key);
 
-  final VolumeFirstItemSubChapterModel item;
+  final VolumeSecondItemSubChapterModel item;
   final int subChapterIndex;
   final int chapterId;
 
@@ -22,7 +22,7 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
       elevation: 2,
       margin: const EdgeInsets.symmetric(horizontal: 16),
       color:
-          context.watch<OneSubChapterSelectedItemState>().getCurrentSelectedItem ==
+          context.watch<TwoSubChapterSelectedItemState>().getCurrentSelectedItem ==
                   item.id
               ? const Color(0xFF243743)
               : const Color(0xFF28B78D),
@@ -78,7 +78,7 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
                     '${item.dialogTitle}',
                     style: const TextStyle(
                       color: Colors.white,
-                      fontSize: 18,
+                      fontSize: 20,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -90,11 +90,11 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
         splashColor: const Color(0xFF243743),
         borderRadius: BorderRadius.circular(20),
         onTap: () {
-          context.read<OneSubChapterSelectedItemState>().updateState(item.id!);
+          context.read<TwoSubChapterSelectedItemState>().updateState(item.id!);
           Navigator.pushNamed(
             context,
-            '/content_volume_one',
-            arguments: ContentVolumeOneArguments(
+            '/content_volume_two',
+            arguments: ContentVolumeTwoArguments(
               item.id,
               subChapterIndex,
               chapterId,

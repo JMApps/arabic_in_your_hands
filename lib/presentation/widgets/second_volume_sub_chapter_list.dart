@@ -1,4 +1,4 @@
-import 'package:arabicinyourhands/widgets/second_volume_sub_chapter_item.dart';
+import 'package:arabicinyourhands/presentation/widgets/second_volume_sub_chapter_item.dart';
 import 'package:flutter/material.dart';
 
 class SecondVolumeSubChapterList extends StatelessWidget {
