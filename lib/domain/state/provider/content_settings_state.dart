@@ -1,6 +1,4 @@
-import 'package:arabicinyourhands/domain/constants.dart'
-;import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter/material.dart';
 import 'package:wakelock/wakelock.dart';
 
 class ContentSettingsState with ChangeNotifier {
@@ -38,8 +36,7 @@ class ContentSettingsState with ChangeNotifier {
   }
 
   saveTextArabicSize() async {
-    final _preferences = await SharedPreferences.getInstance();
-    _preferences.setInt(Constants.keyArabicTextSize, _textArabicSize);
+    //_preferences.setInt(Constants.keyArabicTextSize, _textArabicSize);
   }
 
   updateTextTranslationSize(int newSize) {
@@ -48,8 +45,7 @@ class ContentSettingsState with ChangeNotifier {
   }
 
   saveTextTranslationSize() async {
-    final _preferences = await SharedPreferences.getInstance();
-    _preferences.setInt(Constants.keyTranslationTextSize, _textTranslationSize);
+    //_preferences.setInt(Constants.keyTranslationTextSize, _textTranslationSize);
   }
 
   updateArabicRadioValue(int value) {
@@ -58,8 +54,7 @@ class ContentSettingsState with ChangeNotifier {
   }
 
   saveArabicRadioValue() async {
-    final _preferences = await SharedPreferences.getInstance();
-    _preferences.setInt(Constants.keyArabicFontIndex, _arabicFontRadioGroupValue);
+    //_preferences.setInt(Constants.keyArabicFontIndex, _arabicFontRadioGroupValue);
   }
 
   updateTranslationRadioValue(int value) {
@@ -68,9 +63,7 @@ class ContentSettingsState with ChangeNotifier {
   }
 
   saveTranslationRadioValue() async {
-    final _preferences = await SharedPreferences.getInstance();
-    _preferences.setInt(
-        Constants.keyTranslationFontIndex, _translationFontRadioGroupValue);
+    //_preferences.setInt(Constants.keyTranslationFontIndex, _translationFontRadioGroupValue);
   }
 
   updateToggleTextLayout(int index) {
@@ -82,8 +75,7 @@ class ContentSettingsState with ChangeNotifier {
   }
 
   saveToggleTextLayout() async {
-    final _preferences = await SharedPreferences.getInstance();
-    _preferences.setInt(Constants.keyTextAlignIndex, _toggleButtonIndex);
+    //_preferences.setInt(Constants.keyTextAlignIndex, _toggleButtonIndex);
   }
 
   updateScreenWakeLock(bool state) {
@@ -93,21 +85,19 @@ class ContentSettingsState with ChangeNotifier {
   }
 
   saveScreenWakeLock() async {
-    final _preferences = await SharedPreferences.getInstance();
-    _preferences.setBool(Constants.keyDisplayWakeClock, _isScreenWakeLock);
+    //_preferences.setBool(Constants.keyDisplayWakeClock, _isScreenWakeLock);
   }
 
   initSettings() async {
-    final _preferences = await SharedPreferences.getInstance();
-    _textArabicSize = _preferences.getInt(Constants.keyArabicTextSize) ?? 18;
-    _textTranslationSize = _preferences.getInt(Constants.keyTranslationTextSize) ?? 18;
-    _arabicFontRadioGroupValue = _preferences.getInt(Constants.keyArabicFontIndex) ?? 0;
-    _translationFontRadioGroupValue = _preferences.getInt(Constants.keyTranslationFontIndex) ?? 0;
-    _toggleButtonIndex = _preferences.getInt(Constants.keyTextAlignIndex) ?? 1;
-    for (int i = 0; i < _isSelected.length; i++) {
-      _isSelected[i] = i == _toggleButtonIndex;
-    }
-    _isScreenWakeLock = _preferences.getBool(Constants.keyDisplayWakeClock) ?? false;
-    _isScreenWakeLock ? Wakelock.enable() : Wakelock.disable();
+    // _textArabicSize = _preferences.getInt(Constants.keyArabicTextSize) ?? 18;
+    // _textTranslationSize = _preferences.getInt(Constants.keyTranslationTextSize) ?? 18;
+    // _arabicFontRadioGroupValue = _preferences.getInt(Constants.keyArabicFontIndex) ?? 0;
+    // _translationFontRadioGroupValue = _preferences.getInt(Constants.keyTranslationFontIndex) ?? 0;
+    // _toggleButtonIndex = _preferences.getInt(Constants.keyTextAlignIndex) ?? 1;
+    // for (int i = 0; i < _isSelected.length; i++) {
+    //   _isSelected[i] = i == _toggleButtonIndex;
+    // }
+    // _isScreenWakeLock = _preferences.getBool(Constants.keyDisplayWakeClock) ?? false;
+    // _isScreenWakeLock ? Wakelock.enable() : Wakelock.disable();
   }
 }

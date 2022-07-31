@@ -330,7 +330,7 @@ class ContentSettings extends StatelessWidget {
                       Icon(Icons.format_align_right),
                     ],
                     isSelected:
-                        context.watch<ContentSettingsState>().getIsSelected,
+                    context.watch<ContentSettingsState>().getIsSelected,
                     onPressed: (index) {
                       context.read<ContentSettingsState>().updateToggleTextLayout(index);
                       context.read<ContentSettingsState>().saveToggleTextLayout();
@@ -352,7 +352,7 @@ class ContentSettings extends StatelessWidget {
                   MaterialButton(
                     color: const Color(0xFF243743),
                     padding:
-                        const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
+                    const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10)),
                     child: const Text(
