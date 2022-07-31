@@ -1,7 +1,7 @@
-import 'package:arabicinyourhands/domain/state/provider/main_bottom_navigation_state.dart';
+import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected_state.dart';
+import 'package:arabicinyourhands/presentation/lists/first_volume_chapter_list.dart';
+import 'package:arabicinyourhands/presentation/lists/second_volume_chapter_list.dart';
 import 'package:arabicinyourhands/presentation/pages/dictionary.dart';
-import 'package:arabicinyourhands/presentation/pages/volume_one.dart';
-import 'package:arabicinyourhands/presentation/pages/volume_two.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -11,8 +11,8 @@ class MainPageBody extends StatelessWidget {
   MainPageBody({Key? key}) : super(key: key);
 
   final _mainWidgets = [
-    VolumeOne(),
-    VolumeTwo(),
+    FirstVolumeChapterList(),
+    SecondVolumeChapterList(),
     Dictionary(),
   ];
 
@@ -25,11 +25,11 @@ class MainPageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFFAFAFA),
+      backgroundColor: const Color(0xFFE8E8E8),
       appBar: AppBar(
         title: Text(
           _mainTitles[
-              context.watch<MainBottomNavigationState>().getSelectedIndex],
+              context.watch<MainNavigationSelectedState>().getSelectedIndex],
         ),
         backgroundColor: const Color(0xFF243743),
         actions: [
@@ -41,8 +41,8 @@ class MainPageBody extends StatelessWidget {
             onPressed: () async {},
           ),
         ],
-        leading: Container(
-          margin: const EdgeInsets.symmetric(horizontal: 8),
+        leading: Transform.scale(
+          scale: 0.7,
           child: Image.asset('assets/icons/arabic_in_origin.png'),
         ),
       ),
@@ -51,7 +51,7 @@ class MainPageBody extends StatelessWidget {
         switchInCurve: Curves.easeInCubic,
         switchOutCurve: Curves.easeOutCubic,
         child: _mainWidgets[
-            context.watch<MainBottomNavigationState>().getSelectedIndex],
+            context.watch<MainNavigationSelectedState>().getSelectedIndex],
       ),
       bottomNavigationBar: Container(
         decoration: const BoxDecoration(
@@ -81,9 +81,9 @@ class MainPageBody extends StatelessWidget {
           ),
           selectedItemColor: const Color(0xFF37FFC2),
           unselectedItemColor: const Color(0xFF1F8D6E),
-          currentIndex: context.watch<MainBottomNavigationState>().getSelectedIndex,
+          currentIndex: context.watch<MainNavigationSelectedState>().getSelectedIndex,
           onTap: (currentIndex) {
-            context.read<MainBottomNavigationState>().changeBottomNavigationIndex(currentIndex);
+            context.read<MainNavigationSelectedState>().changeBottomNavigationIndex(currentIndex);
           },
         ),
       ),

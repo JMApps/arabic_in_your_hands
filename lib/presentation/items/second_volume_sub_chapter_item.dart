@@ -1,19 +1,19 @@
-import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_model.dart';
+import 'package:arabicinyourhands/data/database/model/volume_second_item_sub_chapter_model.dart';
 import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FistVolumeSubChapterItem extends StatelessWidget {
-  const FistVolumeSubChapterItem({Key? key, required this.item})
+class SecondVolumeSubChapterItem extends StatelessWidget {
+  const SecondVolumeSubChapterItem({Key? key, required this.item})
       : super(key: key);
 
-  final VolumeFirstItemSubChapterModel item;
+  final VolumeSecondItemSubChapterModel item;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 1,
-      color: context.watch<MainNavigationSelectedState>().getCurrentFirstSelectedItem == item.id
+      color: context.watch<MainNavigationSelectedState>().getCurrentSecondSelectedItem == item.id
           ? const Color(0xFF243743)
           : item.id.isOdd ? const Color(0xFF28B78D) : const Color(0xFF209372),
       margin: const EdgeInsets.only(
@@ -75,7 +75,7 @@ class FistVolumeSubChapterItem extends StatelessWidget {
           ),
         ),
         onTap: () {
-          context.read<MainNavigationSelectedState>().updateFirstSelectedState(item.id);
+          context.read<MainNavigationSelectedState>().updateSecondSelectedState(item.id);
         },
       ),
     );

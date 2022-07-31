@@ -1,26 +1,26 @@
-import 'package:arabicinyourhands/data/database/model/volume_first_item_chapter_model.dart';
-import 'package:arabicinyourhands/presentation/lists/first_volume_sub_chapter_list.dart';
+import 'package:arabicinyourhands/data/database/model/volume_second_item_chapter_model.dart';
+import 'package:arabicinyourhands/presentation/lists/second_volume_sub_chapter_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class FirstVolumeChapterItem extends StatelessWidget {
-  const FirstVolumeChapterItem({Key? key, required this.item})
+class SecondVolumeChapterItem extends StatelessWidget {
+  const SecondVolumeChapterItem({Key? key, required this.item})
       : super(key: key);
 
-  final VolumeFirstItemChapterModel item;
+  final VolumeSecondItemChapterModel item;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 3,
       margin: const EdgeInsets.only(
-        left: 8,
+        right: 8,
         top: 16,
       ),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(15),
-          bottomLeft: Radius.circular(15),
+          topRight: Radius.circular(15),
+          bottomRight: Radius.circular(15),
         ),
       ),
       child: Column(
@@ -29,45 +29,23 @@ class FirstVolumeChapterItem extends StatelessWidget {
             elevation: 1,
             color: const Color(0xFFD5FFEF),
             margin: const EdgeInsets.only(
-              left: 16,
+              right: 16,
               top: 16,
               bottom: 8,
             ),
             shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(15),
-                bottomLeft: Radius.circular(15),
+                topRight: Radius.circular(15),
+                bottomRight: Radius.circular(15),
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 16,
-                vertical: 8,
-              ),
+              padding: const EdgeInsets.only(right: 16),
               child: Row(
                 children: [
-                  Container(
-                    width: 40,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      color: const Color(0xFF243743),
-                      borderRadius: BorderRadius.circular(12.5),
-                    ),
-                    child: Center(
-                      child: Text(
-                        item.id.toString(),
-                        style: const TextStyle(
-                          fontSize: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
                   Expanded(
                     child: ListTile(
-                      contentPadding: EdgeInsets.zero,
-                      trailing: SvgPicture.asset(
+                      leading: SvgPicture.asset(
                         'assets/icons/${item.chapterIcon}.svg',
                         width: 35,
                         height: 35,
@@ -92,14 +70,32 @@ class FirstVolumeChapterItem extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    width: 40,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF243743),
+                      borderRadius: BorderRadius.circular(12.5),
+                    ),
+                    child: Center(
+                      child: Text(
+                        item.id.toString(),
+                        style: const TextStyle(
+                          fontSize: 18,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
           SizedBox(
             height: 150,
-            child: FirstVolumeSubChapterList(
+            child: SecondVolumeSubChapterList(
               displayBy: item.id,
             ),
           ),
