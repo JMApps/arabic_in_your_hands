@@ -25,31 +25,72 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
         if (snapshot.hasData) {
           var item = snapshot.data![firstVolumeSubChapterIndex] as VolumeFirstItemSubChapterModel;
           return Scaffold(
-            appBar: AppBar(
-              elevation: 1,
-              centerTitle: true,
-              title: Text(item.dialog),
-              backgroundColor: const Color(0xFF243743),
-              actions: [
-                firstVolumeSubChapterIndex + 1 < snapshot.data!.length
-                    ? IconButton(
-                        icon: const Icon(
-                          CupertinoIcons.forward,
-                          size: 30,
-                        ),
+            backgroundColor: Colors.teal[100],
+            body: NestedScrollView(
+              floatHeaderSlivers: true,
+              headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
+                return [
+                  SliverAppBar(
+                    centerTitle: true,
+                    backgroundColor: const Color(0xFF243743),
+                    elevation: 0,
+                    floating: true,
+                    snap: false,
+                    forceElevated: innerBoxIsScrolled,
+                    expandedHeight: 50,
+                    title: Text(item.dialog),
+                    actions: [
+                      IconButton(
+                        icon: const Icon(CupertinoIcons.settings),
                         splashRadius: 20,
                         onPressed: () {
-                          context.read<MainNavigationSelectedState>().updateFirstSelectedState(item.id + 1);
-                          Navigator.pushReplacementNamed(context, '/first_volume_content',
-                            arguments: ContentVolumeOneArguments(firstVolumeChapterId, firstVolumeSubChapterIndex + 1),
-                          );
+                          Navigator.of(context).pushNamed('content_settings');
                         },
-                      )
-                    : const SizedBox(),
-              ],
-            ),
-            body: Container(
-              color: Colors.teal[100],
+                      ),
+                      firstVolumeSubChapterIndex + 1 < snapshot.data!.length
+                          ? IconButton(
+                              icon: const Icon(
+                                CupertinoIcons.forward,
+                                size: 30,
+                              ),
+                              splashRadius: 20,
+                              onPressed: () {
+                                context.read<MainNavigationSelectedState>().updateFirstSelectedState(item.id + 1);
+                                Navigator.pushReplacementNamed(
+                                  context, '/first_volume_content',
+                                  arguments: ContentVolumeOneArguments(firstVolumeChapterId, firstVolumeSubChapterIndex + 1),
+                                );
+                              },
+                            )
+                          : const SizedBox(),
+                    ],
+                  ),
+                  SliverToBoxAdapter(
+                    child: Card(
+                      color: const Color(0xFF006D50),
+                      margin: const EdgeInsets.all(8),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20)
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Text(
+                          item.dialogTitle,
+                          style: const TextStyle(fontSize: 18, color: Colors.white),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ),
+                ];
+              },
+              body: MediaQuery.removePadding(
+                removeTop: true,
+                removeBottom: true,
+                context: context,
+                child: Container(
+                ),
+              ),
             ),
           );
         }
