@@ -100,7 +100,7 @@ class FirstVolumeChapterItem extends StatelessWidget {
           SizedBox(
             height: 150,
             child: FirstVolumeSubChapterList(
-              displayBy: item.id,
+              chapterId: item.id,
             ),
           ),
         ],

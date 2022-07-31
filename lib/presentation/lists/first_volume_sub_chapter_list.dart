@@ -3,16 +3,16 @@ import 'package:arabicinyourhands/presentation/items/fist_volume_sub_chapter_ite
 import 'package:flutter/material.dart';
 
 class FirstVolumeSubChapterList extends StatelessWidget {
-  FirstVolumeSubChapterList({Key? key, required this.displayBy})
+  FirstVolumeSubChapterList({Key? key, required this.chapterId})
       : super(key: key);
 
-  final int displayBy;
+  final int chapterId;
   final _databaseQuery = DatabaseQuery();
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List>(
-      future: _databaseQuery.getAllFirstSubChapters(displayBy),
+      future: _databaseQuery.getAllFirstSubChapters(chapterId),
       builder: (context, snapshot) {
         return snapshot.hasData
             ? GridView.builder(
@@ -23,6 +23,7 @@ class FirstVolumeSubChapterList extends StatelessWidget {
                 itemBuilder: (context, index) {
                   return FistVolumeSubChapterItem(
                     item: snapshot.data![index],
+                    subChapterIndex: index,
                   );
                 },
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

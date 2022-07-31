@@ -2,7 +2,6 @@ import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected
 import 'package:arabicinyourhands/presentation/lists/first_volume_chapter_list.dart';
 import 'package:arabicinyourhands/presentation/lists/second_volume_chapter_list.dart';
 import 'package:arabicinyourhands/presentation/pages/dictionary.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -32,15 +31,6 @@ class MainPageBody extends StatelessWidget {
               context.watch<MainNavigationSelectedState>().getSelectedIndex],
         ),
         backgroundColor: const Color(0xFF243743),
-        actions: [
-          IconButton(
-            icon: const Icon(
-              CupertinoIcons.settings_solid,
-              color: Color(0xFF28B78D),
-            ),
-            onPressed: () async {},
-          ),
-        ],
         leading: Transform.scale(
           scale: 0.7,
           child: Image.asset('assets/icons/arabic_in_origin.png'),

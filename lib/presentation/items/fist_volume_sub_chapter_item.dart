@@ -1,13 +1,18 @@
+import 'package:arabicinyourhands/data/database/model/content_volume_one_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_model.dart';
 import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class FistVolumeSubChapterItem extends StatelessWidget {
-  const FistVolumeSubChapterItem({Key? key, required this.item})
-      : super(key: key);
+  const FistVolumeSubChapterItem({
+    Key? key,
+    required this.item,
+    required this.subChapterIndex,
+  }) : super(key: key);
 
   final VolumeFirstItemSubChapterModel item;
+  final int subChapterIndex;
 
   @override
   Widget build(BuildContext context) {
@@ -76,6 +81,8 @@ class FistVolumeSubChapterItem extends StatelessWidget {
         ),
         onTap: () {
           context.read<MainNavigationSelectedState>().updateFirstSelectedState(item.id);
+          Navigator.pushNamed(context, '/first_volume_content', arguments: ContentVolumeOneArguments(item.displayBy, subChapterIndex),
+          );
         },
       ),
     );

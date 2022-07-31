@@ -13,6 +13,9 @@ class MainNavigationSelectedState with ChangeNotifier {
 
   int get getCurrentSecondSelectedItem => _currentSecondSelectedItem;
 
+  int _selectedChapterId = 0;
+
+  int get getSelectedChapterId => _selectedChapterId;
 
   changeBottomNavigationIndex(int index) {
     _selectedIndex = index;
@@ -26,6 +29,11 @@ class MainNavigationSelectedState with ChangeNotifier {
 
   updateSecondSelectedState(int newIndex) {
     _currentSecondSelectedItem = newIndex;
+    notifyListeners();
+  }
+
+  updateSelectedChapterId(int newChapterId) {
+    _selectedChapterId = newChapterId;
     notifyListeners();
   }
 }
