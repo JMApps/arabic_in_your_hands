@@ -1,8 +1,8 @@
 
-import 'package:arabicinyourhands/data/database/model/volume_first_item_chapter_content_model.dart';
+import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_content_model.dart';
 import 'package:arabicinyourhands/data/database/model/volume_first_item_chapter_model.dart';
 import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_model.dart';
-import 'package:arabicinyourhands/data/database/model/volume_second_item_chapter_content_model.dart';
+import 'package:arabicinyourhands/data/database/model/volume_second_item_sub_chapter_content_model.dart';
 import 'package:arabicinyourhands/data/database/model/volume_second_item_chapter_model.dart';
 import 'package:arabicinyourhands/data/database/model/volume_second_item_sub_chapter_model.dart';
 
@@ -39,17 +39,17 @@ class DatabaseQuery {
     return firstVolumeChapters!;
   }
 
-  Future<List<VolumeFirstItemChapterContentModel>> getAllVolumeFirstChapterContent(int index) async {
+  Future<List<VolumeFirstItemSubChapterContentModel>> getAllVolumeFirstChapterContent(int index) async {
     var dbClient = await con.db;
     var res = await dbClient.query('Table_of_first_contents', where: 'DisplayBy == $index');
-    List<VolumeFirstItemChapterContentModel>? firstVolumeChapters = res.isNotEmpty ? res.map((c) => VolumeFirstItemChapterContentModel.fromMap(c)).toList() : null;
-    return firstVolumeChapters!;
+    List<VolumeFirstItemSubChapterContentModel>? firstVolumeSubChapterContent = res.isNotEmpty ? res.map((c) => VolumeFirstItemSubChapterContentModel.fromMap(c)).toList() : null;
+    return firstVolumeSubChapterContent!;
   }
 
-  Future<List<VolumeSecondItemChapterContentModel>> getAllVolumeSecondChapterContent(int index) async {
+  Future<List<VolumeSecondItemSubChapterContentModel>> getAllVolumeSecondChapterContent(int index) async {
     var dbClient = await con.db;
     var res = await dbClient.query('Table_of_second_contents', where: 'DisplayBy == $index');
-    List<VolumeSecondItemChapterContentModel>? firstVolumeChapters = res.isNotEmpty ? res.map((c) => VolumeSecondItemChapterContentModel.fromMap(c)).toList() : null;
-    return firstVolumeChapters!;
+    List<VolumeSecondItemSubChapterContentModel>? secondVolumeSubChapterContent = res.isNotEmpty ? res.map((c) => VolumeSecondItemSubChapterContentModel.fromMap(c)).toList() : null;
+    return secondVolumeSubChapterContent!;
   }
 }

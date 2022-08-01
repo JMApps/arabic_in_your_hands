@@ -27,8 +27,8 @@ class DictionaryDatabaseHelper {
         ? await getExternalStorageDirectory()
         : await getApplicationSupportDirectory();
 
-    String _path = join(documentDirectory!.path, 'WordsDatabase.db');
-    await deleteDatabase(_path);
+    String path = join(documentDirectory!.path, 'WordsDatabase.db');
+    await deleteDatabase(path);
 
     //String _toDelete_1 = '${documentDirectory.path}/fortress_db_2.db';
 
@@ -38,21 +38,21 @@ class DictionaryDatabaseHelper {
     //   await deleteDatabase(_toDelete_1);
     // }
 
-    var _exists = await databaseExists(_path);
+    var exists = await databaseExists(path);
 
-    if (!_exists) {
+    if (!exists) {
       try {
-        await Directory(dirname(_path)).create(recursive: true);
+        await Directory(dirname(path)).create(recursive: true);
       } catch (_) {
         Exception('Invalid database');
       }
 
       ByteData data = await rootBundle.load(join('assets/databases', 'WordsDatabase.db'));
       List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-      await File(_path).writeAsBytes(bytes, flush: true);
+      await File(path).writeAsBytes(bytes, flush: true);
     }
 
-    var _onOpen = await openDatabase(_path, version: _databaseVersion);
-    return _onOpen;
+    var onOpen = await openDatabase(path, version: _databaseVersion);
+    return onOpen;
   }
 }

@@ -18,9 +18,14 @@ class FistVolumeSubChapterItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: 1,
-      color: context.watch<MainNavigationSelectedState>().getCurrentFirstSelectedItem == item.id
+      color: context
+                  .watch<MainNavigationSelectedState>()
+                  .getCurrentFirstSelectedItem ==
+              item.id
           ? const Color(0xFF243743)
-          : item.id.isOdd ? const Color(0xFF28B78D) : const Color(0xFF209372),
+          : item.id.isOdd
+              ? const Color(0xFF28B78D)
+              : const Color(0xFF209372),
       margin: const EdgeInsets.only(
         left: 16,
         right: 16,
@@ -80,8 +85,17 @@ class FistVolumeSubChapterItem extends StatelessWidget {
           ),
         ),
         onTap: () {
-          context.read<MainNavigationSelectedState>().updateFirstSelectedState(item.id);
-          Navigator.pushNamed(context, '/first_volume_content', arguments: ContentVolumeOneArguments(item.displayBy, subChapterIndex),
+          context
+              .read<MainNavigationSelectedState>()
+              .updateFirstSelectedState(item.id);
+          Navigator.pushNamed(
+            context,
+            '/first_volume_content',
+            arguments: ContentVolumeOneArguments(
+              item.displayBy,
+              item.id,
+              subChapterIndex,
+            ),
           );
         },
       ),

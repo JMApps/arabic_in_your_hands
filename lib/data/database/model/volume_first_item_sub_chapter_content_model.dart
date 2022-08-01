@@ -1,4 +1,4 @@
-class VolumeSecondItemChapterContentModel {
+class VolumeFirstItemSubChapterContentModel {
   final int id;
   String? arabicName;
   final String arabicContent;
@@ -6,7 +6,7 @@ class VolumeSecondItemChapterContentModel {
   final String translationContent;
   final String audioName;
 
-  VolumeSecondItemChapterContentModel(
+  VolumeFirstItemSubChapterContentModel(
       this.id,
       this.arabicName,
       this.arabicContent,
@@ -14,7 +14,7 @@ class VolumeSecondItemChapterContentModel {
       this.translationContent,
       this.audioName);
 
-  VolumeSecondItemChapterContentModel.fromMap(dynamic object)
+  VolumeFirstItemSubChapterContentModel.fromMap(dynamic object)
       : id = object['_id'],
         arabicName = object['ArabicName'],
         arabicContent = object['ArabicContent'],

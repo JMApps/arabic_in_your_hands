@@ -11,6 +11,7 @@ class AppRoute {
         return MaterialPageRoute(
             builder: (_) => FistVolumeSubChapterContentPage(
                   firstVolumeChapterId: firstVolArguments.firstVolumeChapterId,
+                  firstVolumeSubChapterId: firstVolArguments.firstVolumeSubChapterId,
                   firstVolumeSubChapterIndex: firstVolArguments.firstVolumeSubChapterIndex,
                 ),
             settings: routeSettings);
