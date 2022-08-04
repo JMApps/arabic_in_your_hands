@@ -77,6 +77,7 @@ class FirstVolumeChapterItem extends StatelessWidget {
                         item.chapterTitle,
                         style: const TextStyle(
                           fontSize: 18,
+                          fontWeight: FontWeight.bold,
                           color: Color(0xFF243743),
                         ),
                         textAlign: TextAlign.center,
@@ -86,6 +87,7 @@ class FirstVolumeChapterItem extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 20,
                           fontFamily: 'Scheherazade',
+                          fontWeight: FontWeight.normal,
                           color: Color(0xFF006D50),
                         ),
                         textAlign: TextAlign.center,
