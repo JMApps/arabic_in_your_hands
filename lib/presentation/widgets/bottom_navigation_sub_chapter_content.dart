@@ -1,5 +1,7 @@
+import 'package:arabicinyourhands/domain/state/provider/volume_content_dialog_visibility_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class BottomNavigationSubChapterContent extends StatelessWidget {
   const BottomNavigationSubChapterContent({Key? key}) : super(key: key);
@@ -17,9 +19,14 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Switch.adaptive(
-              value: true,
-              onChanged: (bool? value) {},
+            Transform.scale(
+              scale: 0.75,
+              child: Switch.adaptive(
+                value: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
+                onChanged: (bool? value) {
+                  context.read<VolumeContentDialogVisibilityState>().updateFirstVisibilityState(value!);
+                },
+              ),
             ),
             IconButton(
               onPressed: () {},
@@ -61,9 +68,14 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               ),
               splashRadius: 20,
             ),
-            Switch.adaptive(
-              value: true,
-              onChanged: (bool? value) {},
+            Transform.scale(
+              scale: 0.75,
+              child: Switch.adaptive(
+                value: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
+                onChanged: (bool? value) {
+                  context.read<VolumeContentDialogVisibilityState>().updateSecondVisibilityState(value!);
+                },
+              ),
             ),
           ],
         ),
