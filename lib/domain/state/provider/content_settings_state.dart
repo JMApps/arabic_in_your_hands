@@ -1,103 +1,158 @@
+import 'package:arabicinyourhands/domain/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:wakelock/wakelock.dart';
 
 class ContentSettingsState with ChangeNotifier {
-  int _textArabicSize = 18;
 
-  int get getTextArabicSize => _textArabicSize;
+  var mainSettingsBox = Hive.box(Constants.keyMainSettingBox);
 
-  int _textTranslationSize = 18;
+  double _arabicTextSize = 20.0;
 
-  int get getTextTranslationSize => _textTranslationSize;
+  double get getArabicTextSize => _arabicTextSize;
 
-  int _arabicFontRadioGroupValue = 0;
+  double _translationTextSize = 20.0;
 
-  int get getArabicFontRadioGroupValue => _arabicFontRadioGroupValue;
+  double get getTranslationTextSize => _translationTextSize;
 
-  int _translationFontRadioGroupValue = 0;
+  int _arabicFontIndex =  0;
 
-  int get getTranslationFontRadioGroupValue => _translationFontRadioGroupValue;
+  int get getArabicFontIndex => _arabicFontIndex;
 
-  final List<bool> _isSelected = [false, true, false];
+  final List<String> _getArabicFonts = [
+    'Calibri',
+    'Scheherazade',
+    'Lateef',
+  ];
 
-  int _toggleButtonIndex = 1;
+  String _arabicFontName = 'Calibri';
 
-  int get getToggleButtonIndex => _toggleButtonIndex;
+  String get getArabicFontName => _arabicFontName;
 
-  List<bool> get getIsSelected => _isSelected;
+  int _translationFontIndex =  0;
 
-  bool _isScreenWakeLock = false;
+  int get getTranslationFontIndex => _translationFontIndex;
 
-  bool get getScreenWakelock => _isScreenWakeLock;
+  final List<String> _getTranslationFonts = [
+    'Play',
+    'Gilroy',
+    'Roboto',
+  ];
 
-  updateTextArabicSize(int newSize) {
-    _textArabicSize = newSize;
+  String _translationFontName = 'Play';
+
+  String get getTranslationFontName => _translationFontName;
+
+  final List<bool> _isTextAlignSelected = [false, true, false];
+
+  List<bool> get getIsTextAlignSelected => _isTextAlignSelected;
+
+  TextAlign _textAlign = TextAlign.center;
+
+  TextAlign get getTextAlign => _textAlign;
+
+  final List<TextAlign> _getCurrentTextAlign = [
+    TextAlign.start,
+    TextAlign.center,
+    TextAlign.end,
+  ];
+
+  int _textAlignIndex = 1;
+
+  int get getTextAlignIndex => _textAlignIndex;
+
+  bool _wakeLockState = true;
+
+  bool get getWakeLockState => _wakeLockState;
+
+  ThemeMode _themeMode = ThemeMode.system;
+
+  ThemeMode get getThemeMode => _themeMode;
+
+  bool _themeIsAdaptive = true;
+
+  bool get getThemeIsAdaptive => _themeIsAdaptive;
+
+  bool _themeIsUser = false;
+
+  bool get getThemeIsUser => _themeIsUser;
+
+  changeTextArabicSize(double size) {
+    _arabicTextSize = size;
+    mainSettingsBox.put(Constants.keyArabicTextSize, _arabicTextSize);
     notifyListeners();
   }
 
-  saveTextArabicSize() async {
-    //_preferences.setInt(Constants.keyArabicTextSize, _textArabicSize);
-  }
-
-  updateTextTranslationSize(int newSize) {
-    _textTranslationSize = newSize;
+  changeTextTranslationSize(double size) {
+    _translationTextSize = size;
+    mainSettingsBox.put(Constants.keyTranslationTextSize, _translationTextSize);
     notifyListeners();
   }
 
-  saveTextTranslationSize() async {
-    //_preferences.setInt(Constants.keyTranslationTextSize, _textTranslationSize);
-  }
-
-  updateArabicRadioValue(int value) {
-    _arabicFontRadioGroupValue = value;
+  changeArabicFontIndex(int index) {
+    _arabicFontIndex = index;
+    _arabicFontName = _getArabicFonts[index];
+    mainSettingsBox.put(Constants.keyArabicFontIndex, _arabicFontIndex);
     notifyListeners();
   }
 
-  saveArabicRadioValue() async {
-    //_preferences.setInt(Constants.keyArabicFontIndex, _arabicFontRadioGroupValue);
-  }
-
-  updateTranslationRadioValue(int value) {
-    _translationFontRadioGroupValue = value;
+  changeTranslationFontIndex(int index) {
+    _translationFontIndex = index;
+    _translationFontName = _getTranslationFonts[index];
+    mainSettingsBox.put(Constants.keyTranslationFontIndex, _translationFontIndex);
     notifyListeners();
   }
 
-  saveTranslationRadioValue() async {
-    //_preferences.setInt(Constants.keyTranslationFontIndex, _translationFontRadioGroupValue);
-  }
-
-  updateToggleTextLayout(int index) {
-    _toggleButtonIndex = index;
-    for (int i = 0; i < _isSelected.length; i++) {
-      _isSelected[i] = i == _toggleButtonIndex;
+  changeTextAlign(int index) {
+    _textAlignIndex = index;
+    for (int i = 0; i < _isTextAlignSelected.length; i++) {
+      _isTextAlignSelected[i] = i == _textAlignIndex;
     }
+    _textAlign = _getCurrentTextAlign[_textAlignIndex];
+    mainSettingsBox.put(Constants.keyTextAlignIndex, _textAlignIndex);
     notifyListeners();
   }
 
-  saveToggleTextLayout() async {
-    //_preferences.setInt(Constants.keyTextAlignIndex, _toggleButtonIndex);
-  }
-
-  updateScreenWakeLock(bool state) {
-    _isScreenWakeLock = state;
-    _isScreenWakeLock ? Wakelock.enable() : Wakelock.disable();
+  changeWakeLockState(bool state) {
+    _wakeLockState = state;
+    mainSettingsBox.put(Constants.keyDisplayWakeClock, _wakeLockState);
     notifyListeners();
   }
 
-  saveScreenWakeLock() async {
-    //_preferences.setBool(Constants.keyDisplayWakeClock, _isScreenWakeLock);
+  changeThemeAdaptiveState(bool state) {
+    _themeIsAdaptive = state;
+    ThemeMode.system;
+    mainSettingsBox.put(Constants.keyThemeIsAdaptive, _themeIsAdaptive);
+    notifyListeners();
   }
 
-  initSettings() async {
-    // _textArabicSize = _preferences.getInt(Constants.keyArabicTextSize) ?? 18;
-    // _textTranslationSize = _preferences.getInt(Constants.keyTranslationTextSize) ?? 18;
-    // _arabicFontRadioGroupValue = _preferences.getInt(Constants.keyArabicFontIndex) ?? 0;
-    // _translationFontRadioGroupValue = _preferences.getInt(Constants.keyTranslationFontIndex) ?? 0;
-    // _toggleButtonIndex = _preferences.getInt(Constants.keyTextAlignIndex) ?? 1;
-    // for (int i = 0; i < _isSelected.length; i++) {
-    //   _isSelected[i] = i == _toggleButtonIndex;
-    // }
-    // _isScreenWakeLock = _preferences.getBool(Constants.keyDisplayWakeClock) ?? false;
-    // _isScreenWakeLock ? Wakelock.enable() : Wakelock.disable();
+  changeThemeUserState(bool state) {
+    _themeIsUser = state;
+    if (!_themeIsAdaptive) {
+      _themeIsUser ? ThemeMode.dark : ThemeMode.light;
+      mainSettingsBox.put(Constants.keyThemeIsUser, _themeIsUser);
+      notifyListeners();
+    }
+  }
+
+  initSettings() {
+    _arabicTextSize = mainSettingsBox.get(Constants.keyArabicTextSize, defaultValue: 18.0);
+    _translationTextSize = mainSettingsBox.get(Constants.keyTranslationTextSize, defaultValue: 18.0);
+    _arabicFontIndex = mainSettingsBox.get(Constants.keyArabicFontIndex, defaultValue: 0);
+    _translationFontIndex = mainSettingsBox.get(Constants.keyTranslationFontIndex, defaultValue: 0);
+    _textAlignIndex = mainSettingsBox.get(Constants.keyTextAlignIndex, defaultValue: 1);
+    _textAlign = _getCurrentTextAlign[_textAlignIndex];
+    for (int i = 0; i < _isTextAlignSelected.length; i++) {
+      _isTextAlignSelected[i] = i == _textAlignIndex;
+    }
+    _wakeLockState = mainSettingsBox.get(Constants.keyDisplayWakeClock, defaultValue: true);
+    _wakeLockState ? Wakelock.enable() : Wakelock.disable();
+    _themeIsAdaptive = mainSettingsBox.get(Constants.keyThemeIsAdaptive, defaultValue: true);
+    _themeIsUser = mainSettingsBox.get(Constants.keyThemeIsUser, defaultValue: false);
+    if (!_themeIsAdaptive) {
+      _themeMode = _themeIsUser ? ThemeMode.dark : ThemeMode.light;
+    } else {
+      _themeMode = ThemeMode.system;
+    }
   }
 }

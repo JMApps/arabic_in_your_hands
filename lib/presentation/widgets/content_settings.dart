@@ -4,374 +4,270 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ContentSettings extends StatelessWidget {
-  ContentSettings({Key? key}) : super(key: key);
-
-  final List<String> _getArabicFonts = [
-    'Calibri',
-    'Scheherazade',
-    'Lateef',
-  ];
-
-  final List<String> _getTranslationFonts = [
-    'Play',
-    'Gilroy',
-    'Roboto',
-  ];
+  const ContentSettings({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      children: [
-        Container(
-          width: double.infinity,
-          margin: const EdgeInsets.all(16),
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(25),
-          ),
-          child: Material(
-            color: Colors.white,
-            borderRadius: const BorderRadius.all(
-              Radius.circular(25),
+    final getReadSettings = context.read<ContentSettingsState>();
+    final getWatchSettings = context.watch<ContentSettingsState>();
+    return Padding(
+      padding: const EdgeInsets.all(16),
+      child: ListView(
+        children: [
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(
+              CupertinoIcons.textformat_size,
+              color: Color(0xFF006D50),
             ),
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TextButton.icon(
-                    icon: const Icon(
-                      CupertinoIcons.textformat_size,
-                      color: Color(0xFF1F8D6E),
-                    ),
-                    label: const Text(
-                      'Размер арабского текста',
-                      style: TextStyle(fontSize: 18, color: Colors.black54),
-                    ),
-                    onPressed: null,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 10,
-                        child: CupertinoSlider(
-                          activeColor: const Color(0xFF243743),
-                          min: 14,
-                          max: 50,
-                          value: context
-                              .watch<ContentSettingsState>()
-                              .getTextArabicSize
-                              .toDouble(),
-                          onChanged: (value) {
-                            context.read<ContentSettingsState>().updateTextArabicSize(value.toInt());
-                          },
-                          onChangeEnd: (value) {
-                            context.read<ContentSettingsState>().saveTextArabicSize();
-                          },
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        flex: 1,
-                        child: Text(
-                          '${context.watch<ContentSettingsState>().getTextArabicSize}',
-                          style: const TextStyle(
-                              fontSize: 18, color: Color(0xFF243743)),
-                        ),
-                      ),
-                    ],
-                  ),
-                  TextButton.icon(
-                    icon: const Icon(
-                      CupertinoIcons.textformat_size,
-                      color: Color(0xFF1F8D6E),
-                    ),
-                    label: const Text(
-                      'Размер текста перевода',
-                      style: TextStyle(fontSize: 18, color: Colors.black54),
-                    ),
-                    onPressed: null,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        flex: 10,
-                        child: CupertinoSlider(
-                          activeColor: const Color(0xFF243743),
-                          min: 14,
-                          max: 50,
-                          value: context
-                              .watch<ContentSettingsState>()
-                              .getTextTranslationSize
-                              .toDouble(),
-                          onChanged: (value) {
-                            context
-                                .read<ContentSettingsState>()
-                                .updateTextTranslationSize(value.toInt());
-                          },
-                          onChangeEnd: (value) {
-                            context.read<ContentSettingsState>().saveTextTranslationSize();
-                          },
-                        ),
-                      ),
-                      const SizedBox(width: 8),
-                      Expanded(
-                        flex: 1,
-                        child: Text(
-                          '${context.watch<ContentSettingsState>().getTextTranslationSize}',
-                          style: const TextStyle(
-                              fontSize: 18, color: Color(0xFF243743)),
-                        ),
-                      ),
-                    ],
-                  ),
-                  TextButton.icon(
-                    icon: const Icon(
-                      CupertinoIcons.textformat,
-                      color: Color(0xFF1F8D6E),
-                    ),
-                    label: const Text(
-                      'Шрифт арабского текста',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black54,
-                      ),
-                    ),
-                    onPressed: null,
-                  ),
-                  const Divider(),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Flexible(
-                        flex: 1,
-                        child: Radio(
-                          activeColor: const Color(0xFF243743),
-                          value: 0,
-                          groupValue: context
-                              .watch<ContentSettingsState>()
-                              .getArabicFontRadioGroupValue,
-                          onChanged: (value) {
-                            context.read<ContentSettingsState>().updateArabicRadioValue(0);
-                            context.read<ContentSettingsState>().saveArabicRadioValue();
-                          },
-                        ),
-                      ),
-                      Flexible(
-                        flex: 1,
-                        child: Radio(
-                          activeColor: const Color(0xFF243743),
-                          value: 1,
-                          groupValue: context
-                              .watch<ContentSettingsState>()
-                              .getArabicFontRadioGroupValue,
-                          onChanged: (value) {
-                            context
-                                .read<ContentSettingsState>()
-                                .updateArabicRadioValue(1);
-                            context.read<ContentSettingsState>().saveArabicRadioValue();
-                          },
-                        ),
-                      ),
-                      Flexible(
-                        flex: 1,
-                        child: Radio(
-                          activeColor: const Color(0xFF243743),
-                          value: 2,
-                          groupValue: context
-                              .watch<ContentSettingsState>()
-                              .getArabicFontRadioGroupValue,
-                          onChanged: (value) {
-                            context
-                                .read<ContentSettingsState>()
-                                .updateArabicRadioValue(2);
-                            context.read<ContentSettingsState>().saveArabicRadioValue();
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Divider(),
-                  Center(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 8,
-                        horizontal: 16,
-                      ),
-                      decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Text(
-                        'السلام عليكم!',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: _getArabicFonts[context
-                              .watch<ContentSettingsState>()
-                              .getArabicFontRadioGroupValue],
-                          color: const Color(0xFF243743),
-                        ),
-                        textDirection: TextDirection.rtl,
-                      ),
-                    ),
-                  ),
-                  const Divider(),
-                  TextButton.icon(
-                    icon: const Icon(
-                      CupertinoIcons.textformat,
-                      color: Color(0xFF1F8D6E),
-                    ),
-                    label: const Text(
-                      'Шрифт текста перевода',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black54,
-                      ),
-                    ),
-                    onPressed: () {},
-                  ),
-                  const Divider(),
-                  Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Flexible(
-                        flex: 1,
-                        child: Radio(
-                          activeColor: const Color(0xFF243743),
-                          value: 0,
-                          groupValue: context
-                              .watch<ContentSettingsState>()
-                              .getTranslationFontRadioGroupValue,
-                          onChanged: (value) {
-                            context
-                                .read<ContentSettingsState>()
-                                .updateTranslationRadioValue(0);
-                            context.read<ContentSettingsState>().saveTranslationRadioValue();
-                          },
-                        ),
-                      ),
-                      Flexible(
-                        flex: 1,
-                        child: Radio(
-                          activeColor: const Color(0xFF243743),
-                          value: 1,
-                          groupValue: context
-                              .watch<ContentSettingsState>()
-                              .getTranslationFontRadioGroupValue,
-                          onChanged: (value) {
-                            context
-                                .read<ContentSettingsState>()
-                                .updateTranslationRadioValue(1);
-                            context.read<ContentSettingsState>().saveTranslationRadioValue();
-                          },
-                        ),
-                      ),
-                      Flexible(
-                        flex: 1,
-                        child: Radio(
-                          activeColor: const Color(0xFF243743),
-                          value: 2,
-                          groupValue: context
-                              .watch<ContentSettingsState>()
-                              .getTranslationFontRadioGroupValue,
-                          onChanged: (value) {
-                            context
-                                .read<ContentSettingsState>()
-                                .updateTranslationRadioValue(2);
-                            context.read<ContentSettingsState>().saveTranslationRadioValue();
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Divider(),
-                  Center(
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 8,
-                        horizontal: 16,
-                      ),
-                      decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Text(
-                        'Ассаляму аляйкум!',
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontFamily: _getTranslationFonts[context
-                              .read<ContentSettingsState>()
-                              .getTranslationFontRadioGroupValue],
-                          color: const Color(0xFF243743),
-                        ),
-                      ),
-                    ),
-                  ),
-                  const Divider(),
-                  TextButton.icon(
-                    icon: const Icon(
-                      CupertinoIcons.text_aligncenter,
-                      color: Color(0xFF1F8D6E),
-                    ),
-                    label: const Text(
-                      'Расположение текста',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.black54,
-                      ),
-                    ),
-                    onPressed: () {},
-                  ),
-                  ToggleButtons(
-                    selectedColor: Colors.blueGrey[800],
-                    children: const [
-                      Icon(Icons.format_align_left),
-                      Icon(Icons.format_align_center),
-                      Icon(Icons.format_align_right),
-                    ],
-                    isSelected:
-                    context.watch<ContentSettingsState>().getIsSelected,
-                    onPressed: (index) {
-                      context.read<ContentSettingsState>().updateToggleTextLayout(index);
-                      context.read<ContentSettingsState>().saveToggleTextLayout();
+            title: const Text(
+              'Размер арабского текста',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+              textAlign: TextAlign.start,
+            ),
+            subtitle: Row(
+              children: [
+                Expanded(
+                  child: Slider.adaptive(
+                    min: 14,
+                    max: 60,
+                    value: getWatchSettings.getArabicTextSize,
+                    onChanged: (sizeValue) {
+                      getReadSettings.changeTextArabicSize(sizeValue);
+                    },
+                    onChangeEnd: (onChangedEnd) {
+                      // Сохранить значения
                     },
                   ),
-                  const Divider(),
-                  SwitchListTile(
-                    title: const Text(
-                      'Не отключать дисплей',
-                      style: TextStyle(fontSize: 18, color: Colors.black54),
-                    ),
-                    value: context.watch<ContentSettingsState>().getScreenWakelock,
-                    onChanged: (value) {
-                      context.read<ContentSettingsState>().updateScreenWakeLock(value);
-                      context.read<ContentSettingsState>().saveScreenWakeLock();
+                ),
+                const SizedBox(width: 16),
+                SizedBox(
+                  width: 75,
+                  child: Text(getWatchSettings.getArabicTextSize.toInt().toString()),
+                ),
+              ],
+            ),
+          ),
+          const Divider(
+            indent: 16,
+            endIndent: 16,
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(
+              CupertinoIcons.textformat_size,
+              color: Color(0xFF006D50),
+            ),
+            title: const Text(
+              'Размер текста перевода',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+              textAlign: TextAlign.start,
+            ),
+            subtitle: Row(
+              children: [
+                Expanded(
+                  child: Slider.adaptive(
+                    min: 14,
+                    max: 60,
+                    value: getWatchSettings.getTranslationTextSize,
+                    onChanged: (sizeValue) {
+                      getReadSettings.changeTextTranslationSize(sizeValue);
+                    },
+                    onChangeEnd: (onChangedEnd) {
+                      // Сохранить значение
                     },
                   ),
-                  const Divider(),
-                  MaterialButton(
-                    color: const Color(0xFF243743),
-                    padding:
-                    const EdgeInsets.symmetric(vertical: 8, horizontal: 32),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10)),
-                    child: const Text(
-                      'Закрыть',
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Colors.white,
-                      ),
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
-                  ),
+                ),
+                const SizedBox(width: 16),
+                SizedBox(
+                  width: 75,
+                  child: Text(getWatchSettings.getTranslationTextSize.toInt().toString()),
+                ),
+              ],
+            ),
+          ),
+          const Divider(
+            indent: 16,
+            endIndent: 16,
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(
+              Icons.font_download_rounded,
+              color: Color(0xFF006D50),
+            ),
+            title: const Text(
+              'Шрифт арабского текста',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+              textAlign: TextAlign.start,
+            ),
+            subtitle: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Radio(
+                  value: 0,
+                  groupValue: getWatchSettings.getArabicFontIndex,
+                  onChanged: (onChanged) {
+                    getReadSettings.changeArabicFontIndex(0);
+                  },
+                ),
+                Radio(
+                  value: 1,
+                  groupValue: getWatchSettings.getArabicFontIndex,
+                  onChanged: (onChanged) {
+                    getReadSettings.changeArabicFontIndex(1);
+                  },
+                ),
+                Radio(
+                  value: 2,
+                  groupValue: getWatchSettings.getArabicFontIndex,
+                  onChanged: (onChanged) {
+                    getReadSettings.changeArabicFontIndex(2);
+                  },
+                ),
+              ],
+            ),
+          ),
+          const Divider(
+            indent: 16,
+            endIndent: 16,
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(
+              Icons.font_download_rounded,
+              color: Color(0xFF006D50),
+            ),
+            title: const Text(
+              'Шрифт текста перевода',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+              textAlign: TextAlign.start,
+            ),
+            subtitle: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Radio(
+                  value: getWatchSettings.getTranslationFontIndex,
+                  groupValue: 0,
+                  onChanged: (onChanged) {
+                    getReadSettings.changeTranslationFontIndex(0);
+                  },
+                ),
+                Radio(
+                  value: getWatchSettings.getTranslationFontIndex,
+                  groupValue: 1,
+                  onChanged: (onChanged) {
+                    getReadSettings.changeTranslationFontIndex(1);
+                  },
+                ),
+                Radio(
+                  value: getWatchSettings.getTranslationFontIndex,
+                  groupValue: 2,
+                  onChanged: (onChanged) {
+                    getReadSettings.changeTranslationFontIndex(2);
+                  },
+                ),
+              ],
+            ),
+          ),
+          const Divider(
+            indent: 16,
+            endIndent: 16,
+          ),
+          ListTile(
+            contentPadding: EdgeInsets.zero,
+            leading: const Icon(
+              CupertinoIcons.text_alignleft,
+              color: Color(0xFF006D50),
+            ),
+            title: const Text(
+              'Расположение текста',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+              textAlign: TextAlign.start,
+            ),
+            subtitle: Padding(
+              padding: const EdgeInsets.all(16),
+              child: ToggleButtons(
+                color: const Color(0xFF006D50),
+                borderRadius: BorderRadius.circular(15),
+                isSelected: getWatchSettings.getIsTextAlignSelected,
+                onPressed: (int index) {
+                  getReadSettings.changeTextAlign(index);
+                },
+                children: const [
+                  Icon(CupertinoIcons.text_alignleft),
+                  Icon(CupertinoIcons.text_aligncenter),
+                  Icon(CupertinoIcons.text_alignright),
                 ],
               ),
             ),
           ),
-        ),
-      ],
+          const Divider(
+            indent: 16,
+            endIndent: 16,
+          ),
+          SwitchListTile.adaptive(
+            activeColor: const Color(0xFF006D50),
+            title: const Text(
+              'Не отключать дисплей',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
+            subtitle: const Text('Дисплей будет включен пока приложение активно',),
+            value: getWatchSettings.getWakeLockState,
+            onChanged: (onChanged) {
+              getReadSettings.changeWakeLockState(onChanged);
+            },
+          ),
+          const Divider(
+            indent: 16,
+            endIndent: 16,
+          ),
+          SwitchListTile.adaptive(
+            activeColor: const Color(0xFF006D50),
+            title: const Text(
+              'Адаптивная тема',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
+            subtitle: const Text('Тема приложения будет соответствовать теме на устройстве'),
+            value: getWatchSettings.getThemeIsAdaptive,
+            onChanged: (onChanged) {
+              getReadSettings.changeThemeAdaptiveState(onChanged);
+            },
+          ),
+          SwitchListTile.adaptive(
+            activeColor: const Color(0xFF006D50),
+            title: const Text(
+              'Пользовательская тема',
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
+            subtitle: const Text('Тема приложения будет соответствовать выбранной вами'),
+            value: getWatchSettings.getThemeIsUser,
+            onChanged: getWatchSettings.getThemeIsAdaptive ? null : (onChanged) {
+              getReadSettings.changeThemeUserState(onChanged);
+            },
+          ),
+          const Divider(
+            indent: 16,
+            endIndent: 16,
+          ),
+        ],
+      ),
     );
   }
 }

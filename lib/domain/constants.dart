@@ -7,4 +7,6 @@ class Constants {
   static const String keyTranslationFontIndex = 'key_translation_font_index';
   static const String keyTextAlignIndex = 'key_text_align_index';
   static const String keyDisplayWakeClock = 'key_display_wake_lock';
+  static const String keyThemeIsAdaptive = 'key_theme_is_adaptive';
+  static const String keyThemeIsUser = 'key_theme_is_user';
 }

@@ -3,6 +3,7 @@ import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chap
 import 'package:arabicinyourhands/data/database/service/database_query.dart';
 import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected_state.dart';
 import 'package:arabicinyourhands/presentation/lists/fist_volume_sub_chapter_content_list.dart';
+import 'package:arabicinyourhands/presentation/widgets/bottom_navigation_sub_chapter_content.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -48,7 +49,7 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
                         icon: const Icon(CupertinoIcons.settings),
                         splashRadius: 20,
                         onPressed: () {
-                          Navigator.of(context).pushNamed('content_settings');
+                          Navigator.of(context).pushNamed('/content_settings');
                         },
                       ),
                       firstVolumeSubChapterIndex + 1 < snapshot.data!.length
@@ -104,6 +105,7 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
                 ),
               ),
             ),
+            bottomNavigationBar: const BottomNavigationSubChapterContent(),
           );
         }
         return const Material(

@@ -1,3 +1,4 @@
+import 'package:arabicinyourhands/domain/state/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected_state.dart';
 import 'package:arabicinyourhands/presentation/lists/first_volume_chapter_list.dart';
 import 'package:arabicinyourhands/presentation/lists/second_volume_chapter_list.dart';
@@ -23,6 +24,7 @@ class MainPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    context.read<ContentSettingsState>().initSettings();
     return Scaffold(
       backgroundColor: const Color(0xFFE8E8E8),
       appBar: AppBar(

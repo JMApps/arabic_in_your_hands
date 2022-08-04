@@ -1,5 +1,8 @@
 import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_content_model.dart';
+import 'package:arabicinyourhands/domain/state/provider/content_settings_state.dart';
+import 'package:arabicinyourhands/domain/state/provider/volume_content_dialog_visibility_state.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class FirstVolumeSubChapterContentItem extends StatelessWidget {
   const FirstVolumeSubChapterContentItem({Key? key, required this.item})
@@ -10,6 +13,8 @@ class FirstVolumeSubChapterContentItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isOdd = item.id.isOdd;
+    final getWatchSettings = context.watch<ContentSettingsState>();
+    final getWatchVisibility = context.watch<VolumeContentDialogVisibilityState>();
     return Card(
       elevation: 1,
       shape: RoundedRectangleBorder(
@@ -27,12 +32,85 @@ class FirstVolumeSubChapterContentItem extends StatelessWidget {
       ),
       child: Container(
         padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.only(
+            topLeft: isOdd ? const Radius.circular(16) : const Radius.circular(0),
+            bottomLeft: isOdd ? const Radius.circular(16) : const Radius.circular(0),
+            topRight: isOdd ? const Radius.circular(0) : const Radius.circular(16),
+            bottomRight: isOdd ? const Radius.circular(0) : const Radius.circular(16),
+          ),
+          gradient: LinearGradient(
+            colors: [
+              isOdd ? const Color(0xFFD5FFEF) : const Color(0xFFFFFFFF),
+              isOdd ? const Color(0xFFFFFFFF) : const Color(0xFFD5ECFF),
+            ],
+          ),
+        ),
         child: Column(
           children: [
-            item.arabicName != null ? Text('${item.arabicName}', style: const TextStyle(),) : const SizedBox(),
-            Text(item.arabicContent, style: const TextStyle(),),
-            item.translationName != null ? Text('${item.translationName}', style: const TextStyle(),) : const SizedBox(),
-            Text(item.translationContent, style: const TextStyle(),),
+            Visibility(
+              visible: getWatchVisibility.getFirstDialogVisibility,
+              child: item.arabicName != null
+                  ? SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        '${item.arabicName}',
+                        style: TextStyle(
+                          color: const Color(0xFF243743),
+                          fontFamily: getWatchSettings.getArabicFontName,
+                          fontSize: getWatchSettings.getArabicTextSize,
+                        ),
+                        textAlign: getWatchSettings.getTextAlign,
+                      ),
+                    )
+                  : const SizedBox(),
+            ),
+            Visibility(
+              visible: getWatchVisibility.getFirstDialogVisibility,
+              child: SizedBox(
+                width: double.infinity,
+                child: Text(
+                  item.arabicContent,
+                  style: TextStyle(
+                    fontFamily: getWatchSettings.getArabicFontName,
+                    fontSize: getWatchSettings.getArabicTextSize,
+                  ),
+                  textAlign: getWatchSettings.getTextAlign,
+                ),
+              ),
+            ),
+            const SizedBox(height: 8),
+            Visibility(
+              visible: getWatchVisibility.getSecondDialogVisibility,
+              child: item.translationName != null
+                  ? SizedBox(
+                      width: double.infinity,
+                      child: Text(
+                        '${item.translationName}',
+                        style: TextStyle(
+                          color: const Color(0xFF006D50),
+                          fontFamily: getWatchSettings.getTranslationFontName,
+                          fontSize: getWatchSettings.getTranslationTextSize,
+                        ),
+                        textAlign: getWatchSettings.getTextAlign,
+                      ),
+                    )
+                  : const SizedBox(),
+            ),
+            Visibility(
+              visible: getWatchVisibility.getSecondDialogVisibility,
+              child: SizedBox(
+                width: double.infinity,
+                child: Text(
+                  item.translationContent,
+                  style: TextStyle(
+                    fontFamily: getWatchSettings.getTranslationFontName,
+                    fontSize: getWatchSettings.getTranslationTextSize,
+                  ),
+                  textAlign: getWatchSettings.getTextAlign,
+                ),
+              ),
+            ),
           ],
         ),
       ),
