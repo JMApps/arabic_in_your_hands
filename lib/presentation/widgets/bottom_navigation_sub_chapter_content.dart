@@ -33,12 +33,16 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               ),
             ),
             IconButton(
-              icon: const Icon(
+              icon: Icon(
                 CupertinoIcons.arrow_2_squarepath,
-                color: Colors.white,
+                color: getWatchPlayerState.getPlayListLoopState
+                    ? const Color(0xFF006D50)
+                    : const Color(0xFFFFFFFF),
               ),
               splashRadius: 20,
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<ContentPlayerState>(context, listen: false).changePlayListLoopState();
+              },
             ),
             IconButton(
               icon: const Icon(
@@ -73,12 +77,16 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               },
             ),
             IconButton(
-              icon: const Icon(
+              icon: Icon(
                 CupertinoIcons.arrow_counterclockwise,
-                color: Colors.white,
+                color: getWatchPlayerState.getTrackLoopState
+                    ? const Color(0xFF006D50)
+                    : const Color(0xFFFFFFFF),
               ),
               splashRadius: 20,
-              onPressed: () {},
+              onPressed: () {
+                Provider.of<ContentPlayerState>(context, listen: false).trackLoopState();
+              },
             ),
             Transform.scale(
               scale: 0.75,

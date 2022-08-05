@@ -6,15 +6,15 @@ class ContentPlayerState with ChangeNotifier {
 
   AudioPlayer get getPlayer => _player;
 
-  bool _loopState = false;
+  bool _trackLoopState = false;
 
-  bool get getLoopState => _loopState;
+  bool get getTrackLoopState => _trackLoopState;
 
-  bool _playListState = false;
+  bool _playListLoopState = false;
 
-  bool get getPlayListState => _playListState;
+  bool get getPlayListLoopState => _playListLoopState;
 
-  int _currentTrackIndex = -1;
+  int _currentTrackIndex = 0;
 
   int get getCurrentTrackIndex => _currentTrackIndex;
 
@@ -23,14 +23,14 @@ class ContentPlayerState with ChangeNotifier {
   bool get getPlayingState => _playingState;
 
   initPlayer(AsyncSnapshot snapshot) async {
-    var listAudios = List<AudioSource>.generate(
-        snapshot.data!.length,
-        (i) => AudioSource.uri(Uri.parse(
-            'asset:///assets/audios/${snapshot.data![i].audioName}.mp3')));
-    final myPl = ConcatenatingAudioSource(
+    var listAudios = List<AudioSource>.generate(snapshot.data!.length,
+        (i) => AudioSource.uri(Uri.parse('asset:///assets/audios/${snapshot.data![i].audioName}.mp3')));
+    final myPlayList = ConcatenatingAudioSource(
       children: listAudios,
     );
-    await _player.setAudioSource(myPl, initialIndex: 0, preload: false);
+
+    await _player.setAudioSource(myPlayList, initialIndex: _currentTrackIndex, preload: false);
+
     _player.currentIndexStream.listen(
       (index) {
         _currentTrackIndex = index!;
@@ -42,7 +42,7 @@ class ContentPlayerState with ChangeNotifier {
       (playerState) {
         _playingState = playerState.playing;
         if (playerState.processingState == ProcessingState.completed) {
-          _currentTrackIndex = -1;
+          _currentTrackIndex = 0;
           _playingState = false;
         }
         notifyListeners();
@@ -62,25 +62,25 @@ class ContentPlayerState with ChangeNotifier {
     _player.seekToNext();
   }
 
-  changeLoopState() {
-    _loopState = !_loopState;
-    if (_loopState) {
-      if (_playListState) {
-        _playListState = false;
+  trackLoopState() {
+    _trackLoopState = !_trackLoopState;
+    if (_trackLoopState) {
+      if (_playListLoopState) {
+        _playListLoopState = false;
       }
-      _player.setLoopMode(LoopMode.one);
     }
+    _player.setLoopMode(_trackLoopState ? LoopMode.one : LoopMode.off);
     notifyListeners();
   }
 
-  changePlayListState() {
-    _playListState = !_playListState;
-    if (_playListState) {
-      if (_loopState) {
-        _loopState = false;
+  changePlayListLoopState() {
+    _playListLoopState = !_playListLoopState;
+    if (_playListLoopState) {
+      if (_trackLoopState) {
+        _trackLoopState = false;
       }
     }
-    _player.setLoopMode(LoopMode.all);
+    _player.setLoopMode(_playListLoopState ? LoopMode.all : LoopMode.off);
     notifyListeners();
   }
 
