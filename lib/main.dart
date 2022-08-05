@@ -12,5 +12,7 @@ void main() async {
   );
   await Hive.initFlutter();
   await Hive.openBox(Constants.keyMainSettingBox);
-  runApp(MainPage());
+  runApp(
+    const MainPage(),
+  );
 }
