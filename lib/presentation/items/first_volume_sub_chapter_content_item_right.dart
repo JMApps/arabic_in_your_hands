@@ -6,10 +6,14 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class FirstVolumeSubChapterContentItemRight extends StatelessWidget {
-  const FirstVolumeSubChapterContentItemRight({Key? key, required this.item})
-      : super(key: key);
+  const FirstVolumeSubChapterContentItemRight({
+    Key? key,
+    required this.item,
+    required this.index,
+  }) : super(key: key);
 
   final VolumeFirstItemSubChapterContentModel item;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -37,15 +41,15 @@ class FirstVolumeSubChapterContentItemRight extends StatelessWidget {
           ),
           gradient: LinearGradient(
             colors: context.watch<ContentPlayerState>().getPlayingState &&
-                context.watch<ContentPlayerState>().getCurrentTrackIndex + 1 == item.id
+                    context.watch<ContentPlayerState>().getCurrentTrackIndex == index
                 ? [
-              const Color(0xFFFFFFFF),
-              const Color(0xBFFFEABD),
-            ]
+                    const Color(0xFFFFFFFF),
+                    const Color(0xBFFFEABD),
+                  ]
                 : [
-              const Color(0xFFFFFFFF),
-              const Color(0xBFBEEBFF),
-            ],
+                    const Color(0xFFFFFFFF),
+                    const Color(0xBFBEEBFF),
+                  ],
           ),
         ),
         duration: const Duration(milliseconds: 0),

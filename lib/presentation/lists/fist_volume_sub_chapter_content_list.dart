@@ -31,9 +31,11 @@ class FirstVolumeSubChapterContentList extends StatelessWidget {
                 return index.isOdd
                     ? FirstVolumeSubChapterContentItemLeft(
                         item: snapshot.data![index],
+                        index: index,
                       )
                     : FirstVolumeSubChapterContentItemRight(
                         item: snapshot.data![index],
+                        index: index,
                       );
               },
             ),
