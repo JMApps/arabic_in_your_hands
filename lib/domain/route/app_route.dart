@@ -1,5 +1,5 @@
 import 'package:arabicinyourhands/data/database/model/content_volume_one_arguments.dart';
-import 'package:arabicinyourhands/presentation/pages/content_settings_page.dart';
+import 'package:arabicinyourhands/presentation/pages/first_volume_content_flip_mode_page.dart';
 import 'package:arabicinyourhands/presentation/pages/fist_volume_sub_chapter_content_page.dart';
 import 'package:flutter/material.dart';
 
@@ -15,9 +15,9 @@ class AppRoute {
                   firstVolumeSubChapterIndex: firstVolArguments.firstVolumeSubChapterIndex,
                 ),
             settings: routeSettings);
-      case '/content_settings':
+      case '/first_volume_content_flip':
         return MaterialPageRoute(
-            builder: (_) => const ContentSettingsPage(), settings: routeSettings);
+            builder: (_) => const FirstVolumeContentFlipModePage(), settings: routeSettings);
       default:
         throw Exception('Invalid route ${routeSettings.name}');
     }
