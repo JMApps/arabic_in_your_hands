@@ -1,5 +1,6 @@
 import 'package:arabicinyourhands/domain/state/provider/content_player_state.dart';
-import 'package:arabicinyourhands/domain/state/provider/volume_content_dialog_visibility_state.dart';
+import 'package:arabicinyourhands/presentation/widgets/dialog_visibility.dart';
+import 'package:arabicinyourhands/presentation/widgets/play_speed.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,8 +10,9 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final getReadPlayerState = context.read<ContentPlayerState>();
     final getWatchPlayerState = context.watch<ContentPlayerState>();
+    final getWithoutListen =
+        Provider.of<ContentPlayerState>(context, listen: false);
     return Material(
       color: const Color(0xFF243743),
       borderRadius: const BorderRadius.horizontal(
@@ -20,17 +22,22 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Transform.scale(
-              scale: 0.75,
-              child: Switch.adaptive(
-                activeColor: const Color(0xFF006D50),
-                value: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
-                onChanged: (bool? value) {
-                  context.read<VolumeContentDialogVisibilityState>().updateFirstVisibilityState(value!);
-                },
+            IconButton(
+              splashRadius: 20,
+              icon: Icon(
+                CupertinoIcons.eye,
+                color: Colors.red[200],
               ),
+              onPressed: () {
+                showCupertinoModalPopup(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const DialogVisibility();
+                  },
+                );
+              },
             ),
             IconButton(
               icon: Icon(
@@ -41,7 +48,7 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               ),
               splashRadius: 20,
               onPressed: () {
-                Provider.of<ContentPlayerState>(context, listen: false).changePlayListLoopState();
+                getWithoutListen.changePlayListLoopState();
               },
             ),
             IconButton(
@@ -51,7 +58,7 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               ),
               splashRadius: 20,
               onPressed: () {
-                getReadPlayerState.previousTrack();
+                getWithoutListen.previousTrack();
               },
             ),
             IconButton(
@@ -63,7 +70,7 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               ),
               splashRadius: 20,
               onPressed: () {
-                getReadPlayerState.playPause();
+                getWithoutListen.playPause();
               },
             ),
             IconButton(
@@ -73,7 +80,7 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               ),
               splashRadius: 20,
               onPressed: () {
-                getReadPlayerState.nextTrack();
+                getWithoutListen.nextTrack();
               },
             ),
             IconButton(
@@ -85,18 +92,23 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               ),
               splashRadius: 20,
               onPressed: () {
-                Provider.of<ContentPlayerState>(context, listen: false).trackLoopState();
+                getWithoutListen.trackLoopState();
               },
             ),
-            Transform.scale(
-              scale: 0.75,
-              child: Switch.adaptive(
-                activeColor: const Color(0xFF006D50),
-                value: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
-                onChanged: (bool? value) {
-                  context.read<VolumeContentDialogVisibilityState>().updateSecondVisibilityState(value!);
-                },
+            IconButton(
+              splashRadius: 20,
+              icon: const Icon(
+                CupertinoIcons.speedometer,
+                color: Colors.white,
               ),
+              onPressed: () {
+                showCupertinoModalPopup(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return const PlaySpeed();
+                  },
+                );
+              },
             ),
           ],
         ),
