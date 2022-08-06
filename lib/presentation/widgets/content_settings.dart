@@ -10,12 +10,15 @@ class ContentSettings extends StatelessWidget {
   Widget build(BuildContext context) {
     final getReadSettings = context.read<ContentSettingsState>();
     final getWatchSettings = context.watch<ContentSettingsState>();
-    return Padding(
-      padding: const EdgeInsets.all(16),
+    return CupertinoScrollbar(
       child: ListView(
         children: [
           ListTile(
-            contentPadding: EdgeInsets.zero,
+            contentPadding: const EdgeInsets.only(
+              right: 16,
+              top: 16,
+              left: 16,
+            ),
             leading: const Icon(
               CupertinoIcons.textformat_size,
               color: Color(0xFF006D50),
@@ -45,7 +48,8 @@ class ContentSettings extends StatelessWidget {
                 const SizedBox(width: 16),
                 SizedBox(
                   width: 75,
-                  child: Text(getWatchSettings.getArabicTextSize.toInt().toString()),
+                  child:
+                      Text(getWatchSettings.getArabicTextSize.toInt().toString()),
                 ),
               ],
             ),
@@ -55,7 +59,11 @@ class ContentSettings extends StatelessWidget {
             endIndent: 16,
           ),
           ListTile(
-            contentPadding: EdgeInsets.zero,
+            contentPadding: const EdgeInsets.only(
+              right: 16,
+              top: 16,
+              left: 16,
+            ),
             leading: const Icon(
               CupertinoIcons.textformat_size,
               color: Color(0xFF006D50),
@@ -85,7 +93,8 @@ class ContentSettings extends StatelessWidget {
                 const SizedBox(width: 16),
                 SizedBox(
                   width: 75,
-                  child: Text(getWatchSettings.getTranslationTextSize.toInt().toString()),
+                  child: Text(
+                      getWatchSettings.getTranslationTextSize.toInt().toString()),
                 ),
               ],
             ),
@@ -95,7 +104,11 @@ class ContentSettings extends StatelessWidget {
             endIndent: 16,
           ),
           ListTile(
-            contentPadding: EdgeInsets.zero,
+            contentPadding: const EdgeInsets.only(
+              right: 16,
+              top: 16,
+              left: 16,
+            ),
             leading: const Icon(
               Icons.font_download_rounded,
               color: Color(0xFF006D50),
@@ -139,7 +152,11 @@ class ContentSettings extends StatelessWidget {
             endIndent: 16,
           ),
           ListTile(
-            contentPadding: EdgeInsets.zero,
+            contentPadding: const EdgeInsets.only(
+              right: 16,
+              top: 16,
+              left: 16,
+            ),
             leading: const Icon(
               Icons.font_download_rounded,
               color: Color(0xFF006D50),
@@ -183,7 +200,11 @@ class ContentSettings extends StatelessWidget {
             endIndent: 16,
           ),
           ListTile(
-            contentPadding: EdgeInsets.zero,
+            contentPadding: const EdgeInsets.only(
+              right: 16,
+              top: 16,
+              left: 16,
+            ),
             leading: const Icon(
               CupertinoIcons.text_alignleft,
               color: Color(0xFF006D50),
@@ -224,7 +245,9 @@ class ContentSettings extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            subtitle: const Text('Дисплей будет включен пока приложение активно',),
+            subtitle: const Text(
+              'Дисплей будет включен пока приложение активно',
+            ),
             value: getWatchSettings.getWakeLockState,
             onChanged: (onChanged) {
               getReadSettings.changeWakeLockState(onChanged);
@@ -242,7 +265,8 @@ class ContentSettings extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            subtitle: const Text('Тема приложения будет соответствовать теме на устройстве'),
+            subtitle: const Text(
+                'Тема приложения будет соответствовать теме на устройстве'),
             value: getWatchSettings.getThemeIsAdaptive,
             onChanged: (onChanged) {
               getReadSettings.changeThemeAdaptiveState(onChanged);
@@ -256,11 +280,14 @@ class ContentSettings extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            subtitle: const Text('Тема приложения будет соответствовать выбранной вами'),
+            subtitle: const Text(
+                'Тема приложения будет соответствовать выбранной вами'),
             value: getWatchSettings.getThemeIsUser,
-            onChanged: getWatchSettings.getThemeIsAdaptive ? null : (onChanged) {
-              getReadSettings.changeThemeUserState(onChanged);
-            },
+            onChanged: getWatchSettings.getThemeIsAdaptive
+                ? null
+                : (onChanged) {
+                    getReadSettings.changeThemeUserState(onChanged);
+                  },
           ),
           const Divider(
             indent: 16,

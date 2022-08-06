@@ -3,6 +3,8 @@ import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected
 import 'package:arabicinyourhands/presentation/lists/first_volume_chapter_list.dart';
 import 'package:arabicinyourhands/presentation/lists/second_volume_chapter_list.dart';
 import 'package:arabicinyourhands/presentation/pages/dictionary.dart';
+import 'package:arabicinyourhands/presentation/widgets/content_settings.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -14,12 +16,14 @@ class MainPageBody extends StatelessWidget {
     FirstVolumeChapterList(),
     SecondVolumeChapterList(),
     Dictionary(),
+    const ContentSettings(),
   ];
 
   final _mainTitles = [
     'Том 1',
     'Том 2',
     'Словарь',
+    'Настройки',
   ];
 
   @override
@@ -64,8 +68,20 @@ class MainPageBody extends StatelessWidget {
               title: const Text('Том 2'),
             ),
             SalomonBottomBarItem(
-              icon: const Icon(Icons.add),
+              icon: const Icon(CupertinoIcons.add),
               title: const Text('Словарь'),
+            ),
+            SalomonBottomBarItem(
+              icon: const Icon(
+                CupertinoIcons.settings,
+                color: Colors.white,
+              ),
+              title: const Text(
+                'Настройки',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
             ),
           ],
           itemShape: RoundedRectangleBorder(
@@ -73,7 +89,8 @@ class MainPageBody extends StatelessWidget {
           ),
           selectedItemColor: const Color(0xFF37FFC2),
           unselectedItemColor: const Color(0xFF1F8D6E),
-          currentIndex: context.watch<MainNavigationSelectedState>().getSelectedIndex,
+          currentIndex:
+              context.watch<MainNavigationSelectedState>().getSelectedIndex,
           onTap: (currentIndex) {
             context.read<MainNavigationSelectedState>().changeBottomNavigationIndex(currentIndex);
           },

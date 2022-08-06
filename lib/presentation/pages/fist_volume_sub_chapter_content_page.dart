@@ -53,10 +53,10 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
                       title: Text(item.dialog),
                       actions: [
                         IconButton(
-                          icon: const Icon(CupertinoIcons.settings),
+                          icon: const Icon(CupertinoIcons.creditcard),
                           splashRadius: 20,
                           onPressed: () {
-                            Navigator.of(context).pushNamed('/content_settings');
+                            Navigator.of(context).pushNamed('/first_volume_content_flip');
                           },
                         ),
                         firstVolumeSubChapterIndex + 1 < snapshot.data!.length
