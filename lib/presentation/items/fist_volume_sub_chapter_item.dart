@@ -76,6 +76,7 @@ class FistVolumeSubChapterItem extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 16,
                       color: Colors.white,
+                      fontFamily: 'Gilroy medium',
                     ),
                     textAlign: TextAlign.center,
                   ),

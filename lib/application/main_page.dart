@@ -34,7 +34,7 @@ class _MainPageState extends State<MainPage> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Арабский перед тобой',
-        theme: ThemeData(primarySwatch: Colors.blueGrey, fontFamily: 'Gilroy'),
+        theme: ThemeData(primarySwatch: Colors.blueGrey, fontFamily: 'Gilroy',),
         onGenerateRoute: _appRouter.appGeneratorRoute,
         home: MainPageBody(),
       ),

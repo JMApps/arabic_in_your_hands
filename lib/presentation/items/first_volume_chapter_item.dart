@@ -79,6 +79,7 @@ class FirstVolumeChapterItem extends StatelessWidget {
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFF243743),
+                          fontFamily: 'Gilroy medium',
                         ),
                         textAlign: TextAlign.center,
                       ),

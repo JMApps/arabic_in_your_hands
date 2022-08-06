@@ -56,8 +56,10 @@ flutter:
         - asset: assets/fonts/lateef.ttf
     - family: Gilroy
       fonts:
+        - asset: assets/fonts/gilroy_light.ttf
+    - family: Gilroy medium
+      fonts:
         - asset: assets/fonts/gilroy_medium.ttf
-        - asset: assets/fonts/gilroy_bold.ttf
     - family: Play
       fonts:
         - asset: assets/fonts/play.ttf

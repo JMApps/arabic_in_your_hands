@@ -56,7 +56,8 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
                           icon: const Icon(CupertinoIcons.creditcard),
                           splashRadius: 20,
                           onPressed: () {
-                            Navigator.of(context).pushNamed('/first_volume_content_flip');
+                            Navigator.of(context)
+                                .pushNamed('/first_volume_content_flip');
                           },
                         ),
                         firstVolumeSubChapterIndex + 1 < snapshot.data!.length
@@ -97,6 +98,7 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
                             style: const TextStyle(
                               fontSize: 18,
                               color: Colors.white,
+                              fontFamily: 'Gilroy medium',
                             ),
                             textAlign: TextAlign.center,
                           ),
