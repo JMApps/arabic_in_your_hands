@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/domain/state/provider/content_player_state.dart';
+import 'package:arabicinyourhands/domain/state/provider/play_speed_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/dialog_visibility.dart';
 import 'package:arabicinyourhands/presentation/widgets/play_speed.dart';
 import 'package:flutter/cupertino.dart';
@@ -10,9 +11,9 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final getWatchPlayerState = context.watch<ContentPlayerState>();
-    final getWithoutListen =
-        Provider.of<ContentPlayerState>(context, listen: false);
+    final contentPlayerWithoutListen = Provider.of<ContentPlayerState>(context, listen: false);
+    final getWatchContentPlayer = context.watch<ContentPlayerState>();
+    getWatchContentPlayer.getPlayer.setSpeed(context.watch<PlaySpeedState>().getPlaySpeed);
     return Material(
       color: const Color(0xFF243743),
       borderRadius: const BorderRadius.horizontal(
@@ -42,13 +43,13 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
             IconButton(
               icon: Icon(
                 CupertinoIcons.arrow_2_squarepath,
-                color: getWatchPlayerState.getPlayListLoopState
+                color: getWatchContentPlayer.getPlayListLoopState
                     ? const Color(0xFF006D50)
                     : const Color(0xFFFFFFFF),
               ),
               splashRadius: 20,
               onPressed: () {
-                getWithoutListen.changePlayListLoopState();
+                contentPlayerWithoutListen.changePlayListLoopState();
               },
             ),
             IconButton(
@@ -58,19 +59,19 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               ),
               splashRadius: 20,
               onPressed: () {
-                getWithoutListen.previousTrack();
+                contentPlayerWithoutListen.previousTrack();
               },
             ),
             IconButton(
               icon: Icon(
-                getWatchPlayerState.getPlayingState
+                getWatchContentPlayer.getPlayingState
                     ? CupertinoIcons.pause
                     : CupertinoIcons.play,
                 color: const Color(0xFF37FFC2),
               ),
               splashRadius: 20,
               onPressed: () {
-                getWithoutListen.playPause();
+                contentPlayerWithoutListen.playPause();
               },
             ),
             IconButton(
@@ -80,19 +81,19 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               ),
               splashRadius: 20,
               onPressed: () {
-                getWithoutListen.nextTrack();
+                contentPlayerWithoutListen.nextTrack();
               },
             ),
             IconButton(
               icon: Icon(
                 CupertinoIcons.arrow_counterclockwise,
-                color: getWatchPlayerState.getTrackLoopState
+                color: getWatchContentPlayer.getTrackLoopState
                     ? const Color(0xFF006D50)
                     : const Color(0xFFFFFFFF),
               ),
               splashRadius: 20,
               onPressed: () {
-                getWithoutListen.trackLoopState();
+                contentPlayerWithoutListen.trackLoopState();
               },
             ),
             IconButton(

@@ -1,10 +1,14 @@
+import 'package:arabicinyourhands/domain/state/provider/play_speed_state.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class PlaySpeed extends StatelessWidget {
   const PlaySpeed({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final getReadPlaySpeed = context.read<PlaySpeedState>();
+    final getWatchPlaySpeed = context.watch<PlaySpeedState>();
     return Card(
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
@@ -22,39 +26,43 @@ class PlaySpeed extends StatelessWidget {
               const SizedBox(height: 8),
               RadioListTile(
                 title: const Text('0.5x'),
-                value: true,
-                groupValue: 0,
-                onChanged: (onChanged) {},
+                value: 0,
+                groupValue: getWatchPlaySpeed.getPlaySpeedIndex,
+                onChanged: (onChanged) {
+                  getReadPlaySpeed.changePlaySpeed(0);
+                },
               ),
               RadioListTile(
                 title: const Text('0.75x'),
-                value: true,
-                groupValue: 1,
-                onChanged: (onChanged) {},
+                value: 1,
+                groupValue: getWatchPlaySpeed.getPlaySpeedIndex,
+                onChanged: (onChanged) {
+                  getReadPlaySpeed.changePlaySpeed(1);
+                },
               ),
               RadioListTile(
                 title: const Text('1x'),
-                value: true,
-                groupValue: 2,
-                onChanged: (onChanged) {},
+                value: 2,
+                groupValue: getWatchPlaySpeed.getPlaySpeedIndex,
+                onChanged: (onChanged) {
+                  getReadPlaySpeed.changePlaySpeed(2);
+                },
               ),
               RadioListTile(
                 title: const Text('1.5x'),
-                value: true,
-                groupValue: 3,
-                onChanged: (onChanged) {},
+                value: 3,
+                groupValue: getWatchPlaySpeed.getPlaySpeedIndex,
+                onChanged: (onChanged) {
+                  getReadPlaySpeed.changePlaySpeed(3);
+                },
               ),
               RadioListTile(
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    bottomRight: Radius.circular(25),
-                    bottomLeft: Radius.circular(25),
-                  ),
-                ),
                 title: const Text('1.75x'),
-                value: true,
-                groupValue: 4,
-                onChanged: (onChanged) {},
+                value: 4,
+                groupValue: getWatchPlaySpeed.getPlaySpeedIndex,
+                onChanged: (onChanged) {
+                  getReadPlaySpeed.changePlaySpeed(4);
+                },
               ),
             ],
           ),
