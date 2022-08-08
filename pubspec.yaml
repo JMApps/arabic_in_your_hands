@@ -28,6 +28,7 @@ dependencies:
   hive_flutter: ^1.1.0
   just_audio: ^0.9.28
   flutter_flip_card: ^0.0.3
+  smooth_page_indicator: ^1.0.0+2
 
 dev_dependencies:
   flutter_test:

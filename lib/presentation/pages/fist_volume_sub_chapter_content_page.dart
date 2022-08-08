@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/data/database/model/content_volume_one_arguments.dart';
+import 'package:arabicinyourhands/data/database/model/volume_first_item_flip_content_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_model.dart';
 import 'package:arabicinyourhands/data/database/service/database_query.dart';
 import 'package:arabicinyourhands/domain/state/provider/content_player_state.dart';
@@ -55,7 +56,13 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
                           icon: const Icon(CupertinoIcons.creditcard),
                           splashRadius: 20,
                           onPressed: () {
-                            Navigator.of(context).pushNamed('/first_volume_content_flip');
+                            Navigator.of(context).pushNamed(
+                              '/first_volume_content_flip',
+                              arguments: VolumeFirstItemFlipContentArguments(
+                                firstVolumeSubChapterId,
+                                item.dialogTitle,
+                              ),
+                            );
                           },
                         ),
                         firstVolumeSubChapterIndex + 1 < snapshot.data!.length
