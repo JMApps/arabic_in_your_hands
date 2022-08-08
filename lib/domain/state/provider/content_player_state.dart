@@ -23,13 +23,16 @@ class ContentPlayerState with ChangeNotifier {
   bool get getPlayingState => _playingState;
 
   initPlayer(AsyncSnapshot snapshot) async {
-    var listAudios = List<AudioSource>.generate(snapshot.data!.length,
-        (i) => AudioSource.uri(Uri.parse('asset:///assets/audios/${snapshot.data![i].audioName}.mp3')));
+    var listAudios = List<AudioSource>.generate(
+        snapshot.data!.length,
+        (i) => AudioSource.uri(Uri.parse(
+            'asset:///assets/audios/${snapshot.data![i].audioName}.mp3')));
     final myPlayList = ConcatenatingAudioSource(
       children: listAudios,
     );
 
-    await _player.setAudioSource(myPlayList, initialIndex: _currentTrackIndex, preload: false);
+    await _player.setAudioSource(myPlayList,
+        initialIndex: _currentTrackIndex, preload: false);
 
     _player.currentIndexStream.listen(
       (index) {
@@ -44,10 +47,18 @@ class ContentPlayerState with ChangeNotifier {
         if (playerState.processingState == ProcessingState.completed) {
           _currentTrackIndex = 0;
           _playingState = false;
+          _player.seek(Duration.zero, index: _currentTrackIndex);
+          _player.stop();
         }
         notifyListeners();
       },
     );
+  }
+
+  playOne(int index) async {
+    _player.seek(Duration.zero, index: index);
+    _player.play();
+    notifyListeners();
   }
 
   previousTrack() {
