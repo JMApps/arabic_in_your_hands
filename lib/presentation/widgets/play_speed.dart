@@ -32,6 +32,7 @@ class PlaySpeed extends StatelessWidget {
                   getReadPlaySpeed.changePlaySpeed(0);
                 },
               ),
+              const Divider(),
               RadioListTile(
                 title: const Text('0.75x'),
                 value: 1,
@@ -40,6 +41,7 @@ class PlaySpeed extends StatelessWidget {
                   getReadPlaySpeed.changePlaySpeed(1);
                 },
               ),
+              const Divider(),
               RadioListTile(
                 title: const Text('1x'),
                 value: 2,
@@ -48,6 +50,7 @@ class PlaySpeed extends StatelessWidget {
                   getReadPlaySpeed.changePlaySpeed(2);
                 },
               ),
+              const Divider(),
               RadioListTile(
                 title: const Text('1.5x'),
                 value: 3,
@@ -56,6 +59,7 @@ class PlaySpeed extends StatelessWidget {
                   getReadPlaySpeed.changePlaySpeed(3);
                 },
               ),
+              const Divider(),
               RadioListTile(
                 title: const Text('1.75x'),
                 value: 4,
@@ -64,6 +68,7 @@ class PlaySpeed extends StatelessWidget {
                   getReadPlaySpeed.changePlaySpeed(4);
                 },
               ),
+              const Divider(),
             ],
           ),
         ],

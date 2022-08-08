@@ -16,13 +16,8 @@ class DialogVisibility extends StatelessWidget {
         children: [
           Column(
             children: [
+              const Divider(),
               SwitchListTile.adaptive(
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(25),
-                    topRight: Radius.circular(25),
-                  ),
-                ),
                 contentPadding: const EdgeInsets.only(
                   right: 16,
                   top: 16,
@@ -40,12 +35,6 @@ class DialogVisibility extends StatelessWidget {
               ),
               const Divider(),
               SwitchListTile.adaptive(
-                shape: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(25),
-                    bottomRight: Radius.circular(25),
-                  ),
-                ),
                 contentPadding: const EdgeInsets.only(
                   right: 16,
                   bottom: 16,
@@ -61,6 +50,7 @@ class DialogVisibility extends StatelessWidget {
                   context.read<VolumeContentDialogVisibilityState>().updateFirstVisibilityState(value!);
                 },
               ),
+              const Divider(),
             ],
           ),
         ],
