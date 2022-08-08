@@ -32,6 +32,7 @@ class FirstVolumeContentFlipModePage extends StatelessWidget {
           children: [
             Card(
               color: const Color(0xFF006D50),
+              margin: const EdgeInsets.all(8),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
