@@ -24,9 +24,17 @@ class DialogShareCopyFirst extends StatelessWidget {
         children: [
           Column(
             children: [
-              const Divider(),
+              const Divider(
+                indent: 24,
+                endIndent: 24,
+                color: Color(0xFF243743),
+              ),
               ListTile(
-                trailing: const Icon(CupertinoIcons.doc_on_clipboard),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                trailing: const Icon(
+                  CupertinoIcons.doc_on_clipboard,
+                  color: Color(0xFF243743),
+                ),
                 title: const Text(
                   'Скопировать',
                   style: TextStyle(fontSize: 18),
@@ -36,9 +44,17 @@ class DialogShareCopyFirst extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
               ),
-              const Divider(),
+              const Divider(
+                indent: 16,
+                endIndent: 16,
+                color: Color(0xFF243743),
+              ),
               ListTile(
-                trailing: const Icon(CupertinoIcons.share),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                trailing: const Icon(
+                  CupertinoIcons.share,
+                  color: Color(0xFF243743),
+                ),
                 title: const Text(
                   'Поделиться',
                   style: TextStyle(fontSize: 18),
@@ -52,7 +68,11 @@ class DialogShareCopyFirst extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
               ),
-              const Divider(),
+              const Divider(
+                indent: 24,
+                endIndent: 24,
+                color: Color(0xFF243743),
+              ),
             ],
           ),
         ],

@@ -16,13 +16,13 @@ class DialogVisibility extends StatelessWidget {
         children: [
           Column(
             children: [
-              const Divider(),
+              const Divider(
+                indent: 24,
+                endIndent: 24,
+                color: Color(0xFF243743),
+              ),
               SwitchListTile.adaptive(
-                contentPadding: const EdgeInsets.only(
-                  right: 16,
-                  top: 16,
-                  left: 16,
-                ),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 title: const Text(
                   'Показать/скрыть арабский текст',
                   style: TextStyle(fontSize: 18),
@@ -33,13 +33,13 @@ class DialogVisibility extends StatelessWidget {
                   context.read<VolumeContentDialogVisibilityState>().updateSecondVisibilityState(value!);
                 },
               ),
-              const Divider(),
+              const Divider(
+                indent: 16,
+                endIndent: 16,
+                color: Color(0xFF243743),
+              ),
               SwitchListTile.adaptive(
-                contentPadding: const EdgeInsets.only(
-                  right: 16,
-                  bottom: 16,
-                  left: 16,
-                ),
+                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 title: const Text(
                   'Показать/скрыть текст перевода',
                   style: TextStyle(fontSize: 18),
@@ -50,7 +50,11 @@ class DialogVisibility extends StatelessWidget {
                   context.read<VolumeContentDialogVisibilityState>().updateFirstVisibilityState(value!);
                 },
               ),
-              const Divider(),
+              const Divider(
+                indent: 24,
+                endIndent: 24,
+                color: Color(0xFF243743),
+              ),
             ],
           ),
         ],
