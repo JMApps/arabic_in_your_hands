@@ -31,14 +31,14 @@ class VolumeFirstFlipCardList extends StatelessWidget {
                         );
                       },
                       onPageChanged: (int pageNumber) {
-                        context.read<FlipPageState>().changePageIndex(pageNumber);
+                        context.read<FlipPageState>().changeFirstVolumePageIndex(pageNumber);
                       },
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.all(16),
                     child: AnimatedSmoothIndicator(
-                      activeIndex: context.watch<FlipPageState>().getCurrentPageIndex,
+                      activeIndex: context.watch<FlipPageState>().getCurrentFirstVolumePageIndex,
                       count: snapshot.data!.length,
                       effect: const ScrollingDotsEffect(
                           dotWidth: 8,

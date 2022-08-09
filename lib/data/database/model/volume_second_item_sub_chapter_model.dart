@@ -17,6 +17,6 @@ class VolumeSecondItemSubChapterModel {
       : id = object['_id'],
         dialogPicture = object['DialogPicture'],
         dialog = object['Dialog'],
-        displayBy = object['DisplayBy'],
-        dialogTitle = object['DialogTitle'];
+        dialogTitle = object['DialogTitle'],
+        displayBy = object['DisplayBy'];
 }

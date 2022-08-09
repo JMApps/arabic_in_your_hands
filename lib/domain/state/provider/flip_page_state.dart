@@ -1,16 +1,25 @@
 import 'package:flutter/material.dart';
 
 class FlipPageState with ChangeNotifier {
-  int _currentPageIndex = 0;
+  int _currentFirstVolumePageIndex = 0;
 
-  int get getCurrentPageIndex => _currentPageIndex;
+  int get getCurrentFirstVolumePageIndex => _currentFirstVolumePageIndex;
+
+  int _currentSecondVolumePageIndex = 0;
+
+  int get getCurrentSecondVolumePageIndex => _currentSecondVolumePageIndex;
 
   bool _cardMode = true;
 
   bool get getCardMode => _cardMode;
 
-  changePageIndex(int index) {
-    _currentPageIndex = index;
+  changeFirstVolumePageIndex(int index) {
+    _currentFirstVolumePageIndex = index;
+    notifyListeners();
+  }
+
+  changeSecondVolumePageIndex(int index) {
+    _currentSecondVolumePageIndex = index;
     notifyListeners();
   }
 
