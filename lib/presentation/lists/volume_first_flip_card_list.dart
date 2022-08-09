@@ -31,9 +31,7 @@ class VolumeFirstFlipCardList extends StatelessWidget {
                         );
                       },
                       onPageChanged: (int pageNumber) {
-                        context
-                            .read<FlipPageState>()
-                            .changePageIndex(pageNumber);
+                        context.read<FlipPageState>().changePageIndex(pageNumber);
                       },
                     ),
                   ),
@@ -43,8 +41,8 @@ class VolumeFirstFlipCardList extends StatelessWidget {
                       activeIndex: context.watch<FlipPageState>().getCurrentPageIndex,
                       count: snapshot.data!.length,
                       effect: const ScrollingDotsEffect(
-                          dotWidth: 12,
-                          dotHeight: 12,
+                          dotWidth: 8,
+                          dotHeight: 8,
                           paintStyle: PaintingStyle.fill,
                           strokeWidth: 1.5,
                           dotColor: Color(0xFF00A178),

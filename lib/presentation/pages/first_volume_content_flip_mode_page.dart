@@ -1,6 +1,5 @@
 import 'package:arabicinyourhands/domain/state/provider/flip_page_state.dart';
 import 'package:arabicinyourhands/presentation/lists/volume_first_flip_card_list.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
