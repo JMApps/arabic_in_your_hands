@@ -1,7 +1,11 @@
 import 'package:arabicinyourhands/data/database/model/content_volume_one_arguments.dart';
+import 'package:arabicinyourhands/data/database/model/content_volume_two_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/volume_first_item_flip_content_arguments.dart';
+import 'package:arabicinyourhands/data/database/model/volume_second_item_flip_content_arguments.dart';
 import 'package:arabicinyourhands/presentation/pages/first_volume_content_flip_mode_page.dart';
 import 'package:arabicinyourhands/presentation/pages/fist_volume_sub_chapter_content_page.dart';
+import 'package:arabicinyourhands/presentation/pages/second_volume_content_flip_mode_page.dart';
+import 'package:arabicinyourhands/presentation/pages/second_volume_sub_chapter_content_page.dart';
 import 'package:flutter/material.dart';
 
 class AppRoute {
@@ -18,13 +22,29 @@ class AppRoute {
                 ),
             settings: routeSettings);
       case '/first_volume_content_flip':
-        final VolumeFirstItemFlipContentArguments flipContentArguments =
-            routeSettings.arguments as VolumeFirstItemFlipContentArguments;
+        final VolumeFirstItemFlipContentArguments flipContentArguments = routeSettings.arguments as VolumeFirstItemFlipContentArguments;
         return MaterialPageRoute(
             builder: (_) => FirstVolumeContentFlipModePage(
                   firstVolumeSubChapterId: flipContentArguments.firstVolumeSubChapterId,
                   dialogTitle: flipContentArguments.dialogTitle,
                 ),
+            settings: routeSettings);
+      case '/second_volume_content':
+        final ContentVolumeTwoArguments secondVolArguments = routeSettings.arguments as ContentVolumeTwoArguments;
+        return MaterialPageRoute(
+            builder: (_) => SecondVolumeSubChapterContentPage(
+              secondVolumeChapterId: secondVolArguments.secondVolumeChapterId,
+              secondVolumeSubChapterId: secondVolArguments.secondVolumeSubChapterId,
+              secondVolumeSubChapterIndex: secondVolArguments.secondVolumeSubChapterIndex,
+            ),
+            settings: routeSettings);
+      case '/second_volume_content_flip':
+        final VolumeSecondItemFlipContentArguments flipContentArguments = routeSettings.arguments as VolumeSecondItemFlipContentArguments;
+        return MaterialPageRoute(
+            builder: (_) => SecondVolumeContentFlipModePage(
+              secondVolumeSubChapterId: flipContentArguments.secondVolumeSubChapterId,
+              dialogTitle: flipContentArguments.dialogTitle,
+            ),
             settings: routeSettings);
       default:
         throw Exception('Invalid route ${routeSettings.name}');

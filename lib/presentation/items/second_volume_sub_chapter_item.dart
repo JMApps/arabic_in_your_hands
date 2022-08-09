@@ -1,21 +1,31 @@
+import 'package:arabicinyourhands/data/database/model/content_volume_two_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/volume_second_item_sub_chapter_model.dart';
 import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected_state.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class SecondVolumeSubChapterItem extends StatelessWidget {
-  const SecondVolumeSubChapterItem({Key? key, required this.item})
-      : super(key: key);
+  const SecondVolumeSubChapterItem({
+    Key? key,
+    required this.item,
+    required this.subChapterIndex,
+  }) : super(key: key);
 
   final VolumeSecondItemSubChapterModel item;
+  final int subChapterIndex;
 
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 1,
-      color: context.watch<MainNavigationSelectedState>().getCurrentSecondSelectedItem == item.id
+      color: context
+                  .watch<MainNavigationSelectedState>()
+                  .getCurrentSecondSelectedItem ==
+              item.id
           ? const Color(0xFF243743)
-          : item.id.isOdd ? const Color(0xFF28B78D) : const Color(0xFF209372),
+          : item.id.isOdd
+              ? const Color(0xFF28B78D)
+              : const Color(0xFF209372),
       margin: const EdgeInsets.only(
         left: 16,
         right: 16,
@@ -66,6 +76,7 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 16,
                       color: Colors.white,
+                      fontFamily: 'Gilroy medium',
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -75,7 +86,18 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
           ),
         ),
         onTap: () {
-          context.read<MainNavigationSelectedState>().updateSecondSelectedState(item.id);
+          context
+              .read<MainNavigationSelectedState>()
+              .updateSecondSelectedState(item.id);
+          Navigator.pushNamed(
+            context,
+            '/second_volume_content',
+            arguments: ContentVolumeTwoArguments(
+              item.displayBy,
+              item.id,
+              subChapterIndex,
+            ),
+          );
         },
       ),
     );

@@ -40,11 +40,15 @@ class SecondVolumeChapterItem extends StatelessWidget {
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.only(right: 16),
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16,
+                vertical: 8,
+              ),
               child: Row(
                 children: [
                   Expanded(
                     child: ListTile(
+                      contentPadding: EdgeInsets.zero,
                       leading: SvgPicture.asset(
                         'assets/icons/${item.chapterIcon}.svg',
                         width: 35,
@@ -57,6 +61,7 @@ class SecondVolumeChapterItem extends StatelessWidget {
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: Color(0xFF243743),
+                          fontFamily: 'Gilroy medium',
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -65,9 +70,11 @@ class SecondVolumeChapterItem extends StatelessWidget {
                         style: const TextStyle(
                           fontSize: 20,
                           fontFamily: 'Scheherazade',
+                          fontWeight: FontWeight.normal,
                           color: Color(0xFF006D50),
                         ),
                         textAlign: TextAlign.center,
+                        textDirection: TextDirection.rtl,
                       ),
                     ),
                   ),
@@ -97,7 +104,7 @@ class SecondVolumeChapterItem extends StatelessWidget {
           SizedBox(
             height: 150,
             child: SecondVolumeSubChapterList(
-              displayBy: item.id,
+              chapterId: item.id,
             ),
           ),
         ],
