@@ -4,7 +4,6 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:wakelock/wakelock.dart';
 
 class ContentSettingsState with ChangeNotifier {
-
   var mainSettingsBox = Hive.box(Constants.keyMainSettingBox);
 
   double _arabicTextSize = 20.0;
@@ -15,7 +14,7 @@ class ContentSettingsState with ChangeNotifier {
 
   double get getTranslationTextSize => _translationTextSize;
 
-  int _arabicFontIndex =  0;
+  int _arabicFontIndex = 0;
 
   int get getArabicFontIndex => _arabicFontIndex;
 
@@ -29,7 +28,7 @@ class ContentSettingsState with ChangeNotifier {
 
   String get getArabicFontName => _arabicFontName;
 
-  int _translationFontIndex =  0;
+  int _translationFontIndex = 0;
 
   int get getTranslationFontIndex => _translationFontIndex;
 
@@ -99,7 +98,8 @@ class ContentSettingsState with ChangeNotifier {
   changeTranslationFontIndex(int index) {
     _translationFontIndex = index;
     _translationFontName = _getTranslationFonts[index];
-    mainSettingsBox.put(Constants.keyTranslationFontIndex, _translationFontIndex);
+    mainSettingsBox.put(
+        Constants.keyTranslationFontIndex, _translationFontIndex);
     notifyListeners();
   }
 

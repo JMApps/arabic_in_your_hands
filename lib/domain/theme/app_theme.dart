@@ -35,7 +35,6 @@ class AppTheme {
 }
 
 extension ColorSchemeS on ColorScheme {
-
   Color get myAccentColor => brightness == Brightness.light
       ? const Color(0xFF00796B)
       : const Color(0xFF0098DA);
@@ -56,9 +55,10 @@ extension ColorSchemeS on ColorScheme {
       ? const Color(0xFF1DE9B6)
       : const Color(0xFF00E5FF);
 
-  Color get bottomNavigationUnSelectedItemColor => brightness == Brightness.light
-      ? const Color(0xFF009688)
-      : const Color(0xFF0288D1);
+  Color get bottomNavigationUnSelectedItemColor =>
+      brightness == Brightness.light
+          ? const Color(0xFF009688)
+          : const Color(0xFF0288D1);
 
   Color get mainChapterCardColor => brightness == Brightness.light
       ? const Color(0xFFF5F5F5)
@@ -116,17 +116,20 @@ extension ColorSchemeS on ColorScheme {
       ? const Color(0xBFBEEBFF)
       : const Color(0xFF2C3E42);
 
-  Color get contentItemSecondRightGradientColor => brightness == Brightness.light
-      ? const Color(0xFFFAFAFA)
-      : const Color(0xFF192226);
+  Color get contentItemSecondRightGradientColor =>
+      brightness == Brightness.light
+          ? const Color(0xFFFAFAFA)
+          : const Color(0xFF192226);
 
-  Color get contentItemFirstSelectedGradientColor => brightness == Brightness.light
-      ? const Color(0xBFFFEABD)
-      : const Color(0xFF2F2B1E);
+  Color get contentItemFirstSelectedGradientColor =>
+      brightness == Brightness.light
+          ? const Color(0xBFFFEABD)
+          : const Color(0xFF2F2B1E);
 
-  Color get contentItemSecondSelectedGradientColor => brightness == Brightness.light
-      ? const Color(0xFFFFFFFF)
-      : const Color(0xFF262219);
+  Color get contentItemSecondSelectedGradientColor =>
+      brightness == Brightness.light
+          ? const Color(0xFFFFFFFF)
+          : const Color(0xFF262219);
 
   Color get fabDictionaryColor => brightness == Brightness.light
       ? const Color(0xFF209372)

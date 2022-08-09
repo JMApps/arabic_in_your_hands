@@ -83,7 +83,9 @@ class FistVolumeSubChapterItem extends StatelessWidget {
           ),
         ),
         onTap: () {
-          context.read<MainNavigationSelectedState>().updateFirstSelectedState(item.id);
+          context
+              .read<MainNavigationSelectedState>()
+              .updateFirstSelectedState(item.id);
           Navigator.pushNamed(
             context,
             '/first_volume_content',

@@ -36,8 +36,7 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
         future: _databaseQuery.getAllFirstSubChapters(firstVolumeChapterId),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            var item = snapshot.data![firstVolumeSubChapterIndex]
-                as VolumeFirstItemSubChapterModel;
+            var item = snapshot.data![firstVolumeSubChapterIndex] as VolumeFirstItemSubChapterModel;
             return Scaffold(
               body: NestedScrollView(
                 floatHeaderSlivers: true,
@@ -77,7 +76,9 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
                                 ),
                                 splashRadius: 20,
                                 onPressed: () {
-                                  context.read<MainNavigationSelectedState>().updateFirstSelectedState(item.id + 1);
+                                  context
+                                      .read<MainNavigationSelectedState>()
+                                      .updateFirstSelectedState(item.id + 1);
                                   Navigator.pushReplacementNamed(
                                     context,
                                     '/first_volume_content',

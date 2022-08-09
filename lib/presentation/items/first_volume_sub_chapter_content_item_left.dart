@@ -22,8 +22,7 @@ class FirstVolumeSubChapterContentItemLeft extends StatelessWidget {
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
     final getWatchSettings = context.watch<ContentSettingsState>();
-    final getWatchVisibility =
-        context.watch<VolumeContentDialogVisibilityState>();
+    final getWatchVisibility = context.watch<VolumeContentDialogVisibilityState>();
     final getReadContentPlay = context.watch<ContentPlayerState>();
     return Card(
       elevation: 3,

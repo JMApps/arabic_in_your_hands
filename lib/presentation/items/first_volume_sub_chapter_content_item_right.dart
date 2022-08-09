@@ -22,8 +22,7 @@ class FirstVolumeSubChapterContentItemRight extends StatelessWidget {
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
     final getWatchSettings = context.watch<ContentSettingsState>();
-    final getWatchVisibility =
-        context.watch<VolumeContentDialogVisibilityState>();
+    final getWatchVisibility = context.watch<VolumeContentDialogVisibilityState>();
     final getReadContentPlay = context.watch<ContentPlayerState>();
     return Card(
       elevation: 3,
@@ -52,10 +51,7 @@ class FirstVolumeSubChapterContentItemRight extends StatelessWidget {
             ),
             gradient: LinearGradient(
               colors: context.watch<ContentPlayerState>().getPlayingState &&
-                      context
-                              .watch<ContentPlayerState>()
-                              .getCurrentTrackIndex ==
-                          index
+                      context.watch<ContentPlayerState>().getCurrentTrackIndex == index
                   ? [
                       myColor.contentItemSecondSelectedGradientColor,
                       myColor.contentItemFirstSelectedGradientColor,

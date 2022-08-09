@@ -55,10 +55,8 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               },
             ),
             IconButton(
-              icon: Icon(
-                CupertinoIcons.backward_end,
-                color: myColor.myAccentColor
-              ),
+              icon: Icon(CupertinoIcons.backward_end,
+                  color: myColor.myAccentColor),
               splashRadius: 20,
               onPressed: () {
                 contentPlayerWithoutListen.previousTrack();
@@ -66,21 +64,18 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
             ),
             IconButton(
               icon: Icon(
-                getWatchContentPlayer.getPlayingState
-                    ? CupertinoIcons.pause
-                    : CupertinoIcons.play,
-                color: myColor.myAccentColor
-              ),
+                  getWatchContentPlayer.getPlayingState
+                      ? CupertinoIcons.pause
+                      : CupertinoIcons.play,
+                  color: myColor.myAccentColor),
               splashRadius: 20,
               onPressed: () {
                 contentPlayerWithoutListen.playPause();
               },
             ),
             IconButton(
-              icon: Icon(
-                CupertinoIcons.forward_end,
-                color: myColor.myAccentColor
-              ),
+              icon: Icon(CupertinoIcons.forward_end,
+                  color: myColor.myAccentColor),
               splashRadius: 20,
               onPressed: () {
                 contentPlayerWithoutListen.nextTrack();

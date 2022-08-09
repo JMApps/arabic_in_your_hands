@@ -18,8 +18,7 @@ class VolumeFirstFlipCardList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: _databaseQuery
-          .getAllVolumeFirstChapterContent(firstVolumeSubChapterId),
+      future: _databaseQuery.getAllVolumeFirstChapterContent(firstVolumeSubChapterId),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return snapshot.hasData
             ? Column(
@@ -48,7 +47,8 @@ class VolumeFirstFlipCardList extends StatelessWidget {
                         paintStyle: PaintingStyle.fill,
                         strokeWidth: 1.5,
                         dotColor: Theme.of(context).colorScheme.myAccentColor,
-                        activeDotColor: Theme.of(context).colorScheme.myPrimaryColor,
+                        activeDotColor:
+                            Theme.of(context).colorScheme.myPrimaryColor,
                       ),
                     ),
                   )

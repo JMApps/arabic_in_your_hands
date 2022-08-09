@@ -33,18 +33,18 @@ class AppRoute {
         final ContentVolumeTwoArguments secondVolArguments = routeSettings.arguments as ContentVolumeTwoArguments;
         return MaterialPageRoute(
             builder: (_) => SecondVolumeSubChapterContentPage(
-              secondVolumeChapterId: secondVolArguments.secondVolumeChapterId,
-              secondVolumeSubChapterId: secondVolArguments.secondVolumeSubChapterId,
-              secondVolumeSubChapterIndex: secondVolArguments.secondVolumeSubChapterIndex,
-            ),
+                  secondVolumeChapterId: secondVolArguments.secondVolumeChapterId,
+                  secondVolumeSubChapterId: secondVolArguments.secondVolumeSubChapterId,
+                  secondVolumeSubChapterIndex: secondVolArguments.secondVolumeSubChapterIndex,
+                ),
             settings: routeSettings);
       case '/second_volume_content_flip':
         final VolumeSecondItemFlipContentArguments flipContentArguments = routeSettings.arguments as VolumeSecondItemFlipContentArguments;
         return MaterialPageRoute(
             builder: (_) => SecondVolumeContentFlipModePage(
-              secondVolumeSubChapterId: flipContentArguments.secondVolumeSubChapterId,
-              dialogTitle: flipContentArguments.dialogTitle,
-            ),
+                  secondVolumeSubChapterId: flipContentArguments.secondVolumeSubChapterId,
+                  dialogTitle: flipContentArguments.dialogTitle,
+                ),
             settings: routeSettings);
       default:
         throw Exception('Invalid route ${routeSettings.name}');

@@ -51,7 +51,8 @@ class ContentSettings extends StatelessWidget {
                 const SizedBox(width: 16),
                 SizedBox(
                   width: 75,
-                  child: Text(getWatchSettings.getArabicTextSize.toInt().toString()),
+                  child: Text(
+                      getWatchSettings.getArabicTextSize.toInt().toString()),
                 ),
               ],
             ),
@@ -96,7 +97,9 @@ class ContentSettings extends StatelessWidget {
                 const SizedBox(width: 16),
                 SizedBox(
                   width: 75,
-                  child: Text(getWatchSettings.getTranslationTextSize.toInt().toString()),
+                  child: Text(getWatchSettings.getTranslationTextSize
+                      .toInt()
+                      .toString()),
                 ),
               ],
             ),
@@ -273,7 +276,8 @@ class ContentSettings extends StatelessWidget {
                 fontSize: 18,
               ),
             ),
-            subtitle: const Text('Тема приложения будет соответствовать теме на устройстве'),
+            subtitle: const Text(
+                'Тема приложения будет соответствовать теме на устройстве'),
             value: getWatchSettings.getThemeIsAdaptive,
             onChanged: (onChanged) {
               getReadSettings.changeThemeAdaptiveState(onChanged);
