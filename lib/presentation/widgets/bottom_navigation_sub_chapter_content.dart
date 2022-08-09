@@ -1,5 +1,6 @@
 import 'package:arabicinyourhands/domain/state/provider/content_player_state.dart';
 import 'package:arabicinyourhands/domain/state/provider/play_speed_state.dart';
+import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:arabicinyourhands/presentation/widgets/dialog_visibility.dart';
 import 'package:arabicinyourhands/presentation/widgets/play_speed.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,11 +12,12 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final myColor = Theme.of(context).colorScheme;
     final contentPlayerWithoutListen = Provider.of<ContentPlayerState>(context, listen: false);
     final getWatchContentPlayer = context.watch<ContentPlayerState>();
     getWatchContentPlayer.getPlayer.setSpeed(context.watch<PlaySpeedState>().getPlaySpeed);
     return Material(
-      color: const Color(0xFF243743),
+      color: myColor.bottomNavigationBarColor,
       borderRadius: const BorderRadius.horizontal(
         left: Radius.circular(20),
         right: Radius.circular(20),
@@ -44,7 +46,7 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               icon: Icon(
                 CupertinoIcons.arrow_2_squarepath,
                 color: getWatchContentPlayer.getPlayListLoopState
-                    ? const Color(0xFF006D50)
+                    ? myColor.myAccentColor
                     : const Color(0xFFFFFFFF),
               ),
               splashRadius: 20,
@@ -53,9 +55,9 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               },
             ),
             IconButton(
-              icon: const Icon(
+              icon: Icon(
                 CupertinoIcons.backward_end,
-                color: Color(0xFF37FFC2),
+                color: myColor.myAccentColor
               ),
               splashRadius: 20,
               onPressed: () {
@@ -67,7 +69,7 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
                 getWatchContentPlayer.getPlayingState
                     ? CupertinoIcons.pause
                     : CupertinoIcons.play,
-                color: const Color(0xFF37FFC2),
+                color: myColor.myAccentColor
               ),
               splashRadius: 20,
               onPressed: () {
@@ -75,9 +77,9 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               },
             ),
             IconButton(
-              icon: const Icon(
+              icon: Icon(
                 CupertinoIcons.forward_end,
-                color: Color(0xFF37FFC2),
+                color: myColor.myAccentColor
               ),
               splashRadius: 20,
               onPressed: () {
@@ -88,7 +90,7 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               icon: Icon(
                 CupertinoIcons.arrow_counterclockwise,
                 color: getWatchContentPlayer.getTrackLoopState
-                    ? const Color(0xFF006D50)
+                    ? myColor.myAccentColor
                     : const Color(0xFFFFFFFF),
               ),
               splashRadius: 20,

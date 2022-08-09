@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/domain/state/provider/volume_content_dialog_visibility_state.dart';
+import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,7 +8,9 @@ class DialogVisibility extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final myColor = Theme.of(context).colorScheme;
     return Card(
+      color: myColor.mainChapterCardColor,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
@@ -16,10 +19,10 @@ class DialogVisibility extends StatelessWidget {
         children: [
           Column(
             children: [
-              const Divider(
+              Divider(
                 indent: 24,
                 endIndent: 24,
-                color: Color(0xFF243743),
+                color: myColor.myPrimaryColor,
               ),
               SwitchListTile.adaptive(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
@@ -27,16 +30,16 @@ class DialogVisibility extends StatelessWidget {
                   'Показать/скрыть арабский текст',
                   style: TextStyle(fontSize: 18),
                 ),
-                activeColor: const Color(0xFF006D50),
+                activeColor: myColor.myAccentColor,
                 value: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
                 onChanged: (bool? value) {
                   context.read<VolumeContentDialogVisibilityState>().updateSecondVisibilityState(value!);
                 },
               ),
-              const Divider(
+              Divider(
                 indent: 16,
                 endIndent: 16,
-                color: Color(0xFF243743),
+                color: myColor.myPrimaryColor,
               ),
               SwitchListTile.adaptive(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
@@ -44,16 +47,16 @@ class DialogVisibility extends StatelessWidget {
                   'Показать/скрыть текст перевода',
                   style: TextStyle(fontSize: 18),
                 ),
-                activeColor: const Color(0xFF006D50),
+                activeColor: myColor.myAccentColor,
                 value: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
                 onChanged: (bool? value) {
                   context.read<VolumeContentDialogVisibilityState>().updateFirstVisibilityState(value!);
                 },
               ),
-              const Divider(
+              Divider(
                 indent: 24,
                 endIndent: 24,
-                color: Color(0xFF243743),
+                color: myColor.myPrimaryColor,
               ),
             ],
           ),

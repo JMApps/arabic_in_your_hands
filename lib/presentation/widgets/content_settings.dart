@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/domain/state/provider/content_settings_state.dart';
+import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -8,6 +9,7 @@ class ContentSettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final myColor = Theme.of(context).colorScheme;
     final getReadSettings = context.read<ContentSettingsState>();
     final getWatchSettings = context.watch<ContentSettingsState>();
     return CupertinoScrollbar(
@@ -19,9 +21,9 @@ class ContentSettings extends StatelessWidget {
               top: 16,
               left: 16,
             ),
-            leading: const Icon(
+            leading: Icon(
               CupertinoIcons.textformat_size,
-              color: Color(0xFF006D50),
+              color: myColor.myAccentColor,
             ),
             title: const Text(
               'Размер арабского текста',
@@ -34,6 +36,7 @@ class ContentSettings extends StatelessWidget {
               children: [
                 Expanded(
                   child: Slider.adaptive(
+                    activeColor: myColor.myAccentColor,
                     min: 14,
                     max: 60,
                     value: getWatchSettings.getArabicTextSize,
@@ -48,8 +51,7 @@ class ContentSettings extends StatelessWidget {
                 const SizedBox(width: 16),
                 SizedBox(
                   width: 75,
-                  child:
-                      Text(getWatchSettings.getArabicTextSize.toInt().toString()),
+                  child: Text(getWatchSettings.getArabicTextSize.toInt().toString()),
                 ),
               ],
             ),
@@ -64,9 +66,9 @@ class ContentSettings extends StatelessWidget {
               top: 16,
               left: 16,
             ),
-            leading: const Icon(
+            leading: Icon(
               CupertinoIcons.textformat_size,
-              color: Color(0xFF006D50),
+              color: myColor.myAccentColor,
             ),
             title: const Text(
               'Размер текста перевода',
@@ -79,6 +81,7 @@ class ContentSettings extends StatelessWidget {
               children: [
                 Expanded(
                   child: Slider.adaptive(
+                    activeColor: myColor.myAccentColor,
                     min: 14,
                     max: 60,
                     value: getWatchSettings.getTranslationTextSize,
@@ -93,8 +96,7 @@ class ContentSettings extends StatelessWidget {
                 const SizedBox(width: 16),
                 SizedBox(
                   width: 75,
-                  child: Text(
-                      getWatchSettings.getTranslationTextSize.toInt().toString()),
+                  child: Text(getWatchSettings.getTranslationTextSize.toInt().toString()),
                 ),
               ],
             ),
@@ -109,9 +111,9 @@ class ContentSettings extends StatelessWidget {
               top: 16,
               left: 16,
             ),
-            leading: const Icon(
+            leading: Icon(
               Icons.font_download_rounded,
-              color: Color(0xFF006D50),
+              color: myColor.myAccentColor,
             ),
             title: const Text(
               'Шрифт арабского текста',
@@ -124,6 +126,7 @@ class ContentSettings extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Radio(
+                  activeColor: myColor.myAccentColor,
                   value: 0,
                   groupValue: getWatchSettings.getArabicFontIndex,
                   onChanged: (onChanged) {
@@ -131,6 +134,7 @@ class ContentSettings extends StatelessWidget {
                   },
                 ),
                 Radio(
+                  activeColor: myColor.myAccentColor,
                   value: 1,
                   groupValue: getWatchSettings.getArabicFontIndex,
                   onChanged: (onChanged) {
@@ -138,6 +142,7 @@ class ContentSettings extends StatelessWidget {
                   },
                 ),
                 Radio(
+                  activeColor: myColor.myAccentColor,
                   value: 2,
                   groupValue: getWatchSettings.getArabicFontIndex,
                   onChanged: (onChanged) {
@@ -157,9 +162,9 @@ class ContentSettings extends StatelessWidget {
               top: 16,
               left: 16,
             ),
-            leading: const Icon(
+            leading: Icon(
               Icons.font_download_rounded,
-              color: Color(0xFF006D50),
+              color: myColor.myAccentColor,
             ),
             title: const Text(
               'Шрифт текста перевода',
@@ -172,6 +177,7 @@ class ContentSettings extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Radio(
+                  activeColor: myColor.myAccentColor,
                   value: getWatchSettings.getTranslationFontIndex,
                   groupValue: 0,
                   onChanged: (onChanged) {
@@ -179,6 +185,7 @@ class ContentSettings extends StatelessWidget {
                   },
                 ),
                 Radio(
+                  activeColor: myColor.myAccentColor,
                   value: getWatchSettings.getTranslationFontIndex,
                   groupValue: 1,
                   onChanged: (onChanged) {
@@ -186,6 +193,7 @@ class ContentSettings extends StatelessWidget {
                   },
                 ),
                 Radio(
+                  activeColor: myColor.myAccentColor,
                   value: getWatchSettings.getTranslationFontIndex,
                   groupValue: 2,
                   onChanged: (onChanged) {
@@ -205,9 +213,9 @@ class ContentSettings extends StatelessWidget {
               top: 16,
               left: 16,
             ),
-            leading: const Icon(
+            leading: Icon(
               CupertinoIcons.text_alignleft,
-              color: Color(0xFF006D50),
+              color: myColor.myAccentColor,
             ),
             title: const Text(
               'Расположение текста',
@@ -219,7 +227,7 @@ class ContentSettings extends StatelessWidget {
             subtitle: Padding(
               padding: const EdgeInsets.all(16),
               child: ToggleButtons(
-                color: const Color(0xFF006D50),
+                color: myColor.myAccentColor,
                 borderRadius: BorderRadius.circular(15),
                 isSelected: getWatchSettings.getIsTextAlignSelected,
                 onPressed: (int index) {
@@ -238,7 +246,7 @@ class ContentSettings extends StatelessWidget {
             endIndent: 16,
           ),
           SwitchListTile.adaptive(
-            activeColor: const Color(0xFF006D50),
+            activeColor: myColor.myAccentColor,
             title: const Text(
               'Не отключать дисплей',
               style: TextStyle(
@@ -258,22 +266,21 @@ class ContentSettings extends StatelessWidget {
             endIndent: 16,
           ),
           SwitchListTile.adaptive(
-            activeColor: const Color(0xFF006D50),
+            activeColor: myColor.myAccentColor,
             title: const Text(
               'Адаптивная тема',
               style: TextStyle(
                 fontSize: 18,
               ),
             ),
-            subtitle: const Text(
-                'Тема приложения будет соответствовать теме на устройстве'),
+            subtitle: const Text('Тема приложения будет соответствовать теме на устройстве'),
             value: getWatchSettings.getThemeIsAdaptive,
             onChanged: (onChanged) {
               getReadSettings.changeThemeAdaptiveState(onChanged);
             },
           ),
           SwitchListTile.adaptive(
-            activeColor: const Color(0xFF006D50),
+            activeColor: myColor.myAccentColor,
             title: const Text(
               'Пользовательская тема',
               style: TextStyle(

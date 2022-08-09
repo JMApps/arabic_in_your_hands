@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_content_model.dart';
+import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,8 +15,10 @@ class DialogShareCopyFirst extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final myColor = Theme.of(context).colorScheme;
     final Size size = MediaQuery.of(context).size;
     return Card(
+      color: myColor.mainChapterCardColor,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
@@ -24,16 +27,16 @@ class DialogShareCopyFirst extends StatelessWidget {
         children: [
           Column(
             children: [
-              const Divider(
+              Divider(
                 indent: 24,
                 endIndent: 24,
-                color: Color(0xFF243743),
+                color: myColor.myPrimaryColor,
               ),
               ListTile(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                trailing: const Icon(
+                trailing: Icon(
                   CupertinoIcons.doc_on_clipboard,
-                  color: Color(0xFF243743),
+                  color: myColor.myAccentColor,
                 ),
                 title: const Text(
                   'Скопировать',
@@ -44,16 +47,16 @@ class DialogShareCopyFirst extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
               ),
-              const Divider(
+              Divider(
                 indent: 16,
                 endIndent: 16,
-                color: Color(0xFF243743),
+                color: myColor.myPrimaryColor,
               ),
               ListTile(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                trailing: const Icon(
+                trailing: Icon(
                   CupertinoIcons.share,
-                  color: Color(0xFF243743),
+                  color: myColor.myAccentColor,
                 ),
                 title: const Text(
                   'Поделиться',
@@ -68,10 +71,10 @@ class DialogShareCopyFirst extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
               ),
-              const Divider(
+              Divider(
                 indent: 24,
                 endIndent: 24,
-                color: Color(0xFF243743),
+                color: myColor.myPrimaryColor,
               ),
             ],
           ),

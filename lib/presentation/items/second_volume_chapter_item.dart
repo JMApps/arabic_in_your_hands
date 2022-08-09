@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/data/database/model/volume_second_item_chapter_model.dart';
+import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:arabicinyourhands/presentation/lists/second_volume_sub_chapter_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -11,8 +12,10 @@ class SecondVolumeChapterItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final myColor = Theme.of(context).colorScheme;
     return Card(
       elevation: 3,
+      color: myColor.mainChapterCardColor,
       margin: const EdgeInsets.only(
         right: 8,
         top: 16,
@@ -26,8 +29,8 @@ class SecondVolumeChapterItem extends StatelessWidget {
       child: Column(
         children: [
           Card(
-            elevation: 1,
-            color: const Color(0xFFD5FFEF),
+            elevation: 2,
+            color: myColor.titleChapterCardColor,
             margin: const EdgeInsets.only(
               right: 16,
               top: 16,
@@ -53,25 +56,25 @@ class SecondVolumeChapterItem extends StatelessWidget {
                         'assets/icons/${item.chapterIcon}.svg',
                         width: 35,
                         height: 35,
-                        color: const Color(0xFF006D50),
+                        color: myColor.chapterIconColor,
                       ),
                       title: Text(
                         item.chapterTitle,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: Color(0xFF243743),
+                          color: myColor.chapterTitleColor,
                           fontFamily: 'Gilroy medium',
                         ),
                         textAlign: TextAlign.center,
                       ),
                       subtitle: Text(
                         item.chapterTitleArabic,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                           fontFamily: 'Scheherazade',
                           fontWeight: FontWeight.normal,
-                          color: Color(0xFF006D50),
+                          color: myColor.chapterSubTitleColor,
                         ),
                         textAlign: TextAlign.center,
                         textDirection: TextDirection.rtl,
@@ -83,7 +86,7 @@ class SecondVolumeChapterItem extends StatelessWidget {
                     width: 40,
                     height: 40,
                     decoration: BoxDecoration(
-                      color: const Color(0xFF243743),
+                      color: myColor.chapterNumberContainerColor,
                       borderRadius: BorderRadius.circular(12.5),
                     ),
                     child: Center(

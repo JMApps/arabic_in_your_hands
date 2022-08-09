@@ -2,6 +2,7 @@ import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chap
 import 'package:arabicinyourhands/domain/state/provider/content_player_state.dart';
 import 'package:arabicinyourhands/domain/state/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/domain/state/provider/volume_content_dialog_visibility_state.dart';
+import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:arabicinyourhands/presentation/widgets/dialog_share_copy_first.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,12 +20,14 @@ class FirstVolumeSubChapterContentItemRight extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final myColor = Theme.of(context).colorScheme;
     final getWatchSettings = context.watch<ContentSettingsState>();
     final getWatchVisibility =
         context.watch<VolumeContentDialogVisibilityState>();
     final getReadContentPlay = context.watch<ContentPlayerState>();
     return Card(
-      elevation: 1,
+      elevation: 3,
+      color: myColor.mainChapterCardColor,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topRight: Radius.circular(16),
@@ -54,12 +57,12 @@ class FirstVolumeSubChapterContentItemRight extends StatelessWidget {
                               .getCurrentTrackIndex ==
                           index
                   ? [
-                      const Color(0xFFFFFFFF),
-                      const Color(0xBFFFEABD),
+                      myColor.contentItemSecondSelectedGradientColor,
+                      myColor.contentItemFirstSelectedGradientColor,
                     ]
                   : [
-                      const Color(0xFFFFFFFF),
-                      const Color(0xBFBEEBFF),
+                      myColor.contentItemSecondRightGradientColor,
+                      myColor.contentItemFirstRightGradientColor,
                     ],
             ),
           ),
@@ -75,7 +78,7 @@ class FirstVolumeSubChapterContentItemRight extends StatelessWidget {
                         child: Text(
                           '${item.arabicName}',
                           style: TextStyle(
-                            color: const Color(0xFF243743),
+                            color: myColor.myAccentColor,
                             fontFamily: getWatchSettings.getArabicFontName,
                             fontSize: getWatchSettings.getArabicTextSize,
                           ),
@@ -109,7 +112,7 @@ class FirstVolumeSubChapterContentItemRight extends StatelessWidget {
                         child: Text(
                           '${item.translationName}',
                           style: TextStyle(
-                            color: const Color(0xFF006D50),
+                            color: myColor.myAccentColor,
                             fontFamily: getWatchSettings.getTranslationFontName,
                             fontSize: getWatchSettings.getTranslationTextSize,
                           ),

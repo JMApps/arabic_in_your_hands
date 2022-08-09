@@ -1,6 +1,7 @@
 import 'package:arabicinyourhands/data/database/model/content_volume_one_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_model.dart';
 import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected_state.dart';
+import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,16 +17,14 @@ class FistVolumeSubChapterItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final myColor = Theme.of(context).colorScheme;
     return Card(
-      elevation: 1,
-      color: context
-                  .watch<MainNavigationSelectedState>()
-                  .getCurrentFirstSelectedItem ==
-              item.id
-          ? const Color(0xFF243743)
+      elevation: 5,
+      color: context.watch<MainNavigationSelectedState>().getCurrentFirstSelectedItem == item.id
+          ? myColor.subChapterSelectedColor
           : item.id.isOdd
-              ? const Color(0xFF28B78D)
-              : const Color(0xFF209372),
+              ? myColor.subChapterUnSelectedOddColor
+              : myColor.subChapterUnSelectedIsOddColor,
       margin: const EdgeInsets.only(
         left: 16,
         right: 16,
@@ -45,16 +44,15 @@ class FistVolumeSubChapterItem extends StatelessWidget {
                   Container(
                     width: double.maxFinite,
                     padding: const EdgeInsets.all(8),
-                    decoration: const BoxDecoration(
-                      borderRadius: BorderRadius.only(
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.only(
                         bottomLeft: Radius.circular(15),
                         bottomRight: Radius.circular(15),
                       ),
-                      color: Colors.white,
                       gradient: LinearGradient(
                         colors: [
-                          Color(0xFFD5FFEF),
-                          Color(0xFFFFFFFF),
+                          myColor.subChapterFirstGradientColor,
+                          myColor.subChapterSecondGradientColor,
                         ],
                       ),
                     ),
@@ -62,7 +60,6 @@ class FistVolumeSubChapterItem extends StatelessWidget {
                       item.dialog,
                       style: const TextStyle(
                         fontSize: 16,
-                        color: Color(0xFF243743),
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -86,9 +83,7 @@ class FistVolumeSubChapterItem extends StatelessWidget {
           ),
         ),
         onTap: () {
-          context
-              .read<MainNavigationSelectedState>()
-              .updateFirstSelectedState(item.id);
+          context.read<MainNavigationSelectedState>().updateFirstSelectedState(item.id);
           Navigator.pushNamed(
             context,
             '/first_volume_content',

@@ -121,16 +121,15 @@ class ContentSettingsState with ChangeNotifier {
 
   changeThemeAdaptiveState(bool state) {
     _themeIsAdaptive = state;
-    ThemeMode.system;
+    _themeMode = ThemeMode.system;
     mainSettingsBox.put(Constants.keyThemeIsAdaptive, _themeIsAdaptive);
     notifyListeners();
   }
 
   changeThemeUserState(bool state) {
-    _themeIsUser = state;
     if (!_themeIsAdaptive) {
-      _themeIsUser ? ThemeMode.dark : ThemeMode.light;
-      mainSettingsBox.put(Constants.keyThemeIsUser, _themeIsUser);
+      state ? ThemeMode.dark : ThemeMode.light;
+      mainSettingsBox.put(Constants.keyThemeIsUser, state);
       notifyListeners();
     }
   }

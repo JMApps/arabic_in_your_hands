@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/data/database/service/dictionary_database_query.dart';
+import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,23 +14,9 @@ class Dictionary extends StatelessWidget {
       body: FutureBuilder<List>(
         future: _dictionaryDatabaseQuery.getAllCategories(),
         builder: (BuildContext context, AsyncSnapshot snapshot) {
-          return snapshot.hasData
-              ? snapshot.data == 'waiting'
-                  ? const CircularProgressIndicator()
-                  : Container()
-              : Center(
-                  child: TextButton.icon(
-                    onPressed: null,
-                    icon: const Icon(Icons.add),
-                    label: const Text(
-                      'Добавьте первую категорию',
-                      style: TextStyle(
-                        fontSize: 16,
-                        color: Color(0xFF243743),
-                      ),
-                    ),
-                  ),
-                );
+          return const Center(
+            child: CircularProgressIndicator.adaptive(),
+          );
         },
       ),
       floatingActionButtonLocation:
@@ -38,8 +25,11 @@ class Dictionary extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        backgroundColor: const Color(0xFF1F8D6E),
-        child: const Icon(Icons.add),
+        backgroundColor: Theme.of(context).colorScheme.fabDictionaryColor,
+        child: const Icon(
+          CupertinoIcons.add,
+          color: Colors.white,
+        ),
         onPressed: () {
           showCupertinoModalPopup(
             context: context,

@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/domain/state/provider/play_speed_state.dart';
+import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -7,9 +8,11 @@ class PlaySpeed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final myColor = Theme.of(context).colorScheme;
     final getReadPlaySpeed = context.read<PlaySpeedState>();
     final getWatchPlaySpeed = context.watch<PlaySpeedState>();
     return Card(
+      color: myColor.mainChapterCardColor,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
@@ -23,10 +26,10 @@ class PlaySpeed extends StatelessWidget {
                 'Скорость воспроизведения',
                 style: TextStyle(fontSize: 18),
               ),
-              const Divider(
+              Divider(
                 indent: 16,
                 endIndent: 16,
-                color: Color(0xFF243743),
+                color: myColor.myPrimaryColor,
               ),
               RadioListTile(
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
@@ -38,12 +41,13 @@ class PlaySpeed extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
               ),
-              const Divider(
+              Divider(
                 indent: 16,
                 endIndent: 16,
-                color: Color(0xFF243743),
+                color: myColor.myPrimaryColor,
               ),
               RadioListTile(
+                activeColor: myColor.myAccentColor,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 title: const Text('0.75x'),
                 value: 1,
@@ -53,12 +57,13 @@ class PlaySpeed extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
               ),
-              const Divider(
+              Divider(
                 indent: 16,
                 endIndent: 16,
-                color: Color(0xFF243743),
+                color: myColor.myPrimaryColor,
               ),
               RadioListTile(
+                activeColor: myColor.myAccentColor,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 title: const Text('1x'),
                 value: 2,
@@ -68,12 +73,13 @@ class PlaySpeed extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
               ),
-              const Divider(
+              Divider(
                 indent: 16,
                 endIndent: 16,
-                color: Color(0xFF243743),
+                color: myColor.myPrimaryColor,
               ),
               RadioListTile(
+                activeColor: myColor.myAccentColor,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 title: const Text('1.5x'),
                 value: 3,
@@ -83,12 +89,13 @@ class PlaySpeed extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
               ),
-              const Divider(
+              Divider(
                 indent: 16,
                 endIndent: 16,
-                color: Color(0xFF243743),
+                color: myColor.myPrimaryColor,
               ),
               RadioListTile(
+                activeColor: myColor.myAccentColor,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 title: const Text('1.75x'),
                 value: 4,
@@ -98,10 +105,10 @@ class PlaySpeed extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
               ),
-              const Divider(
+              Divider(
                 indent: 24,
                 endIndent: 24,
-                color: Color(0xFF243743),
+                color: myColor.myPrimaryColor,
               ),
             ],
           ),

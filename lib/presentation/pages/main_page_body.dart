@@ -1,5 +1,5 @@
-import 'package:arabicinyourhands/domain/state/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected_state.dart';
+import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:arabicinyourhands/presentation/lists/first_volume_chapter_list.dart';
 import 'package:arabicinyourhands/presentation/lists/second_volume_chapter_list.dart';
 import 'package:arabicinyourhands/presentation/pages/dictionary.dart';
@@ -28,15 +28,13 @@ class MainPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    context.read<ContentSettingsState>().initSettings();
+    final myColor = Theme.of(context).colorScheme;
     return Scaffold(
-      backgroundColor: const Color(0xFFE8E8E8),
       appBar: AppBar(
         title: Text(
           _mainTitles[
               context.watch<MainNavigationSelectedState>().getSelectedIndex],
         ),
-        backgroundColor: const Color(0xFF243743),
         leading: Transform.scale(
           scale: 0.7,
           child: Image.asset('assets/icons/arabic_in_origin.png'),
@@ -50,11 +48,11 @@ class MainPageBody extends StatelessWidget {
             context.watch<MainNavigationSelectedState>().getSelectedIndex],
       ),
       bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          color: Color(0xFF243743),
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(25),
-            topRight: Radius.circular(25),
+        decoration: BoxDecoration(
+          color: myColor.bottomNavigationBarColor,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(20),
+            topRight: Radius.circular(20),
           ),
         ),
         child: SalomonBottomBar(
@@ -72,14 +70,14 @@ class MainPageBody extends StatelessWidget {
               title: const Text('Словарь'),
             ),
             SalomonBottomBarItem(
-              icon: const Icon(
+              icon: Icon(
                 CupertinoIcons.settings,
-                color: Colors.white,
+                color: myColor.bottomNavigationSettingItemColor,
               ),
-              title: const Text(
+              title: Text(
                 'Настройки',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: myColor.bottomNavigationSettingItemColor,
                 ),
               ),
             ),
@@ -87,10 +85,9 @@ class MainPageBody extends StatelessWidget {
           itemShape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12.5),
           ),
-          selectedItemColor: const Color(0xFF37FFC2),
-          unselectedItemColor: const Color(0xFF1F8D6E),
-          currentIndex:
-              context.watch<MainNavigationSelectedState>().getSelectedIndex,
+          selectedItemColor: myColor.bottomNavigationSelectedItemColor,
+          unselectedItemColor: myColor.bottomNavigationUnSelectedItemColor,
+          currentIndex: context.watch<MainNavigationSelectedState>().getSelectedIndex,
           onTap: (currentIndex) {
             context.read<MainNavigationSelectedState>().changeBottomNavigationIndex(currentIndex);
           },

@@ -4,6 +4,7 @@ import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chap
 import 'package:arabicinyourhands/data/database/service/database_query.dart';
 import 'package:arabicinyourhands/domain/state/provider/content_player_state.dart';
 import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected_state.dart';
+import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:arabicinyourhands/presentation/lists/first_volume_sub_chapter_content_list.dart';
 import 'package:arabicinyourhands/presentation/widgets/bottom_navigation_sub_chapter_content.dart';
 import 'package:flutter/cupertino.dart';
@@ -35,7 +36,8 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
         future: _databaseQuery.getAllFirstSubChapters(firstVolumeChapterId),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            var item = snapshot.data![firstVolumeSubChapterIndex] as VolumeFirstItemSubChapterModel;
+            var item = snapshot.data![firstVolumeSubChapterIndex]
+                as VolumeFirstItemSubChapterModel;
             return Scaffold(
               body: NestedScrollView(
                 floatHeaderSlivers: true,
@@ -43,8 +45,6 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
                     (BuildContext context, bool innerBoxIsScrolled) {
                   return [
                     SliverAppBar(
-                      centerTitle: true,
-                      backgroundColor: const Color(0xFF243743),
                       elevation: 0,
                       floating: true,
                       snap: false,
@@ -53,7 +53,10 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
                       title: Text(item.dialog),
                       actions: [
                         IconButton(
-                          icon: const Icon(CupertinoIcons.creditcard),
+                          icon: const Icon(
+                            CupertinoIcons.creditcard,
+                            color: Colors.white,
+                          ),
                           splashRadius: 20,
                           onPressed: () {
                             Navigator.of(context).pushNamed(
@@ -70,6 +73,7 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
                                 icon: const Icon(
                                   CupertinoIcons.forward,
                                   size: 30,
+                                  color: Colors.white,
                                 ),
                                 splashRadius: 20,
                                 onPressed: () {
@@ -89,7 +93,7 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
                     ),
                     SliverToBoxAdapter(
                       child: Card(
-                        color: const Color(0xFF006D50),
+                        color: Theme.of(context).colorScheme.myAccentColor,
                         margin: const EdgeInsets.all(8),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),

@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_content_model.dart';
+import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class FirstVolumeFlipFrontCard extends StatelessWidget {
@@ -11,9 +12,10 @@ class FirstVolumeFlipFrontCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final myColor = Theme.of(context).colorScheme;
     return Card(
       elevation: 10,
-      color: Colors.green[50],
+      color: myColor.flipFrontColor,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
@@ -28,9 +30,9 @@ class FirstVolumeFlipFrontCard extends StatelessWidget {
               item.arabicName != null
                   ? Text(
                       item.arabicName!,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 35,
-                        color: Color(0xFF209372),
+                        color: myColor.myAccentColor,
                         fontFamily: 'Scheherazade',
                       ),
                       textDirection: TextDirection.rtl,
