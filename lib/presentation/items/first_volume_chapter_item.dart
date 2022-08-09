@@ -92,6 +92,7 @@ class FirstVolumeChapterItem extends StatelessWidget {
                           color: Color(0xFF006D50),
                         ),
                         textAlign: TextAlign.center,
+                        textDirection: TextDirection.rtl,
                       ),
                     ),
                   ),

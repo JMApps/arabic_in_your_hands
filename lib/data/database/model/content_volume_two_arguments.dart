@@ -1,11 +1,11 @@
 class ContentVolumeTwoArguments {
-  final int chapterId;
-  final int subChapterId;
-  final int subChapterIndex;
+  final int secondVolumeChapterId;
+  final int secondVolumeSubChapterId;
+  final int secondVolumeSubChapterIndex;
 
   ContentVolumeTwoArguments(
-    this.chapterId,
-    this.subChapterId,
-    this.subChapterIndex,
+    this.secondVolumeChapterId,
+    this.secondVolumeSubChapterId,
+    this.secondVolumeSubChapterIndex,
   );
 }
