@@ -49,7 +49,8 @@ class FirstVolumeContentFlipModePage extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: Padding(
+                  child: Container(
+                    width: double.maxFinite,
                     padding: const EdgeInsets.all(8),
                     child: Text(
                       dialogTitle,

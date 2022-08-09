@@ -5,7 +5,7 @@ class FlipPageState with ChangeNotifier {
 
   int get getCurrentPageIndex => _currentPageIndex;
 
-  bool _cardMode = false;
+  bool _cardMode = true;
 
   bool get getCardMode => _cardMode;
 

@@ -17,8 +17,7 @@ class FirstVolumeSubChapterContentList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List>(
-      future: _databaseQuery
-          .getAllVolumeFirstChapterContent(firstVolumeSubChapterId),
+      future: _databaseQuery.getAllVolumeFirstChapterContent(firstVolumeSubChapterId),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           context.read<ContentPlayerState>().initPlayer(snapshot);
