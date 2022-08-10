@@ -3,7 +3,7 @@ import 'package:arabicinyourhands/data/database/model/content_volume_two_argumen
 import 'package:arabicinyourhands/data/database/model/volume_first_item_flip_content_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/volume_second_item_flip_content_arguments.dart';
 import 'package:arabicinyourhands/presentation/pages/first_volume_content_flip_mode_page.dart';
-import 'package:arabicinyourhands/presentation/pages/fist_volume_sub_chapter_content_page.dart';
+import 'package:arabicinyourhands/presentation/pages/first_volume_sub_chapter_content_page.dart';
 import 'package:arabicinyourhands/presentation/pages/second_volume_content_flip_mode_page.dart';
 import 'package:arabicinyourhands/presentation/pages/second_volume_sub_chapter_content_page.dart';
 import 'package:flutter/material.dart';

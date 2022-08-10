@@ -1,10 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="jmapps.arabicinyourhands.arabicinyourhands">
    <application
-        android:label="Арабский в твоих руках"
+        android:label="Арабский"
         android:icon="@mipmap/ic_launcher"
        android:allowBackup="true"
-       android:fullBackupContent="true">
+       android:fullBackupContent="true"
+       android:dataExtractionRules="@xml/data_extraction_rules"
+       tools:targetApi="s">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

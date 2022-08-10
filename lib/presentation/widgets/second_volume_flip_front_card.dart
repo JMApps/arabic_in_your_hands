@@ -15,7 +15,7 @@ class SecondVolumeFlipFrontCard extends StatelessWidget {
     final myColor = Theme.of(context).colorScheme;
     return Card(
       elevation: 10,
-      color: myColor.flipFrontColor,
+      color: myColor.flipBackColor,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),

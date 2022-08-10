@@ -32,6 +32,7 @@ class PlaySpeed extends StatelessWidget {
                 color: myColor.myPrimaryColor,
               ),
               RadioListTile(
+                activeColor: myColor.myAccentColor,
                 contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                 title: const Text('0.5x'),
                 value: 0,

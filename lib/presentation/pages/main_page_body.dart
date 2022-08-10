@@ -39,6 +39,18 @@ class MainPageBody extends StatelessWidget {
           scale: 0.7,
           child: Image.asset('assets/icons/arabic_in_origin.png'),
         ),
+        actions: [
+          IconButton(
+            splashRadius: 20,
+            icon: const Icon(
+              CupertinoIcons.info_circle,
+              color: Colors.white,
+            ),
+            onPressed: () {
+
+            },
+          ),
+        ],
       ),
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 350),
