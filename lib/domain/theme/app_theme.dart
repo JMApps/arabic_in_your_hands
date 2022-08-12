@@ -142,4 +142,20 @@ extension ColorSchemeS on ColorScheme {
   Color get flipBackColor => brightness == Brightness.light
       ? const Color(0xFFF5F5F5)
       : const Color(0xFF182325);
+
+  Color get priorityWithoutColor => brightness == Brightness.light
+      ? const Color(0xFFD6D6D6)
+      : const Color(0xFF424242);
+
+  Color get priorityLowColor => brightness == Brightness.light
+      ? const Color(0xFFFFE0B2)
+      : const Color(0xFFF57C00);
+
+  Color get priorityHighColor => brightness == Brightness.light
+      ? const Color(0xFF4DB6AC)
+      : const Color(0xFF00796B);
+
+  Color get priorityMediumColor => brightness == Brightness.light
+      ? const Color(0xFFE57373)
+      : const Color(0xFFD32F2F);
 }

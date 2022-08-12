@@ -2,7 +2,7 @@ import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected
 import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:arabicinyourhands/presentation/lists/first_volume_chapter_list.dart';
 import 'package:arabicinyourhands/presentation/lists/second_volume_chapter_list.dart';
-import 'package:arabicinyourhands/presentation/pages/dictionary.dart';
+import 'package:arabicinyourhands/presentation/pages/dictionary_categories_page.dart';
 import 'package:arabicinyourhands/presentation/widgets/content_settings.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ class MainPageBody extends StatelessWidget {
   final _mainWidgets = [
     FirstVolumeChapterList(),
     SecondVolumeChapterList(),
-    Dictionary(),
+    const DictionaryCategoriesPage(),
     const ContentSettings(),
   ];
 
@@ -39,18 +39,6 @@ class MainPageBody extends StatelessWidget {
           scale: 0.7,
           child: Image.asset('assets/icons/arabic_in_origin.png'),
         ),
-        actions: [
-          IconButton(
-            splashRadius: 20,
-            icon: const Icon(
-              CupertinoIcons.info_circle,
-              color: Colors.white,
-            ),
-            onPressed: () {
-
-            },
-          ),
-        ],
       ),
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 350),

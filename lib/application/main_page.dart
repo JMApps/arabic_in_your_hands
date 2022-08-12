@@ -1,5 +1,6 @@
 import 'package:arabicinyourhands/domain/route/app_route.dart';
 import 'package:arabicinyourhands/domain/state/provider/content_settings_state.dart';
+import 'package:arabicinyourhands/domain/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected_state.dart';
 import 'package:arabicinyourhands/domain/state/provider/play_speed_state.dart';
 import 'package:arabicinyourhands/domain/state/provider/volume_content_dialog_visibility_state.dart';
@@ -34,6 +35,9 @@ class _MainPageState extends State<MainPage> {
         ),
         ChangeNotifierProvider(
           create: (_) => PlaySpeedState(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => DictionaryContentState(),
         ),
       ],
       child: Builder(
