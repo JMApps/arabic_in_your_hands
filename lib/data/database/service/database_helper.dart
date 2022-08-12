@@ -28,15 +28,6 @@ class DatabaseHelper {
         : await getApplicationSupportDirectory();
 
     String path = join(documentDirectory!.path, 'ArabicInYourHandsDB.db');
-    await deleteDatabase(path);
-
-    //String toDelete = '${documentDirectory.path}/ArabicInYourHandsDB.db';
-
-    //var delDB = await databaseExists(toDelete);
-
-    // if (delDB) {
-    //   await deleteDatabase(toDelete);
-    // }
 
     var exists = await databaseExists(path);
 
