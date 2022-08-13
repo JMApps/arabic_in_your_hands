@@ -26,6 +26,8 @@ class DictionaryDatabaseQuery {
 
   Future<int> deleteWordCategory(int categoryId) async {
     var dbClient = await con.db;
-    return await dbClient.delete('Table_of_word_categories', where: '_id == $categoryId');
+    var res = await dbClient.delete('Table_of_word_categories', where: '_id == $categoryId');
+    res = await dbClient.delete('Table_of_words', where: 'displayBy == $categoryId');
+    return res;
   }
 }

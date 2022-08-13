@@ -174,7 +174,8 @@ class ChangeCategoryPopup extends StatelessWidget {
                                   changeCategoryState.getWordCategoryTitle,
                                   changeCategoryState.getCategoryColor.toString(),
                                   changeCategoryState.getPrioritySelectedIndex,);
-                          Navigator.of(context).pop();
+                            context.read<DictionaryContentState>().showSnackBarMessage(context, 'Категория изменена');
+                            Navigator.of(context).pop();
                           } else {
                             Navigator.of(context).pop();
                           }

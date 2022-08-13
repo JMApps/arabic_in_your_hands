@@ -158,6 +158,7 @@ class DictionaryCategoriesItem extends StatelessWidget {
                                     ),
                                   ),
                                   onPressed: () {
+                                    context.read<DictionaryContentState>().showSnackBarMessage(context, 'Категория удалена');
                                     getReadDictionaryContentState.deleteWordCategory(item.id!);
                                     Navigator.of(context).pop();
                                   },

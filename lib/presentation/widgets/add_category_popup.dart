@@ -160,6 +160,7 @@ class AddCategoryPopup extends StatelessWidget {
                               addCategoryState.getCategoryColor.toString(),
                               addCategoryState.getPrioritySelectedIndex,
                             );
+                            context.read<DictionaryContentState>().showSnackBarMessage(context, 'Категория добавлена');
                             Navigator.of(context).pop();
                           } else {
                             Navigator.of(context).pop();
