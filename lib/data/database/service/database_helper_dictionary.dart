@@ -34,19 +34,25 @@ class DatabaseHelperDictionary {
     var existsDictionary = await databaseExists(pathDictionary);
     var existsDictionaryData = await databaseExists(pathDictionaryData);
 
-    if (!existsDictionary) {
-      try {
-        await Directory(dirname(pathDictionary)).create(recursive: true);
-      } catch (_) {
-        Exception('Invalid database from storage');
-      }
+    if (!existsDictionaryData) {
+      if (!existsDictionary) {
+        try {
+          await Directory(dirname(pathDictionary)).create(recursive: true);
+        } catch (_) {
+          Exception('Invalid database from storage');
+        }
 
-      ByteData data = await rootBundle.load(join('assets/databases', 'WordsDatabase.db'));
-      List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
-      await File(pathDictionary).writeAsBytes(bytes, flush: true);
+        ByteData data = await rootBundle.load(join('assets/databases', 'WordsDatabase.db'));
+        List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
+        await File(pathDictionary).writeAsBytes(bytes, flush: true);
+      }
     }
 
     var onOpen = await openDatabase(existsDictionaryData ? pathDictionaryData : pathDictionary, version: _databaseVersion);
     return onOpen;
+  }
+
+  closeDB () {
+    _db!.close();
   }
 }
