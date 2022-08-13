@@ -1,5 +1,6 @@
 import 'package:arabicinyourhands/data/database/model/dictionary_category_model.dart';
 import 'package:arabicinyourhands/data/database/service/database_helper_dictionary.dart';
+import 'package:sqflite/sqflite.dart' as sql;
 
 class DictionaryDatabaseQuery {
   DatabaseHelperDictionary con = DatabaseHelperDictionary();
@@ -11,8 +12,20 @@ class DictionaryDatabaseQuery {
     return categories!;
   }
 
-  addCategory() async {
+  Future<int> createWordCategory(String wordCategoryTitle, String wordCategoryColor, int priority) async {
     var dbClient = await con.db;
-    await dbClient.rawQuery('UPDATE Table_of_word_categories SET wordCategoryTitle = 0 WHERE _id == 1');
+    final wordCategoryData = {'wordCategoryTitle': wordCategoryTitle, 'wordCategoryColor': wordCategoryColor, 'priority': priority, 'addDateTime': DateTime.now().toString(), 'changeDateTime': DateTime.now().toString()};
+    return await dbClient.insert('Table_of_word_categories', wordCategoryData, conflictAlgorithm: sql.ConflictAlgorithm.replace);
+  }
+
+  Future<int> updateWordCategory(int categoryId, String wordCategoryTitle, String wordCategoryColor, int priority) async {
+    var dbClient = await con.db;
+    final wordCategoryData = {'wordCategoryTitle': wordCategoryTitle, 'wordCategoryColor': wordCategoryColor, 'priority': priority, 'changeDateTime': DateTime.now().toString()};
+    return await dbClient.update('Table_of_word_categories', wordCategoryData, conflictAlgorithm: sql.ConflictAlgorithm.replace, where: '_id == $categoryId');
+  }
+
+  Future<int> deleteWordCategory(int categoryId) async {
+    var dbClient = await con.db;
+    return await dbClient.delete('Table_of_word_categories', where: '_id == $categoryId');
   }
 }

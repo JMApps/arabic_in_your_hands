@@ -144,11 +144,11 @@ extension ColorSchemeS on ColorScheme {
       : const Color(0xFF182325);
 
   Color get priorityWithoutColor => brightness == Brightness.light
-      ? const Color(0xFFD6D6D6)
+      ? const Color(0xFF9E9E9E)
       : const Color(0xFF424242);
 
   Color get priorityLowColor => brightness == Brightness.light
-      ? const Color(0xFFFFE0B2)
+      ? const Color(0xFFFFB74D)
       : const Color(0xFFF57C00);
 
   Color get priorityHighColor => brightness == Brightness.light

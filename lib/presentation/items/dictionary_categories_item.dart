@@ -15,38 +15,54 @@ class DictionaryCategoriesItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
-    final getWatchDictionaryContentState =
-        context.watch<DictionaryContentState>();
-    final getReadDictionaryContentState =
-        context.read<DictionaryContentState>();
+    final getReadDictionaryContentState = context.read<DictionaryContentState>();
     return Card(
       color: Theme.of(context).colorScheme.mainChapterCardColor,
-      margin:
-          EdgeInsets.symmetric(horizontal: 8, vertical: item.id!.isOdd ? 8 : 4),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(15),
+      margin: const EdgeInsets.all(8),
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(15),
+          bottomRight: Radius.circular(15),
+        ),
       ),
       child: InkWell(
-        borderRadius: BorderRadius.circular(15),
-        child: Padding(
+        borderRadius: const BorderRadius.only(
+          topRight: Radius.circular(15),
+          bottomRight: Radius.circular(15),
+        ),
+        child: Container(
           padding: const EdgeInsets.all(16),
+          decoration: BoxDecoration(
+            border: Border(
+              left: BorderSide(
+                color: _priorityColor(context, item.priority!),
+                width: 3,
+              ),
+            ),
+          ),
           child: Row(
             children: [
               Expanded(
-                flex: 15,
-                child: Text('${item.wordCategoryTitle}'),
+                child: Text(
+                  '${item.wordCategoryTitle}',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontFamily: 'GilroyMedium',
+                  ),
+                  textAlign: TextAlign.justify,
+                ),
               ),
-              Expanded(
-                flex: 1,
-                child: Container(
-                  width: 12,
-                  height: 12,
-                  decoration: BoxDecoration(
-                    color: Color(int.parse(item.wordCategoryColor!)),
-                    shape: BoxShape.circle,
+              const SizedBox(width: 16),
+              Container(
+                width: 10,
+                height: 10,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: Color(
+                    int.parse(item.wordCategoryColor!),
                   ),
                 ),
-              )
+              ),
             ],
           ),
         ),
@@ -93,7 +109,9 @@ class DictionaryCategoriesItem extends StatelessWidget {
                                 padding: MediaQuery.of(context).viewInsets,
                                 duration: const Duration(milliseconds: 100),
                                 curve: Curves.decelerate,
-                                child: const ChangeCategoryPopup(),
+                                child: ChangeCategoryPopup(
+                                  item: item,
+                                ),
                               ),
                             );
                           },
@@ -106,8 +124,7 @@ class DictionaryCategoriesItem extends StatelessWidget {
                       color: myColor.myPrimaryColor,
                     ),
                     ListTile(
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 16),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
                       title: const Text('Удалить'),
                       trailing: Icon(
                         CupertinoIcons.delete,
@@ -120,8 +137,7 @@ class DictionaryCategoriesItem extends StatelessWidget {
                           builder: (context) {
                             return CupertinoAlertDialog(
                               title: const Text('Удаление'),
-                              content: const Text(
-                                  'Вы уверены, что хотите удалить данную категорию вместе с её содержимым?'),
+                              content: const Text('Вы уверены, что хотите удалить данную категорию вместе с её содержимым?'),
                               actions: [
                                 CupertinoDialogAction(
                                   child: Text(
@@ -142,6 +158,7 @@ class DictionaryCategoriesItem extends StatelessWidget {
                                     ),
                                   ),
                                   onPressed: () {
+                                    getReadDictionaryContentState.deleteWordCategory(item.id!);
                                     Navigator.of(context).pop();
                                   },
                                 ),
@@ -164,5 +181,25 @@ class DictionaryCategoriesItem extends StatelessWidget {
         },
       ),
     );
+  }
+
+  Color _priorityColor(BuildContext context, int priority) {
+    final myColor = Theme.of(context).colorScheme;
+    Color priorityColor = Colors.white;
+    switch (priority) {
+      case 0:
+        priorityColor = myColor.priorityWithoutColor;
+        break;
+      case 1:
+        priorityColor = myColor.priorityLowColor;
+        break;
+      case 2:
+        priorityColor = myColor.priorityHighColor;
+        break;
+      case 3:
+        priorityColor = myColor.priorityMediumColor;
+        break;
+    }
+    return priorityColor;
   }
 }

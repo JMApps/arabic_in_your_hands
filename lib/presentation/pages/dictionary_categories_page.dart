@@ -12,10 +12,8 @@ class DictionaryCategoriesPage extends StatelessWidget {
     return Builder(
       builder: (context) {
         return Scaffold(
-          resizeToAvoidBottomInset: false,
-          body: DictionaryCategoriesList(),
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.miniCenterFloat,
+          body: const DictionaryCategoriesList(),
+          floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           floatingActionButton: FloatingActionButton(
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
@@ -34,7 +32,7 @@ class DictionaryCategoriesPage extends StatelessWidget {
                   return SingleChildScrollView(
                     child: AnimatedPadding(
                       padding: MediaQuery.of(context).viewInsets,
-                      duration: const Duration(milliseconds: 100),
+                      duration: const Duration(milliseconds: 250),
                       curve: Curves.decelerate,
                       child: const AddCategoryPopup(),
                     ),

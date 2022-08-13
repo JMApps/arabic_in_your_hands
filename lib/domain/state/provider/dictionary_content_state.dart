@@ -1,31 +1,30 @@
+import 'package:arabicinyourhands/data/database/service/dictionary_database_query.dart';
 import 'package:flutter/material.dart';
 
 class DictionaryContentState with ChangeNotifier {
-  TextEditingController _textEditingController = TextEditingController();
 
-  TextEditingController get getTextEditingController => _textEditingController;
+  final _dictionaryDatabaseQuery = DictionaryDatabaseQuery();
 
-  Color _categoryColor = Colors.grey.shade300;
+  DictionaryDatabaseQuery get getDictionaryDatabaseQuery => DictionaryDatabaseQuery();
 
-  Color get getCategoryColor => _categoryColor;
-
-  final List<bool> _isPrioritySelected = [true, false, false, false];
-
-  List<bool> get getIsPrioritySelected => _isPrioritySelected;
-
-  int _prioritySelectedIndex = 0;
-
-  selectCategoryColor(Color categoryColor) {
-    _categoryColor = categoryColor;
+  createWordCategory(String wordCategoryTitle, String wordCategoryColor, int priority) {
+    _dictionaryDatabaseQuery.createWordCategory(wordCategoryTitle, wordCategoryColor, priority);
     notifyListeners();
   }
 
-  selectTogglePriority(int index) {
-    _prioritySelectedIndex = index;
-    _prioritySelectedIndex == 0;
-    for (int i = 0; i < getIsPrioritySelected.length; i++) {
-      getIsPrioritySelected[i] = i == _prioritySelectedIndex;
-    }
+  updateWordCategory(int categoryId, String wordCategoryTitle, String wordCategoryColor, int priority) {
+    _dictionaryDatabaseQuery.updateWordCategory(categoryId, wordCategoryTitle, wordCategoryColor, priority);
     notifyListeners();
+  }
+
+  deleteWordCategory(int categoryId) {
+    _dictionaryDatabaseQuery.deleteWordCategory(categoryId);
+    notifyListeners();
+  }
+
+  @override
+  void dispose() {
+    _dictionaryDatabaseQuery.con.closeDB();
+    super.dispose();
   }
 }

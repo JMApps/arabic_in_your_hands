@@ -1,36 +1,40 @@
-import 'package:arabicinyourhands/data/database/service/dictionary_database_query.dart';
+import 'package:arabicinyourhands/domain/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/presentation/items/dictionary_categories_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DictionaryCategoriesList extends StatelessWidget {
-  DictionaryCategoriesList({Key? key}) : super(key: key);
-
-  final _dictionaryDatabaseQuery = DictionaryDatabaseQuery();
+  const DictionaryCategoriesList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List>(
-      future: _dictionaryDatabaseQuery.getAllCategories(),
+      future: context.watch<DictionaryContentState>().getDictionaryDatabaseQuery.getAllCategories(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
-        return snapshot.hasError
-            ? Center(
-                child: Text('${snapshot.error}'),
+        return snapshot.hasData
+            ? CupertinoScrollbar(
+                child: ListView.builder(
+                  itemCount: snapshot.data!.length,
+                  itemBuilder: (context, index) {
+                    return DictionaryCategoriesItem(
+                      item: snapshot.data![index],
+                    );
+                  },
+                ),
               )
-            : snapshot.hasData
-                ? CupertinoScrollbar(
-                    child: ListView.builder(
-                      itemCount: snapshot.data!.length,
-                      itemBuilder: (context, index) {
-                        return DictionaryCategoriesItem(
-                          item: snapshot.data![index],
-                        );
-                      },
+            : Center(
+                child: TextButton.icon(
+                  label: const Text(
+                    'Добавьте первую категорию',
+                    style: TextStyle(
+                      fontSize: 18,
                     ),
-                  )
-                : const Center(
-                    child: CircularProgressIndicator(),
-                  );
+                  ),
+                  icon: const Icon(CupertinoIcons.add),
+                  onPressed: null,
+                ),
+              );
       },
     );
   }
