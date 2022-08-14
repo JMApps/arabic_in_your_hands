@@ -5,7 +5,6 @@ class AppTheme {
     scaffoldBackgroundColor: const Color(0xFFCFD8DC),
     fontFamily: 'Gilroy',
     colorScheme: const ColorScheme.light(),
-    primarySwatch: Colors.teal,
     appBarTheme: const AppBarTheme(
       backgroundColor: Color(0xFF263238),
       centerTitle: true,
@@ -21,7 +20,6 @@ class AppTheme {
     scaffoldBackgroundColor: const Color(0xFF263238),
     fontFamily: 'Gilroy',
     colorScheme: const ColorScheme.dark(),
-    primarySwatch: Colors.blueGrey,
     appBarTheme: const AppBarTheme(
       backgroundColor: Color(0xFF192226),
       centerTitle: true,

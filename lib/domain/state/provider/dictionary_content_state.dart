@@ -28,13 +28,23 @@ class DictionaryContentState with ChangeNotifier {
     notifyListeners();
   }
 
+  updateWord(int wordId, String word, String wordTranslation, String wordColor) {
+    _dictionaryDatabaseQuery.updateWord(wordId, word, wordTranslation, wordColor);
+    notifyListeners();
+  }
+
+  deleteWord(int wordId) {
+    _dictionaryDatabaseQuery.deleteWord(wordId);
+    notifyListeners();
+  }
+
   showSnackBarMessage(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        behavior: SnackBarBehavior.floating,
+        behavior: SnackBarBehavior.fixed,
         backgroundColor: Theme.of(context).colorScheme.myAccentColor,
         content: Text(
           message,

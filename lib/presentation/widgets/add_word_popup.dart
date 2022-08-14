@@ -25,7 +25,7 @@ class AddWordPopup extends StatelessWidget {
         ),
       ],
       child: Card(
-        color: Theme.of(context).colorScheme.mainChapterCardColor,
+        color: myColor.mainChapterCardColor,
         elevation: 0,
         margin: const EdgeInsets.all(16),
         shape: RoundedRectangleBorder(
@@ -33,21 +33,40 @@ class AddWordPopup extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Consumer<AddWordState>(
-            builder: (context, addWordState, _) {
-              return Wrap(
-                runSpacing: 8,
-                children: [
-                  TextFormField(
+          child: Wrap(
+            runSpacing: 8,
+            children: [
+              Consumer<AddWordState>(
+                builder: (context, addWordState, _) {
+                  return TextField(
                     controller: addWordState.getWordEditingController,
                     textCapitalization: TextCapitalization.sentences,
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
-                    autocorrect: false,
                     autofocus: true,
+                    autocorrect: false,
                     maxLength: 50,
                     cursorColor: myColor.myAccentColor,
                     decoration: InputDecoration(
+                      alignLabelWithHint: true,
+                      floatingLabelAlignment: FloatingLabelAlignment.center,
+                      label: const Text(
+                        'Слово',
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Colors.grey,
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide(
+                          color: myColor.myAccentColor,
+                          width: 1.5,
+                        ),
+                      ),
                       suffixIcon: IconButton(
                         splashRadius: 15,
                         icon: Icon(
@@ -76,27 +95,14 @@ class AddWordPopup extends StatelessWidget {
                           );
                         },
                       ),
-                      labelText: 'Слово',
-                      labelStyle: TextStyle(
-                        color: Theme.of(context).colorScheme.myAccentColor,
-                      ),
-                      alignLabelWithHint: true,
-                      floatingLabelAlignment: FloatingLabelAlignment.center,
-                      hintText: 'Введите слово',
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide(
-                          color: Theme.of(context).colorScheme.myAccentColor,
-                          width: 1.5,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
                     ),
                     textAlign: TextAlign.center,
-                  ),
-                  TextFormField(
+                  );
+                },
+              ),
+              Consumer<AddWordState>(
+                builder: (context, addWordState, _) {
+                  return TextField(
                     controller:
                         addWordState.getWordTranslationEditingController,
                     textCapitalization: TextCapitalization.sentences,
@@ -109,15 +115,33 @@ class AddWordPopup extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: 'Перевод',
                       labelStyle: TextStyle(
-                        color: Theme.of(context).colorScheme.myAccentColor,
+                        color: myColor.myAccentColor,
                       ),
                       alignLabelWithHint: true,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       hintText: 'Введите перевод слова',
+                      errorText: addWordState
+                              .getWordTranslationEditingController.text.isEmpty
+                          ? 'Заполните поле'
+                          : '',
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
-                          color: Theme.of(context).colorScheme.myAccentColor,
+                          color: myColor.myAccentColor,
+                          width: 1.5,
+                        ),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: const BorderSide(
+                          color: Colors.grey,
+                          width: 1.5,
+                        ),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide(
+                          color: myColor.myAccentColor,
                           width: 1.5,
                         ),
                       ),
@@ -126,10 +150,14 @@ class AddWordPopup extends StatelessWidget {
                       ),
                     ),
                     textAlign: TextAlign.center,
-                  ),
-                  SizedBox(
-                    width: double.maxFinite,
-                    child: TextButton(
+                  );
+                },
+              ),
+              SizedBox(
+                width: double.maxFinite,
+                child: Consumer<AddWordState>(
+                  builder: (context, addWordState, _) {
+                    return TextButton(
                       style: TextButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
@@ -144,26 +172,29 @@ class AddWordPopup extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        if (addWordState.getWordEditingController.text.isNotEmpty &&
-                            addWordState.getWordTranslationEditingController.text.isNotEmpty) {
+                        if (addWordState
+                                .getWordEditingController.text.isNotEmpty &&
+                            addWordState.getWordTranslationEditingController
+                                .text.isNotEmpty) {
                           context.read<DictionaryContentState>().createWord(
                                 categoryId,
                                 addWordState.getWordEditingController.text,
-                                addWordState.getWordTranslationEditingController.text,
+                                addWordState
+                                    .getWordTranslationEditingController.text,
                                 addWordState.getWordColor.toString(),
                                 categoryPriority,
                               );
-                          context.read<DictionaryContentState>().showSnackBarMessage(context, 'Слово добавлено');
-                          Navigator.of(context).pop();
-                        } else {
+                          context
+                              .read<DictionaryContentState>()
+                              .showSnackBarMessage(context, 'Слово добавлено');
                           Navigator.of(context).pop();
                         }
                       },
-                    ),
-                  ),
-                ],
-              );
-            },
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ),

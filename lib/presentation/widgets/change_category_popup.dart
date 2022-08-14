@@ -85,10 +85,25 @@ class ChangeCategoryPopup extends StatelessWidget {
                       alignLabelWithHint: true,
                       floatingLabelAlignment: FloatingLabelAlignment.center,
                       hintText: 'Введите название категории',
+                      errorText: changeCategoryState.getTextEditingController.text.isEmpty ? 'Это поле не должно быть пустым' : '',
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
-                          color: Theme.of(context).colorScheme.myAccentColor,
+                          color: myColor.myAccentColor,
+                          width: 1.5,
+                        ),
+                      ),
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: const BorderSide(
+                          color: Colors.grey,
+                          width: 1.5,
+                        ),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide(
+                          color: myColor.myAccentColor,
                           width: 1.5,
                         ),
                       ),
@@ -167,18 +182,18 @@ class ChangeCategoryPopup extends StatelessWidget {
                           ),
                         ),
                         onPressed: () {
-                          if (changeCategoryState.getWordCategoryTitle != item.wordCategoryTitle ||
-                              changeCategoryState.getCategoryColor.toString() != item.wordCategoryColor ||
-                              changeCategoryState.getPrioritySelectedIndex != item.priority) {
-                            context.read<DictionaryContentState>().updateWordCategory(
-                                  item.id,
-                                  changeCategoryState.getWordCategoryTitle,
-                                  changeCategoryState.getCategoryColor.toString(),
-                                  changeCategoryState.getPrioritySelectedIndex,);
-                            context.read<DictionaryContentState>().showSnackBarMessage(context, 'Категория изменена');
-                            Navigator.of(context).pop();
-                          } else {
-                            Navigator.of(context).pop();
+                          if (changeCategoryState.getTextEditingController.text.isNotEmpty) {
+                            if (changeCategoryState.getTextEditingController.text != item.wordCategoryTitle ||
+                                changeCategoryState.getCategoryColor.toString() != item.wordCategoryColor ||
+                                changeCategoryState.getPrioritySelectedIndex != item.priority) {
+                              context.read<DictionaryContentState>().updateWordCategory(
+                                item.id,
+                                changeCategoryState.getWordCategoryTitle,
+                                changeCategoryState.getCategoryColor.toString(),
+                                changeCategoryState.getPrioritySelectedIndex,);
+                              context.read<DictionaryContentState>().showSnackBarMessage(context, 'Категория изменена');
+                              Navigator.of(context).pop();
+                            }
                           }
                         },
                       );
