@@ -19,6 +19,11 @@ class DialogVisibility extends StatelessWidget {
         children: [
           Column(
             children: [
+              const SizedBox(height: 16),
+              const Text(
+                'Режим отображения',
+                style: TextStyle(fontSize: 18),
+              ),
               Divider(
                 indent: 24,
                 endIndent: 24,

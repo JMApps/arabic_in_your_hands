@@ -27,6 +27,11 @@ class DialogShareCopySecond extends StatelessWidget {
         children: [
           Column(
             children: [
+              const SizedBox(height: 16),
+              const Text(
+                'Поделиться',
+                style: TextStyle(fontSize: 18),
+              ),
               Divider(
                 indent: 24,
                 endIndent: 24,
