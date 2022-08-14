@@ -7,8 +7,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class DictionaryCategoriesItem extends StatelessWidget {
-  const DictionaryCategoriesItem({Key? key, required this.item})
+class DictionaryCategoryItem extends StatelessWidget {
+  const DictionaryCategoryItem({Key? key, required this.item})
       : super(key: key);
 
   final DictionaryCategoryModel item;
