@@ -23,6 +23,11 @@ class DictionaryContentState with ChangeNotifier {
     notifyListeners();
   }
 
+  createWord(int displayBy, String word, String wordTranslation, String wordColor, int priority) {
+    _dictionaryDatabaseQuery.createWord(displayBy, word, wordTranslation, wordColor, priority);
+    notifyListeners();
+  }
+
   showSnackBarMessage(BuildContext context, String message) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

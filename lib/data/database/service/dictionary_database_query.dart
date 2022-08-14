@@ -38,4 +38,10 @@ class DictionaryDatabaseQuery {
     List<DictionaryWordModel>? words = res.isNotEmpty ? res.map((c) => DictionaryWordModel.fromMap(c)).toList() : null;
     return words!;
   }
+
+  Future<int> createWord(int displayBy, String word, String wordTranslation, String wordColor, int priority) async {
+    var dbClient = await con.db;
+    final wordData = {'displayBy': displayBy, 'word': word, 'wordTranslate': wordTranslation, 'wordItemColor': wordColor, 'priority': priority, 'wordTranscription': 'null', 'addDateTime': DateTime.now().toString(), 'changeDateTime': DateTime.now().toString()};
+    return await dbClient.insert('Table_of_words', wordData, conflictAlgorithm: sql.ConflictAlgorithm.replace);
+  }
 }

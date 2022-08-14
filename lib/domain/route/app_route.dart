@@ -54,6 +54,8 @@ class AppRoute {
             builder: (_) => DictionaryWordsPage(
               categoryId: dictionaryCategoryArguments.categoryId,
               categoryTitle: dictionaryCategoryArguments.categoryTitle,
+              categoryColor: dictionaryCategoryArguments.categoryColor,
+              categoryPriority: dictionaryCategoryArguments.categoryPriority,
             ),
             settings: routeSettings);
       default:

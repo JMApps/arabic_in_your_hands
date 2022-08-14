@@ -74,6 +74,8 @@ class DictionaryCategoriesItem extends StatelessWidget {
             arguments: DictionaryCategoryArguments(
               item.id,
               item.wordCategoryTitle,
+              item.wordCategoryColor,
+              item.priority,
             ),
           );
         },
