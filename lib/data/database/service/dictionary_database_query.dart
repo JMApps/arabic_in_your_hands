@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/data/database/model/dictionary_category_model.dart';
+import 'package:arabicinyourhands/data/database/model/dictionary_word_model.dart';
 import 'package:arabicinyourhands/data/database/service/database_helper_dictionary.dart';
 import 'package:sqflite/sqflite.dart' as sql;
 
@@ -29,5 +30,12 @@ class DictionaryDatabaseQuery {
     var res = await dbClient.delete('Table_of_word_categories', where: '_id == $categoryId');
     res = await dbClient.delete('Table_of_words', where: 'displayBy == $categoryId');
     return res;
+  }
+
+  Future<List<DictionaryWordModel>> getWordsCategory(int categoryId) async {
+    var dbClient = await con.db;
+    var res = await dbClient.query('Table_of_words', where: 'displayBy == $categoryId');
+    List<DictionaryWordModel>? words = res.isNotEmpty ? res.map((c) => DictionaryWordModel.fromMap(c)).toList() : null;
+    return words!;
   }
 }
