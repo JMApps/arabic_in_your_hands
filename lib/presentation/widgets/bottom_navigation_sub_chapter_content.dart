@@ -13,9 +13,11 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
-    final contentPlayerWithoutListen = Provider.of<ContentPlayerState>(context, listen: false);
+    final contentPlayerWithoutListen =
+        Provider.of<ContentPlayerState>(context, listen: false);
     final getWatchContentPlayer = context.watch<ContentPlayerState>();
-    getWatchContentPlayer.getPlayer.setSpeed(context.watch<PlaySpeedState>().getPlaySpeed);
+    getWatchContentPlayer.getPlayer
+        .setSpeed(context.watch<PlaySpeedState>().getPlaySpeed);
     return Material(
       color: myColor.bottomNavigationBarColor,
       borderRadius: const BorderRadius.horizontal(
@@ -54,32 +56,58 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
                 contentPlayerWithoutListen.changePlayListLoopState();
               },
             ),
-            IconButton(
-              icon: Icon(CupertinoIcons.backward_end,
-                  color: myColor.myAccentColor),
-              splashRadius: 20,
-              onPressed: () {
-                contentPlayerWithoutListen.previousTrack();
-              },
+            Container(
+              padding: const EdgeInsets.all(0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: myColor.myAccentColor.withOpacity(0.3),
+              ),
+              child: IconButton(
+                icon: const Icon(
+                  CupertinoIcons.backward_end,
+                  color: Colors.white,
+                ),
+                splashRadius: 20,
+                onPressed: () {
+                  contentPlayerWithoutListen.previousTrack();
+                },
+              ),
             ),
-            IconButton(
-              icon: Icon(
+            Container(
+              padding: const EdgeInsets.all(0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: myColor.myAccentColor.withOpacity(0.3),
+              ),
+              child: IconButton(
+                icon: Icon(
                   getWatchContentPlayer.getPlayingState
                       ? CupertinoIcons.pause
                       : CupertinoIcons.play,
-                  color: myColor.myAccentColor),
-              splashRadius: 20,
-              onPressed: () {
-                contentPlayerWithoutListen.playPause();
-              },
+                  color: Colors.white,
+                ),
+                splashRadius: 20,
+                onPressed: () {
+                  contentPlayerWithoutListen.playPause();
+                },
+              ),
             ),
-            IconButton(
-              icon: Icon(CupertinoIcons.forward_end,
-                  color: myColor.myAccentColor),
-              splashRadius: 20,
-              onPressed: () {
-                contentPlayerWithoutListen.nextTrack();
-              },
+            Container(
+              padding: const EdgeInsets.all(0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: myColor.myAccentColor.withOpacity(0.3),
+              ),
+              child: IconButton(
+                icon: const Icon(
+                  CupertinoIcons.forward_end,
+                  color: Colors.white,
+                ),
+                splashRadius: 20,
+                onPressed: () {
+                  contentPlayerWithoutListen.nextTrack();
+                },
+              ),
             ),
             IconButton(
               icon: Icon(

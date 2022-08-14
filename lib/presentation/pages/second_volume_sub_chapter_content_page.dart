@@ -97,7 +97,7 @@ class SecondVolumeSubChapterContentPage extends StatelessWidget {
                         color: Theme.of(context).colorScheme.myAccentColor,
                         margin: const EdgeInsets.all(8),
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
+                          borderRadius: BorderRadius.circular(15),
                         ),
                         child: Padding(
                           padding: const EdgeInsets.all(8),
