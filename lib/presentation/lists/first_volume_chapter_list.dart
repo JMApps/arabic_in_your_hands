@@ -18,7 +18,6 @@ class FirstVolumeChapterList extends StatelessWidget {
             ? CupertinoScrollbar(
                 child: AnimationLimiter(
                   child: ListView.builder(
-                    physics: const BouncingScrollPhysics(),
                     padding: const EdgeInsets.only(bottom: 12),
                     itemCount: snapshot.data!.length,
                     itemBuilder: (BuildContext context, int index) {

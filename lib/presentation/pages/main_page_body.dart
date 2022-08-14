@@ -22,7 +22,7 @@ class MainPageBody extends StatelessWidget {
   final _mainTitles = [
     'Том 1',
     'Том 2',
-    'Словарь',
+    'Категории',
     'Настройки',
   ];
 
