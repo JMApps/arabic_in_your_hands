@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class ChangeCategoryState with ChangeNotifier {
 
-  ChangeCategoryState(this._wordCategoryTitle, this._categoryColor, this._prioritySelectedIndex) {
-    _textEditingController.text = _wordCategoryTitle;
+  ChangeCategoryState(this._categoryTitle, this._categoryColor, this._prioritySelectedIndex) {
+    _textEditingController.text = _categoryTitle;
     _categoryColor = _categoryColor;
     for (int i = 0; i < getIsPrioritySelected.length; i++) {
       getIsPrioritySelected[i] = i == _prioritySelectedIndex;
@@ -14,9 +14,9 @@ class ChangeCategoryState with ChangeNotifier {
 
   TextEditingController get getTextEditingController => _textEditingController;
 
-  String _wordCategoryTitle = '';
+  String _categoryTitle = '';
 
-  String get getWordCategoryTitle => _wordCategoryTitle;
+  String get getCategoryTitle => _categoryTitle;
 
   int _categoryColor = Colors.grey.value;
 
@@ -30,8 +30,8 @@ class ChangeCategoryState with ChangeNotifier {
 
   int get getPrioritySelectedIndex => _prioritySelectedIndex;
 
-  onChangeCurrentText(String value) {
-    _wordCategoryTitle = value;
+  onCategoryTextChanged(String value) {
+    _categoryTitle = value;
     notifyListeners();
   }
 

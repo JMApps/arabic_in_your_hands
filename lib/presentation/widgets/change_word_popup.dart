@@ -38,16 +38,31 @@ class ChangeWordPopup extends StatelessWidget {
               return Wrap(
                 runSpacing: 8,
                 children: [
-                  TextFormField(
+                  TextField(
                     controller: changeWordState.getWordEditingController,
                     textCapitalization: TextCapitalization.sentences,
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
-                    autocorrect: false,
                     autofocus: true,
+                    autocorrect: false,
                     maxLength: 50,
                     cursorColor: myColor.myAccentColor,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      changeWordState.onChangeWordText(value);
+                    },
                     decoration: InputDecoration(
+                      labelText: 'Слово',
+                      errorText: changeWordState.getWord.isEmpty ? 'Введите слово' : '',
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide(
+                          color: changeWordState.getWord.isEmpty
+                              ? myColor.priorityMediumColor
+                              : myColor.myAccentColor,
+                          width: 1.5,
+                        ),
+                      ),
                       suffixIcon: IconButton(
                         splashRadius: 15,
                         icon: Icon(
@@ -65,8 +80,7 @@ class ChangeWordPopup extends StatelessWidget {
                                 ),
                               ),
                               content: OColorPicker(
-                                selectedColor:
-                                    Color(changeWordState.getWordColor),
+                                selectedColor: Colors.grey[700],
                                 colors: primaryColorsPalette,
                                 onColorChange: (color) {
                                   changeWordState.selectWordColor(color);
@@ -77,91 +91,34 @@ class ChangeWordPopup extends StatelessWidget {
                           );
                         },
                       ),
-                      labelText: 'Слово',
-                      labelStyle: const TextStyle(
-                        color: Colors.grey,
-                      ),
-                      errorText: changeWordState.getWordEditingController.text.isEmpty ? 'Заполните поле' : '',
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide(
-                          color: myColor.myAccentColor,
-                          width: 1.5,
-                        ),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: const BorderSide(
-                          color: Colors.grey,
-                          width: 1.5,
-                        ),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide(
-                          color: myColor.myAccentColor,
-                          width: 1.5,
-                        ),
-                      ),
-                      alignLabelWithHint: true,
-                      floatingLabelAlignment: FloatingLabelAlignment.center,
-                      hintText: 'Введите слово',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
                     ),
-                    textAlign: TextAlign.center,
-                    onChanged: (value) {
-                      changeWordState.onChangeWordText(value);
-                    },
                   ),
-                  TextFormField(
+                  TextField(
                     controller: changeWordState.getWordTranslationEditingController,
                     textCapitalization: TextCapitalization.sentences,
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
-                    autocorrect: false,
                     autofocus: false,
+                    autocorrect: false,
                     maxLength: 75,
                     cursorColor: myColor.myAccentColor,
-                    decoration: InputDecoration(
-                      labelText: 'Перевод',
-                      labelStyle: const TextStyle(
-                        color: Colors.grey,
-                      ),
-                      errorText: changeWordState.getWordTranslationEditingController.text.isEmpty ? 'Запоните поле' : '',
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide(
-                          color: myColor.myAccentColor,
-                          width: 1.5,
-                        ),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: const BorderSide(
-                          color: Colors.grey,
-                          width: 1.5,
-                        ),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide(
-                          color: myColor.myAccentColor,
-                          width: 1.5,
-                        ),
-                      ),
-                      alignLabelWithHint: true,
-                      floatingLabelAlignment: FloatingLabelAlignment.center,
-                      hintText: 'Введите перевод слова',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                    ),
                     textAlign: TextAlign.center,
                     onChanged: (value) {
                       changeWordState.onChangeWordTranslationText(value);
                     },
+                    decoration: InputDecoration(
+                      labelText: 'Перевод',
+                      errorText: changeWordState.getWordTranslation.isEmpty ? 'Введите перевод слова' : '',
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide(
+                          color: changeWordState.getWordTranslation.isEmpty
+                              ? myColor.priorityMediumColor
+                              : myColor.myAccentColor,
+                          width: 1.5,
+                        ),
+                      ),
+                    ),
                   ),
                   SizedBox(
                     width: double.maxFinite,
@@ -169,25 +126,22 @@ class ChangeWordPopup extends StatelessWidget {
                       style: TextButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
-                          side: BorderSide(color: myColor.myAccentColor),
+                          side: BorderSide(color: myColor.myPrimaryColor),
                         ),
                         primary: myColor.myAccentColor,
                       ),
                       child: Text(
                         'Изменить',
                         style: TextStyle(
-                          color: myColor.myAccentColor,
+                          color: myColor.myPrimaryColor,
                         ),
                       ),
                       onPressed: () {
                         if (changeWordState.getWordEditingController.text.isNotEmpty &&
                             changeWordState.getWordTranslationEditingController.text.isNotEmpty) {
-                          if (changeWordState.getWordEditingController.text !=
-                                  item.word ||
-                              changeWordState.getWordTranslationEditingController.text !=
-                                  item.wordTranslate ||
-                              changeWordState.getWordColor.toString() !=
-                                  item.wordItemColor.toString()) {
+                          if (changeWordState.getWordEditingController.text != item.word ||
+                              changeWordState.getWordTranslationEditingController.text != item.wordTranslate ||
+                              changeWordState.getWordColor.toString() != item.wordItemColor.toString()) {
                             context.read<DictionaryContentState>().updateWord(
                                   item.id,
                                   changeWordState.getWord,

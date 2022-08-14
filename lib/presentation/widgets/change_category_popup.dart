@@ -37,19 +37,33 @@ class ChangeCategoryPopup extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Wrap(
+            runSpacing: 4,
             children: [
               Consumer<ChangeCategoryState>(
                 builder: (context, changeCategoryState, _) {
-                  return TextFormField(
+                  return TextField(
                     controller: changeCategoryState.getTextEditingController,
                     textCapitalization: TextCapitalization.sentences,
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
-                    autocorrect: false,
                     autofocus: true,
+                    autocorrect: false,
                     maxLength: 150,
                     cursorColor: myColor.myAccentColor,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      changeCategoryState.onCategoryTextChanged(value);
+                    },
                     decoration: InputDecoration(
+                      labelText: 'Название категории',
+                      errorText: changeCategoryState.getCategoryTitle.isEmpty ? 'Введите название категории' : '',
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide(
+                          color: changeCategoryState.getCategoryTitle.isEmpty ? myColor.priorityMediumColor : myColor.myAccentColor,
+                          width: 1.5,
+                        ),
+                      ),
                       suffixIcon: IconButton(
                         splashRadius: 15,
                         icon: Icon(
@@ -67,7 +81,7 @@ class ChangeCategoryPopup extends StatelessWidget {
                                 ),
                               ),
                               content: OColorPicker(
-                                selectedColor: Color(changeCategoryState.getCategoryColor),
+                                selectedColor: Colors.grey[700],
                                 colors: primaryColorsPalette,
                                 onColorChange: (color) {
                                   changeCategoryState.selectCategoryColor(color);
@@ -78,43 +92,7 @@ class ChangeCategoryPopup extends StatelessWidget {
                           );
                         },
                       ),
-                      labelText: 'Название категории',
-                      labelStyle: TextStyle(
-                        color: Theme.of(context).colorScheme.myAccentColor,
-                      ),
-                      alignLabelWithHint: true,
-                      floatingLabelAlignment: FloatingLabelAlignment.center,
-                      hintText: 'Введите название категории',
-                      errorText: changeCategoryState.getTextEditingController.text.isEmpty ? 'Это поле не должно быть пустым' : '',
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide(
-                          color: myColor.myAccentColor,
-                          width: 1.5,
-                        ),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: const BorderSide(
-                          color: Colors.grey,
-                          width: 1.5,
-                        ),
-                      ),
-                      focusedErrorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide(
-                          color: myColor.myAccentColor,
-                          width: 1.5,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
                     ),
-                    textAlign: TextAlign.center,
-                    onChanged: (value) {
-                      changeCategoryState.onChangeCurrentText(value);
-                    },
                   );
                 },
               ),
@@ -129,13 +107,13 @@ class ChangeCategoryPopup extends StatelessWidget {
                 ),
               ),
               Consumer<ChangeCategoryState>(
-                builder: (context, changeCategoryState, _) {
+                builder: (context, addCategoryState, _) {
                   return Center(
                     child: ToggleButtons(
                       borderRadius: BorderRadius.circular(25),
-                      splashColor: myColor.myAccentColor.withOpacity(0.5),
-                      fillColor: myColor.myAccentColor.withOpacity(0.3),
-                      isSelected: changeCategoryState.getIsPrioritySelected,
+                      splashColor: myColor.myAccentColor.withOpacity(0.1),
+                      fillColor: myColor.myAccentColor.withOpacity(0.2),
+                      isSelected: addCategoryState.getIsPrioritySelected,
                       children: [
                         CircleAvatar(
                           radius: 12.5,
@@ -155,14 +133,18 @@ class ChangeCategoryPopup extends StatelessWidget {
                         ),
                       ],
                       onPressed: (index) {
-                        changeCategoryState.selectTogglePriority(index);
+                        addCategoryState.selectTogglePriority(index);
                       },
                     ),
                   );
                 },
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 16, top: 16, left: 16),
+                padding: const EdgeInsets.only(
+                  right: 16,
+                  top: 16,
+                  left: 16,
+                ),
                 child: SizedBox(
                   width: double.maxFinite,
                   child: Consumer<ChangeCategoryState>(
@@ -171,14 +153,14 @@ class ChangeCategoryPopup extends StatelessWidget {
                         style: TextButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25),
-                            side: BorderSide(color: myColor.myAccentColor),
+                            side: BorderSide(color: myColor.myPrimaryColor),
                           ),
-                          primary: myColor.myAccentColor,
+                          primary: myColor.myPrimaryColor,
                         ),
                         child: Text(
                           'Изменить',
                           style: TextStyle(
-                            color: myColor.myAccentColor,
+                            color: myColor.myPrimaryColor,
                           ),
                         ),
                         onPressed: () {
@@ -188,10 +170,12 @@ class ChangeCategoryPopup extends StatelessWidget {
                                 changeCategoryState.getPrioritySelectedIndex != item.priority) {
                               context.read<DictionaryContentState>().updateWordCategory(
                                 item.id,
-                                changeCategoryState.getWordCategoryTitle,
+                                changeCategoryState.getCategoryTitle,
                                 changeCategoryState.getCategoryColor.toString(),
                                 changeCategoryState.getPrioritySelectedIndex,);
                               context.read<DictionaryContentState>().showSnackBarMessage(context, 'Категория изменена');
+                              Navigator.of(context).pop();
+                            } else {
                               Navigator.of(context).pop();
                             }
                           }

@@ -10,9 +10,27 @@ class AddWordState with ChangeNotifier {
 
   TextEditingController get getWordTranslationEditingController => _wordTranslationEditingController;
 
+  String _word = '';
+
+  String get getWord => _word;
+
+  String _wordTranslation = '';
+
+  String get getWordTranslation => _wordTranslation;
+
   int _wordColor = Colors.grey.value;
 
   int get getWordColor => _wordColor;
+
+  onWordTextChanged(String value) {
+    _word = value;
+    notifyListeners();
+  }
+
+  onWordTranslationTextChanged(String value) {
+    _wordTranslation = value;
+    notifyListeners();
+  }
 
   selectWordColor(Color wordColor) {
     _wordColor = wordColor.value;

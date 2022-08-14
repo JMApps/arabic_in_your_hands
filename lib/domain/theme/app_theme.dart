@@ -14,6 +14,23 @@ class AppTheme {
         fontFamily: 'Gilroy',
       ),
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      labelStyle: const TextStyle(
+        color: Color(0xFF9E9E9E),
+      ),
+      alignLabelWithHint: true,
+      floatingLabelAlignment: FloatingLabelAlignment.center,
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(50),
+        borderSide: const BorderSide(
+          color: Color(0xFF00796B),
+          width: 1.5,
+        ),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(25),
+      ),
+    ),
   );
 
   static final darkTheme = ThemeData(
@@ -27,6 +44,23 @@ class AppTheme {
       titleTextStyle: TextStyle(
         fontSize: 20,
         fontFamily: 'Gilroy',
+      ),
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      labelStyle: const TextStyle(
+        color: Color(0xFF9E9E9E),
+      ),
+      alignLabelWithHint: true,
+      floatingLabelAlignment: FloatingLabelAlignment.center,
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(50),
+        borderSide: const BorderSide(
+          color: Color(0xFF0098DA),
+          width: 1.5,
+        ),
+      ),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(25),
       ),
     ),
   );

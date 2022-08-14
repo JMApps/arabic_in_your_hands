@@ -34,7 +34,7 @@ class DictionaryCategoriesPage extends StatelessWidget {
                       padding: MediaQuery.of(context).viewInsets,
                       duration: const Duration(milliseconds: 250),
                       curve: Curves.decelerate,
-                      child: const AddCategoryPopup(),
+                      child: AddCategoryPopup(),
                     ),
                   );
                 },

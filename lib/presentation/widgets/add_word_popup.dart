@@ -33,12 +33,12 @@ class AddWordPopup extends StatelessWidget {
         ),
         child: Padding(
           padding: const EdgeInsets.all(16),
-          child: Wrap(
-            runSpacing: 8,
-            children: [
-              Consumer<AddWordState>(
-                builder: (context, addWordState, _) {
-                  return TextField(
+          child: Consumer<AddWordState>(
+            builder: (context, addWordState, _) {
+              return Wrap(
+                runSpacing: 8,
+                children: [
+                  TextField(
                     controller: addWordState.getWordEditingController,
                     textCapitalization: TextCapitalization.sentences,
                     keyboardType: TextInputType.text,
@@ -47,23 +47,19 @@ class AddWordPopup extends StatelessWidget {
                     autocorrect: false,
                     maxLength: 50,
                     cursorColor: myColor.myAccentColor,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      addWordState.onWordTextChanged(value);
+                    },
                     decoration: InputDecoration(
-                      alignLabelWithHint: true,
-                      floatingLabelAlignment: FloatingLabelAlignment.center,
-                      label: const Text(
-                        'Слово',
-                        style: TextStyle(
-                          fontSize: 18,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
-                      focusedBorder: OutlineInputBorder(
+                      labelText: 'Слово',
+                      errorText: addWordState.getWord.isEmpty ? 'Введите слово' : '',
+                      focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
-                          color: myColor.myAccentColor,
+                          color: addWordState.getWord.isEmpty
+                              ? myColor.priorityMediumColor
+                              : myColor.myAccentColor,
                           width: 1.5,
                         ),
                       ),
@@ -96,105 +92,69 @@ class AddWordPopup extends StatelessWidget {
                         },
                       ),
                     ),
-                    textAlign: TextAlign.center,
-                  );
-                },
-              ),
-              Consumer<AddWordState>(
-                builder: (context, addWordState, _) {
-                  return TextField(
-                    controller:
-                        addWordState.getWordTranslationEditingController,
+                  ),
+                  TextField(
+                    controller: addWordState.getWordTranslationEditingController,
                     textCapitalization: TextCapitalization.sentences,
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
-                    autocorrect: false,
                     autofocus: false,
+                    autocorrect: false,
                     maxLength: 75,
                     cursorColor: myColor.myAccentColor,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      addWordState.onWordTranslationTextChanged(value);
+                    },
                     decoration: InputDecoration(
                       labelText: 'Перевод',
-                      labelStyle: TextStyle(
-                        color: myColor.myAccentColor,
-                      ),
-                      alignLabelWithHint: true,
-                      floatingLabelAlignment: FloatingLabelAlignment.center,
-                      hintText: 'Введите перевод слова',
-                      errorText: addWordState
-                              .getWordTranslationEditingController.text.isEmpty
-                          ? 'Заполните поле'
-                          : '',
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide(
-                          color: myColor.myAccentColor,
-                          width: 1.5,
-                        ),
-                      ),
-                      errorBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: const BorderSide(
-                          color: Colors.grey,
-                          width: 1.5,
-                        ),
-                      ),
+                      errorText: addWordState.getWordTranslation.isEmpty ? 'Введите перевод слова' : '',
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
-                          color: myColor.myAccentColor,
+                          color: addWordState.getWordTranslation.isEmpty
+                              ? myColor.priorityMediumColor
+                              : myColor.myAccentColor,
                           width: 1.5,
                         ),
                       ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
                     ),
-                    textAlign: TextAlign.center,
-                  );
-                },
-              ),
-              SizedBox(
-                width: double.maxFinite,
-                child: Consumer<AddWordState>(
-                  builder: (context, addWordState, _) {
-                    return TextButton(
+                  ),
+                  SizedBox(
+                    width: double.maxFinite,
+                    child: TextButton(
                       style: TextButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
-                          side: BorderSide(color: myColor.myAccentColor),
+                          side: BorderSide(color: myColor.myPrimaryColor),
                         ),
-                        primary: myColor.myAccentColor,
+                        primary: myColor.myPrimaryColor,
                       ),
                       child: Text(
                         'Добавить',
                         style: TextStyle(
-                          color: myColor.myAccentColor,
+                          color: myColor.myPrimaryColor,
                         ),
                       ),
                       onPressed: () {
-                        if (addWordState
-                                .getWordEditingController.text.isNotEmpty &&
-                            addWordState.getWordTranslationEditingController
-                                .text.isNotEmpty) {
+                        if (addWordState.getWordEditingController.text.isNotEmpty &&
+                            addWordState.getWordTranslationEditingController.text.isNotEmpty) {
                           context.read<DictionaryContentState>().createWord(
                                 categoryId,
                                 addWordState.getWordEditingController.text,
-                                addWordState
-                                    .getWordTranslationEditingController.text,
+                                addWordState.getWordTranslationEditingController.text,
                                 addWordState.getWordColor.toString(),
                                 categoryPriority,
                               );
-                          context
-                              .read<DictionaryContentState>()
-                              .showSnackBarMessage(context, 'Слово добавлено');
+                          context.read<DictionaryContentState>().showSnackBarMessage(context, 'Слово добавлено');
                           Navigator.of(context).pop();
                         }
                       },
-                    );
-                  },
-                ),
-              ),
-            ],
+                    ),
+                  ),
+                ],
+              );
+            },
           ),
         ),
       ),

@@ -6,6 +6,10 @@ class AddCategoryState with ChangeNotifier {
 
   TextEditingController get getTextEditingController => _textEditingController;
 
+  String _categoryTitle = '';
+
+  String get getCategoryTitle => _categoryTitle;
+
   int _categoryColor = Colors.grey.value;
 
   int get getCategoryColor => _categoryColor;
@@ -17,6 +21,11 @@ class AddCategoryState with ChangeNotifier {
   int _prioritySelectedIndex = 0;
 
   int get getPrioritySelectedIndex => _prioritySelectedIndex;
+
+  onCategoryTextChanged(String value) {
+    _categoryTitle = value;
+    notifyListeners();
+  }
 
   selectCategoryColor(Color categoryColor) {
     _categoryColor = categoryColor.value;

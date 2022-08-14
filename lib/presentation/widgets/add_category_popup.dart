@@ -27,19 +27,33 @@ class AddCategoryPopup extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Wrap(
+            runSpacing: 4,
             children: [
               Consumer<AddCategoryState>(
                 builder: (context, addCategoryState, _) {
-                  return TextFormField(
+                  return TextField(
                     controller: addCategoryState.getTextEditingController,
                     textCapitalization: TextCapitalization.sentences,
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
-                    autocorrect: false,
                     autofocus: true,
+                    autocorrect: false,
                     maxLength: 150,
                     cursorColor: myColor.myAccentColor,
+                    textAlign: TextAlign.center,
+                    onChanged: (value) {
+                      addCategoryState.onCategoryTextChanged(value);
+                    },
                     decoration: InputDecoration(
+                      labelText: 'Название категории',
+                      errorText: addCategoryState.getCategoryTitle.isEmpty ? 'Введите название категории' : '',
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(25),
+                        borderSide: BorderSide(
+                          color: addCategoryState.getCategoryTitle.isEmpty ? myColor.priorityMediumColor : myColor.myAccentColor,
+                          width: 1.5,
+                        ),
+                      ),
                       suffixIcon: IconButton(
                         splashRadius: 15,
                         icon: Icon(
@@ -68,25 +82,7 @@ class AddCategoryPopup extends StatelessWidget {
                           );
                         },
                       ),
-                      labelText: 'Название категории',
-                      labelStyle: TextStyle(
-                        color: Theme.of(context).colorScheme.myAccentColor,
-                      ),
-                      alignLabelWithHint: true,
-                      floatingLabelAlignment: FloatingLabelAlignment.center,
-                      hintText: 'Введите название категории',
-                      focusedBorder: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                        borderSide: BorderSide(
-                          color: Theme.of(context).colorScheme.myAccentColor,
-                          width: 1.5,
-                        ),
-                      ),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(25),
-                      ),
                     ),
-                    textAlign: TextAlign.center,
                   );
                 },
               ),
@@ -105,8 +101,8 @@ class AddCategoryPopup extends StatelessWidget {
                   return Center(
                     child: ToggleButtons(
                       borderRadius: BorderRadius.circular(25),
-                      splashColor: myColor.myAccentColor.withOpacity(0.5),
-                      fillColor: myColor.myAccentColor.withOpacity(0.3),
+                      splashColor: myColor.myAccentColor.withOpacity(0.1),
+                      fillColor: myColor.myAccentColor.withOpacity(0.2),
                       isSelected: addCategoryState.getIsPrioritySelected,
                       children: [
                         CircleAvatar(
@@ -134,7 +130,11 @@ class AddCategoryPopup extends StatelessWidget {
                 },
               ),
               Padding(
-                padding: const EdgeInsets.only(right: 16, top: 16, left: 16),
+                padding: const EdgeInsets.only(
+                  right: 16,
+                  top: 16,
+                  left: 16,
+                ),
                 child: SizedBox(
                   width: double.maxFinite,
                   child: Consumer<AddCategoryState>(
@@ -143,26 +143,24 @@ class AddCategoryPopup extends StatelessWidget {
                         style: TextButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25),
-                            side: BorderSide(color: myColor.myAccentColor),
+                            side: BorderSide(color: myColor.myPrimaryColor),
                           ),
-                          primary: myColor.myAccentColor,
+                          primary: myColor.myPrimaryColor,
                         ),
                         child: Text(
                           'Добавить',
                           style: TextStyle(
-                            color: myColor.myAccentColor,
+                            color: myColor.myPrimaryColor,
                           ),
                         ),
                         onPressed: () {
                           if (addCategoryState.getTextEditingController.text.isNotEmpty) {
                             context.read<DictionaryContentState>().createWordCategory(
-                              addCategoryState.getTextEditingController.text,
-                              addCategoryState.getCategoryColor.toString(),
-                              addCategoryState.getPrioritySelectedIndex,
-                            );
+                                  addCategoryState.getTextEditingController.text,
+                                  addCategoryState.getCategoryColor.toString(),
+                                  addCategoryState.getPrioritySelectedIndex,
+                                );
                             context.read<DictionaryContentState>().showSnackBarMessage(context, 'Категория добавлена');
-                            Navigator.of(context).pop();
-                          } else {
                             Navigator.of(context).pop();
                           }
                         },
