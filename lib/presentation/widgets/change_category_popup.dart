@@ -21,9 +21,9 @@ class ChangeCategoryPopup extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<ChangeCategoryState>(
           create: (_) => ChangeCategoryState(
-            item.wordCategoryTitle!,
-            int.parse(item.wordCategoryColor!),
-            item.priority!,
+            item.wordCategoryTitle,
+            int.parse(item.wordCategoryColor),
+            item.priority,
           ),
         ),
       ],
@@ -42,6 +42,7 @@ class ChangeCategoryPopup extends StatelessWidget {
                 builder: (context, changeCategoryState, _) {
                   return TextFormField(
                     controller: changeCategoryState.getTextEditingController,
+                    textCapitalization: TextCapitalization.sentences,
                     keyboardType: TextInputType.text,
                     textInputAction: TextInputAction.done,
                     autocorrect: false,
@@ -170,7 +171,7 @@ class ChangeCategoryPopup extends StatelessWidget {
                               changeCategoryState.getCategoryColor.toString() != item.wordCategoryColor ||
                               changeCategoryState.getPrioritySelectedIndex != item.priority) {
                             context.read<DictionaryContentState>().updateWordCategory(
-                                  item.id!,
+                                  item.id,
                                   changeCategoryState.getWordCategoryTitle,
                                   changeCategoryState.getCategoryColor.toString(),
                                   changeCategoryState.getPrioritySelectedIndex,);

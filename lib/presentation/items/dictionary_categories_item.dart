@@ -1,3 +1,4 @@
+import 'package:arabicinyourhands/data/database/model/dictionary_category_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/dictionary_category_model.dart';
 import 'package:arabicinyourhands/domain/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/domain/theme/app_theme.dart';
@@ -35,7 +36,7 @@ class DictionaryCategoriesItem extends StatelessWidget {
           decoration: BoxDecoration(
             border: Border(
               left: BorderSide(
-                color: _priorityColor(context, item.priority!),
+                color: _priorityColor(context, item.priority),
                 width: 3,
               ),
             ),
@@ -44,7 +45,7 @@ class DictionaryCategoriesItem extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  '${item.wordCategoryTitle}',
+                  item.wordCategoryTitle,
                   style: const TextStyle(
                     fontSize: 16,
                     fontFamily: 'GilroyMedium',
@@ -59,7 +60,7 @@ class DictionaryCategoriesItem extends StatelessWidget {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: Color(
-                    int.parse(item.wordCategoryColor!),
+                    int.parse(item.wordCategoryColor),
                   ),
                 ),
               ),
@@ -67,7 +68,14 @@ class DictionaryCategoriesItem extends StatelessWidget {
           ),
         ),
         onTap: () {
-          // Переход на страницу слов
+          Navigator.pushNamed(
+            context,
+            '/category_words_content',
+            arguments: DictionaryCategoryArguments(
+              item.id,
+              item.wordCategoryTitle,
+            ),
+          );
         },
         onLongPress: () {
           showCupertinoModalPopup(
@@ -158,8 +166,9 @@ class DictionaryCategoriesItem extends StatelessWidget {
                                     ),
                                   ),
                                   onPressed: () {
-                                    context.read<DictionaryContentState>().showSnackBarMessage(context, 'Категория удалена');
-                                    getReadDictionaryContentState.deleteWordCategory(item.id!);
+                                    context.read<DictionaryContentState>().showSnackBarMessage(
+                                    context, 'Категория удалена');
+                                    getReadDictionaryContentState.deleteWordCategory(item.id);
                                     Navigator.of(context).pop();
                                   },
                                 ),

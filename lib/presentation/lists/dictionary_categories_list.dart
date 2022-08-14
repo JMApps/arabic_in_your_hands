@@ -1,7 +1,6 @@
 import 'package:arabicinyourhands/domain/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/presentation/items/dictionary_categories_item.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class DictionaryCategoriesList extends StatelessWidget {
@@ -23,16 +22,16 @@ class DictionaryCategoriesList extends StatelessWidget {
                   },
                 ),
               )
-            : Center(
-                child: TextButton.icon(
-                  label: const Text(
+            : const Center(
+                child: Padding(
+                  padding: EdgeInsets.all(16),
+                  child: Text(
                     'Добавьте первую категорию',
                     style: TextStyle(
                       fontSize: 18,
                     ),
+                    textAlign: TextAlign.center,
                   ),
-                  icon: const Icon(CupertinoIcons.add),
-                  onPressed: null,
                 ),
               );
       },
