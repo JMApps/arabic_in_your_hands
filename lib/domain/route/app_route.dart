@@ -1,6 +1,7 @@
 import 'package:arabicinyourhands/data/database/model/content_volume_one_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/content_volume_two_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/dictionary_category_arguments.dart';
+import 'package:arabicinyourhands/data/database/model/dictionary_words_flip_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/volume_first_item_flip_content_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/volume_second_item_flip_content_arguments.dart';
 import 'package:arabicinyourhands/presentation/pages/dictionary_words_page.dart';
@@ -8,6 +9,7 @@ import 'package:arabicinyourhands/presentation/pages/first_volume_content_flip_m
 import 'package:arabicinyourhands/presentation/pages/first_volume_sub_chapter_content_page.dart';
 import 'package:arabicinyourhands/presentation/pages/second_volume_content_flip_mode_page.dart';
 import 'package:arabicinyourhands/presentation/pages/second_volume_sub_chapter_content_page.dart';
+import 'package:arabicinyourhands/presentation/pages/words_content_flip_mode_page.dart';
 import 'package:flutter/material.dart';
 
 class AppRoute {
@@ -56,6 +58,15 @@ class AppRoute {
               categoryTitle: dictionaryCategoryArguments.categoryTitle,
               categoryColor: dictionaryCategoryArguments.categoryColor,
               categoryPriority: dictionaryCategoryArguments.categoryPriority,
+            ),
+            settings: routeSettings);
+      case '/words_content_flip':
+        final DictionaryWordFlipArguments dictionaryWordFlipArguments = routeSettings.arguments as DictionaryWordFlipArguments;
+        return MaterialPageRoute(
+            builder: (_) => WordsContentFlipModePage(
+              wordsCategoryId: dictionaryWordFlipArguments.wordsCategoryId,
+              wordsCategoryTitle: dictionaryWordFlipArguments.wordsCategoryTitle,
+              wordsCategoryPriority: dictionaryWordFlipArguments.wordsCategoryPriority,
             ),
             settings: routeSettings);
       default:

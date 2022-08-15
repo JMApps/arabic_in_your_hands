@@ -1,3 +1,4 @@
+import 'package:arabicinyourhands/data/database/model/dictionary_words_flip_arguments.dart';
 import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:arabicinyourhands/presentation/lists/dictionary_words_list.dart';
 import 'package:arabicinyourhands/presentation/widgets/add_word_popup.dart';
@@ -32,6 +33,25 @@ class DictionaryWordsPage extends StatelessWidget {
               forceElevated: innerBoxIsScrolled,
               expandedHeight: 50,
               title: const Text('Слова'),
+              actions: [
+                IconButton(
+                  icon: const Icon(
+                    CupertinoIcons.creditcard,
+                    color: Colors.white,
+                  ),
+                  splashRadius: 20,
+                  onPressed: () {
+                    Navigator.of(context).pushNamed(
+                      '/words_content_flip',
+                      arguments: DictionaryWordFlipArguments(
+                        categoryId,
+                        categoryTitle,
+                        categoryPriority,
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
             SliverToBoxAdapter(
               child: Column(
@@ -39,9 +59,7 @@ class DictionaryWordsPage extends StatelessWidget {
                   Container(
                     width: double.maxFinite,
                     height: 4,
-                    color: Color(
-                      int.parse(categoryColor),
-                    ),
+                    color: HexColor.fromHex(categoryColor),
                   ),
                   Card(
                     color: Theme.of(context).colorScheme.myAccentColor,
