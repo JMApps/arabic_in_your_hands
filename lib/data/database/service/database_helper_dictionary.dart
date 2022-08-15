@@ -29,7 +29,7 @@ class DatabaseHelperDictionary {
         : await getApplicationSupportDirectory();
 
     String pathDictionary = join(documentDirectory!.path, 'WordsDatabase.db');
-    String pathDictionaryData = join('/data/data/jmapps.arabicinyourhands/databases/', 'WordsDatabase');
+    String pathDictionaryData = join('/data/data/jmapps.arabicinyourhands/databases', 'WordsDatabase');
 
     var existsDictionary = await databaseExists(pathDictionary);
     var existsDictionaryData = await databaseExists(pathDictionaryData);
