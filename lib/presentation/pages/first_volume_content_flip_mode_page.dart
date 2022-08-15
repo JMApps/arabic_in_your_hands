@@ -23,54 +23,56 @@ class FirstVolumeContentFlipModePage extends StatelessWidget {
           create: (_) => FlipPageState(),
         ),
       ],
-      child: Builder(builder: (context) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Text('Режим карточек'),
-            actions: [
-              IconButton(
-                splashRadius: 20,
-                icon: const Icon(
-                  CupertinoIcons.creditcard_fill,
-                  color: Colors.white,
-                ),
-                onPressed: () {
-                  context.read<FlipPageState>().changeCardMode();
-                },
-              ),
-            ],
-          ),
-          body: Column(
-            children: [
-              Card(
-                color: Theme.of(context).colorScheme.myAccentColor,
-                margin: const EdgeInsets.all(8),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(20),
-                ),
-                child: Container(
-                  width: double.maxFinite,
-                  padding: const EdgeInsets.all(8),
-                  child: Text(
-                    dialogTitle,
-                    style: const TextStyle(
-                      fontSize: 18,
-                      color: Colors.white,
-                      fontFamily: 'Gilroy medium',
-                    ),
-                    textAlign: TextAlign.center,
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Режим карточек'),
+          actions: [
+            Consumer<FlipPageState>(
+              builder: (context, flipPageState, _) {
+                return IconButton(
+                  splashRadius: 20,
+                  icon: const Icon(
+                    CupertinoIcons.creditcard_fill,
+                    color: Colors.white,
                   ),
+                  onPressed: () {
+                    flipPageState.changeCardMode();
+                  },
+                );
+              },
+            ),
+          ],
+        ),
+        body: Column(
+          children: [
+            Card(
+              color: Theme.of(context).colorScheme.myAccentColor,
+              margin: const EdgeInsets.all(8),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Container(
+                width: double.maxFinite,
+                padding: const EdgeInsets.all(8),
+                child: Text(
+                  dialogTitle,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                    fontFamily: 'Gilroy medium',
+                  ),
+                  textAlign: TextAlign.center,
                 ),
               ),
-              Expanded(
-                child: VolumeFirstFlipCardList(
-                  firstVolumeSubChapterId: firstVolumeSubChapterId,
-                ),
+            ),
+            Expanded(
+              child: VolumeFirstFlipCardList(
+                firstVolumeSubChapterId: firstVolumeSubChapterId,
               ),
-            ],
-          ),
-        );
-      }),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
