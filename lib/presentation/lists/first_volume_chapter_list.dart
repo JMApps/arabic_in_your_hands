@@ -1,6 +1,5 @@
 import 'package:arabicinyourhands/data/database/service/database_query.dart';
 import 'package:arabicinyourhands/presentation/items/first_volume_chapter_item.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 
