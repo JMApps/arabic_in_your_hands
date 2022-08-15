@@ -16,54 +16,52 @@ class DialogVisibility extends StatelessWidget {
         borderRadius: BorderRadius.circular(25),
       ),
       child: Wrap(
+        runSpacing: 16,
         children: [
-          Column(
-            children: [
-              const SizedBox(height: 16),
-              const Text(
-                'Режим отображения',
-                style: TextStyle(fontSize: 18),
+          const SizedBox(height: 16),
+          Container(
+            padding: const EdgeInsets.only(top: 16),
+            width: double.maxFinite,
+            child: Text(
+              'Режим отобраэения',
+              style: TextStyle(
+                fontSize: 18,
+                color: myColor.myAccentColor,
               ),
-              Divider(
-                indent: 24,
-                endIndent: 24,
-                color: myColor.myPrimaryColor,
-              ),
-              SwitchListTile.adaptive(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                title: const Text(
-                  'Показать/скрыть арабский текст',
-                  style: TextStyle(fontSize: 18),
-                ),
-                activeColor: myColor.myAccentColor,
-                value: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
-                onChanged: (bool? value) {
-                  context.read<VolumeContentDialogVisibilityState>().updateSecondVisibilityState(value!);
-                },
-              ),
-              Divider(
-                indent: 16,
-                endIndent: 16,
-                color: myColor.myPrimaryColor,
-              ),
-              SwitchListTile.adaptive(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                title: const Text(
-                  'Показать/скрыть текст перевода',
-                  style: TextStyle(fontSize: 18),
-                ),
-                activeColor: myColor.myAccentColor,
-                value: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
-                onChanged: (bool? value) {
-                  context.read<VolumeContentDialogVisibilityState>().updateFirstVisibilityState(value!);
-                },
-              ),
-              Divider(
-                indent: 24,
-                endIndent: 24,
-                color: myColor.myPrimaryColor,
-              ),
-            ],
+              textAlign: TextAlign.center,
+            ),
+          ),
+          SwitchListTile.adaptive(
+            contentPadding: const EdgeInsets.symmetric(horizontal: 24),
+            title: const Text(
+              'Показать/скрыть арабский текст',
+              style: TextStyle(fontSize: 18),
+            ),
+            activeColor: myColor.myAccentColor,
+            value: context
+                .watch<VolumeContentDialogVisibilityState>()
+                .getSecondDialogVisibility,
+            onChanged: (bool? value) {
+              context
+                  .read<VolumeContentDialogVisibilityState>()
+                  .updateSecondVisibilityState(value!);
+            },
+          ),
+          SwitchListTile.adaptive(
+            contentPadding: const EdgeInsets.only(
+              right: 24,
+              bottom: 16,
+              left: 24,
+            ),
+            title: const Text(
+              'Показать/скрыть текст перевода',
+              style: TextStyle(fontSize: 18),
+            ),
+            activeColor: myColor.myAccentColor,
+            value: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
+            onChanged: (bool? value) {
+              context.read<VolumeContentDialogVisibilityState>().updateFirstVisibilityState(value!);
+            },
           ),
         ],
       ),

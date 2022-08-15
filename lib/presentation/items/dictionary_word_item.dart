@@ -2,6 +2,7 @@ import 'package:arabicinyourhands/data/database/model/dictionary_word_model.dart
 import 'package:arabicinyourhands/domain/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:arabicinyourhands/presentation/widgets/change_word_popup.dart';
+import 'package:clipboard/clipboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +19,9 @@ class DictionaryWordItem extends StatelessWidget {
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
     return Card(
-      color: item.id.isOdd ? myColor.mainChapterCardColor : myColor.mainChapterCardColor.withOpacity(0.8),
+      color: item.id.isOdd
+          ? myColor.mainChapterCardColor
+          : myColor.mainChapterCardColor.withOpacity(0.8),
       margin: const EdgeInsets.all(8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
@@ -74,18 +77,23 @@ class DictionaryWordItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: Wrap(
-                  runAlignment: WrapAlignment.center,
-                  alignment: WrapAlignment.center,
-                  crossAxisAlignment: WrapCrossAlignment.center,
+                  runSpacing: 8,
                   children: [
-                    Divider(
-                      indent: 24,
-                      endIndent: 24,
-                      color: myColor.myPrimaryColor,
+                    Container(
+                      padding: const EdgeInsets.only(top: 16),
+                      width: double.maxFinite,
+                      child: Text(
+                        item.word,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: myColor.myAccentColor,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                     ListTile(
                       contentPadding:
-                      const EdgeInsets.symmetric(horizontal: 16),
+                          const EdgeInsets.symmetric(horizontal: 24),
                       title: const Text('Изменить'),
                       trailing: Icon(
                         CupertinoIcons.pencil_circle,
@@ -112,13 +120,26 @@ class DictionaryWordItem extends StatelessWidget {
                         );
                       },
                     ),
-                    Divider(
-                      indent: 16,
-                      endIndent: 16,
-                      color: myColor.myPrimaryColor,
+                    ListTile(
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 24),
+                      trailing: Icon(
+                        CupertinoIcons.doc_on_clipboard,
+                        color: myColor.myAccentColor,
+                      ),
+                      title: const Text(
+                        'Скопировать',
+                        style: TextStyle(fontSize: 18),
+                      ),
+                      onTap: () {
+                        FlutterClipboard.copy('${item.word}\n${item.wordTranslate}');
+                        context.read<DictionaryContentState>().showSnackBarMessage(context, 'Скопировано');
+                        Navigator.of(context).pop();
+                      },
                     ),
                     ListTile(
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 24),
                       title: const Text('Удалить'),
                       trailing: Icon(
                         CupertinoIcons.delete,
@@ -131,7 +152,8 @@ class DictionaryWordItem extends StatelessWidget {
                           builder: (context) {
                             return CupertinoAlertDialog(
                               title: const Text('Удаление'),
-                              content: const Text('Вы уверены, что хотите удалить это слово?'),
+                              content: const Text(
+                                  'Вы уверены, что хотите удалить это слово?'),
                               actions: [
                                 CupertinoDialogAction(
                                   child: Text(
@@ -152,8 +174,13 @@ class DictionaryWordItem extends StatelessWidget {
                                     ),
                                   ),
                                   onPressed: () {
-                                    context.read<DictionaryContentState>().showSnackBarMessage(context, 'Слово удалено');
-                                    context.read<DictionaryContentState>().deleteWord(item.id);
+                                    context
+                                        .read<DictionaryContentState>()
+                                        .showSnackBarMessage(
+                                            context, 'Слово удалено');
+                                    context
+                                        .read<DictionaryContentState>()
+                                        .deleteWord(item.id);
                                     Navigator.of(context).pop();
                                   },
                                 ),
@@ -162,11 +189,6 @@ class DictionaryWordItem extends StatelessWidget {
                           },
                         );
                       },
-                    ),
-                    Divider(
-                      indent: 24,
-                      endIndent: 24,
-                      color: myColor.myPrimaryColor,
                     ),
                   ],
                 ),

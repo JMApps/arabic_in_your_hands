@@ -1,8 +1,10 @@
 import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_content_model.dart';
+import 'package:arabicinyourhands/domain/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
 
 class DialogShareCopyFirst extends StatelessWidget {
@@ -25,63 +27,52 @@ class DialogShareCopyFirst extends StatelessWidget {
       ),
       child: Wrap(
         children: [
-          Column(
-            children: [
-              const SizedBox(height: 16),
-              const Text(
-                'Поделиться',
-                style: TextStyle(fontSize: 18),
+          Container(
+            padding: const EdgeInsets.only(top: 16),
+            width: double.maxFinite,
+            child: Text(
+              'Поделиться',
+              style: TextStyle(
+                fontSize: 18,
+                color: myColor.myAccentColor
               ),
-              Divider(
-                indent: 24,
-                endIndent: 24,
-                color: myColor.myPrimaryColor,
-              ),
-              ListTile(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                trailing: Icon(
-                  CupertinoIcons.doc_on_clipboard,
-                  color: myColor.myAccentColor,
-                ),
-                title: const Text(
-                  'Скопировать',
-                  style: TextStyle(fontSize: 18),
-                ),
-                onTap: () {
-                  FlutterClipboard.copy(_contentForCopyAndShare());
-                  Navigator.of(context).pop();
-                },
-              ),
-              Divider(
-                indent: 16,
-                endIndent: 16,
-                color: myColor.myPrimaryColor,
-              ),
-              ListTile(
-                contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-                trailing: Icon(
-                  CupertinoIcons.share,
-                  color: myColor.myAccentColor,
-                ),
-                title: const Text(
-                  'Поделиться',
-                  style: TextStyle(fontSize: 18),
-                ),
-                onTap: () {
-                  Share.share(
-                    _contentForCopyAndShare(),
-                    sharePositionOrigin:
-                        Rect.fromLTWH(0, 0, size.width, size.height / 2),
-                  );
-                  Navigator.of(context).pop();
-                },
-              ),
-              Divider(
-                indent: 24,
-                endIndent: 24,
-                color: myColor.myPrimaryColor,
-              ),
-            ],
+              textAlign: TextAlign.center,
+            ),
+          ),
+          ListTile(
+            contentPadding: const EdgeInsets.symmetric(horizontal: 24),
+            trailing: Icon(
+              CupertinoIcons.doc_on_clipboard,
+              color: myColor.myAccentColor,
+            ),
+            title: const Text(
+              'Скопировать',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () {
+              FlutterClipboard.copy(_contentForCopyAndShare());
+              context.read<DictionaryContentState>().showSnackBarMessage(context, 'Скопировано');
+              Navigator.of(context).pop();
+            },
+          ),
+          ListTile(
+            contentPadding: const EdgeInsets.symmetric(horizontal: 24),
+            trailing: Icon(
+              CupertinoIcons.share,
+              color: myColor.myAccentColor,
+            ),
+            title: const Text(
+              'Поделиться',
+              style: TextStyle(fontSize: 18),
+            ),
+            onTap: () {
+              Share.share(
+                _contentForCopyAndShare(),
+                sharePositionOrigin:
+                    Rect.fromLTWH(0, 0, size.width, size.height / 2),
+              );
+              Navigator.of(context).pop();
+            },
           ),
         ],
       ),

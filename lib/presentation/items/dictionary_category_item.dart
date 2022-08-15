@@ -16,7 +16,8 @@ class DictionaryCategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
-    final getReadDictionaryContentState = context.read<DictionaryContentState>();
+    final getReadDictionaryContentState =
+        context.read<DictionaryContentState>();
     return Card(
       color: Theme.of(context).colorScheme.mainChapterCardColor,
       margin: const EdgeInsets.all(8),
@@ -88,18 +89,22 @@ class DictionaryCategoryItem extends StatelessWidget {
                   borderRadius: BorderRadius.circular(25),
                 ),
                 child: Wrap(
-                  runAlignment: WrapAlignment.center,
-                  alignment: WrapAlignment.center,
-                  crossAxisAlignment: WrapCrossAlignment.center,
                   children: [
-                    Divider(
-                      indent: 24,
-                      endIndent: 24,
-                      color: myColor.myPrimaryColor,
+                    Container(
+                      padding: const EdgeInsets.only(top: 16),
+                      width: double.maxFinite,
+                      child: Text(
+                        item.wordCategoryTitle,
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: myColor.myAccentColor,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
                     ),
                     ListTile(
                       contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 16),
+                          const EdgeInsets.symmetric(horizontal: 24),
                       title: const Text('Изменить'),
                       trailing: Icon(
                         CupertinoIcons.pencil_circle,
@@ -126,13 +131,9 @@ class DictionaryCategoryItem extends StatelessWidget {
                         );
                       },
                     ),
-                    Divider(
-                      indent: 16,
-                      endIndent: 16,
-                      color: myColor.myPrimaryColor,
-                    ),
                     ListTile(
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 24),
                       title: const Text('Удалить'),
                       trailing: Icon(
                         CupertinoIcons.delete,
@@ -145,7 +146,8 @@ class DictionaryCategoryItem extends StatelessWidget {
                           builder: (context) {
                             return CupertinoAlertDialog(
                               title: const Text('Удаление'),
-                              content: const Text('Вы уверены, что хотите удалить данную категорию вместе с её содержимым?'),
+                              content: const Text(
+                                  'Вы уверены, что хотите удалить данную категорию вместе с её содержимым?'),
                               actions: [
                                 CupertinoDialogAction(
                                   child: Text(
@@ -166,9 +168,12 @@ class DictionaryCategoryItem extends StatelessWidget {
                                     ),
                                   ),
                                   onPressed: () {
-                                    context.read<DictionaryContentState>().showSnackBarMessage(
-                                    context, 'Категория удалена');
-                                    getReadDictionaryContentState.deleteWordCategory(item.id);
+                                    context
+                                        .read<DictionaryContentState>()
+                                        .showSnackBarMessage(
+                                            context, 'Категория удалена');
+                                    getReadDictionaryContentState
+                                        .deleteWordCategory(item.id);
                                     Navigator.of(context).pop();
                                   },
                                 ),
