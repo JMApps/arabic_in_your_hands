@@ -1,6 +1,6 @@
 import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected_state.dart';
 import 'package:arabicinyourhands/domain/theme/app_theme.dart';
-import 'package:arabicinyourhands/presentation/pages/dictionary_content_page.dart';
+import 'package:arabicinyourhands/presentation/pages/dictionary_categories_page.dart';
 import 'package:arabicinyourhands/presentation/pages/first_volume_content_page.dart';
 import 'package:arabicinyourhands/presentation/pages/second_volume_content_page.dart';
 import 'package:arabicinyourhands/presentation/pages/settings_content_page.dart';
@@ -15,7 +15,7 @@ class MainPageBody extends StatelessWidget {
   final _mainWidgets = [
     const FirstVolumeContentPage(),
     const SecondVolumeContentPage(),
-    const DictionaryContentPage(),
+    const DictionaryCategoriesPage(),
     const SettingsContentPage(),
   ];
 

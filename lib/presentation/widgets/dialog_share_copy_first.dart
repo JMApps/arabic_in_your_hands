@@ -25,56 +25,77 @@ class DialogShareCopyFirst extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
       ),
-      child: Wrap(
-        children: [
-          Container(
-            padding: const EdgeInsets.only(top: 16),
-            width: double.maxFinite,
-            child: Text(
-              'Поделиться',
-              style: TextStyle(
-                fontSize: 18,
-                color: myColor.myAccentColor
+      child: Padding(
+        padding: const EdgeInsets.only(
+          right: 16,
+          bottom: 16,
+          left: 16,
+        ),
+        child: Wrap(
+          children: [
+            Container(
+              padding: const EdgeInsets.only(top: 16),
+              width: double.maxFinite,
+              child: Text(
+                'Поделиться',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: myColor.myAccentColor
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
-          ),
-          ListTile(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 24),
-            trailing: Icon(
-              CupertinoIcons.doc_on_clipboard,
-              color: myColor.myAccentColor,
+            const Divider(
+              indent: 24,
+              endIndent: 24,
             ),
-            title: const Text(
-              'Скопировать',
-              style: TextStyle(fontSize: 18),
+            ListTile(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              trailing: Icon(
+                CupertinoIcons.doc_on_clipboard,
+                color: myColor.myAccentColor,
+              ),
+              title: const Text(
+                'Скопировать',
+                style: TextStyle(fontSize: 18),
+              ),
+              onTap: () {
+                FlutterClipboard.copy(_contentForCopyAndShare());
+                context.read<DictionaryContentState>().showSnackBarMessage(context, 'Скопировано');
+                Navigator.of(context).pop();
+              },
             ),
-            onTap: () {
-              FlutterClipboard.copy(_contentForCopyAndShare());
-              context.read<DictionaryContentState>().showSnackBarMessage(context, 'Скопировано');
-              Navigator.of(context).pop();
-            },
-          ),
-          ListTile(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 24),
-            trailing: Icon(
-              CupertinoIcons.share,
-              color: myColor.myAccentColor,
+            const Divider(
+              indent: 24,
+              endIndent: 24,
             ),
-            title: const Text(
-              'Поделиться',
-              style: TextStyle(fontSize: 18),
+            ListTile(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              trailing: Icon(
+                CupertinoIcons.share,
+                color: myColor.myAccentColor,
+              ),
+              title: const Text(
+                'Поделиться',
+                style: TextStyle(fontSize: 18),
+              ),
+              onTap: () {
+                Share.share(
+                  _contentForCopyAndShare(),
+                  sharePositionOrigin:
+                      Rect.fromLTWH(0, 0, size.width, size.height / 2),
+                );
+                Navigator.of(context).pop();
+              },
             ),
-            onTap: () {
-              Share.share(
-                _contentForCopyAndShare(),
-                sharePositionOrigin:
-                    Rect.fromLTWH(0, 0, size.width, size.height / 2),
-              );
-              Navigator.of(context).pop();
-            },
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

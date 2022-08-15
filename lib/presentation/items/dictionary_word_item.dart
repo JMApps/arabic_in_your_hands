@@ -76,121 +76,168 @@ class DictionaryWordItem extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25),
                 ),
-                child: Wrap(
-                  runSpacing: 8,
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.only(top: 16),
-                      width: double.maxFinite,
-                      child: Text(
-                        item.word,
-                        style: TextStyle(
-                          fontSize: 18,
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    right: 16,
+                    bottom: 16,
+                    left: 16,
+                  ),
+                  child: Wrap(
+                    runSpacing: 8,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(top: 16),
+                        width: double.maxFinite,
+                        child: Text(
+                          item.word,
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: myColor.myAccentColor,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                      const Divider(
+                        indent: 24,
+                        endIndent: 24,
+                      ),
+                      ListTile(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        title: const Text(
+                          'Изменить',
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                        trailing: Icon(
+                          CupertinoIcons.pencil_circle,
                           color: myColor.myAccentColor,
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    ListTile(
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 24),
-                      title: const Text('Изменить'),
-                      trailing: Icon(
-                        CupertinoIcons.pencil_circle,
-                        color: myColor.myAccentColor,
-                      ),
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        showModalBottomSheet(
-                          backgroundColor: Colors.transparent,
-                          isScrollControlled: true,
-                          context: context,
-                          builder: (context) {
-                            return SingleChildScrollView(
-                              child: AnimatedPadding(
-                                padding: MediaQuery.of(context).viewInsets,
-                                duration: const Duration(milliseconds: 100),
-                                curve: Curves.decelerate,
-                                child: ChangeWordPopup(
-                                  item: item,
-                                ),
-                              ),
-                            );
-                          },
-                        );
-                      },
-                    ),
-                    ListTile(
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 24),
-                      trailing: Icon(
-                        CupertinoIcons.doc_on_clipboard,
-                        color: myColor.myAccentColor,
-                      ),
-                      title: const Text(
-                        'Скопировать',
-                        style: TextStyle(fontSize: 18),
-                      ),
-                      onTap: () {
-                        FlutterClipboard.copy('${item.word}\n${item.wordTranslate}');
-                        context.read<DictionaryContentState>().showSnackBarMessage(context, 'Скопировано');
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                    ListTile(
-                      contentPadding:
-                          const EdgeInsets.symmetric(horizontal: 24),
-                      title: const Text('Удалить'),
-                      trailing: Icon(
-                        CupertinoIcons.delete,
-                        color: myColor.myAccentColor,
-                      ),
-                      onTap: () {
-                        Navigator.of(context).pop();
-                        showCupertinoModalPopup(
-                          context: context,
-                          builder: (context) {
-                            return CupertinoAlertDialog(
-                              title: const Text('Удаление'),
-                              content: const Text(
-                                  'Вы уверены, что хотите удалить это слово?'),
-                              actions: [
-                                CupertinoDialogAction(
-                                  child: Text(
-                                    'Нет',
-                                    style: TextStyle(
-                                      color: myColor.myAccentColor,
-                                    ),
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          showModalBottomSheet(
+                            backgroundColor: Colors.transparent,
+                            isScrollControlled: true,
+                            context: context,
+                            builder: (context) {
+                              return SingleChildScrollView(
+                                child: AnimatedPadding(
+                                  padding: MediaQuery.of(context).viewInsets,
+                                  duration: const Duration(milliseconds: 100),
+                                  curve: Curves.decelerate,
+                                  child: ChangeWordPopup(
+                                    item: item,
                                   ),
-                                  onPressed: () {
-                                    Navigator.of(context).pop();
-                                  },
                                 ),
-                                CupertinoDialogAction(
-                                  child: Text(
-                                    'Да',
-                                    style: TextStyle(
-                                      color: myColor.myAccentColor,
+                              );
+                            },
+                          );
+                        },
+                      ),
+                      const Divider(
+                        indent: 24,
+                        endIndent: 24,
+                      ),
+                      ListTile(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        trailing: Icon(
+                          CupertinoIcons.doc_on_clipboard,
+                          color: myColor.myAccentColor,
+                        ),
+                        title: const Text(
+                          'Скопировать',
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                        onTap: () {
+                          FlutterClipboard.copy(
+                              '${item.word}\n${item.wordTranslate}');
+                          context
+                              .read<DictionaryContentState>()
+                              .showSnackBarMessage(context, 'Скопировано');
+                          Navigator.of(context).pop();
+                        },
+                      ),
+                      const Divider(
+                        indent: 24,
+                        endIndent: 24,
+                      ),
+                      ListTile(
+                        contentPadding: const EdgeInsets.symmetric(
+                          horizontal: 16,
+                        ),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        title: const Text(
+                          'Удалить',
+                          style: TextStyle(
+                            fontSize: 18,
+                          ),
+                        ),
+                        trailing: Icon(
+                          CupertinoIcons.delete,
+                          color: myColor.myAccentColor,
+                        ),
+                        onTap: () {
+                          Navigator.of(context).pop();
+                          showCupertinoModalPopup(
+                            context: context,
+                            builder: (context) {
+                              return CupertinoAlertDialog(
+                                title: const Text('Удаление'),
+                                content: const Text(
+                                    'Вы уверены, что хотите удалить это слово?'),
+                                actions: [
+                                  CupertinoDialogAction(
+                                    child: Text(
+                                      'Нет',
+                                      style: TextStyle(
+                                        color: myColor.myAccentColor,
+                                      ),
                                     ),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
                                   ),
-                                  onPressed: () {
-                                    context
-                                        .read<DictionaryContentState>()
-                                        .showSnackBarMessage(
-                                            context, 'Слово удалено');
-                                    context
-                                        .read<DictionaryContentState>()
-                                        .deleteWord(item.id);
-                                    Navigator.of(context).pop();
-                                  },
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      },
-                    ),
-                  ],
+                                  CupertinoDialogAction(
+                                    child: Text(
+                                      'Да',
+                                      style: TextStyle(
+                                        color: myColor.myAccentColor,
+                                      ),
+                                    ),
+                                    onPressed: () {
+                                      context
+                                          .read<DictionaryContentState>()
+                                          .showSnackBarMessage(
+                                              context, 'Слово удалено');
+                                      context
+                                          .read<DictionaryContentState>()
+                                          .deleteWord(item.id);
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                      ),
+                    ],
+                  ),
                 ),
               );
             },

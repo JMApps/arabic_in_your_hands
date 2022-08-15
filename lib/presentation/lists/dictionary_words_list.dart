@@ -15,10 +15,7 @@ class DictionaryWordsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<List>(
-      future: context
-          .watch<DictionaryContentState>()
-          .getDictionaryDatabaseQuery
-          .getWordsCategory(categoryId),
+      future: context.watch<DictionaryContentState>().getDictionaryDatabaseQuery.getWordsCategory(categoryId),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
         return snapshot.hasData
             ? CupertinoScrollbar(

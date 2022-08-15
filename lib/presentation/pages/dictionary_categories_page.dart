@@ -12,6 +12,13 @@ class DictionaryCategoriesPage extends StatelessWidget {
     return Builder(
       builder: (context) {
         return Scaffold(
+          appBar: AppBar(
+            title: const Text('Категории'),
+            leading: Transform.scale(
+              scale: 0.7,
+              child: Image.asset('assets/icons/arabic_in_origin.png'),
+            ),
+          ),
           body: const DictionaryCategoriesList(),
           floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
           floatingActionButton: FloatingActionButton(
@@ -34,7 +41,7 @@ class DictionaryCategoriesPage extends StatelessWidget {
                       padding: MediaQuery.of(context).viewInsets,
                       duration: const Duration(milliseconds: 250),
                       curve: Curves.decelerate,
-                      child: AddCategoryPopup(),
+                      child: const AddCategoryPopup(),
                     ),
                   );
                 },

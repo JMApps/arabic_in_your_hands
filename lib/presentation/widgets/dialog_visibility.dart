@@ -15,55 +15,74 @@ class DialogVisibility extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
       ),
-      child: Wrap(
-        runSpacing: 16,
-        children: [
-          const SizedBox(height: 16),
-          Container(
-            padding: const EdgeInsets.only(top: 16),
-            width: double.maxFinite,
-            child: Text(
-              'Режим отобраэения',
-              style: TextStyle(
-                fontSize: 18,
-                color: myColor.myAccentColor,
+      child: Padding(
+        padding: const EdgeInsets.only(
+          right: 16,
+          bottom: 16,
+          left: 16,
+        ),
+        child: Wrap(
+          children: [
+            Container(
+              padding: const EdgeInsets.only(top: 16),
+              width: double.maxFinite,
+              child: Text(
+                'Режим отобраэения',
+                style: TextStyle(
+                  fontSize: 18,
+                  color: myColor.myAccentColor,
+                ),
+                textAlign: TextAlign.center,
               ),
-              textAlign: TextAlign.center,
             ),
-          ),
-          SwitchListTile.adaptive(
-            contentPadding: const EdgeInsets.symmetric(horizontal: 24),
-            title: const Text(
-              'Показать/скрыть арабский текст',
-              style: TextStyle(fontSize: 18),
+            const Divider(
+              indent: 24,
+              endIndent: 24,
             ),
-            activeColor: myColor.myAccentColor,
-            value: context
-                .watch<VolumeContentDialogVisibilityState>()
-                .getSecondDialogVisibility,
-            onChanged: (bool? value) {
-              context
-                  .read<VolumeContentDialogVisibilityState>()
-                  .updateSecondVisibilityState(value!);
-            },
-          ),
-          SwitchListTile.adaptive(
-            contentPadding: const EdgeInsets.only(
-              right: 24,
-              bottom: 16,
-              left: 24,
+            SwitchListTile.adaptive(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16,),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              title: const Text(
+                'Показать/скрыть арабский текст',
+                style: TextStyle(fontSize: 18),
+              ),
+              activeColor: myColor.myAccentColor,
+              value: context
+                  .watch<VolumeContentDialogVisibilityState>()
+                  .getSecondDialogVisibility,
+              onChanged: (bool? value) {
+                context
+                    .read<VolumeContentDialogVisibilityState>()
+                    .updateSecondVisibilityState(value!);
+              },
             ),
-            title: const Text(
-              'Показать/скрыть текст перевода',
-              style: TextStyle(fontSize: 18),
+            const Divider(
+              indent: 24,
+              endIndent: 24,
             ),
-            activeColor: myColor.myAccentColor,
-            value: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
-            onChanged: (bool? value) {
-              context.read<VolumeContentDialogVisibilityState>().updateFirstVisibilityState(value!);
-            },
-          ),
-        ],
+            SwitchListTile.adaptive(
+              contentPadding: const EdgeInsets.symmetric(horizontal: 16),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              title: const Text(
+                'Показать/скрыть текст перевода',
+                style: TextStyle(fontSize: 18),
+              ),
+              activeColor: myColor.myAccentColor,
+              value: context
+                  .watch<VolumeContentDialogVisibilityState>()
+                  .getFirstDialogVisibility,
+              onChanged: (bool? value) {
+                context
+                    .read<VolumeContentDialogVisibilityState>()
+                    .updateFirstVisibilityState(value!);
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
