@@ -2,7 +2,7 @@ import 'package:arabicinyourhands/domain/state/provider/add_category_state.dart'
 import 'package:arabicinyourhands/domain/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:o_color_picker/o_color_picker.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
 
 class AddCategoryPopup extends StatelessWidget {
@@ -47,10 +47,21 @@ class AddCategoryPopup extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: 'Название категории',
                       errorText: addCategoryState.getCategoryTitle.isEmpty ? 'Введите название категории' : '',
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: BorderSide(
+                          color: addCategoryState.getCategoryTitle.isEmpty
+                              ? myColor.priorityMediumColor
+                              : myColor.myAccentColor,
+                          width: 1.5,
+                        ),
+                      ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
-                          color: addCategoryState.getCategoryTitle.isEmpty ? myColor.priorityMediumColor : myColor.myAccentColor,
+                          color: addCategoryState.getCategoryTitle.isEmpty
+                              ? myColor.priorityMediumColor
+                              : myColor.myAccentColor,
                           width: 1.5,
                         ),
                       ),
@@ -58,7 +69,7 @@ class AddCategoryPopup extends StatelessWidget {
                         splashRadius: 15,
                         icon: Icon(
                           Icons.palette,
-                          color: Color(addCategoryState.getCategoryColor),
+                          color: addCategoryState.getCategoryColor,
                         ),
                         onPressed: () {
                           showDialog(
@@ -70,10 +81,9 @@ class AddCategoryPopup extends StatelessWidget {
                                   Radius.circular(15),
                                 ),
                               ),
-                              content: OColorPicker(
-                                selectedColor: Colors.grey[700],
-                                colors: primaryColorsPalette,
-                                onColorChange: (color) {
+                              content: BlockPicker(
+                                pickerColor: Colors.grey,
+                                onColorChanged: (color) {
                                   addCategoryState.selectCategoryColor(color);
                                   Navigator.of(context).pop();
                                 },
@@ -157,7 +167,7 @@ class AddCategoryPopup extends StatelessWidget {
                           if (addCategoryState.getTextEditingController.text.isNotEmpty) {
                             context.read<DictionaryContentState>().createWordCategory(
                                   addCategoryState.getTextEditingController.text,
-                                  addCategoryState.getCategoryColor.toString(),
+                                  addCategoryState.getCategoryColor.toHex(),
                                   addCategoryState.getPrioritySelectedIndex,
                                 );
                             context.read<DictionaryContentState>().showSnackBarMessage(context, 'Категория добавлена');

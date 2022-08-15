@@ -3,7 +3,7 @@ import 'package:arabicinyourhands/domain/state/provider/change_category_state.da
 import 'package:arabicinyourhands/domain/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:o_color_picker/o_color_picker.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
 
 class ChangeCategoryPopup extends StatelessWidget {
@@ -22,7 +22,7 @@ class ChangeCategoryPopup extends StatelessWidget {
         ChangeNotifierProvider<ChangeCategoryState>(
           create: (_) => ChangeCategoryState(
             item.wordCategoryTitle,
-            int.parse(item.wordCategoryColor),
+            HexColor.fromHex(item.wordCategoryColor),
             item.priority,
           ),
         ),
@@ -57,6 +57,15 @@ class ChangeCategoryPopup extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: 'Название категории',
                       errorText: changeCategoryState.getCategoryTitle.isEmpty ? 'Введите название категории' : '',
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: BorderSide(
+                          color: changeCategoryState.getCategoryTitle.isEmpty
+                              ? myColor.priorityMediumColor
+                              : myColor.myAccentColor,
+                          width: 1.5,
+                        ),
+                      ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
@@ -68,7 +77,7 @@ class ChangeCategoryPopup extends StatelessWidget {
                         splashRadius: 15,
                         icon: Icon(
                           Icons.palette,
-                          color: Color(changeCategoryState.getCategoryColor),
+                          color: changeCategoryState.getCategoryColor,
                         ),
                         onPressed: () {
                           showDialog(
@@ -80,10 +89,9 @@ class ChangeCategoryPopup extends StatelessWidget {
                                   Radius.circular(15),
                                 ),
                               ),
-                              content: OColorPicker(
-                                selectedColor: Colors.grey[700],
-                                colors: primaryColorsPalette,
-                                onColorChange: (color) {
+                              content: BlockPicker(
+                                pickerColor: Colors.grey,
+                                onColorChanged: (color) {
                                   changeCategoryState.selectCategoryColor(color);
                                   Navigator.of(context).pop();
                                 },
@@ -171,7 +179,7 @@ class ChangeCategoryPopup extends StatelessWidget {
                               context.read<DictionaryContentState>().updateWordCategory(
                                 item.id,
                                 changeCategoryState.getCategoryTitle,
-                                changeCategoryState.getCategoryColor.toString(),
+                                changeCategoryState.getCategoryColor.toHex(),
                                 changeCategoryState.getPrioritySelectedIndex,);
                               context.read<DictionaryContentState>().showSnackBarMessage(context, 'Категория изменена');
                               Navigator.of(context).pop();

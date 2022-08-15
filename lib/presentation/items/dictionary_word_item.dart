@@ -57,9 +57,7 @@ class DictionaryWordItem extends StatelessWidget {
                 height: 10,
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color(
-                    int.parse(item.wordItemColor),
-                  ),
+                  color: HexColor.fromHex(item.wordItemColor),
                 ),
               ),
             ],

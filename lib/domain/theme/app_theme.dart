@@ -20,13 +20,6 @@ class AppTheme {
       ),
       alignLabelWithHint: true,
       floatingLabelAlignment: FloatingLabelAlignment.center,
-      errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(50),
-        borderSide: const BorderSide(
-          color: Color(0xFF00796B),
-          width: 1.5,
-        ),
-      ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(25),
       ),
@@ -52,18 +45,26 @@ class AppTheme {
       ),
       alignLabelWithHint: true,
       floatingLabelAlignment: FloatingLabelAlignment.center,
-      focusedBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(50),
-        borderSide: const BorderSide(
-          color: Color(0xFF0098DA),
-          width: 1.5,
-        ),
-      ),
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(25),
       ),
     ),
   );
+}
+
+extension HexColor on Color {
+  static Color fromHex(String hexString) {
+    final buffer = StringBuffer();
+    if (hexString.length == 6 || hexString.length == 7) buffer.write('ff');
+    buffer.write(hexString.replaceFirst('#', ''));
+    return Color(int.parse(buffer.toString(), radix: 16));
+  }
+
+  String toHex({bool leadingHashSign = true}) => '${leadingHashSign ? '#' : ''}'
+      '${alpha.toRadixString(16).padLeft(2, '0')}'
+      '${red.toRadixString(16).padLeft(2, '0')}'
+      '${green.toRadixString(16).padLeft(2, '0')}'
+      '${blue.toRadixString(16).padLeft(2, '0')}';
 }
 
 extension ColorSchemeS on ColorScheme {

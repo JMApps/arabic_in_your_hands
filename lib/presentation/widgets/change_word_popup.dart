@@ -3,7 +3,7 @@ import 'package:arabicinyourhands/domain/state/provider/change_word_state.dart';
 import 'package:arabicinyourhands/domain/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:o_color_picker/o_color_picker.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
 
 class ChangeWordPopup extends StatelessWidget {
@@ -20,7 +20,7 @@ class ChangeWordPopup extends StatelessWidget {
           create: (_) => ChangeWordState(
             item.word,
             item.wordTranslate,
-            int.parse(item.wordItemColor),
+            HexColor.fromHex(item.wordItemColor),
           ),
         ),
       ],
@@ -54,6 +54,15 @@ class ChangeWordPopup extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: 'Слово',
                       errorText: changeWordState.getWord.isEmpty ? 'Введите слово' : '',
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: BorderSide(
+                          color: changeWordState.getWord.isEmpty
+                              ? myColor.priorityMediumColor
+                              : myColor.myAccentColor,
+                          width: 1.5,
+                        ),
+                      ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
@@ -67,7 +76,7 @@ class ChangeWordPopup extends StatelessWidget {
                         splashRadius: 15,
                         icon: Icon(
                           Icons.palette,
-                          color: Color(changeWordState.getWordColor),
+                          color: changeWordState.getWordColor,
                         ),
                         onPressed: () {
                           showDialog(
@@ -79,10 +88,9 @@ class ChangeWordPopup extends StatelessWidget {
                                   Radius.circular(15),
                                 ),
                               ),
-                              content: OColorPicker(
-                                selectedColor: Colors.grey[700],
-                                colors: primaryColorsPalette,
-                                onColorChange: (color) {
+                              content: BlockPicker(
+                                pickerColor: Colors.grey,
+                                onColorChanged: (color) {
                                   changeWordState.selectWordColor(color);
                                   Navigator.of(context).pop();
                                 },
@@ -109,6 +117,15 @@ class ChangeWordPopup extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: 'Перевод',
                       errorText: changeWordState.getWordTranslation.isEmpty ? 'Введите перевод слова' : '',
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: BorderSide(
+                          color: changeWordState.getWordTranslation.isEmpty
+                              ? myColor.priorityMediumColor
+                              : myColor.myAccentColor,
+                          width: 1.5,
+                        ),
+                      ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
@@ -146,7 +163,7 @@ class ChangeWordPopup extends StatelessWidget {
                                   item.id,
                                   changeWordState.getWord,
                                   changeWordState.getWordTranslation,
-                                  changeWordState.getWordColor.toString(),
+                                  changeWordState.getWordColor.toHex(),
                                 );
                             context.read<DictionaryContentState>().showSnackBarMessage(context, 'Изменено');
                             Navigator.of(context).pop();

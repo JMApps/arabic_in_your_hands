@@ -10,9 +10,9 @@ class AddCategoryState with ChangeNotifier {
 
   String get getCategoryTitle => _categoryTitle;
 
-  int _categoryColor = Colors.grey.value;
+  Color _categoryColor = Colors.grey;
 
-  int get getCategoryColor => _categoryColor;
+  Color get getCategoryColor => _categoryColor;
 
   final List<bool> _isPrioritySelected = [true, false, false, false];
 
@@ -28,7 +28,7 @@ class AddCategoryState with ChangeNotifier {
   }
 
   selectCategoryColor(Color categoryColor) {
-    _categoryColor = categoryColor.value;
+    _categoryColor = categoryColor;
     notifyListeners();
   }
 

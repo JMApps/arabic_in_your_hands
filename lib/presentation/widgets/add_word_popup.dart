@@ -2,7 +2,7 @@ import 'package:arabicinyourhands/domain/state/provider/add_word_state.dart';
 import 'package:arabicinyourhands/domain/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:o_color_picker/o_color_picker.dart';
+import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
 
 class AddWordPopup extends StatelessWidget {
@@ -54,6 +54,15 @@ class AddWordPopup extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: 'Слово',
                       errorText: addWordState.getWord.isEmpty ? 'Введите слово' : '',
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: BorderSide(
+                          color: addWordState.getWord.isEmpty
+                              ? myColor.priorityMediumColor
+                              : myColor.myAccentColor,
+                          width: 1.5,
+                        ),
+                      ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
@@ -67,7 +76,7 @@ class AddWordPopup extends StatelessWidget {
                         splashRadius: 15,
                         icon: Icon(
                           Icons.palette,
-                          color: Color(addWordState.getWordColor),
+                          color: addWordState.getWordColor,
                         ),
                         onPressed: () {
                           showDialog(
@@ -79,10 +88,9 @@ class AddWordPopup extends StatelessWidget {
                                   Radius.circular(15),
                                 ),
                               ),
-                              content: OColorPicker(
-                                selectedColor: Colors.grey[700],
-                                colors: primaryColorsPalette,
-                                onColorChange: (color) {
+                              content: BlockPicker(
+                                pickerColor: Colors.grey,
+                                onColorChanged: (color) {
                                   addWordState.selectWordColor(color);
                                   Navigator.of(context).pop();
                                 },
@@ -109,6 +117,15 @@ class AddWordPopup extends StatelessWidget {
                     decoration: InputDecoration(
                       labelText: 'Перевод',
                       errorText: addWordState.getWordTranslation.isEmpty ? 'Введите перевод слова' : '',
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: BorderSide(
+                          color: addWordState.getWordTranslation.isEmpty
+                              ? myColor.priorityMediumColor
+                              : myColor.myAccentColor,
+                          width: 1.5,
+                        ),
+                      ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
@@ -143,7 +160,7 @@ class AddWordPopup extends StatelessWidget {
                                 categoryId,
                                 addWordState.getWordEditingController.text,
                                 addWordState.getWordTranslationEditingController.text,
-                                addWordState.getWordColor.toString(),
+                                addWordState.getWordColor.toHex(),
                                 categoryPriority,
                               );
                           context.read<DictionaryContentState>().showSnackBarMessage(context, 'Слово добавлено');

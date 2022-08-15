@@ -18,9 +18,9 @@ class AddWordState with ChangeNotifier {
 
   String get getWordTranslation => _wordTranslation;
 
-  int _wordColor = Colors.grey.value;
+  Color _wordColor = Colors.grey;
 
-  int get getWordColor => _wordColor;
+  Color get getWordColor => _wordColor;
 
   onWordTextChanged(String value) {
     _word = value;
@@ -33,7 +33,7 @@ class AddWordState with ChangeNotifier {
   }
 
   selectWordColor(Color wordColor) {
-    _wordColor = wordColor.value;
+    _wordColor = wordColor;
     notifyListeners();
   }
 
