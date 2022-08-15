@@ -103,7 +103,7 @@ class FirstVolumeChapterItem extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 8),
           SizedBox(
             height: 150,
             child: FirstVolumeSubChapterList(

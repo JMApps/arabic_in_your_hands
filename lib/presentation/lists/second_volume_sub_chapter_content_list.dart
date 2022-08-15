@@ -21,23 +21,21 @@ class SecondVolumeSubChapterContentList extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.hasData) {
           context.read<ContentPlayerState>().initPlayer(snapshot);
-          return CupertinoScrollbar(
-            child: ListView.builder(
-              padding: const EdgeInsets.only(bottom: 16),
-              physics: const BouncingScrollPhysics(),
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, index) {
-                return index.isOdd
-                    ? SecondVolumeSubChapterContentItemLeft(
-                        item: snapshot.data![index],
-                        index: index,
-                      )
-                    : SecondVolumeSubChapterContentItemRight(
-                        item: snapshot.data![index],
-                        index: index,
-                      );
-              },
-            ),
+          return ListView.builder(
+            padding: const EdgeInsets.only(bottom: 16),
+            physics: const BouncingScrollPhysics(),
+            itemCount: snapshot.data!.length,
+            itemBuilder: (context, index) {
+              return index.isOdd
+                  ? SecondVolumeSubChapterContentItemLeft(
+                      item: snapshot.data![index],
+                      index: index,
+                    )
+                  : SecondVolumeSubChapterContentItemRight(
+                      item: snapshot.data![index],
+                      index: index,
+                    );
+            },
           );
         }
         return const Center(

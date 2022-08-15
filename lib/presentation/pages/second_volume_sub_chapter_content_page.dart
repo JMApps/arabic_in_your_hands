@@ -95,7 +95,11 @@ class SecondVolumeSubChapterContentPage extends StatelessWidget {
                     SliverToBoxAdapter(
                       child: Card(
                         color: Theme.of(context).colorScheme.myAccentColor,
-                        margin: const EdgeInsets.all(8),
+                        margin: const EdgeInsets.only(
+                          left: 8,
+                          top: 16,
+                          right: 8,
+                        ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
@@ -119,8 +123,10 @@ class SecondVolumeSubChapterContentPage extends StatelessWidget {
                   context: context,
                   removeBottom: true,
                   removeTop: true,
-                  child: SecondVolumeSubChapterContentList(
-                    secondVolumeSubChapterId: secondVolumeSubChapterId,
+                  child: CupertinoScrollbar(
+                    child: SecondVolumeSubChapterContentList(
+                      secondVolumeSubChapterId: secondVolumeSubChapterId,
+                    ),
                   ),
                 ),
               ),

@@ -36,7 +36,8 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
         future: _databaseQuery.getAllFirstSubChapters(firstVolumeChapterId),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            var item = snapshot.data![firstVolumeSubChapterIndex] as VolumeFirstItemSubChapterModel;
+            var item = snapshot.data![firstVolumeSubChapterIndex]
+                as VolumeFirstItemSubChapterModel;
             return Scaffold(
               body: NestedScrollView(
                 floatHeaderSlivers: true,
@@ -95,7 +96,11 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
                     SliverToBoxAdapter(
                       child: Card(
                         color: Theme.of(context).colorScheme.myAccentColor,
-                        margin: const EdgeInsets.all(8),
+                        margin: const EdgeInsets.only(
+                          left: 8,
+                          top: 16,
+                          right: 8,
+                        ),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),
@@ -119,8 +124,10 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
                   context: context,
                   removeBottom: true,
                   removeTop: true,
-                  child: FirstVolumeSubChapterContentList(
-                    firstVolumeSubChapterId: firstVolumeSubChapterId,
+                  child: CupertinoScrollbar(
+                    child: FirstVolumeSubChapterContentList(
+                      firstVolumeSubChapterId: firstVolumeSubChapterId,
+                    ),
                   ),
                 ),
               ),

@@ -29,8 +29,8 @@ class SecondVolumeSubChapterList extends StatelessWidget {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 1,
                   childAspectRatio: 0.5,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
+                  crossAxisSpacing: 0,
+                  mainAxisSpacing: 0,
                 ),
               )
             : const Center(

@@ -27,7 +27,6 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
               : myColor.subChapterUnSelectedIsOddColor,
       margin: const EdgeInsets.only(
         left: 16,
-        right: 16,
         bottom: 16,
       ),
       shape: RoundedRectangleBorder(

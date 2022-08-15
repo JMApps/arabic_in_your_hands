@@ -63,7 +63,11 @@ class DictionaryWordsPage extends StatelessWidget {
                   ),
                   Card(
                     color: Theme.of(context).colorScheme.myAccentColor,
-                    margin: const EdgeInsets.all(8),
+                    margin: const EdgeInsets.only(
+                      left: 8,
+                      top: 8,
+                      right: 8,
+                    ),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
