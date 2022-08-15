@@ -16,7 +16,7 @@ class SecondVolumeSubChapterList extends StatelessWidget {
       builder: (context, snapshot) {
         return snapshot.hasData
             ? GridView.builder(
-                padding: EdgeInsets.zero,
+                padding: const EdgeInsets.only(right: 16),
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
                 itemCount: snapshot.data!.length,
