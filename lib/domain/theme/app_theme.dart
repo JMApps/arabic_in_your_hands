@@ -14,15 +14,20 @@ class AppTheme {
         fontFamily: 'Gilroy',
       ),
     ),
-    inputDecorationTheme: InputDecorationTheme(
-      labelStyle: const TextStyle(
-        color: Color(0xFF9E9E9E),
-      ),
+    inputDecorationTheme: const InputDecorationTheme(
       alignLabelWithHint: true,
       floatingLabelAlignment: FloatingLabelAlignment.center,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(25),
+      border: InputBorder.none,
+      errorStyle: TextStyle(
+        color: Color(0xFF616161),
       ),
+      hintStyle: TextStyle(
+        color: Color(0xFF616161),
+      ),
+    ),
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: Color(0xFF00796B),
+      selectionColor: Color(0x5900796B),
     ),
   );
 
@@ -39,15 +44,20 @@ class AppTheme {
         fontFamily: 'Gilroy',
       ),
     ),
-    inputDecorationTheme: InputDecorationTheme(
-      labelStyle: const TextStyle(
-        color: Color(0xFF9E9E9E),
-      ),
+    inputDecorationTheme: const InputDecorationTheme(
       alignLabelWithHint: true,
       floatingLabelAlignment: FloatingLabelAlignment.center,
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.circular(25),
+      border: InputBorder.none,
+      errorStyle: TextStyle(
+        color: Color(0xFF9E9E9E),
       ),
+      hintStyle: TextStyle(
+        color: Color(0xFF9E9E9E),
+      ),
+    ),
+    textSelectionTheme: const TextSelectionThemeData(
+      cursorColor: Color(0xFF0098DA),
+      selectionColor: Color(0x590098DA),
     ),
   );
 }
@@ -191,4 +201,9 @@ extension ColorSchemeS on ColorScheme {
   Color get priorityMediumColor => brightness == Brightness.light
       ? const Color(0xFFE57373)
       : const Color(0xFFD32F2F);
+
+  Color get searchDelegateAppBarBackgroundColor =>
+      brightness == Brightness.light
+          ? const Color(0xFF263238)
+          : const Color(0xFF192226);
 }
