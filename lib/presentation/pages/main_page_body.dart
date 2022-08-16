@@ -42,15 +42,30 @@ class MainPageBody extends StatelessWidget {
           items: [
             SalomonBottomBarItem(
               icon: const Icon(Icons.filter_1_outlined),
-              title: const Text('Том 1'),
+              title: const Text(
+                'Том 1',
+                style: TextStyle(
+                  fontFamily: 'Gilroy',
+                ),
+              ),
             ),
             SalomonBottomBarItem(
               icon: const Icon(Icons.filter_2_outlined),
-              title: const Text('Том 2'),
+              title: const Text(
+                'Том 2',
+                style: TextStyle(
+                  fontFamily: 'Gilroy',
+                ),
+              ),
             ),
             SalomonBottomBarItem(
               icon: const Icon(CupertinoIcons.add),
-              title: const Text('Словарь'),
+              title: const Text(
+                'Словарь',
+                style: TextStyle(
+                  fontFamily: 'Gilroy',
+                ),
+              ),
             ),
             SalomonBottomBarItem(
               icon: Icon(
@@ -61,6 +76,7 @@ class MainPageBody extends StatelessWidget {
                 'Настройки',
                 style: TextStyle(
                   color: myColor.bottomNavigationSettingItemColor,
+                  fontFamily: 'Gilroy',
                 ),
               ),
             ),
@@ -73,9 +89,7 @@ class MainPageBody extends StatelessWidget {
           currentIndex:
               context.watch<MainNavigationSelectedState>().getSelectedIndex,
           onTap: (currentIndex) {
-            context
-                .read<MainNavigationSelectedState>()
-                .changeBottomNavigationIndex(currentIndex);
+            context.read<MainNavigationSelectedState>().changeBottomNavigationIndex(currentIndex);
           },
         ),
       ),

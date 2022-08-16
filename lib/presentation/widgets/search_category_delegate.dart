@@ -119,31 +119,31 @@ class SearchCategoryDelegate extends SearchDelegate {
           recentCategories = query.isEmpty
               ? categories
               : categories
-              .where((element) => element.wordCategoryTitle
-              .toLowerCase()
-              .contains(query.toLowerCase()))
-              .toList();
+                  .where((element) => element.wordCategoryTitle
+                      .toLowerCase()
+                      .contains(query.toLowerCase()))
+                  .toList();
           return recentCategories.isEmpty
               ? const Center(
-            child: Text(
-              'По вашему запросу ничего не найдено',
-              style: TextStyle(
-                fontSize: 18,
-              ),
-              textAlign: TextAlign.center,
-            ),
-          )
+                  child: Text(
+                    'По вашему запросу ничего не найдено',
+                    style: TextStyle(
+                      fontSize: 18,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                )
               : CupertinoScrollbar(
-            child: ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              itemCount: recentCategories.length,
-              itemBuilder: (BuildContext context, int index) {
-                return DictionaryCategoryItem(
-                  item: recentCategories[index],
+                  child: ListView.builder(
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: recentCategories.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return DictionaryCategoryItem(
+                        item: recentCategories[index],
+                      );
+                    },
+                  ),
                 );
-              },
-            ),
-          );
         } else {
           return const Center(
             child: Padding(
