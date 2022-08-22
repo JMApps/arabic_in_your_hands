@@ -23,8 +23,7 @@ class ContentPlayerState with ChangeNotifier {
   bool get getPlayingState => _playingState;
 
   initPlayer(AsyncSnapshot snapshot) async {
-    var listAudios = List<AudioSource>.generate(snapshot.data!.length,
-        (i) => AudioSource.uri(Uri.parse('asset:///assets/audios/${snapshot.data![i].audioName}.mp3')));
+    var listAudios = List<AudioSource>.generate(snapshot.data!.length, (i) => AudioSource.uri(Uri.parse('asset:///assets/audios/${snapshot.data![i].audioName}.mp3')));
     final myPlayList = ConcatenatingAudioSource(
       children: listAudios,
     );

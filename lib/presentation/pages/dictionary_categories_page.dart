@@ -21,6 +21,7 @@ class DictionaryCategoriesPage extends StatelessWidget {
             ),
             actions: [
               IconButton(
+                splashRadius: 20,
                 icon: const Icon(
                   CupertinoIcons.search,
                 ),
