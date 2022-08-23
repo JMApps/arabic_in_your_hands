@@ -14,7 +14,7 @@ class FirstVolumeFlipBackCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
     return Card(
-      elevation: 10,
+      elevation: 5,
       color: myColor.flipBackColor,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(

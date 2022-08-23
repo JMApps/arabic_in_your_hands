@@ -1,8 +1,11 @@
+import 'package:arabicinyourhands/domain/constants.dart';
 import 'package:arabicinyourhands/presentation/lists/first_volume_chapter_list.dart';
 import 'package:arabicinyourhands/presentation/widgets/info_app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
+
+final globalBucketFirstVolumeChapters = PageStorageBucket();
 
 class FirstVolumeContentPage extends StatelessWidget {
   const FirstVolumeContentPage({Key? key}) : super(key: key);
@@ -52,8 +55,14 @@ class FirstVolumeContentPage extends StatelessWidget {
           ),
         ],
       ),
-      body: CupertinoScrollbar(
-        child: FirstVolumeChapterList(),
+      body: PageStorage(
+        bucket: globalBucketFirstVolumeChapters,
+        child: CupertinoScrollbar(
+          child: FirstVolumeChapterList(
+            key: const PageStorageKey<String>(
+                Constants.keyBucketFirstVolumeChapters),
+          ),
+        ),
       ),
     );
   }

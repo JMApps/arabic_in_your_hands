@@ -1,7 +1,10 @@
+import 'package:arabicinyourhands/domain/constants.dart';
 import 'package:arabicinyourhands/presentation/lists/second_volume_chapter_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
+
+final globalBucketSecondVolumeChapters = PageStorageBucket();
 
 class SecondVolumeContentPage extends StatelessWidget {
   const SecondVolumeContentPage({Key? key}) : super(key: key);
@@ -27,14 +30,21 @@ class SecondVolumeContentPage extends StatelessWidget {
             onPressed: () {
               Share.share(
                 'Арабский перед тобой\n\nВерсия iOS:\nhttps://apps.apple.com/ru/app/арабский-перед-тобой/id1602988060\n\nВерсия android:\nhttps://play.google.com/store/apps/details?id=jmapps.arabicinyourhands',
-                sharePositionOrigin: Rect.fromLTWH(0, 0, size.width, size.height / 2),
+                sharePositionOrigin:
+                    Rect.fromLTWH(0, 0, size.width, size.height / 2),
               );
             },
           ),
         ],
       ),
-      body: CupertinoScrollbar(
-        child: SecondVolumeChapterList(),
+      body: PageStorage(
+        bucket: globalBucketSecondVolumeChapters,
+        child: CupertinoScrollbar(
+          child: SecondVolumeChapterList(
+            key: const PageStorageKey<String>(
+                Constants.keyBucketSecondVolumeChapters),
+          ),
+        ),
       ),
     );
   }

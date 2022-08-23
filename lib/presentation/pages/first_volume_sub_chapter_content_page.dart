@@ -77,9 +77,7 @@ class FistVolumeSubChapterContentPage extends StatelessWidget {
                                 ),
                                 splashRadius: 20,
                                 onPressed: () {
-                                  context
-                                      .read<MainNavigationSelectedState>()
-                                      .updateFirstSelectedState(item.id + 1);
+                                  context.read<MainNavigationSelectedState>().updateFirstSelectedState(item.id + 1);
                                   Navigator.pushReplacementNamed(
                                     context,
                                     '/first_volume_content',

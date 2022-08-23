@@ -4,6 +4,8 @@ import 'package:arabicinyourhands/presentation/lists/first_volume_sub_chapter_li
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+final globalBucketFirstVolumeSubChapters = PageStorageBucket();
+
 class FirstVolumeChapterItem extends StatelessWidget {
   const FirstVolumeChapterItem({Key? key, required this.item})
       : super(key: key);
@@ -106,8 +108,12 @@ class FirstVolumeChapterItem extends StatelessWidget {
           const SizedBox(height: 8),
           SizedBox(
             height: 150,
-            child: FirstVolumeSubChapterList(
-              chapterId: item.id,
+            child: PageStorage(
+              bucket: globalBucketFirstVolumeSubChapters,
+              child: FirstVolumeSubChapterList(
+                key: PageStorageKey<int>(item.id),
+                chapterId: item.id,
+              ),
             ),
           ),
         ],

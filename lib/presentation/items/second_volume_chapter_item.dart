@@ -107,6 +107,7 @@ class SecondVolumeChapterItem extends StatelessWidget {
           SizedBox(
             height: 150,
             child: SecondVolumeSubChapterList(
+              key: PageStorageKey<int>(item.id),
               chapterId: item.id,
             ),
           ),

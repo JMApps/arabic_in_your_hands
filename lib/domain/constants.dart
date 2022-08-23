@@ -9,4 +9,7 @@ class Constants {
   static const String keyDisplayWakeClock = 'key_display_wake_lock';
   static const String keyThemeIsAdaptive = 'key_theme_is_adaptive';
   static const String keyThemeIsUser = 'key_theme_is_user';
+
+  static const String keyBucketFirstVolumeChapters = 'key_bucket_first_volume_chapters';
+  static const String keyBucketSecondVolumeChapters = 'key_bucket_second_volume_chapters';
 }
