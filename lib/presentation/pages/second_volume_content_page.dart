@@ -18,6 +18,8 @@ class SecondVolumeContentPage extends StatelessWidget {
         ),
         actions: [
           IconButton(
+            tooltip: 'Поделиться ссылками на приложение',
+            splashRadius: 20,
             icon: const Icon(
               CupertinoIcons.share,
               color: Colors.white,

@@ -14,7 +14,7 @@ class SecondVolumeFlipFrontCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
     return Card(
-      elevation: 10,
+      elevation: 5,
       color: myColor.flipBackColor,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
@@ -28,25 +28,31 @@ class SecondVolumeFlipFrontCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               item.arabicName != null
-                  ? Text(
-                      item.arabicName!,
-                      style: TextStyle(
-                        fontSize: 35,
-                        color: myColor.myAccentColor,
-                        fontFamily: 'Scheherazade',
+                  ? SizedBox(
+                      width: double.maxFinite,
+                      child: Text(
+                        item.arabicName!,
+                        style: TextStyle(
+                          fontSize: 35,
+                          color: myColor.myAccentColor,
+                          fontFamily: 'Scheherazade',
+                        ),
+                        textDirection: TextDirection.rtl,
+                        textAlign: TextAlign.center,
                       ),
-                      textDirection: TextDirection.rtl,
-                      textAlign: TextAlign.center,
                     )
                   : const SizedBox(),
-              Text(
-                item.arabicContent,
-                style: const TextStyle(
-                  fontSize: 35,
-                  fontFamily: 'Scheherazade',
+              SizedBox(
+                width: double.maxFinite,
+                child: Text(
+                  item.arabicContent,
+                  style: const TextStyle(
+                    fontSize: 35,
+                    fontFamily: 'Scheherazade',
+                  ),
+                  textDirection: TextDirection.rtl,
+                  textAlign: TextAlign.center,
                 ),
-                textDirection: TextDirection.rtl,
-                textAlign: TextAlign.center,
               ),
             ],
           ),

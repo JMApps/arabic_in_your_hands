@@ -27,7 +27,7 @@ class DialogVisibility extends StatelessWidget {
               padding: const EdgeInsets.only(top: 16),
               width: double.maxFinite,
               child: Text(
-                'Режим отобраэения',
+                'Режим отображения',
                 style: TextStyle(
                   fontSize: 18,
                   color: myColor.myAccentColor,
@@ -40,7 +40,9 @@ class DialogVisibility extends StatelessWidget {
               endIndent: 24,
             ),
             SwitchListTile.adaptive(
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16,),
+              contentPadding: const EdgeInsets.symmetric(
+                horizontal: 16,
+              ),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
@@ -49,13 +51,9 @@ class DialogVisibility extends StatelessWidget {
                 style: TextStyle(fontSize: 18),
               ),
               activeColor: myColor.myAccentColor,
-              value: context
-                  .watch<VolumeContentDialogVisibilityState>()
-                  .getSecondDialogVisibility,
+              value: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
               onChanged: (bool? value) {
-                context
-                    .read<VolumeContentDialogVisibilityState>()
-                    .updateSecondVisibilityState(value!);
+                context.read<VolumeContentDialogVisibilityState>().updateFirstVisibilityState(value!);
               },
             ),
             const Divider(
@@ -72,13 +70,9 @@ class DialogVisibility extends StatelessWidget {
                 style: TextStyle(fontSize: 18),
               ),
               activeColor: myColor.myAccentColor,
-              value: context
-                  .watch<VolumeContentDialogVisibilityState>()
-                  .getFirstDialogVisibility,
+              value: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
               onChanged: (bool? value) {
-                context
-                    .read<VolumeContentDialogVisibilityState>()
-                    .updateFirstVisibilityState(value!);
+                context.read<VolumeContentDialogVisibilityState>().updateSecondVisibilityState(value!);
               },
             ),
           ],

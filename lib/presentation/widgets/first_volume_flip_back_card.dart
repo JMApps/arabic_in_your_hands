@@ -28,23 +28,29 @@ class FirstVolumeFlipBackCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               item.translationName != null
-                  ? Text(
-                      item.translationName!,
-                      style: TextStyle(
-                        fontSize: 35,
-                        color: myColor.myAccentColor,
+                  ? SizedBox(
+                      width: double.maxFinite,
+                      child: Text(
+                        item.translationName!,
+                        style: TextStyle(
+                          fontSize: 35,
+                          color: myColor.myAccentColor,
+                        ),
+                        textDirection: TextDirection.ltr,
+                        textAlign: TextAlign.center,
                       ),
-                      textDirection: TextDirection.ltr,
-                      textAlign: TextAlign.center,
                     )
                   : const SizedBox(),
-              Text(
-                item.translationContent,
-                style: const TextStyle(
-                  fontSize: 35,
+              SizedBox(
+                width: double.maxFinite,
+                child: Text(
+                  item.translationContent,
+                  style: const TextStyle(
+                    fontSize: 35,
+                  ),
+                  textDirection: TextDirection.ltr,
+                  textAlign: TextAlign.center,
                 ),
-                textDirection: TextDirection.ltr,
-                textAlign: TextAlign.center,
               ),
             ],
           ),

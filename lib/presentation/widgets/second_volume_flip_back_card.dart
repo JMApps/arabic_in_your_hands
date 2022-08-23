@@ -14,7 +14,7 @@ class SecondVolumeFlipBackCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
     return Card(
-      elevation: 10,
+      elevation: 5,
       color: myColor.flipBackColor,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
@@ -28,23 +28,29 @@ class SecondVolumeFlipBackCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               item.translationName != null
-                  ? Text(
-                      item.translationName!,
-                      style: TextStyle(
-                        fontSize: 35,
-                        color: myColor.myAccentColor,
+                  ? SizedBox(
+                    width: double.maxFinite,
+                    child: Text(
+                        item.translationName!,
+                        style: TextStyle(
+                          fontSize: 35,
+                          color: myColor.myAccentColor,
+                        ),
+                        textDirection: TextDirection.ltr,
+                        textAlign: TextAlign.center,
                       ),
-                      textDirection: TextDirection.ltr,
-                      textAlign: TextAlign.center,
-                    )
+                  )
                   : const SizedBox(),
-              Text(
-                item.translationContent,
-                style: const TextStyle(
-                  fontSize: 35,
+              SizedBox(
+                width: double.maxFinite,
+                child: Text(
+                  item.translationContent,
+                  style: const TextStyle(
+                    fontSize: 35,
+                  ),
+                  textDirection: TextDirection.ltr,
+                  textAlign: TextAlign.center,
                 ),
-                textDirection: TextDirection.ltr,
-                textAlign: TextAlign.center,
               ),
             ],
           ),
