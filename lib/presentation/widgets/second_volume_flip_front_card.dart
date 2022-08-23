@@ -1,5 +1,7 @@
 import 'package:arabicinyourhands/data/database/model/volume_second_item_sub_chapter_content_model.dart';
 import 'package:arabicinyourhands/domain/theme/app_theme.dart';
+import 'package:arabicinyourhands/presentation/widgets/flip_share_copy_second.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SecondVolumeFlipFrontCard extends StatelessWidget {
@@ -53,6 +55,21 @@ class SecondVolumeFlipFrontCard extends StatelessWidget {
                   textDirection: TextDirection.rtl,
                   textAlign: TextAlign.center,
                 ),
+              ),
+              IconButton(
+                splashRadius: 20,
+                icon: Icon(
+                  CupertinoIcons.share,
+                  color: Theme.of(context).colorScheme.myAccentColor,
+                ),
+                onPressed: () {
+                  showCupertinoModalPopup(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return FlipShareCopySecond(item: item, isFront: true);
+                    },
+                  );
+                },
               ),
             ],
           ),

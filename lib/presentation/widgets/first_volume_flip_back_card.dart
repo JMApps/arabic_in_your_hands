@@ -1,5 +1,7 @@
 import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_content_model.dart';
 import 'package:arabicinyourhands/domain/theme/app_theme.dart';
+import 'package:arabicinyourhands/presentation/widgets/flip_share_copy_first.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class FirstVolumeFlipBackCard extends StatelessWidget {
@@ -51,6 +53,21 @@ class FirstVolumeFlipBackCard extends StatelessWidget {
                   textDirection: TextDirection.ltr,
                   textAlign: TextAlign.center,
                 ),
+              ),
+              IconButton(
+                splashRadius: 20,
+                icon: Icon(
+                  CupertinoIcons.share,
+                  color: Theme.of(context).colorScheme.myAccentColor,
+                ),
+                onPressed: () {
+                  showCupertinoModalPopup(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return FlipShareCopyFirst(item: item, isFront: false);
+                    },
+                  );
+                },
               ),
             ],
           ),
