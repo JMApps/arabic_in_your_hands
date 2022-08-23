@@ -3,12 +3,41 @@ import 'package:arabicinyourhands/presentation/lists/first_volume_chapter_list.d
 import 'package:arabicinyourhands/presentation/widgets/info_app.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:share_plus/share_plus.dart';
 
 final globalBucketFirstVolumeChapters = PageStorageBucket();
 
-class FirstVolumeContentPage extends StatelessWidget {
+class FirstVolumeContentPage extends StatefulWidget {
   const FirstVolumeContentPage({Key? key}) : super(key: key);
+
+  @override
+  State<FirstVolumeContentPage> createState() => _FirstVolumeContentPageState();
+}
+
+class _FirstVolumeContentPageState extends State<FirstVolumeContentPage> {
+
+  late bool isAppInfoShow;
+
+  @override
+  void initState() {
+    var box = Hive.box(Constants.keyMainSettingBox);
+    isAppInfoShow = box.get(Constants.keyAppInfoDialogShow, defaultValue: true);
+    if (isAppInfoShow) {
+      Future.delayed(const Duration(seconds: 1)).then(
+            (value) => {
+          showModalBottomSheet(
+            context: context,
+            backgroundColor: Colors.transparent,
+            builder: (BuildContext context) {
+              return const InfoApp();
+            },
+          ),
+        },
+      );
+    }
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +62,7 @@ class FirstVolumeContentPage extends StatelessWidget {
                 context: context,
                 backgroundColor: Colors.transparent,
                 builder: (BuildContext context) {
-                  return const InfoApp();
+                  return InfoApp();
                 },
               );
             },
