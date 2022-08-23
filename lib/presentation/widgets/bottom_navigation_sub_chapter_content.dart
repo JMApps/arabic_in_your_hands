@@ -13,16 +13,14 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
-    final contentPlayerWithoutListen =
-        Provider.of<ContentPlayerState>(context, listen: false);
+    final contentPlayerWithoutListen = Provider.of<ContentPlayerState>(context, listen: false);
     final getWatchContentPlayer = context.watch<ContentPlayerState>();
-    getWatchContentPlayer.getPlayer
-        .setSpeed(context.watch<PlaySpeedState>().getPlaySpeed);
+    getWatchContentPlayer.getPlayer.setSpeed(context.watch<PlaySpeedState>().getPlaySpeed);
     return Material(
       color: myColor.bottomNavigationBarColor,
-      borderRadius: const BorderRadius.horizontal(
-        left: Radius.circular(20),
-        right: Radius.circular(20),
+      borderRadius: const BorderRadius.only(
+        topLeft: Radius.circular(20),
+        topRight: Radius.circular(20),
       ),
       child: Padding(
         padding: const EdgeInsets.all(8),
