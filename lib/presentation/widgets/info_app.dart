@@ -12,6 +12,7 @@ class InfoApp extends StatelessWidget {
     var box = Hive.box(Constants.keyMainSettingBox);
     return Card(
       margin: const EdgeInsets.all(16),
+      color: Theme.of(context).colorScheme.mainChapterCardColor,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: CupertinoScrollbar(
         child: SingleChildScrollView(
@@ -23,6 +24,7 @@ class InfoApp extends StatelessWidget {
                   'Важная информация!\n\nУважаемые пользователи приложения!\n\nВы часто пишете нам и спрашиваете, будут ли 3-й и 4-й тома. Отвечаем: ни 3-го, ни 4-го тома в данном приложении не будет. Мы спросили разрешение у издательства учебника оставить эти два тома с диалогами и текстами. Но добавлять сюда остальной материал они нам запретили. Возможно, в приложение будут добавляться другие материалы, но продолжения самого «Байна Ядайк» тут не будет. Мы бы очень хотели сделать все 4 тома, мы стремились к этому, но получили отказ. Хвала Аллаху в любом положении!',
                   style: TextStyle(fontSize: 18),
                 ),
+                box.get(Constants.keyAppInfoDialogShow, defaultValue: true) ?
                 TextButton.icon(
                   icon: Icon(
                     CupertinoIcons.arrow_right_square,
@@ -39,7 +41,7 @@ class InfoApp extends StatelessWidget {
                     box.put(Constants.keyAppInfoDialogShow, false);
                     Navigator.of(context).pop();
                   },
-                ),
+                ) : const SizedBox(),
               ],
             ),
           ),

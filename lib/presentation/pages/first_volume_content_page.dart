@@ -62,7 +62,7 @@ class _FirstVolumeContentPageState extends State<FirstVolumeContentPage> {
                 context: context,
                 backgroundColor: Colors.transparent,
                 builder: (BuildContext context) {
-                  return InfoApp();
+                  return const InfoApp();
                 },
               );
             },
