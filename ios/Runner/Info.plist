@@ -28,6 +28,8 @@
 	<true/>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Для использования приложения допступ к микрофону не требуется. Можете отклонить</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Чтобы сохранить картинку в Фото, вы должны предоставить доступ</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
