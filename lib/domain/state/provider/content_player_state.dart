@@ -4,6 +4,8 @@ import 'package:just_audio/just_audio.dart';
 class ContentPlayerState with ChangeNotifier {
   final _player = AudioPlayer();
 
+  final _playerOne = AudioPlayer();
+
   AudioPlayer get getPlayer => _player;
 
   bool _trackLoopState = false;
@@ -22,10 +24,16 @@ class ContentPlayerState with ChangeNotifier {
 
   bool get getPlayingState => _playingState;
 
+  bool _playingStateOne = false;
+
+  bool get getPlayingStateOne => _playingStateOne;
+
+  List<AudioSource> _myPlayList = [];
+
   initPlayer(AsyncSnapshot snapshot) async {
-    var listAudios = List<AudioSource>.generate(snapshot.data!.length, (i) => AudioSource.uri(Uri.parse('asset:///assets/audios/${snapshot.data![i].audioName}.mp3')));
+    _myPlayList = List<AudioSource>.generate(snapshot.data!.length, (i) => AudioSource.uri(Uri.parse('asset:///assets/audios/${snapshot.data![i].audioName}.mp3')));
     final myPlayList = ConcatenatingAudioSource(
-      children: listAudios,
+      children: _myPlayList,
     );
 
     await _player.setAudioSource(myPlayList,
@@ -44,7 +52,7 @@ class ContentPlayerState with ChangeNotifier {
         if (playerState.processingState == ProcessingState.completed) {
           _currentTrackIndex = 0;
           _playingState = false;
-          _player.seek(Duration.zero, index: _currentTrackIndex);
+          _player.seek(Duration.zero, index: 0);
           _player.stop();
         }
         notifyListeners();
@@ -53,8 +61,12 @@ class ContentPlayerState with ChangeNotifier {
   }
 
   playOne(int index) async {
-    _player.seek(Duration.zero, index: index);
-    _player.play();
+    if (_playingState) {
+      _player.seek(Duration.zero);
+      _player.stop();
+    }
+    await _playerOne.setAudioSource(_myPlayList[index]);
+    _playerOne.play();
     notifyListeners();
   }
 
@@ -63,6 +75,9 @@ class ContentPlayerState with ChangeNotifier {
   }
 
   playPause() {
+    if (_playerOne.playing) {
+      _playerOne.stop();
+    }
     _playingState ? _player.pause() : _player.play();
   }
 
