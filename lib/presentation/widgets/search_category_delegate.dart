@@ -11,20 +11,6 @@ class SearchCategoryDelegate extends SearchDelegate {
   List<DictionaryCategoryModel> categories = [];
   List<DictionaryCategoryModel> recentCategories = [];
 
-  String localHintText = '';
-
-  var localeEn = const Locale('en');
-  var localeUz = const Locale('uz');
-
-  String getHintText() {
-    if (localeEn.languageCode == 'en') {
-      localHintText = 'Поиск категорий...';
-    } else if (localeUz.languageCode == 'uz') {
-      localHintText = 'Туркумларни қидириш...';
-    }
-    return localHintText;
-  }
-
   SearchCategoryDelegate({
     String hintText = 'Поиск категорий...',
   }) : super(

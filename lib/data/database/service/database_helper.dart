@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
@@ -20,6 +21,8 @@ class DatabaseHelper {
     return _db!;
   }
 
+  final String deviceLocale = window.locale.languageCode;
+
   DatabaseHelper.internal();
 
   Future<Database> initializeDatabase() async {
@@ -27,9 +30,8 @@ class DatabaseHelper {
         ? await getExternalStorageDirectory()
         : await getApplicationSupportDirectory();
 
-    String path = join(documentDirectory!.path, 'ArabicInYourHandsDB_3.db');
+    String path = join(documentDirectory!.path, deviceLocale == 'uz' ? 'ArabicInYourHandsDB_uz.db' : 'ArabicInYourHandsDB_3.db');
     var exists = await databaseExists(path);
-
     String toDeleteDB = '${documentDirectory.path}/ArabicInYourHandsDB_2.db';
     var delDB = await databaseExists(toDeleteDB);
 
@@ -44,7 +46,7 @@ class DatabaseHelper {
         Exception('Invalid database');
       }
 
-      ByteData data = await rootBundle.load(join('assets/databases', 'ArabicInYourHandsDB_3.db'));
+      ByteData data = await rootBundle.load(join('assets/databases', deviceLocale == 'uz' ? 'ArabicInYourHandsDB_uz.db' : 'ArabicInYourHandsDB_3.db'));
       List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
       await File(path).writeAsBytes(bytes, flush: true);
     }
