@@ -2,6 +2,7 @@ import 'package:arabicinyourhands/domain/state/provider/volume_content_dialog_vi
 import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DialogVisibility extends StatelessWidget {
   const DialogVisibility({Key? key}) : super(key: key);
@@ -9,6 +10,7 @@ class DialogVisibility extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
+    final appLocalizations = AppLocalizations.of(context)!;
     return Card(
       color: myColor.mainChapterCardColor,
       margin: const EdgeInsets.all(16),
@@ -27,7 +29,7 @@ class DialogVisibility extends StatelessWidget {
               padding: const EdgeInsets.only(top: 16),
               width: double.maxFinite,
               child: Text(
-                'Режим отображения',
+                appLocalizations.visible_mode,
                 style: TextStyle(
                   fontSize: 18,
                   color: myColor.myAccentColor,
@@ -46,9 +48,9 @@ class DialogVisibility extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              title: const Text(
-                'Показать/скрыть арабский текст',
-                style: TextStyle(fontSize: 18),
+              title: Text(
+                appLocalizations.show_hide_arabic_text,
+                style: const TextStyle(fontSize: 18),
               ),
               activeColor: myColor.myAccentColor,
               value: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
@@ -65,9 +67,9 @@ class DialogVisibility extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
               ),
-              title: const Text(
-                'Показать/скрыть текст перевода',
-                style: TextStyle(fontSize: 18),
+              title: Text(
+                appLocalizations.show_hide_translation_text,
+                style: const TextStyle(fontSize: 18),
               ),
               activeColor: myColor.myAccentColor,
               value: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,

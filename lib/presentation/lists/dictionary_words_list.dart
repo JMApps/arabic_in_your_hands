@@ -3,6 +3,7 @@ import 'package:arabicinyourhands/presentation/items/dictionary_word_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DictionaryWordsList extends StatelessWidget {
   const DictionaryWordsList({
@@ -40,12 +41,12 @@ class DictionaryWordsList extends StatelessWidget {
                   ),
                 ),
               )
-            : const Center(
+            : Center(
                 child: Padding(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   child: Text(
-                    'Добавьте первое слово',
-                    style: TextStyle(
+                    AppLocalizations.of(context)!.dictionary_word_add_first,
+                    style: const TextStyle(
                       fontSize: 18,
                     ),
                   ),

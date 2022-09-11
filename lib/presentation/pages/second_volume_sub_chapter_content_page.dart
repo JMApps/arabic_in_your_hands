@@ -76,9 +76,7 @@ class SecondVolumeSubChapterContentPage extends StatelessWidget {
                                 ),
                                 splashRadius: 20,
                                 onPressed: () {
-                                  context
-                                      .read<MainNavigationSelectedState>()
-                                      .updateSecondSelectedState(item.id + 1);
+                                  context.read<MainNavigationSelectedState>().updateSecondSelectedState(item.id + 1);
                                   Navigator.pushReplacementNamed(
                                     context,
                                     '/second_volume_content',

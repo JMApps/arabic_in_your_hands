@@ -2,6 +2,7 @@ import 'package:arabicinyourhands/domain/state/provider/play_speed_state.dart';
 import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PlaySpeed extends StatelessWidget {
   const PlaySpeed({Key? key}) : super(key: key);
@@ -29,7 +30,7 @@ class PlaySpeed extends StatelessWidget {
               padding: const EdgeInsets.only(top: 16),
               width: double.maxFinite,
               child: Text(
-                'Скорость воспроизведения',
+                AppLocalizations.of(context)!.play_speed,
                 style: TextStyle(
                   fontSize: 18,
                   color: myColor.myAccentColor,

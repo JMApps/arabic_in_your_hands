@@ -3,6 +3,7 @@ import 'package:arabicinyourhands/presentation/lists/second_volume_chapter_list.
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 final globalBucketSecondVolumeChapters = PageStorageBucket();
 
@@ -12,16 +13,17 @@ class SecondVolumeContentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final appLocalizations = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Том 2'),
+        title: Text(appLocalizations.volume_2),
         leading: Transform.scale(
           scale: 0.7,
           child: Image.asset('assets/icons/arabic_in_origin.png'),
         ),
         actions: [
           IconButton(
-            tooltip: 'Поделиться ссылками на приложение',
+            tooltip: appLocalizations.share_links_app,
             splashRadius: 20,
             icon: const Icon(
               CupertinoIcons.share,
@@ -29,7 +31,7 @@ class SecondVolumeContentPage extends StatelessWidget {
             ),
             onPressed: () {
               Share.share(
-                'Арабский перед тобой\n\nВерсия iOS:\nhttps://apps.apple.com/ru/app/арабский-перед-тобой/id1602988060\n\nВерсия android:\nhttps://play.google.com/store/apps/details?id=jmapps.arabicinyourhands',
+                '${appLocalizations.app_name_share}\n\n${appLocalizations.ios_version}:\nhttps://apps.apple.com/ru/app/арабский-перед-тобой/id1602988060\n\n${appLocalizations.android_version}:\nhttps://play.google.com/store/apps/details?id=jmapps.arabicinyourhands',
                 sharePositionOrigin:
                     Rect.fromLTWH(0, 0, size.width, size.height / 2),
               );

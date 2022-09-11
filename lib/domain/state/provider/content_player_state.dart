@@ -24,7 +24,7 @@ class ContentPlayerState with ChangeNotifier {
 
   bool get getPlayingState => _playingState;
 
-  bool _playingStateOne = false;
+  final bool _playingStateOne = false;
 
   bool get getPlayingStateOne => _playingStateOne;
 

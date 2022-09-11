@@ -1,0 +1,77 @@
+{
+"app_name": "Араб тили олдингизда",
+
+"add": "Қўшиш",
+"change": "Ўзгартириш",
+"changed": "Ўзгартирилди",
+
+"delete": "Ўчириш",
+"deleting": "Ўчириш",
+
+"copy": "Нусха олиш",
+"copied": "Нусха олинди",
+
+"share": "Улашиш",
+"ios_version": "iOS версияси",
+"android_version": "Android версияси",
+"share_picture": "Расмни улашиш",
+
+"yes": "Ҳа",
+"no": "Йўқ",
+
+"dictionary_category_delete_message": "Ҳақиқатан ҳам ушбу туркумни таркиби билан бирга ўчириб ташламоқчимисиз?",
+"dictionary_category_category_deleted": "Туркум ўчирилди",
+"dictionary_category_category_added": "Туркум қўшилди",
+"dictionary_word_delete_message": "Ҳақиқатан ҳам бу сўзни ўчириб ташламоқчимисиз?",
+"dictionary_word_category_deleted": "Сўз ўчирилди",
+"dictionary_word_category_added": "Сўз қўшилди",
+
+
+"dictionary_category_add_first": "Биринчи туркумни қўшинг",
+"dictionary_word_add_first": "Биринчи сўзни қўшинг",
+
+"words_flip_empty_message": "Карталар режимидан фойдаланиш учун жорий туркумга сўзларни қўшишингиз керак",
+
+"categories": "Туркумлар",
+"category_name": "Туркум номи",
+"enter_category_name": "Туркум номини киритинг",
+"priority": "Устуворлик",
+
+"words": "Сўзлар",
+"word": "Сўз",
+"enter_word": "Сўз киритинг",
+
+"translation": "Таржима",
+"enter_translation": "Сўзнинг таржимасини киритинг",
+
+"flip_card_mode": "Карталар режими",
+
+"info_for_users": "Фойдаланувчилар учун маълумот",
+"share_links_app": "Илова ҳаволаларини улашиш",
+"app_name_share": "Араб тили олдингизда",
+
+"volume_1": "1 жилд",
+"volume_2": "2 жилд",
+
+"dictionary": "Луғат",
+"settings": "Созламалар",
+
+"arabic_text_size": "Арабча матн ҳажми",
+"translation_text_size": "Таржима матни ҳажми",
+"arabic_font": "Арабча матн шрифти",
+"translation_font": "Таржима матни шрифти",
+"text_align": "Матн жойлашуви",
+"wake_lock_display": "Дисплейни ўчирманг",
+"wake_lock_display_description": "Илова фаол бўлганда дисплей ёнади",
+"app_theme": "Мослашувчан мавзу",
+"app_theme_description": "Илова мавзуси қурилмадаги мавзуга мос келади",
+"user_app_theme": "Фойдаланувчи мавзуси",
+"user_app_theme_description": "Илова мавзуси сиз танлаган мавзуга мос келади",
+"visible_mode": "Кўрсатиш режими",
+"show_hide_arabic_text": "Арабча матнни кўрсатиш/яшириш",
+"show_hide_translation_text": "Таржима матнини кўрсатиш/яшириш",
+"play_speed": "Ижро этиш тезлиги",
+"search_categories": "Туркумларни қидириш...",
+"search_is_not_results": "Сизнинг сўровингиз бўйича ҳеч нарса топилмади",
+"categories_is_empty": "Сиз ҳеч қандай туркум қўшмадингиз"
+}

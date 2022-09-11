@@ -8,6 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainPageBody extends StatelessWidget {
   MainPageBody({Key? key}) : super(key: key);
@@ -22,6 +23,7 @@ class MainPageBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
+    final appLocalizations = AppLocalizations.of(context)!;
     return Scaffold(
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 350),
@@ -42,27 +44,27 @@ class MainPageBody extends StatelessWidget {
           items: [
             SalomonBottomBarItem(
               icon: const Icon(Icons.filter_1_outlined),
-              title: const Text(
-                'Том 1',
-                style: TextStyle(
+              title: Text(
+                appLocalizations.volume_1,
+                style: const TextStyle(
                   fontFamily: 'Gilroy',
                 ),
               ),
             ),
             SalomonBottomBarItem(
               icon: const Icon(Icons.filter_2_outlined),
-              title: const Text(
-                'Том 2',
-                style: TextStyle(
+              title: Text(
+                appLocalizations.volume_2,
+                style: const TextStyle(
                   fontFamily: 'Gilroy',
                 ),
               ),
             ),
             SalomonBottomBarItem(
               icon: const Icon(CupertinoIcons.add),
-              title: const Text(
-                'Словарь',
-                style: TextStyle(
+              title: Text(
+                appLocalizations.dictionary,
+                style: const TextStyle(
                   fontFamily: 'Gilroy',
                 ),
               ),
@@ -73,7 +75,7 @@ class MainPageBody extends StatelessWidget {
                 color: myColor.bottomNavigationSettingItemColor,
               ),
               title: Text(
-                'Настройки',
+                appLocalizations.settings,
                 style: TextStyle(
                   color: myColor.bottomNavigationSettingItemColor,
                   fontFamily: 'Gilroy',

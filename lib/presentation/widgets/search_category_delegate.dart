@@ -4,11 +4,26 @@ import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:arabicinyourhands/presentation/items/dictionary_category_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 class SearchCategoryDelegate extends SearchDelegate {
   List<DictionaryCategoryModel> categories = [];
   List<DictionaryCategoryModel> recentCategories = [];
+
+  String localHintText = '';
+
+  var localeEn = const Locale('en');
+  var localeUz = const Locale('uz');
+
+  String getHintText() {
+    if (localeEn.languageCode == 'en') {
+      localHintText = 'Поиск категорий...';
+    } else if (localeUz.languageCode == 'uz') {
+      localHintText = 'Туркумларни қидириш...';
+    }
+    return localHintText;
+  }
 
   SearchCategoryDelegate({
     String hintText = 'Поиск категорий...',
@@ -68,10 +83,10 @@ class SearchCategoryDelegate extends SearchDelegate {
                       .contains(query.toLowerCase()))
                   .toList();
           return recentCategories.isEmpty
-              ? const Center(
+              ? Center(
                   child: Text(
-                    'По вашему запросу ничего не найдено',
-                    style: TextStyle(
+                    AppLocalizations.of(context)!.search_is_not_results,
+                    style: const TextStyle(
                       fontSize: 18,
                     ),
                     textAlign: TextAlign.center,
@@ -89,12 +104,12 @@ class SearchCategoryDelegate extends SearchDelegate {
                   ),
                 );
         } else {
-          return const Center(
+          return Center(
             child: Padding(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: Text(
-                'Вы не добавили ни одной категории',
-                style: TextStyle(
+                AppLocalizations.of(context)!.categories_is_empty,
+                style: const TextStyle(
                   fontSize: 18,
                 ),
                 textAlign: TextAlign.center,
@@ -124,10 +139,10 @@ class SearchCategoryDelegate extends SearchDelegate {
                       .contains(query.toLowerCase()))
                   .toList();
           return recentCategories.isEmpty
-              ? const Center(
+              ? Center(
                   child: Text(
-                    'По вашему запросу ничего не найдено',
-                    style: TextStyle(
+                    AppLocalizations.of(context)!.search_is_not_results,
+                    style: const TextStyle(
                       fontSize: 18,
                     ),
                     textAlign: TextAlign.center,
@@ -145,12 +160,12 @@ class SearchCategoryDelegate extends SearchDelegate {
                   ),
                 );
         } else {
-          return const Center(
+          return Center(
             child: Padding(
-              padding: EdgeInsets.all(16),
+              padding: const EdgeInsets.all(16),
               child: Text(
-                'Вы не добавили ни одной категории',
-                style: TextStyle(
+                AppLocalizations.of(context)!.categories_is_empty,
+                style: const TextStyle(
                   fontSize: 18,
                 ),
                 textAlign: TextAlign.center,

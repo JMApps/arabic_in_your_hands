@@ -6,6 +6,7 @@ import 'package:clipboard/clipboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DictionaryWordItem extends StatelessWidget {
   const DictionaryWordItem({
@@ -18,6 +19,7 @@ class DictionaryWordItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
+    final appLocalizations = AppLocalizations.of(context)!;
     return Card(
       color: item.id.isOdd
           ? myColor.mainChapterCardColor
@@ -109,9 +111,9 @@ class DictionaryWordItem extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        title: const Text(
-                          'Изменить',
-                          style: TextStyle(
+                        title: Text(
+                          appLocalizations.change,
+                          style: const TextStyle(
                             fontSize: 18,
                           ),
                         ),
@@ -155,18 +157,16 @@ class DictionaryWordItem extends StatelessWidget {
                           CupertinoIcons.doc_on_clipboard,
                           color: myColor.myAccentColor,
                         ),
-                        title: const Text(
-                          'Скопировать',
-                          style: TextStyle(
+                        title: Text(
+                          appLocalizations.copy,
+                          style: const TextStyle(
                             fontSize: 18,
                           ),
                         ),
                         onTap: () {
                           FlutterClipboard.copy(
                               '${item.word}\n${item.wordTranslate}');
-                          context
-                              .read<DictionaryContentState>()
-                              .showSnackBarMessage(context, 'Скопировано');
+                          context.read<DictionaryContentState>().showSnackBarMessage(context, appLocalizations.copied);
                           Navigator.of(context).pop();
                         },
                       ),
@@ -181,9 +181,9 @@ class DictionaryWordItem extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        title: const Text(
-                          'Удалить',
-                          style: TextStyle(
+                        title: Text(
+                          appLocalizations.delete,
+                          style: const TextStyle(
                             fontSize: 18,
                           ),
                         ),
@@ -197,13 +197,12 @@ class DictionaryWordItem extends StatelessWidget {
                             context: context,
                             builder: (context) {
                               return CupertinoAlertDialog(
-                                title: const Text('Удаление'),
-                                content: const Text(
-                                    'Вы уверены, что хотите удалить это слово?'),
+                                title: Text(appLocalizations.deleting),
+                                content: Text(appLocalizations.dictionary_word_delete_message),
                                 actions: [
                                   CupertinoDialogAction(
                                     child: Text(
-                                      'Нет',
+                                      appLocalizations.no,
                                       style: TextStyle(
                                         color: myColor.myAccentColor,
                                       ),
@@ -214,19 +213,15 @@ class DictionaryWordItem extends StatelessWidget {
                                   ),
                                   CupertinoDialogAction(
                                     child: Text(
-                                      'Да',
+                                      appLocalizations.yes,
                                       style: TextStyle(
                                         color: myColor.myAccentColor,
                                       ),
                                     ),
                                     onPressed: () {
-                                      context
-                                          .read<DictionaryContentState>()
-                                          .showSnackBarMessage(
-                                              context, 'Слово удалено');
-                                      context
-                                          .read<DictionaryContentState>()
-                                          .deleteWord(item.id);
+                                      context.read<DictionaryContentState>().showSnackBarMessage(
+                                              context, appLocalizations.dictionary_word_category_deleted);
+                                      context.read<DictionaryContentState>().deleteWord(item.id);
                                       Navigator.of(context).pop();
                                     },
                                   ),

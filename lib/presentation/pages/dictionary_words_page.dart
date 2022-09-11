@@ -4,6 +4,7 @@ import 'package:arabicinyourhands/presentation/lists/dictionary_words_list.dart'
 import 'package:arabicinyourhands/presentation/widgets/add_word_popup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DictionaryWordsPage extends StatelessWidget {
   const DictionaryWordsPage({
@@ -32,7 +33,7 @@ class DictionaryWordsPage extends StatelessWidget {
               snap: false,
               forceElevated: innerBoxIsScrolled,
               expandedHeight: 50,
-              title: const Text('Слова'),
+              title: Text(AppLocalizations.of(context)!.words),
               actions: [
                 IconButton(
                   icon: const Icon(

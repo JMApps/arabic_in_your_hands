@@ -4,6 +4,7 @@ import 'package:arabicinyourhands/presentation/widgets/add_category_popup.dart';
 import 'package:arabicinyourhands/presentation/widgets/search_category_delegate.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DictionaryCategoriesPage extends StatelessWidget {
   const DictionaryCategoriesPage({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class DictionaryCategoriesPage extends StatelessWidget {
       builder: (context) {
         return Scaffold(
           appBar: AppBar(
-            title: const Text('Категории'),
+            title: Text(AppLocalizations.of(context)!.categories),
             leading: Transform.scale(
               scale: 0.7,
               child: Image.asset('assets/icons/arabic_in_origin.png'),

@@ -3,6 +3,7 @@ import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ContentSettings extends StatelessWidget {
   const ContentSettings({Key? key}) : super(key: key);
@@ -12,6 +13,7 @@ class ContentSettings extends StatelessWidget {
     final myColor = Theme.of(context).colorScheme;
     final getReadSettings = context.read<ContentSettingsState>();
     final getWatchSettings = context.watch<ContentSettingsState>();
+    final appLocalizations = AppLocalizations.of(context)!;
     return ListView(
       children: [
         ListTile(
@@ -24,9 +26,9 @@ class ContentSettings extends StatelessWidget {
             CupertinoIcons.textformat_size,
             color: myColor.myAccentColor,
           ),
-          title: const Text(
-            'Размер арабского текста',
-            style: TextStyle(
+          title: Text(
+            appLocalizations.arabic_text_size,
+            style: const TextStyle(
               fontSize: 18,
             ),
             textAlign: TextAlign.start,
@@ -70,9 +72,9 @@ class ContentSettings extends StatelessWidget {
             CupertinoIcons.textformat_size,
             color: myColor.myAccentColor,
           ),
-          title: const Text(
-            'Размер текста перевода',
-            style: TextStyle(
+          title: Text(
+            appLocalizations.translation_text_size,
+            style: const TextStyle(
               fontSize: 18,
             ),
             textAlign: TextAlign.start,
@@ -117,9 +119,9 @@ class ContentSettings extends StatelessWidget {
             Icons.font_download_rounded,
             color: myColor.myAccentColor,
           ),
-          title: const Text(
-            'Шрифт арабского текста',
-            style: TextStyle(
+          title: Text(
+            appLocalizations.arabic_font,
+            style: const TextStyle(
               fontSize: 18,
             ),
             textAlign: TextAlign.start,
@@ -168,9 +170,9 @@ class ContentSettings extends StatelessWidget {
             Icons.font_download_rounded,
             color: myColor.myAccentColor,
           ),
-          title: const Text(
-            'Шрифт текста перевода',
-            style: TextStyle(
+          title: Text(
+            appLocalizations.translation_font,
+            style: const TextStyle(
               fontSize: 18,
             ),
             textAlign: TextAlign.start,
@@ -219,9 +221,9 @@ class ContentSettings extends StatelessWidget {
             CupertinoIcons.text_alignleft,
             color: myColor.myAccentColor,
           ),
-          title: const Text(
-            'Расположение текста',
-            style: TextStyle(
+          title: Text(
+            appLocalizations.text_align,
+            style: const TextStyle(
               fontSize: 18,
             ),
             textAlign: TextAlign.start,
@@ -249,14 +251,14 @@ class ContentSettings extends StatelessWidget {
         ),
         SwitchListTile.adaptive(
           activeColor: myColor.myAccentColor,
-          title: const Text(
-            'Не отключать дисплей',
-            style: TextStyle(
+          title: Text(
+            appLocalizations.wake_lock_display,
+            style: const TextStyle(
               fontSize: 18,
             ),
           ),
-          subtitle: const Text(
-            'Дисплей будет включен пока приложение активно',
+          subtitle: Text(
+            appLocalizations.wake_lock_display_description,
           ),
           value: getWatchSettings.getWakeLockState,
           onChanged: (onChanged) {
@@ -269,14 +271,13 @@ class ContentSettings extends StatelessWidget {
         ),
         SwitchListTile.adaptive(
           activeColor: myColor.myAccentColor,
-          title: const Text(
-            'Адаптивная тема',
-            style: TextStyle(
+          title: Text(
+            appLocalizations.app_theme,
+            style: const TextStyle(
               fontSize: 18,
             ),
           ),
-          subtitle: const Text(
-              'Тема приложения будет соответствовать теме на устройстве'),
+          subtitle: Text(appLocalizations.app_theme_description),
           value: getWatchSettings.getThemeIsAdaptive,
           onChanged: (onChanged) {
             getReadSettings.changeThemeAdaptiveState(onChanged);
@@ -284,14 +285,13 @@ class ContentSettings extends StatelessWidget {
         ),
         SwitchListTile.adaptive(
           activeColor: myColor.myAccentColor,
-          title: const Text(
-            'Пользовательская тема',
-            style: TextStyle(
+          title: Text(
+            appLocalizations.user_app_theme,
+            style: const TextStyle(
               fontSize: 18,
             ),
           ),
-          subtitle: const Text(
-              'Тема приложения будет соответствовать выбранной вами'),
+          subtitle: Text(appLocalizations.user_app_theme_description),
           value: getWatchSettings.getThemeIsUser,
           onChanged: getWatchSettings.getThemeIsAdaptive
               ? null

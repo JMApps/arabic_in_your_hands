@@ -4,6 +4,7 @@ import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AddWordPopup extends StatelessWidget {
   const AddWordPopup({
@@ -18,6 +19,7 @@ class AddWordPopup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
+    final appLocalizations = AppLocalizations.of(context)!;
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<AddWordState>(
@@ -52,8 +54,8 @@ class AddWordPopup extends StatelessWidget {
                       addWordState.onWordTextChanged(value);
                     },
                     decoration: InputDecoration(
-                      labelText: 'Слово',
-                      errorText: addWordState.getWord.isEmpty ? 'Введите слово' : '',
+                      labelText: appLocalizations.word,
+                      errorText: addWordState.getWord.isEmpty ? appLocalizations.enter_word : '',
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(
@@ -115,8 +117,8 @@ class AddWordPopup extends StatelessWidget {
                       addWordState.onWordTranslationTextChanged(value);
                     },
                     decoration: InputDecoration(
-                      labelText: 'Перевод',
-                      errorText: addWordState.getWordTranslation.isEmpty ? 'Введите перевод слова' : '',
+                      labelText: appLocalizations.translation,
+                      errorText: addWordState.getWordTranslation.isEmpty ? appLocalizations.enter_translation : '',
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(
@@ -145,10 +147,10 @@ class AddWordPopup extends StatelessWidget {
                           borderRadius: BorderRadius.circular(25),
                           side: BorderSide(color: myColor.myPrimaryColor),
                         ),
-                        primary: myColor.myPrimaryColor,
+                        foregroundColor: myColor.myPrimaryColor,
                       ),
                       child: Text(
-                        'Добавить',
+                        appLocalizations.add,
                         style: TextStyle(
                           color: myColor.myPrimaryColor,
                         ),
@@ -163,7 +165,7 @@ class AddWordPopup extends StatelessWidget {
                                 addWordState.getWordColor.toHex(),
                                 categoryPriority,
                               );
-                          context.read<DictionaryContentState>().showSnackBarMessage(context, 'Слово добавлено');
+                          context.read<DictionaryContentState>().showSnackBarMessage(context, appLocalizations.dictionary_word_category_added);
                           Navigator.of(context).pop();
                         }
                       },

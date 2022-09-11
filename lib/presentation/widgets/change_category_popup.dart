@@ -5,6 +5,7 @@ import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChangeCategoryPopup extends StatelessWidget {
   const ChangeCategoryPopup({
@@ -17,6 +18,7 @@ class ChangeCategoryPopup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
+    final appLocalizations = AppLocalizations.of(context)!;
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ChangeCategoryState>(
@@ -55,8 +57,8 @@ class ChangeCategoryPopup extends StatelessWidget {
                       changeCategoryState.onCategoryTextChanged(value);
                     },
                     decoration: InputDecoration(
-                      labelText: 'Название категории',
-                      errorText: changeCategoryState.getCategoryTitle.isEmpty ? 'Введите название категории' : '',
+                      labelText: appLocalizations.category_name,
+                      errorText: changeCategoryState.getCategoryTitle.isEmpty ? appLocalizations.enter_category_name : '',
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(
@@ -104,12 +106,12 @@ class ChangeCategoryPopup extends StatelessWidget {
                   );
                 },
               ),
-              const SizedBox(
+              SizedBox(
                 width: double.maxFinite,
                 child: Padding(
-                  padding: EdgeInsets.only(bottom: 8),
+                  padding: const EdgeInsets.only(bottom: 8),
                   child: Text(
-                    'Приоритет',
+                    appLocalizations.priority,
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -163,10 +165,10 @@ class ChangeCategoryPopup extends StatelessWidget {
                             borderRadius: BorderRadius.circular(25),
                             side: BorderSide(color: myColor.myPrimaryColor),
                           ),
-                          primary: myColor.myPrimaryColor,
+                          foregroundColor: myColor.myPrimaryColor,
                         ),
                         child: Text(
-                          'Изменить',
+                          appLocalizations.change,
                           style: TextStyle(
                             color: myColor.myPrimaryColor,
                           ),

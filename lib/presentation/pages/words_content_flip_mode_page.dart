@@ -5,6 +5,7 @@ import 'package:arabicinyourhands/presentation/widgets/add_word_popup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WordsContentFlipModePage extends StatelessWidget {
   const WordsContentFlipModePage({
@@ -28,7 +29,7 @@ class WordsContentFlipModePage extends StatelessWidget {
       ],
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Режим карточек'),
+          title: Text(AppLocalizations.of(context)!.flip_card_mode),
           actions: [
             IconButton(
               splashRadius: 20,

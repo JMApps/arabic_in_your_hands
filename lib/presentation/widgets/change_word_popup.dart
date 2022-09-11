@@ -5,6 +5,7 @@ import 'package:arabicinyourhands/domain/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ChangeWordPopup extends StatelessWidget {
   const ChangeWordPopup({Key? key, required this.item}) : super(key: key);
@@ -14,6 +15,7 @@ class ChangeWordPopup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
+    final appLocalizations = AppLocalizations.of(context)!;
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<ChangeWordState>(
@@ -52,8 +54,8 @@ class ChangeWordPopup extends StatelessWidget {
                       changeWordState.onChangeWordText(value);
                     },
                     decoration: InputDecoration(
-                      labelText: 'Слово',
-                      errorText: changeWordState.getWord.isEmpty ? 'Введите слово' : '',
+                      labelText: appLocalizations.word,
+                      errorText: changeWordState.getWord.isEmpty ? appLocalizations.enter_word : '',
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(
@@ -115,8 +117,8 @@ class ChangeWordPopup extends StatelessWidget {
                       changeWordState.onChangeWordTranslationText(value);
                     },
                     decoration: InputDecoration(
-                      labelText: 'Перевод',
-                      errorText: changeWordState.getWordTranslation.isEmpty ? 'Введите перевод слова' : '',
+                      labelText: appLocalizations.translation,
+                      errorText: changeWordState.getWordTranslation.isEmpty ? appLocalizations.enter_translation : '',
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(
@@ -145,10 +147,10 @@ class ChangeWordPopup extends StatelessWidget {
                           borderRadius: BorderRadius.circular(25),
                           side: BorderSide(color: myColor.myPrimaryColor),
                         ),
-                        primary: myColor.myAccentColor,
+                        foregroundColor: myColor.myAccentColor,
                       ),
                       child: Text(
-                        'Изменить',
+                        appLocalizations.change,
                         style: TextStyle(
                           color: myColor.myPrimaryColor,
                         ),
@@ -165,7 +167,7 @@ class ChangeWordPopup extends StatelessWidget {
                                   changeWordState.getWordTranslation,
                                   changeWordState.getWordColor.toHex(),
                                 );
-                            context.read<DictionaryContentState>().showSnackBarMessage(context, 'Изменено');
+                            context.read<DictionaryContentState>().showSnackBarMessage(context, appLocalizations.changed);
                             Navigator.of(context).pop();
                           } else {
                             Navigator.of(context).pop();

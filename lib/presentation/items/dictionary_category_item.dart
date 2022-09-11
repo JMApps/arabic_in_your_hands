@@ -6,6 +6,7 @@ import 'package:arabicinyourhands/presentation/widgets/change_category_popup.dar
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DictionaryCategoryItem extends StatelessWidget {
   const DictionaryCategoryItem({Key? key, required this.item})
@@ -16,8 +17,8 @@ class DictionaryCategoryItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
-    final getReadDictionaryContentState =
-        context.read<DictionaryContentState>();
+    final getReadDictionaryContentState = context.read<DictionaryContentState>();
+    final appLocalizations = AppLocalizations.of(context)!;
     return Card(
       color: Theme.of(context).colorScheme.mainChapterCardColor,
       margin: const EdgeInsets.all(8),
@@ -120,9 +121,9 @@ class DictionaryCategoryItem extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        title: const Text(
-                          'Изменить',
-                          style: TextStyle(
+                        title: Text(
+                          appLocalizations.change,
+                          style: const TextStyle(
                             fontSize: 18,
                           ),
                         ),
@@ -162,9 +163,9 @@ class DictionaryCategoryItem extends StatelessWidget {
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),
                         ),
-                        title: const Text(
-                          'Удалить',
-                          style: TextStyle(
+                        title: Text(
+                          appLocalizations.delete,
+                          style: const TextStyle(
                             fontSize: 18,
                           ),
                         ),
@@ -178,13 +179,12 @@ class DictionaryCategoryItem extends StatelessWidget {
                             context: context,
                             builder: (context) {
                               return CupertinoAlertDialog(
-                                title: const Text('Удаление'),
-                                content: const Text(
-                                    'Вы уверены, что хотите удалить данную категорию вместе с её содержимым?'),
+                                title: Text(appLocalizations.deleting),
+                                content: Text(appLocalizations.dictionary_category_delete_message),
                                 actions: [
                                   CupertinoDialogAction(
                                     child: Text(
-                                      'Нет',
+                                      appLocalizations.no,
                                       style: TextStyle(
                                         color: myColor.myAccentColor,
                                       ),
@@ -195,18 +195,15 @@ class DictionaryCategoryItem extends StatelessWidget {
                                   ),
                                   CupertinoDialogAction(
                                     child: Text(
-                                      'Да',
+                                      appLocalizations.yes,
                                       style: TextStyle(
                                         color: myColor.myAccentColor,
                                       ),
                                     ),
                                     onPressed: () {
-                                      context
-                                          .read<DictionaryContentState>()
-                                          .showSnackBarMessage(
-                                              context, 'Категория удалена');
-                                      getReadDictionaryContentState
-                                          .deleteWordCategory(item.id);
+                                      context.read<DictionaryContentState>().showSnackBarMessage(
+                                              context, appLocalizations.dictionary_category_category_deleted);
+                                      getReadDictionaryContentState.deleteWordCategory(item.id);
                                       Navigator.of(context).pop();
                                     },
                                   ),

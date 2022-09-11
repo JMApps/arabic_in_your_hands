@@ -5,6 +5,7 @@ import 'package:arabicinyourhands/presentation/items/words_flip_card_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class WordsFlipCardList extends StatelessWidget {
   const WordsFlipCardList({
@@ -53,12 +54,12 @@ class WordsFlipCardList extends StatelessWidget {
             )
           ],
         )
-            : const Center(
+            : Center(
           child: Padding(
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Text(
-              'Чтобы воспользоваться режимом карточек, вы должны добавить слова в текущую категорию',
-              style: TextStyle(
+              AppLocalizations.of(context)!.words_flip_empty_message,
+              style: const TextStyle(
                 fontSize: 18,
               ),
               textAlign: TextAlign.center,

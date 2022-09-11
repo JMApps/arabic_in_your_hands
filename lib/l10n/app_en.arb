@@ -1,0 +1,76 @@
+{
+"app_name": "Арабский перед тобой",
+
+"add": "Добавить",
+"change": "Изменить",
+"changed": "Изменено",
+
+"delete": "Удалить",
+"deleting": "Удаление",
+
+"copy": "Скопировать",
+"copied": "Скопировано",
+
+"share": "Поделиться",
+"ios_version": "Версия iOS",
+"android_version": "Версия Android",
+"share_picture": "Поделиться картинкой",
+
+"yes": "Да",
+"no": "Нет",
+
+"dictionary_category_delete_message": "Вы уверены, что хотите удалить данную категорию вместе с её содержимым?",
+"dictionary_category_category_deleted": "Категория удалена",
+"dictionary_category_category_added": "Категория добавлена",
+"dictionary_word_delete_message": "Вы уверены, что хотите удалить это слово?",
+"dictionary_word_category_deleted": "Слово удалено",
+"dictionary_word_category_added": "Слово добавлено",
+
+"dictionary_category_add_first": "Добавьте первую категорию",
+"dictionary_word_add_first": "Добавьте первое слово",
+
+"words_flip_empty_message": "Чтобы воспользоваться режимом карточек, вы должны добавить слова в текущую категорию",
+
+"categories": "Категории",
+"category_name": "Название категории",
+"enter_category_name": "Введите название категории",
+"priority": "Приоритет",
+
+"words": "Слова",
+"word": "Слово",
+"enter_word": "Введите слово",
+
+"translation": "Перевод",
+"enter_translation": "Введите перевод слова",
+
+"flip_card_mode": "Режим карточек",
+
+"info_for_users": "Информация для пользователей",
+"share_links_app": "Поделиться ссылками на приложение",
+"app_name_share": "Арабский перед тобой",
+
+"volume_1": "Том 1",
+"volume_2": "Том 2",
+
+"dictionary": "Словарь",
+"settings": "Настройки",
+
+"arabic_text_size": "Размер арабского текста",
+"translation_text_size": "Размер текста перевода",
+"arabic_font": "Шрифт арабского текста",
+"translation_font": "Шрифт текста перевода",
+"text_align": "Расположение текста",
+"wake_lock_display": "Не отключать дисплей",
+"wake_lock_display_description": "Дисплей будет включен пока приложение активно",
+"app_theme": "Адаптивная тема",
+"app_theme_description": "Тема приложения будет соответствовать теме на устройстве",
+"user_app_theme": "Пользовательская тема",
+"user_app_theme_description": "Тема приложения будет соответствовать выбранной вами",
+"visible_mode": "Режим отображения",
+"show_hide_arabic_text": "Показать/скрыть арабский текст",
+"show_hide_translation_text": "Показать/скрыть текст перевода",
+"play_speed": "Скорость воспроизведения",
+"search_categories": "Поиск категорий...",
+"search_is_not_results": "По вашему запросу ничего не найдено",
+"categories_is_empty": "Вы не добавили ни одной категории"
+}

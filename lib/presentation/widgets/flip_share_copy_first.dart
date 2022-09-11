@@ -10,6 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FlipShareCopyFirst extends StatelessWidget {
   FlipShareCopyFirst({
@@ -26,6 +27,7 @@ class FlipShareCopyFirst extends StatelessWidget {
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
     final Size size = MediaQuery.of(context).size;
+    final appLocalizations = AppLocalizations.of(context)!;
     return Card(
       color: myColor.mainChapterCardColor,
       margin: const EdgeInsets.all(16),
@@ -44,7 +46,7 @@ class FlipShareCopyFirst extends StatelessWidget {
               padding: const EdgeInsets.only(top: 16),
               width: double.maxFinite,
               child: Text(
-                'Поделиться',
+                appLocalizations.share,
                 style: TextStyle(fontSize: 18, color: myColor.myAccentColor),
                 textAlign: TextAlign.center,
               ),
@@ -62,16 +64,14 @@ class FlipShareCopyFirst extends StatelessWidget {
                 CupertinoIcons.doc_on_clipboard,
                 color: myColor.myAccentColor,
               ),
-              title: const Text(
-                'Скопировать',
-                style: TextStyle(fontSize: 18),
+              title: Text(
+                appLocalizations.copy,
+                style: const TextStyle(fontSize: 18),
               ),
               onTap: () {
                 FlutterClipboard.copy(
                     isFront ? _contentFrontCard() : _contentBackCard());
-                context
-                    .read<DictionaryContentState>()
-                    .showSnackBarMessage(context, 'Скопировано');
+                context.read<DictionaryContentState>().showSnackBarMessage(context, appLocalizations.copied);
                 Navigator.of(context).pop();
               },
             ),
@@ -88,9 +88,9 @@ class FlipShareCopyFirst extends StatelessWidget {
                 CupertinoIcons.share,
                 color: myColor.myAccentColor,
               ),
-              title: const Text(
-                'Поделиться',
-                style: TextStyle(fontSize: 18),
+              title: Text(
+                appLocalizations.share,
+                style: const TextStyle(fontSize: 18),
               ),
               onTap: () {
                 Share.share(
@@ -114,9 +114,9 @@ class FlipShareCopyFirst extends StatelessWidget {
                 CupertinoIcons.photo_fill,
                 color: myColor.myAccentColor,
               ),
-              title: const Text(
-                'Поделиться картинкой',
-                style: TextStyle(fontSize: 18),
+              title: Text(
+                appLocalizations.share_picture,
+                style: const TextStyle(fontSize: 18),
               ),
               onTap: () {
                 _takeScreenshot(item, isFront);
@@ -138,7 +138,7 @@ class FlipShareCopyFirst extends StatelessWidget {
             ? await getExternalStorageDirectory()
             : await getApplicationDocumentsDirectory())!
         .path;
-    File file = File('$tempPath/${isFront ? 'ar' : 'ru'}_${item.id}.jpg');
+    File file = File('$tempPath/${isFront ? 'ar' : 'tr'}_${item.id}.jpg');
     await file.writeAsBytes(unit8List);
     await Share.shareFiles(
       [file.path],

@@ -5,6 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 final globalBucketFirstVolumeChapters = PageStorageBucket();
 
@@ -42,16 +43,17 @@ class _FirstVolumeContentPageState extends State<FirstVolumeContentPage> {
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
+    final appLocalizations = AppLocalizations.of(context)!;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Том 1'),
+        title: Text(appLocalizations.volume_1),
         leading: Transform.scale(
           scale: 0.7,
           child: Image.asset('assets/icons/arabic_in_origin.png'),
         ),
         actions: [
           IconButton(
-            tooltip: 'Информация для пользователей',
+            tooltip: appLocalizations.info_for_users,
             splashRadius: 20,
             icon: const Icon(
               CupertinoIcons.info,
@@ -68,7 +70,7 @@ class _FirstVolumeContentPageState extends State<FirstVolumeContentPage> {
             },
           ),
           IconButton(
-            tooltip: 'Поделиться ссылками на приложение',
+            tooltip: appLocalizations.share_links_app,
             splashRadius: 20,
             icon: const Icon(
               CupertinoIcons.share,
@@ -76,7 +78,7 @@ class _FirstVolumeContentPageState extends State<FirstVolumeContentPage> {
             ),
             onPressed: () {
               Share.share(
-                'Арабский перед тобой\n\nВерсия iOS:\nhttps://apps.apple.com/ru/app/арабский-перед-тобой/id1602988060\n\nВерсия android:\nhttps://play.google.com/store/apps/details?id=jmapps.arabicinyourhands',
+                '${appLocalizations.app_name_share}\n\n${appLocalizations.ios_version}:\nhttps://apps.apple.com/ru/app/арабский-перед-тобой/id1602988060\n\n${appLocalizations.android_version}:\nhttps://play.google.com/store/apps/details?id=jmapps.arabicinyourhands',
                 sharePositionOrigin:
                     Rect.fromLTWH(0, 0, size.width, size.height / 2),
               );

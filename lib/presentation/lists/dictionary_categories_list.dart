@@ -3,6 +3,7 @@ import 'package:arabicinyourhands/presentation/items/dictionary_category_item.da
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DictionaryCategoriesList extends StatelessWidget {
   const DictionaryCategoriesList({Key? key}) : super(key: key);
@@ -32,12 +33,12 @@ class DictionaryCategoriesList extends StatelessWidget {
                 },
               ),
             )
-            : const Center(
+            : Center(
                 child: Padding(
-                  padding: EdgeInsets.all(16),
+                  padding: const EdgeInsets.all(16),
                   child: Text(
-                    'Добавьте первую категорию',
-                    style: TextStyle(
+                    AppLocalizations.of(context)!.dictionary_category_add_first,
+                    style: const TextStyle(
                       fontSize: 18,
                     ),
                     textAlign: TextAlign.center,

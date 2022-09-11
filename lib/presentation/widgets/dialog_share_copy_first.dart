@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DialogShareCopyFirst extends StatelessWidget {
   const DialogShareCopyFirst({
@@ -19,6 +20,7 @@ class DialogShareCopyFirst extends StatelessWidget {
   Widget build(BuildContext context) {
     final myColor = Theme.of(context).colorScheme;
     final Size size = MediaQuery.of(context).size;
+    final appLocalizations = AppLocalizations.of(context)!;
     return Card(
       color: myColor.mainChapterCardColor,
       margin: const EdgeInsets.all(16),
@@ -37,7 +39,7 @@ class DialogShareCopyFirst extends StatelessWidget {
               padding: const EdgeInsets.only(top: 16),
               width: double.maxFinite,
               child: Text(
-                'Поделиться',
+                appLocalizations.share,
                 style: TextStyle(
                   fontSize: 18,
                   color: myColor.myAccentColor
@@ -58,13 +60,13 @@ class DialogShareCopyFirst extends StatelessWidget {
                 CupertinoIcons.doc_on_clipboard,
                 color: myColor.myAccentColor,
               ),
-              title: const Text(
-                'Скопировать',
-                style: TextStyle(fontSize: 18),
+              title: Text(
+                appLocalizations.copy,
+                style: const TextStyle(fontSize: 18),
               ),
               onTap: () {
                 FlutterClipboard.copy(_contentForCopyAndShare());
-                context.read<DictionaryContentState>().showSnackBarMessage(context, 'Скопировано');
+                context.read<DictionaryContentState>().showSnackBarMessage(context, appLocalizations.copied);
                 Navigator.of(context).pop();
               },
             ),
@@ -81,9 +83,9 @@ class DialogShareCopyFirst extends StatelessWidget {
                 CupertinoIcons.share,
                 color: myColor.myAccentColor,
               ),
-              title: const Text(
-                'Поделиться',
-                style: TextStyle(fontSize: 18),
+              title: Text(
+                appLocalizations.share,
+                style: const TextStyle(fontSize: 18),
               ),
               onTap: () {
                 Share.share(

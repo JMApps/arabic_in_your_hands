@@ -9,6 +9,7 @@ import 'package:arabicinyourhands/presentation/pages/main_page_body.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({Key? key}) : super(key: key);
@@ -50,6 +51,8 @@ class _MainPageState extends State<MainPage> {
             theme: AppTheme.lightTheme,
             darkTheme: AppTheme.darkTheme,
             onGenerateRoute: _appRouter.appGeneratorRoute,
+            localizationsDelegates: AppLocalizations.localizationsDelegates,
+            supportedLocales: AppLocalizations.supportedLocales,
             home: MainPageBody(),
           );
         }

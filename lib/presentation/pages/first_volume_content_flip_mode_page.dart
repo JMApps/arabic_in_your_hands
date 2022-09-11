@@ -4,6 +4,7 @@ import 'package:arabicinyourhands/presentation/lists/volume_first_flip_card_list
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FirstVolumeContentFlipModePage extends StatelessWidget {
   const FirstVolumeContentFlipModePage({
@@ -25,7 +26,7 @@ class FirstVolumeContentFlipModePage extends StatelessWidget {
       ],
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Режим карточек'),
+          title: Text(AppLocalizations.of(context)!.flip_card_mode),
           actions: [
             Consumer<FlipPageState>(
               builder: (context, flipPageState, _) {
