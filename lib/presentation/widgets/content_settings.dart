@@ -31,7 +31,7 @@ class ContentSettings extends StatelessWidget {
             style: const TextStyle(
               fontSize: 18,
             ),
-            textAlign: TextAlign.start,
+            textAlign: TextAlign.center,
           ),
           subtitle: Row(
             children: [
@@ -77,7 +77,7 @@ class ContentSettings extends StatelessWidget {
             style: const TextStyle(
               fontSize: 18,
             ),
-            textAlign: TextAlign.start,
+            textAlign: TextAlign.center,
           ),
           subtitle: Row(
             children: [
@@ -124,7 +124,7 @@ class ContentSettings extends StatelessWidget {
             style: const TextStyle(
               fontSize: 18,
             ),
-            textAlign: TextAlign.start,
+            textAlign: TextAlign.center,
           ),
           subtitle: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -175,7 +175,7 @@ class ContentSettings extends StatelessWidget {
             style: const TextStyle(
               fontSize: 18,
             ),
-            textAlign: TextAlign.start,
+            textAlign: TextAlign.center,
           ),
           subtitle: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -226,22 +226,24 @@ class ContentSettings extends StatelessWidget {
             style: const TextStyle(
               fontSize: 18,
             ),
-            textAlign: TextAlign.start,
+            textAlign: TextAlign.center,
           ),
           subtitle: Padding(
             padding: const EdgeInsets.all(16),
-            child: ToggleButtons(
-              color: myColor.myAccentColor,
-              borderRadius: BorderRadius.circular(15),
-              isSelected: getWatchSettings.getIsTextAlignSelected,
-              onPressed: (int index) {
-                getReadSettings.changeTextAlign(index);
-              },
-              children: const [
-                Icon(CupertinoIcons.text_alignleft),
-                Icon(CupertinoIcons.text_aligncenter),
-                Icon(CupertinoIcons.text_alignright),
-              ],
+            child: Center(
+              child: ToggleButtons(
+                color: myColor.myAccentColor,
+                borderRadius: BorderRadius.circular(15),
+                isSelected: getWatchSettings.getIsTextAlignSelected,
+                onPressed: (int index) {
+                  getReadSettings.changeTextAlign(index);
+                },
+                children: const [
+                  Icon(CupertinoIcons.text_alignleft),
+                  Icon(CupertinoIcons.text_aligncenter),
+                  Icon(CupertinoIcons.text_alignright),
+                ],
+              ),
             ),
           ),
         ),

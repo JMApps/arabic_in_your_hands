@@ -47,7 +47,6 @@ class MainPageBody extends StatelessWidget {
               title: Text(
                 appLocalizations.volume_1,
                 style: const TextStyle(
-                  fontFamily: 'Gilroy',
                 ),
               ),
             ),
@@ -56,7 +55,6 @@ class MainPageBody extends StatelessWidget {
               title: Text(
                 appLocalizations.volume_2,
                 style: const TextStyle(
-                  fontFamily: 'Gilroy',
                 ),
               ),
             ),
@@ -65,7 +63,6 @@ class MainPageBody extends StatelessWidget {
               title: Text(
                 appLocalizations.dictionary,
                 style: const TextStyle(
-                  fontFamily: 'Gilroy',
                 ),
               ),
             ),
@@ -78,7 +75,6 @@ class MainPageBody extends StatelessWidget {
                 appLocalizations.settings,
                 style: TextStyle(
                   color: myColor.bottomNavigationSettingItemColor,
-                  fontFamily: 'Gilroy',
                 ),
               ),
             ),

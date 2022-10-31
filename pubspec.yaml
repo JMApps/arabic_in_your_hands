@@ -18,19 +18,19 @@ dependencies:
   intl: ^0.17.0
   path: ^1.8.2
   cupertino_icons: ^1.0.5
-  provider: ^6.0.3
-  sqflite: ^2.0.3+1
+  provider: ^6.0.4
+  sqflite: ^2.2.0+2
   path_provider: ^2.0.11
   salomon_bottom_bar: ^3.3.1
-  flutter_svg: ^1.1.5
-  url_launcher: ^6.1.5
-  share_plus: ^4.1.0
+  flutter_svg: ^1.1.6
+  url_launcher: ^6.1.6
+  share_plus: ^6.2.0
   clipboard: ^0.1.3
   flutter_staggered_animations: ^1.1.1
   wakelock: ^0.6.2
   hive: ^2.2.3
   hive_flutter: ^1.1.0
-  just_audio: ^0.9.28
+  just_audio: ^0.9.30
   flutter_flip_card: ^0.0.3
   smooth_page_indicator: ^1.0.0+2
   flutter_colorpicker: ^1.0.3
@@ -74,3 +74,6 @@ flutter:
     - family: Roboto
       fonts:
         - asset: assets/fonts/roboto_slab.ttf
+    - family: Noto Sans
+      fonts:
+        - asset: assets/fonts/noto_sans.ttf

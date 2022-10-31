@@ -204,7 +204,6 @@ class FlipShareCopySecond extends StatelessWidget {
                                 style: const TextStyle(
                                   fontSize: 35,
                                   color: Color(0xFF00796B),
-                                  fontFamily: 'Gilroy',
                                 ),
                                 textDirection: TextDirection.ltr,
                                 textAlign: TextAlign.center,
@@ -217,7 +216,6 @@ class FlipShareCopySecond extends StatelessWidget {
                           item.translationContent,
                           style: const TextStyle(
                             fontSize: 35,
-                            fontFamily: 'Gilroy',
                           ),
                           textDirection: TextDirection.ltr,
                           textAlign: TextAlign.center,

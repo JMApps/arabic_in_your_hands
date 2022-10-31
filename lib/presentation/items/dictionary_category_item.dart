@@ -50,7 +50,6 @@ class DictionaryCategoryItem extends StatelessWidget {
                   item.wordCategoryTitle,
                   style: const TextStyle(
                     fontSize: 16,
-                    fontFamily: 'GilroyMedium',
                   ),
                   textAlign: TextAlign.justify,
                 ),

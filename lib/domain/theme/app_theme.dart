@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppTheme {
   static final lightTheme = ThemeData(
     scaffoldBackgroundColor: const Color(0xFFCFD8DC),
-    fontFamily: 'Gilroy',
+    fontFamily: 'Noto sans',
     colorScheme: const ColorScheme.light(),
     appBarTheme: const AppBarTheme(
       backgroundColor: Color(0xFF263238),
@@ -11,7 +11,7 @@ class AppTheme {
       elevation: 0,
       titleTextStyle: TextStyle(
         fontSize: 20,
-        fontFamily: 'Gilroy',
+        fontFamily: 'Noto sans',
       ),
     ),
     inputDecorationTheme: const InputDecorationTheme(
@@ -33,7 +33,7 @@ class AppTheme {
 
   static final darkTheme = ThemeData(
     scaffoldBackgroundColor: const Color(0xFF263238),
-    fontFamily: 'Gilroy',
+    fontFamily: 'Noto sans',
     colorScheme: const ColorScheme.dark(),
     appBarTheme: const AppBarTheme(
       backgroundColor: Color(0xFF192226),
@@ -41,7 +41,7 @@ class AppTheme {
       elevation: 0,
       titleTextStyle: TextStyle(
         fontSize: 20,
-        fontFamily: 'Gilroy',
+        fontFamily: 'Noto sans',
       ),
     ),
     inputDecorationTheme: const InputDecorationTheme(

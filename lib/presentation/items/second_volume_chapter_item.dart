@@ -64,7 +64,6 @@ class SecondVolumeChapterItem extends StatelessWidget {
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                           color: myColor.chapterTitleColor,
-                          fontFamily: 'Gilroy medium',
                         ),
                         textAlign: TextAlign.center,
                       ),

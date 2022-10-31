@@ -22,10 +22,10 @@ class DatabaseHelper {
   }
 
   final String deviceLocale = window.locale.languageCode;
-
   DatabaseHelper.internal();
 
   Future<Database> initializeDatabase() async {
+    print('DEVICE LOCALE = $deviceLocale');
     Directory? documentDirectory = Platform.isAndroid
         ? await getExternalStorageDirectory()
         : await getApplicationSupportDirectory();
