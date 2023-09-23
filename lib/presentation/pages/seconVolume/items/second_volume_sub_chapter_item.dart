@@ -1,5 +1,6 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
+import 'package:arabicinyourhands/domain/arguments/second_sub_chapter_args.dart';
 import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_sub_chapter_entity.dart';
 import 'package:arabicinyourhands/presentation/uiState/main_navigation_state.dart';
 import 'package:flutter/material.dart';
@@ -74,15 +75,13 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
         ),
         onTap: () {
           navigationState.changeSecondSelectedItem(model.id);
-          // Navigator.pushNamed(
-          //   context,
-          //   '/first_volume_content',
-          //   arguments: ContentVolumeOneArguments(
-          //     1, // Тут нужно будет передать что надо
-          //     model.id,
-          //     index,
-          //   ),
-          // );
+          Navigator.pushNamed(
+            context,
+            '/second_vol_contents_page',
+            arguments: SecondSubChapterArgs(
+              model: model,
+            ),
+          );
         },
       ),
     );

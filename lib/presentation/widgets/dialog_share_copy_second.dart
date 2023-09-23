@@ -1,6 +1,6 @@
 import 'package:arabicinyourhands/core/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
-import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_content_entity.dart';
+import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_content_entity.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +14,7 @@ class DialogShareCopySecond extends StatelessWidget {
     required this.item,
   }) : super(key: key);
 
-  final FirstVolContentEntity item;
+  final SecondVolContentEntity item;
 
   @override
   Widget build(BuildContext context) {

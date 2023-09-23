@@ -3,9 +3,11 @@ import 'package:arabicinyourhands/data/database/model/dictionary_words_flip_argu
 import 'package:arabicinyourhands/data/database/model/volume_first_item_flip_content_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/volume_second_item_flip_content_arguments.dart';
 import 'package:arabicinyourhands/domain/arguments/first_sub_chapter_args.dart';
+import 'package:arabicinyourhands/domain/arguments/second_sub_chapter_args.dart';
 import 'package:arabicinyourhands/presentation/pages/dictionary_words_page.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/first_vol_contents_page.dart';
 import 'package:arabicinyourhands/presentation/pages/first_volume_content_flip_mode_page.dart';
+import 'package:arabicinyourhands/presentation/pages/seconVolume/second_vol_contents_page.dart';
 import 'package:arabicinyourhands/presentation/pages/second_volume_content_flip_mode_page.dart';
 import 'package:arabicinyourhands/presentation/pages/words_content_flip_mode_page.dart';
 import 'package:flutter/material.dart';
@@ -27,9 +29,10 @@ class AppRoutes {
                   dialogTitle: flipContentArguments.dialogTitle,
                 ),
             settings: routeSettings);
-      // case '/second_vol_contents_page':
-      //   final SecondSubChapterArgs secondSubChapterArgs = routeSettings.arguments as SecondSubChapterArgs;
-      //   return MaterialPageRoute(builder: (_) => FirstVolContentsPage(firstVolSubChapterModel: secondSubChapterArgs.model), settings: routeSettings);
+      case '/second_vol_contents_page':
+        final SecondSubChapterArgs secondubChapterArgs = routeSettings.arguments as SecondSubChapterArgs;
+        return MaterialPageRoute(
+            builder: (_) => SecondVolContentsPage(secondVolSubChapterModel: secondubChapterArgs.model), settings: routeSettings);
       case '/second_volume_content_flip':
         final VolumeSecondItemFlipContentArguments flipContentArguments =
             routeSettings.arguments as VolumeSecondItemFlipContentArguments;
