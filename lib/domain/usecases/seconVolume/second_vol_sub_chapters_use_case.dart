@@ -1,24 +1,24 @@
-import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_sub_chapter_entity.dart';
-import 'package:arabicinyourhands/domain/repositories/firstVolume/first_vol_sub_chapter_repository.dart';
+import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_sub_chapter_entity.dart';
+import 'package:arabicinyourhands/domain/repositories/seconVolume/second_vol_sub_chapter_repository.dart';
 
-class FirstVolSubChaptersUseCase {
-  final FirstVolSubChaptersRepository _firstVolSubChaptersRepository;
+class SecondVolSubChaptersUseCase {
+  final SecondVolSubChaptersRepository _secondVolSubChaptersRepository;
 
-  FirstVolSubChaptersUseCase(this._firstVolSubChaptersRepository);
+  SecondVolSubChaptersUseCase(this._secondVolSubChaptersRepository);
 
-  Future<List<FirstVolSubChapterEntity>> fetchFirstSubChapters({required String tableName}) async {
+  Future<List<SecondVolSubChapterEntity>> fetchSecondSubChapters({required String tableName}) async {
     try {
-      final List<FirstVolSubChapterEntity> firstSubChapters = await _firstVolSubChaptersRepository.getFirstVolSubChapters(tableName: tableName);
-      return firstSubChapters;
+      final List<SecondVolSubChapterEntity> secondSubChapters = await _secondVolSubChaptersRepository.getSecondVolSubChapters(tableName: tableName);
+      return secondSubChapters;
     } catch (e) {
       throw Exception(e.toString());
     }
   }
 
-  Future<List<FirstVolSubChapterEntity>> fetchFirstChaptersById({required String tableName, required int chapterId}) async {
+  Future<List<SecondVolSubChapterEntity>> fetchSecondSubChaptersById({required String tableName, required int chapterId}) async {
     try {
-      final List<FirstVolSubChapterEntity> firstSubChaptersById = await _firstVolSubChaptersRepository.getFirstVolSubChaptersById(tableName: tableName, chapterId: chapterId);
-      return firstSubChaptersById;
+      final List<SecondVolSubChapterEntity> secondSubChaptersById = await _secondVolSubChaptersRepository.getSecondVolSubChaptersById(tableName: tableName, chapterId: chapterId);
+      return secondSubChaptersById;
     } catch (e) {
       throw Exception(e.toString());
     }
