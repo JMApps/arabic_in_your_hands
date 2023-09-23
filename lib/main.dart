@@ -14,6 +14,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
 final globalBucketFirstVolumeChapters = PageStorageBucket();
+final globalBucketFirstVolumeSubChapters = PageStorageBucket();
 
 final globalBucketSecondVolumeChapters = PageStorageBucket();
 final globalBucketSecondVolumeSubChapters = PageStorageBucket();
