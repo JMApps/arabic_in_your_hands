@@ -1,6 +1,6 @@
+import 'package:arabicinyourhands/core/state/provider/flip_page_state.dart';
 import 'package:arabicinyourhands/data/database/service/database_query.dart';
-import 'package:arabicinyourhands/domain/state/provider/flip_page_state.dart';
-import 'package:arabicinyourhands/domain/theme/app_theme.dart';
+import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/items/first_volume_flip_card_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

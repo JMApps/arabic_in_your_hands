@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class MainNavigationSelectedState with ChangeNotifier {
-  int _selectedIndex = 0;
+class MainNavigationState with ChangeNotifier {
+  int _currentIndex = 0;
 
-  int get getSelectedIndex => _selectedIndex;
+  int get getCurrentIndex => _currentIndex;
 
   int _currentFirstSelectedItem = -1;
 
@@ -17,23 +17,23 @@ class MainNavigationSelectedState with ChangeNotifier {
 
   int get getSelectedChapterId => _selectedChapterId;
 
-  changeBottomNavigationIndex(int index) {
-    _selectedIndex = index;
+  changeCurrentIndex(int index) {
+    _currentIndex = index;
     notifyListeners();
   }
 
-  updateFirstSelectedState(int newIndex) {
-    _currentFirstSelectedItem = newIndex;
+  changeFirstSelectedItem(int index) {
+    _currentFirstSelectedItem = index;
     notifyListeners();
   }
 
-  updateSecondSelectedState(int newIndex) {
-    _currentSecondSelectedItem = newIndex;
+  changeSecondSelectedItem(int index) {
+    _currentSecondSelectedItem = index;
     notifyListeners();
   }
 
-  updateSelectedChapterId(int newChapterId) {
-    _selectedChapterId = newChapterId;
+  chapterSelectedChapterId(int chapterId) {
+    _selectedChapterId = chapterId;
     notifyListeners();
   }
 }

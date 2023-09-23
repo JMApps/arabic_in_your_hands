@@ -1,5 +1,5 @@
+import 'package:arabicinyourhands/core/state/provider/content_player_state.dart';
 import 'package:arabicinyourhands/data/database/service/database_query.dart';
-import 'package:arabicinyourhands/domain/state/provider/content_player_state.dart';
 import 'package:arabicinyourhands/presentation/items/first_volume_sub_chapter_content_item_left.dart';
 import 'package:arabicinyourhands/presentation/items/first_volume_sub_chapter_content_item_right.dart';
 import 'package:flutter/material.dart';

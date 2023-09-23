@@ -1,4 +1,4 @@
-import 'package:arabicinyourhands/domain/state/provider/dictionary_content_state.dart';
+import 'package:arabicinyourhands/core/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/presentation/items/dictionary_word_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';

@@ -1,5 +1,5 @@
 import 'package:arabicinyourhands/data/database/service/dictionary_database_query.dart';
-import 'package:arabicinyourhands/domain/theme/app_theme.dart';
+import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class DictionaryContentState with ChangeNotifier {

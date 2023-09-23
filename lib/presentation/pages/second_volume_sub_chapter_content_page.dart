@@ -1,10 +1,10 @@
+import 'package:arabicinyourhands/core/state/provider/content_player_state.dart';
+import 'package:arabicinyourhands/presentation/uiState/main_navigation_state.dart';
 import 'package:arabicinyourhands/data/database/model/content_volume_two_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/volume_second_item_flip_content_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/volume_second_item_sub_chapter_model.dart';
 import 'package:arabicinyourhands/data/database/service/database_query.dart';
-import 'package:arabicinyourhands/domain/state/provider/content_player_state.dart';
-import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected_state.dart';
-import 'package:arabicinyourhands/domain/theme/app_theme.dart';
+import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/lists/second_volume_sub_chapter_content_list.dart';
 import 'package:arabicinyourhands/presentation/widgets/bottom_navigation_sub_chapter_content.dart';
 import 'package:flutter/cupertino.dart';
@@ -76,7 +76,7 @@ class SecondVolumeSubChapterContentPage extends StatelessWidget {
                                 ),
                                 splashRadius: 20,
                                 onPressed: () {
-                                  context.read<MainNavigationSelectedState>().updateSecondSelectedState(item.id + 1);
+                                  context.read<MainNavigationState>().changeSecondSelectedItem(item.id + 1);
                                   Navigator.pushReplacementNamed(
                                     context,
                                     '/second_volume_content',

@@ -1,4 +1,4 @@
-class Constants {
+class AppConstraints {
   static const String keyMainSettingBox = 'key_main_setting_box';
 
   static const String keyArabicTextSize = 'key_arabic_text_size';

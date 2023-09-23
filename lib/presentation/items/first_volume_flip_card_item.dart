@@ -1,5 +1,5 @@
+import 'package:arabicinyourhands/core/state/provider/flip_page_state.dart';
 import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_content_model.dart';
-import 'package:arabicinyourhands/domain/state/provider/flip_page_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/first_volume_flip_back_card.dart';
 import 'package:arabicinyourhands/presentation/widgets/first_volume_flip_front_card.dart';
 import 'package:flutter/material.dart';

@@ -1,5 +1,5 @@
-import 'package:arabicinyourhands/domain/state/provider/volume_content_dialog_visibility_state.dart';
-import 'package:arabicinyourhands/domain/theme/app_theme.dart';
+import 'package:arabicinyourhands/core/state/provider/volume_content_dialog_visibility_state.dart';
+import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

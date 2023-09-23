@@ -6,18 +6,18 @@ class FirstVolSubChaptersUseCase {
 
   FirstVolSubChaptersUseCase(this._firstVolSubChaptersRepository);
 
-  Future<List<FirstVolSubChapterEntity>> fetchFirstSubChapters() async {
+  Future<List<FirstVolSubChapterEntity>> fetchFirstSubChapters({required String tableName}) async {
     try {
-      final List<FirstVolSubChapterEntity> firstSubChapters = await _firstVolSubChaptersRepository.getFirstVolSubChapters();
+      final List<FirstVolSubChapterEntity> firstSubChapters = await _firstVolSubChaptersRepository.getFirstVolSubChapters(tableName: tableName);
       return firstSubChapters;
     } catch (e) {
       throw Exception(e.toString());
     }
   }
 
-  Future<List<FirstVolSubChapterEntity>> fetchFirstChaptersById({required int chapterId}) async {
+  Future<List<FirstVolSubChapterEntity>> fetchFirstChaptersById({required String tableName, required int chapterId}) async {
     try {
-      final List<FirstVolSubChapterEntity> firstSubChaptersById = await _firstVolSubChaptersRepository.getFirstVolSubChaptersById(chapterId: chapterId);
+      final List<FirstVolSubChapterEntity> firstSubChaptersById = await _firstVolSubChaptersRepository.getFirstVolSubChaptersById(tableName: tableName, chapterId: chapterId);
       return firstSubChaptersById;
     } catch (e) {
       throw Exception(e.toString());

@@ -1,4 +1,4 @@
-import 'package:arabicinyourhands/domain/theme/app_theme.dart';
+import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/lists/dictionary_categories_list.dart';
 import 'package:arabicinyourhands/presentation/widgets/add_category_popup.dart';
 import 'package:arabicinyourhands/presentation/widgets/search_category_delegate.dart';

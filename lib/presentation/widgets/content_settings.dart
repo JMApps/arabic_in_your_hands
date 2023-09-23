@@ -1,5 +1,5 @@
-import 'package:arabicinyourhands/domain/state/provider/content_settings_state.dart';
-import 'package:arabicinyourhands/domain/theme/app_theme.dart';
+import 'package:arabicinyourhands/core/state/provider/content_settings_state.dart';
+import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

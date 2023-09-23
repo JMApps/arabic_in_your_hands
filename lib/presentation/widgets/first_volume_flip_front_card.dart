@@ -1,5 +1,5 @@
 import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_content_model.dart';
-import 'package:arabicinyourhands/domain/theme/app_theme.dart';
+import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/widgets/flip_share_copy_first.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

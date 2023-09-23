@@ -1,5 +1,5 @@
-import 'package:arabicinyourhands/domain/state/provider/flip_page_state.dart';
-import 'package:arabicinyourhands/domain/theme/app_theme.dart';
+import 'package:arabicinyourhands/core/state/provider/flip_page_state.dart';
+import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/lists/volume_second_flip_card_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

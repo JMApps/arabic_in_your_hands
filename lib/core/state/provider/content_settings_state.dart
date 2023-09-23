@@ -1,10 +1,10 @@
-import 'package:arabicinyourhands/domain/constants.dart';
+import 'package:arabicinyourhands/core/strings/app_constraints.dart';
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:wakelock/wakelock.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
 class ContentSettingsState with ChangeNotifier {
-  var mainSettingsBox = Hive.box(Constants.keyMainSettingBox);
+  var mainSettingsBox = Hive.box(AppConstraints.keyMainSettingBox);
 
   double _arabicTextSize = 20.0;
 
@@ -78,20 +78,20 @@ class ContentSettingsState with ChangeNotifier {
 
   changeTextArabicSize(double size) {
     _arabicTextSize = size;
-    mainSettingsBox.put(Constants.keyArabicTextSize, _arabicTextSize);
+    mainSettingsBox.put(AppConstraints.keyArabicTextSize, _arabicTextSize);
     notifyListeners();
   }
 
   changeTextTranslationSize(double size) {
     _translationTextSize = size;
-    mainSettingsBox.put(Constants.keyTranslationTextSize, _translationTextSize);
+    mainSettingsBox.put(AppConstraints.keyTranslationTextSize, _translationTextSize);
     notifyListeners();
   }
 
   changeArabicFontIndex(int index) {
     _arabicFontIndex = index;
     _arabicFontName = _getArabicFonts[index];
-    mainSettingsBox.put(Constants.keyArabicFontIndex, _arabicFontIndex);
+    mainSettingsBox.put(AppConstraints.keyArabicFontIndex, _arabicFontIndex);
     notifyListeners();
   }
 
@@ -99,7 +99,7 @@ class ContentSettingsState with ChangeNotifier {
     _translationFontIndex = index;
     _translationFontName = _getTranslationFonts[index];
     mainSettingsBox.put(
-        Constants.keyTranslationFontIndex, _translationFontIndex);
+        AppConstraints.keyTranslationFontIndex, _translationFontIndex);
     notifyListeners();
   }
 
@@ -109,45 +109,45 @@ class ContentSettingsState with ChangeNotifier {
       _isTextAlignSelected[i] = i == _textAlignIndex;
     }
     _textAlign = _getCurrentTextAlign[_textAlignIndex];
-    mainSettingsBox.put(Constants.keyTextAlignIndex, _textAlignIndex);
+    mainSettingsBox.put(AppConstraints.keyTextAlignIndex, _textAlignIndex);
     notifyListeners();
   }
 
   changeWakeLockState(bool state) {
     _wakeLockState = state;
-    mainSettingsBox.put(Constants.keyDisplayWakeClock, _wakeLockState);
+    mainSettingsBox.put(AppConstraints.keyDisplayWakeClock, _wakeLockState);
     notifyListeners();
   }
 
   changeThemeAdaptiveState(bool state) {
     _themeIsAdaptive = state;
     _themeMode = ThemeMode.system;
-    mainSettingsBox.put(Constants.keyThemeIsAdaptive, _themeIsAdaptive);
+    mainSettingsBox.put(AppConstraints.keyThemeIsAdaptive, _themeIsAdaptive);
     notifyListeners();
   }
 
   changeThemeUserState(bool state) {
     if (!_themeIsAdaptive) {
       state ? ThemeMode.dark : ThemeMode.light;
-      mainSettingsBox.put(Constants.keyThemeIsUser, state);
+      mainSettingsBox.put(AppConstraints.keyThemeIsUser, state);
       notifyListeners();
     }
   }
 
   initSettings() {
-    _arabicTextSize = mainSettingsBox.get(Constants.keyArabicTextSize, defaultValue: 18.0);
-    _translationTextSize = mainSettingsBox.get(Constants.keyTranslationTextSize, defaultValue: 18.0);
-    _arabicFontIndex = mainSettingsBox.get(Constants.keyArabicFontIndex, defaultValue: 0);
-    _translationFontIndex = mainSettingsBox.get(Constants.keyTranslationFontIndex, defaultValue: 0);
-    _textAlignIndex = mainSettingsBox.get(Constants.keyTextAlignIndex, defaultValue: 1);
+    _arabicTextSize = mainSettingsBox.get(AppConstraints.keyArabicTextSize, defaultValue: 18.0);
+    _translationTextSize = mainSettingsBox.get(AppConstraints.keyTranslationTextSize, defaultValue: 18.0);
+    _arabicFontIndex = mainSettingsBox.get(AppConstraints.keyArabicFontIndex, defaultValue: 0);
+    _translationFontIndex = mainSettingsBox.get(AppConstraints.keyTranslationFontIndex, defaultValue: 0);
+    _textAlignIndex = mainSettingsBox.get(AppConstraints.keyTextAlignIndex, defaultValue: 1);
     _textAlign = _getCurrentTextAlign[_textAlignIndex];
     for (int i = 0; i < _isTextAlignSelected.length; i++) {
       _isTextAlignSelected[i] = i == _textAlignIndex;
     }
-    _wakeLockState = mainSettingsBox.get(Constants.keyDisplayWakeClock, defaultValue: true);
-    _wakeLockState ? Wakelock.enable() : Wakelock.disable();
-    _themeIsAdaptive = mainSettingsBox.get(Constants.keyThemeIsAdaptive, defaultValue: true);
-    _themeIsUser = mainSettingsBox.get(Constants.keyThemeIsUser, defaultValue: false);
+    _wakeLockState = mainSettingsBox.get(AppConstraints.keyDisplayWakeClock, defaultValue: true);
+    _wakeLockState ? WakelockPlus.enable() : WakelockPlus.disable();
+    _themeIsAdaptive = mainSettingsBox.get(AppConstraints.keyThemeIsAdaptive, defaultValue: true);
+    _themeIsUser = mainSettingsBox.get(AppConstraints.keyThemeIsUser, defaultValue: false);
     if (!_themeIsAdaptive) {
       _themeMode = _themeIsUser ? ThemeMode.dark : ThemeMode.light;
     } else {

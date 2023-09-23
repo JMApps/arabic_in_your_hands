@@ -1,4 +1,4 @@
-import 'package:arabicinyourhands/domain/constants.dart';
+import 'package:arabicinyourhands/core/strings/app_constraints.dart';
 import 'package:arabicinyourhands/presentation/lists/second_volume_chapter_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +44,7 @@ class SecondVolumeContentPage extends StatelessWidget {
         child: CupertinoScrollbar(
           child: SecondVolumeChapterList(
             key: const PageStorageKey<String>(
-                Constants.keyBucketSecondVolumeChapters),
+                AppConstraints.keyBucketSecondVolumeChapters),
           ),
         ),
       ),

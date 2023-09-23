@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:ui';
 
 import 'package:flutter/services.dart';
 import 'package:path/path.dart';
@@ -11,7 +10,6 @@ class DatabaseHelper {
 
   factory DatabaseHelper() => _instance;
   static Database? _db;
-  final _databaseVersion = 1;
 
   Future<Database> get db async {
     if (_db != null) {
@@ -21,22 +19,26 @@ class DatabaseHelper {
     return _db!;
   }
 
-  final String deviceLocale = window.locale.languageCode;
   DatabaseHelper.internal();
 
   Future<Database> initializeDatabase() async {
+
     Directory? documentDirectory = Platform.isAndroid
         ? await getExternalStorageDirectory()
         : await getApplicationSupportDirectory();
 
-    String path = join(documentDirectory!.path, deviceLocale == 'uz' ? 'ArabicInYourHandsDB_uz.db' : 'ArabicInYourHandsDB_3.db');
-    var exists = await databaseExists(path);
-    String toDeleteDB = '${documentDirectory.path}/ArabicInYourHandsDB_2.db';
-    var delDB = await databaseExists(toDeleteDB);
+    const String databaseName = 'arabic_databse.db';
 
-    if (delDB) {
-      await deleteDatabase(toDeleteDB);
-    }
+    String path = join(documentDirectory!.path, databaseName);
+    var exists = await databaseExists(path);
+
+    // String toDeleteDB = '${documentDirectory.path}/arabic_in_your_hands.db';
+    //
+    // var delDB = await databaseExists(toDeleteDB);
+    //
+    // if (delDB) {
+    //   await deleteDatabase(toDeleteDB);
+    // }
 
     if (!exists) {
       try {
@@ -45,12 +47,11 @@ class DatabaseHelper {
         Exception('Invalid database');
       }
 
-      ByteData data = await rootBundle.load(join('assets/databases', deviceLocale == 'uz' ? 'ArabicInYourHandsDB_uz.db' : 'ArabicInYourHandsDB_3.db'));
+      ByteData data = await rootBundle.load(join('assets/databases', databaseName));
       List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
       await File(path).writeAsBytes(bytes, flush: true);
     }
 
-    var onOpen = await openDatabase(path, version: _databaseVersion);
-    return onOpen;
+    return await openDatabase(path);
   }
 }

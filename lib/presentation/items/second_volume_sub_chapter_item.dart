@@ -1,7 +1,7 @@
+import 'package:arabicinyourhands/presentation/uiState/main_navigation_state.dart';
 import 'package:arabicinyourhands/data/database/model/content_volume_two_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/volume_second_item_sub_chapter_model.dart';
-import 'package:arabicinyourhands/domain/state/provider/main_navigation_selected_state.dart';
-import 'package:arabicinyourhands/domain/theme/app_theme.dart';
+import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +20,7 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
     final myColor = Theme.of(context).colorScheme;
     return Card(
       elevation: 5,
-      color: context.watch<MainNavigationSelectedState>().getCurrentSecondSelectedItem == item.id
+      color: context.watch<MainNavigationState>().getCurrentSecondSelectedItem == item.id
           ? myColor.subChapterSelectedColor
           : item.id.isOdd
               ? myColor.subChapterUnSelectedOddColor
@@ -82,7 +82,7 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
           ),
         ),
         onTap: () {
-          context.read<MainNavigationSelectedState>().updateSecondSelectedState(item.id);
+          context.read<MainNavigationState>().changeSecondSelectedItem(item.id);
           Navigator.pushNamed(
             context,
             '/second_volume_content',

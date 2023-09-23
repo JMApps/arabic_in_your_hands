@@ -49,7 +49,7 @@ class AppTheme {
       floatingLabelAlignment: FloatingLabelAlignment.center,
       border: InputBorder.none,
       errorStyle: TextStyle(
-        color: Color(0xFF9E9E9E),
+        color: Colors.transparent
       ),
       hintStyle: TextStyle(
         color: Color(0xFF9E9E9E),

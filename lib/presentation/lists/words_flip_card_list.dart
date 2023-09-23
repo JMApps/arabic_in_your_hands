@@ -1,6 +1,6 @@
-import 'package:arabicinyourhands/domain/state/provider/dictionary_content_state.dart';
-import 'package:arabicinyourhands/domain/state/provider/words_flip_page_state.dart';
-import 'package:arabicinyourhands/domain/theme/app_theme.dart';
+import 'package:arabicinyourhands/core/state/provider/dictionary_content_state.dart';
+import 'package:arabicinyourhands/core/state/provider/words_flip_page_state.dart';
+import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/items/words_flip_card_item.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

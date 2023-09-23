@@ -1,6 +1,6 @@
-import 'package:arabicinyourhands/domain/state/provider/content_player_state.dart';
-import 'package:arabicinyourhands/domain/state/provider/play_speed_state.dart';
-import 'package:arabicinyourhands/domain/theme/app_theme.dart';
+import 'package:arabicinyourhands/core/state/provider/content_player_state.dart';
+import 'package:arabicinyourhands/core/state/provider/play_speed_state.dart';
+import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/widgets/dialog_visibility.dart';
 import 'package:arabicinyourhands/presentation/widgets/play_speed.dart';
 import 'package:flutter/cupertino.dart';
