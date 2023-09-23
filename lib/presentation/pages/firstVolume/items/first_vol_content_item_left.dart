@@ -1,65 +1,37 @@
 import 'package:arabicinyourhands/core/state/provider/content_player_state.dart';
 import 'package:arabicinyourhands/core/state/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/core/state/provider/volume_content_dialog_visibility_state.dart';
-import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_content_model.dart';
-import 'package:arabicinyourhands/core/themes/app_theme.dart';
+import 'package:arabicinyourhands/core/styles/app_styles.dart';
+import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_content_entity.dart';
 import 'package:arabicinyourhands/presentation/widgets/dialog_share_copy_first.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FirstVolumeSubChapterContentItemLeft extends StatelessWidget {
-  const FirstVolumeSubChapterContentItemLeft({
+class FirstVolContentItemLeft extends StatelessWidget {
+  const FirstVolContentItemLeft({
     Key? key,
-    required this.item,
+    required this.model,
     required this.index,
   }) : super(key: key);
 
-  final VolumeFirstItemSubChapterContentModel item;
+  final FirstVolContentEntity model;
   final int index;
 
   @override
   Widget build(BuildContext context) {
-    final myColor = Theme.of(context).colorScheme;
     final getWatchSettings = context.watch<ContentSettingsState>();
     final getWatchVisibility = context.watch<VolumeContentDialogVisibilityState>();
     final getReadContentPlay = context.watch<ContentPlayerState>();
     return Card(
-      elevation: 3,
-      color: myColor.mainChapterCardColor,
-      shape: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(16),
-          bottomLeft: Radius.circular(16),
-        ),
-      ),
-      margin: const EdgeInsets.only(
-        left: 16,
-        top: 16,
-      ),
+      shape: AppStyles.mainShape,
       child: InkWell(
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(16),
-          bottomLeft: Radius.circular(16),
-        ),
         child: AnimatedContainer(
-          padding: const EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
+          padding: AppStyles.mainMarding,
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
               topLeft: Radius.circular(16),
               bottomLeft: Radius.circular(16),
-            ),
-            gradient: LinearGradient(
-              colors: context.watch<ContentPlayerState>().getPlayingState &&
-                      context.watch<ContentPlayerState>().getCurrentTrackIndex == index
-                  ? [
-                      myColor.contentItemFirstSelectedGradientColor,
-                      myColor.contentItemSecondSelectedGradientColor,
-                    ]
-                  : [
-                      myColor.contentItemFirstLeftGradientColor,
-                      myColor.contentItemSecondLeftGradientColor,
-                    ],
             ),
           ),
           duration: const Duration(milliseconds: 100),
@@ -68,13 +40,12 @@ class FirstVolumeSubChapterContentItemLeft extends StatelessWidget {
             children: [
               Visibility(
                 visible: getWatchVisibility.getFirstDialogVisibility,
-                child: item.arabicName != null
+                child: model.arabicName != null
                     ? SizedBox(
                         width: double.infinity,
                         child: Text(
-                          '${item.arabicName}',
+                          '${model.arabicName}',
                           style: TextStyle(
-                            color: myColor.myAccentColor,
                             fontFamily: getWatchSettings.getArabicFontName,
                             fontSize: getWatchSettings.getArabicTextSize,
                           ),
@@ -89,7 +60,7 @@ class FirstVolumeSubChapterContentItemLeft extends StatelessWidget {
                 child: SizedBox(
                   width: double.infinity,
                   child: Text(
-                    item.arabicContent,
+                    model.arabicContent,
                     style: TextStyle(
                       fontFamily: getWatchSettings.getArabicFontName,
                       fontSize: getWatchSettings.getArabicTextSize,
@@ -102,13 +73,12 @@ class FirstVolumeSubChapterContentItemLeft extends StatelessWidget {
               const SizedBox(height: 8),
               Visibility(
                 visible: getWatchVisibility.getSecondDialogVisibility,
-                child: item.translationName != null
+                child: model.translationName != null
                     ? SizedBox(
                         width: double.infinity,
                         child: Text(
-                          '${item.translationName}',
+                          '${model.translationName}',
                           style: TextStyle(
-                            color: myColor.myAccentColor,
                             fontFamily: getWatchSettings.getTranslationFontName,
                             fontSize: getWatchSettings.getTranslationTextSize,
                           ),
@@ -122,7 +92,7 @@ class FirstVolumeSubChapterContentItemLeft extends StatelessWidget {
                 child: SizedBox(
                   width: double.infinity,
                   child: Text(
-                    item.translationContent,
+                    model.translationContent,
                     style: TextStyle(
                       fontFamily: getWatchSettings.getTranslationFontName,
                       fontSize: getWatchSettings.getTranslationTextSize,
@@ -141,7 +111,7 @@ class FirstVolumeSubChapterContentItemLeft extends StatelessWidget {
           showCupertinoModalPopup(
             context: context,
             builder: (BuildContext context) {
-              return DialogShareCopyFirst(item: item);
+              return DialogShareCopyFirst(item: model);
             },
           );
         },
