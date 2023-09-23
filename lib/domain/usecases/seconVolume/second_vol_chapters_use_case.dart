@@ -7,18 +7,18 @@ class SecondVolChaptersUseCase {
 
   SecondVolChaptersUseCase(this._secondVolChaptersRepository);
 
-  Future<List<SecondVolChapterEntity>> fetchSecondChapters() async {
+  Future<List<SecondVolChapterEntity>> fetchSecondChapters({required String tableName}) async {
     try {
-      final List<SecondVolChapterEntity> secondChapters = await _secondVolChaptersRepository.getSecondVolChapters();
+      final List<SecondVolChapterEntity> secondChapters = await _secondVolChaptersRepository.getSecondVolChapters(tableName: tableName);
       return secondChapters;
     } catch (e) {
       throw Exception(e.toString());
     }
   }
 
-  Future<List<SecondVolChapterEntity>> fetchSecondChaptersById({required int chapterId}) async {
+  Future<List<SecondVolChapterEntity>> fetchSecondChaptersById({required String tableName, required int chapterId}) async {
     try {
-      final List<SecondVolChapterEntity> secondChaptersById = await _secondVolChaptersRepository.getSecondVolChaptersById(chapterId: chapterId);
+      final List<SecondVolChapterEntity> secondChaptersById = await _secondVolChaptersRepository.getSecondVolChaptersById(tableName: tableName, chapterId: chapterId);
       return secondChaptersById;
     } catch (e) {
       throw Exception(e.toString());

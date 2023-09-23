@@ -3,9 +3,9 @@ class SecondVolSubChapterEntity {
   final String dialogTitle;
   final String dialogSubTitle;
 
-  SecondVolSubChapterEntity(
-    this.id,
-    this.dialogTitle,
-    this.dialogSubTitle,
-  );
+  const SecondVolSubChapterEntity({
+    required this.id,
+    required this.dialogTitle,
+    required this.dialogSubTitle,
+  });
 }

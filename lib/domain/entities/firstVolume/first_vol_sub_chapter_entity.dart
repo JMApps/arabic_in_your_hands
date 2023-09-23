@@ -3,9 +3,9 @@ class FirstVolSubChapterEntity {
   final String dialogTitle;
   final String dialogSubTitle;
 
-  FirstVolSubChapterEntity(
-    this.id,
-    this.dialogTitle,
-    this.dialogSubTitle,
-  );
+  const FirstVolSubChapterEntity({
+    required this.id,
+    required this.dialogTitle,
+    required this.dialogSubTitle,
+  });
 }
