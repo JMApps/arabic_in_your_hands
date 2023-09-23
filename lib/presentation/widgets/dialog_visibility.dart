@@ -12,7 +12,7 @@ class DialogVisibility extends StatelessWidget {
     final myColor = Theme.of(context).colorScheme;
     final appLocalizations = AppLocalizations.of(context)!;
     return Card(
-      color: myColor.mainChapterCardColor,
+      color: myColor.primary,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
@@ -32,7 +32,7 @@ class DialogVisibility extends StatelessWidget {
                 appLocalizations.visible_mode,
                 style: TextStyle(
                   fontSize: 18,
-                  color: myColor.myAccentColor,
+                  color: myColor.primary,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -52,7 +52,7 @@ class DialogVisibility extends StatelessWidget {
                 appLocalizations.show_hide_arabic_text,
                 style: const TextStyle(fontSize: 18),
               ),
-              activeColor: myColor.myAccentColor,
+              activeColor: myColor.primary,
               value: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
               onChanged: (bool? value) {
                 context.read<VolumeContentDialogVisibilityState>().updateFirstVisibilityState(value!);
@@ -71,7 +71,7 @@ class DialogVisibility extends StatelessWidget {
                 appLocalizations.show_hide_translation_text,
                 style: const TextStyle(fontSize: 18),
               ),
-              activeColor: myColor.myAccentColor,
+              activeColor: myColor.primary,
               value: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
               onChanged: (bool? value) {
                 context.read<VolumeContentDialogVisibilityState>().updateSecondVisibilityState(value!);

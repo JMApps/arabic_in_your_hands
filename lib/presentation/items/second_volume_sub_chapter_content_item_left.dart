@@ -26,7 +26,6 @@ class SecondVolumeSubChapterContentItemLeft extends StatelessWidget {
     final getReadContentPlay = context.watch<ContentPlayerState>();
     return Card(
       elevation: 3,
-      color: myColor.mainChapterCardColor,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(16),
@@ -49,18 +48,6 @@ class SecondVolumeSubChapterContentItemLeft extends StatelessWidget {
               topLeft: Radius.circular(16),
               bottomLeft: Radius.circular(16),
             ),
-            gradient: LinearGradient(
-              colors: context.watch<ContentPlayerState>().getPlayingState &&
-                      context.watch<ContentPlayerState>().getCurrentTrackIndex == index
-                  ? [
-                      myColor.contentItemFirstSelectedGradientColor,
-                      myColor.contentItemSecondSelectedGradientColor,
-                    ]
-                  : [
-                      myColor.contentItemFirstLeftGradientColor,
-                      myColor.contentItemSecondLeftGradientColor,
-                    ],
-            ),
           ),
           duration: const Duration(milliseconds: 100),
           curve: Curves.bounceIn,
@@ -74,7 +61,6 @@ class SecondVolumeSubChapterContentItemLeft extends StatelessWidget {
                         child: Text(
                           '${item.arabicName}',
                           style: TextStyle(
-                            color: myColor.myAccentColor,
                             fontFamily: getWatchSettings.getArabicFontName,
                             fontSize: getWatchSettings.getArabicTextSize,
                           ),
@@ -108,7 +94,6 @@ class SecondVolumeSubChapterContentItemLeft extends StatelessWidget {
                         child: Text(
                           '${item.translationName}',
                           style: TextStyle(
-                            color: myColor.myAccentColor,
                             fontFamily: getWatchSettings.getTranslationFontName,
                             fontSize: getWatchSettings.getTranslationTextSize,
                           ),

@@ -22,7 +22,7 @@ class DialogShareCopySecond extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     final appLocalizations = AppLocalizations.of(context)!;
     return Card(
-      color: myColor.mainChapterCardColor,
+      color: myColor.primary,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
@@ -42,7 +42,7 @@ class DialogShareCopySecond extends StatelessWidget {
                 appLocalizations.share,
                 style: TextStyle(
                   fontSize: 18,
-                  color: myColor.myAccentColor,
+                  color: myColor.primary,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -58,7 +58,7 @@ class DialogShareCopySecond extends StatelessWidget {
               ),
               trailing: Icon(
                 CupertinoIcons.doc_on_clipboard,
-                color: myColor.myPrimaryColor,
+                color: myColor.primary,
               ),
               title: Text(
                 appLocalizations.copy,
@@ -81,7 +81,7 @@ class DialogShareCopySecond extends StatelessWidget {
               ),
               trailing: Icon(
                 CupertinoIcons.share,
-                color: myColor.myPrimaryColor,
+                color: myColor.primary,
               ),
               title: Text(
                 appLocalizations.share,

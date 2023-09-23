@@ -46,9 +46,9 @@ class WordsFlipCardList extends StatelessWidget {
                   dotHeight: 8,
                   paintStyle: PaintingStyle.fill,
                   strokeWidth: 1.5,
-                  dotColor: Theme.of(context).colorScheme.myAccentColor,
+                  dotColor: Theme.of(context).colorScheme.primary,
                   activeDotColor:
-                  Theme.of(context).colorScheme.myPrimaryColor,
+                  Theme.of(context).colorScheme.inversePrimary,
                 ),
               ),
             )

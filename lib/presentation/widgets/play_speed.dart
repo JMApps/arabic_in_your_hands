@@ -13,7 +13,7 @@ class PlaySpeed extends StatelessWidget {
     final getReadPlaySpeed = context.read<PlaySpeedState>();
     final getWatchPlaySpeed = context.watch<PlaySpeedState>();
     return Card(
-      color: myColor.mainChapterCardColor,
+      color: myColor.primary,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
@@ -33,7 +33,7 @@ class PlaySpeed extends StatelessWidget {
                 AppLocalizations.of(context)!.play_speed,
                 style: TextStyle(
                   fontSize: 18,
-                  color: myColor.myAccentColor,
+                  color: myColor.primary,
                 ),
                 textAlign: TextAlign.center,
               ),
@@ -43,7 +43,7 @@ class PlaySpeed extends StatelessWidget {
               endIndent: 24,
             ),
             RadioListTile(
-              activeColor: myColor.myAccentColor,
+              activeColor: myColor.primary,
               contentPadding: const EdgeInsets.symmetric(horizontal: 16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
@@ -61,7 +61,7 @@ class PlaySpeed extends StatelessWidget {
               endIndent: 24,
             ),
             RadioListTile(
-              activeColor: myColor.myAccentColor,
+              activeColor: myColor.primary,
               contentPadding: const EdgeInsets.symmetric(horizontal: 16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
@@ -79,7 +79,7 @@ class PlaySpeed extends StatelessWidget {
               endIndent: 24,
             ),
             RadioListTile(
-              activeColor: myColor.myAccentColor,
+              activeColor: myColor.primary,
               contentPadding: const EdgeInsets.symmetric(horizontal: 16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
@@ -97,7 +97,7 @@ class PlaySpeed extends StatelessWidget {
               endIndent: 24,
             ),
             RadioListTile(
-              activeColor: myColor.myAccentColor,
+              activeColor: myColor.primary,
               contentPadding: const EdgeInsets.symmetric(horizontal: 16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),
@@ -115,7 +115,7 @@ class PlaySpeed extends StatelessWidget {
               endIndent: 24,
             ),
             RadioListTile(
-              activeColor: myColor.myAccentColor,
+              activeColor: myColor.primary,
               contentPadding: const EdgeInsets.symmetric(horizontal: 16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(20),

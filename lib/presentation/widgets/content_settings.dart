@@ -10,7 +10,6 @@ class ContentSettings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myColor = Theme.of(context).colorScheme;
     final getReadSettings = context.read<ContentSettingsState>();
     final getWatchSettings = context.watch<ContentSettingsState>();
     final appLocalizations = AppLocalizations.of(context)!;
@@ -24,7 +23,6 @@ class ContentSettings extends StatelessWidget {
           ),
           leading: Icon(
             CupertinoIcons.textformat_size,
-            color: myColor.myAccentColor,
           ),
           title: Text(
             appLocalizations.arabic_text_size,
@@ -37,7 +35,6 @@ class ContentSettings extends StatelessWidget {
             children: [
               Expanded(
                 child: Slider.adaptive(
-                  activeColor: myColor.myAccentColor,
                   min: 14,
                   max: 60,
                   value: getWatchSettings.getArabicTextSize,
@@ -70,7 +67,6 @@ class ContentSettings extends StatelessWidget {
           ),
           leading: Icon(
             CupertinoIcons.textformat_size,
-            color: myColor.myAccentColor,
           ),
           title: Text(
             appLocalizations.translation_text_size,
@@ -83,7 +79,6 @@ class ContentSettings extends StatelessWidget {
             children: [
               Expanded(
                 child: Slider.adaptive(
-                  activeColor: myColor.myAccentColor,
                   min: 14,
                   max: 60,
                   value: getWatchSettings.getTranslationTextSize,
@@ -117,7 +112,6 @@ class ContentSettings extends StatelessWidget {
           ),
           leading: Icon(
             Icons.font_download_rounded,
-            color: myColor.myAccentColor,
           ),
           title: Text(
             appLocalizations.arabic_font,
@@ -130,7 +124,6 @@ class ContentSettings extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Radio(
-                activeColor: myColor.myAccentColor,
                 value: 0,
                 groupValue: getWatchSettings.getArabicFontIndex,
                 onChanged: (onChanged) {
@@ -138,7 +131,6 @@ class ContentSettings extends StatelessWidget {
                 },
               ),
               Radio(
-                activeColor: myColor.myAccentColor,
                 value: 1,
                 groupValue: getWatchSettings.getArabicFontIndex,
                 onChanged: (onChanged) {
@@ -146,7 +138,6 @@ class ContentSettings extends StatelessWidget {
                 },
               ),
               Radio(
-                activeColor: myColor.myAccentColor,
                 value: 2,
                 groupValue: getWatchSettings.getArabicFontIndex,
                 onChanged: (onChanged) {
@@ -168,7 +159,6 @@ class ContentSettings extends StatelessWidget {
           ),
           leading: Icon(
             Icons.font_download_rounded,
-            color: myColor.myAccentColor,
           ),
           title: Text(
             appLocalizations.translation_font,
@@ -181,7 +171,6 @@ class ContentSettings extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Radio(
-                activeColor: myColor.myAccentColor,
                 value: getWatchSettings.getTranslationFontIndex,
                 groupValue: 0,
                 onChanged: (onChanged) {
@@ -189,7 +178,6 @@ class ContentSettings extends StatelessWidget {
                 },
               ),
               Radio(
-                activeColor: myColor.myAccentColor,
                 value: getWatchSettings.getTranslationFontIndex,
                 groupValue: 1,
                 onChanged: (onChanged) {
@@ -197,7 +185,6 @@ class ContentSettings extends StatelessWidget {
                 },
               ),
               Radio(
-                activeColor: myColor.myAccentColor,
                 value: getWatchSettings.getTranslationFontIndex,
                 groupValue: 2,
                 onChanged: (onChanged) {
@@ -219,7 +206,6 @@ class ContentSettings extends StatelessWidget {
           ),
           leading: Icon(
             CupertinoIcons.text_alignleft,
-            color: myColor.myAccentColor,
           ),
           title: Text(
             appLocalizations.text_align,
@@ -232,7 +218,6 @@ class ContentSettings extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Center(
               child: ToggleButtons(
-                color: myColor.myAccentColor,
                 borderRadius: BorderRadius.circular(15),
                 isSelected: getWatchSettings.getIsTextAlignSelected,
                 onPressed: (int index) {
@@ -252,7 +237,6 @@ class ContentSettings extends StatelessWidget {
           endIndent: 16,
         ),
         SwitchListTile.adaptive(
-          activeColor: myColor.myAccentColor,
           title: Text(
             appLocalizations.wake_lock_display,
             style: const TextStyle(
@@ -272,7 +256,6 @@ class ContentSettings extends StatelessWidget {
           endIndent: 16,
         ),
         SwitchListTile.adaptive(
-          activeColor: myColor.myAccentColor,
           title: Text(
             appLocalizations.app_theme,
             style: const TextStyle(
@@ -286,7 +269,6 @@ class ContentSettings extends StatelessWidget {
           },
         ),
         SwitchListTile.adaptive(
-          activeColor: myColor.myAccentColor,
           title: Text(
             appLocalizations.user_app_theme,
             style: const TextStyle(

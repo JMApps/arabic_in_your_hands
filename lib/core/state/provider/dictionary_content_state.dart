@@ -45,7 +45,6 @@ class DictionaryContentState with ChangeNotifier {
           borderRadius: BorderRadius.circular(15),
         ),
         behavior: SnackBarBehavior.floating,
-        backgroundColor: Theme.of(context).colorScheme.myAccentColor,
         content: Text(
           message,
           style: const TextStyle(

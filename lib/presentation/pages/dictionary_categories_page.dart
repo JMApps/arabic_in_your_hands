@@ -41,7 +41,6 @@ class DictionaryCategoriesPage extends StatelessWidget {
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
             ),
-            backgroundColor: Theme.of(context).colorScheme.fabDictionaryColor,
             child: const Icon(
               CupertinoIcons.add,
               color: Colors.white,

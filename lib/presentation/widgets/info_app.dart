@@ -12,7 +12,7 @@ class InfoApp extends StatelessWidget {
     var box = Hive.box(AppConstraints.keyMainSettingBox);
     return Card(
       margin: const EdgeInsets.all(16),
-      color: Theme.of(context).colorScheme.mainChapterCardColor,
+      color: Theme.of(context).colorScheme.primary,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
       child: CupertinoScrollbar(
         child: SingleChildScrollView(
@@ -28,12 +28,12 @@ class InfoApp extends StatelessWidget {
                 TextButton.icon(
                   icon: Icon(
                     CupertinoIcons.arrow_right_square,
-                    color: Theme.of(context).colorScheme.myAccentColor,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                   label: Text(
                     'Больше не показывать',
                     style: TextStyle(
-                      color: Theme.of(context).colorScheme.myAccentColor,
+                      color: Theme.of(context).colorScheme.primary,
                       fontSize: 18,
                     ),
                   ),

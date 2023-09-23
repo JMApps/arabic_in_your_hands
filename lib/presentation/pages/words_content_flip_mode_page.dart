@@ -77,7 +77,6 @@ class WordsContentFlipModePage extends StatelessWidget {
         body: Column(
           children: [
             Card(
-              color: Theme.of(context).colorScheme.myAccentColor,
               margin: const EdgeInsets.only(
                 left: 8,
                 top: 16,

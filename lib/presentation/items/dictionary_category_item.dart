@@ -16,11 +16,9 @@ class DictionaryCategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myColor = Theme.of(context).colorScheme;
     final getReadDictionaryContentState = context.read<DictionaryContentState>();
     final appLocalizations = AppLocalizations.of(context)!;
     return Card(
-      color: Theme.of(context).colorScheme.mainChapterCardColor,
       margin: const EdgeInsets.all(8),
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
@@ -83,7 +81,6 @@ class DictionaryCategoryItem extends StatelessWidget {
             context: context,
             builder: (context) {
               return Card(
-                color: myColor.mainChapterCardColor,
                 margin: const EdgeInsets.all(16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25),
@@ -104,7 +101,6 @@ class DictionaryCategoryItem extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: myColor.myAccentColor,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -128,7 +124,6 @@ class DictionaryCategoryItem extends StatelessWidget {
                         ),
                         trailing: Icon(
                           CupertinoIcons.pencil_circle,
-                          color: myColor.myAccentColor,
                         ),
                         onTap: () {
                           Navigator.of(context).pop();
@@ -170,7 +165,6 @@ class DictionaryCategoryItem extends StatelessWidget {
                         ),
                         trailing: Icon(
                           CupertinoIcons.delete,
-                          color: myColor.myAccentColor,
                         ),
                         onTap: () {
                           Navigator.of(context).pop();
@@ -185,7 +179,6 @@ class DictionaryCategoryItem extends StatelessWidget {
                                     child: Text(
                                       appLocalizations.no,
                                       style: TextStyle(
-                                        color: myColor.myAccentColor,
                                       ),
                                     ),
                                     onPressed: () {
@@ -196,7 +189,6 @@ class DictionaryCategoryItem extends StatelessWidget {
                                     child: Text(
                                       appLocalizations.yes,
                                       style: TextStyle(
-                                        color: myColor.myAccentColor,
                                       ),
                                     ),
                                     onPressed: () {
@@ -228,16 +220,12 @@ class DictionaryCategoryItem extends StatelessWidget {
     Color priorityColor = Colors.white;
     switch (priority) {
       case 0:
-        priorityColor = myColor.priorityWithoutColor;
         break;
       case 1:
-        priorityColor = myColor.priorityLowColor;
         break;
       case 2:
-        priorityColor = myColor.priorityHighColor;
         break;
       case 3:
-        priorityColor = myColor.priorityMediumColor;
         break;
     }
     return priorityColor;

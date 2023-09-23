@@ -17,7 +17,7 @@ class SecondVolumeFlipBackCard extends StatelessWidget {
     final myColor = Theme.of(context).colorScheme;
     return Card(
       elevation: 5,
-      color: myColor.flipBackColor,
+      color: myColor.primary,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
@@ -36,7 +36,7 @@ class SecondVolumeFlipBackCard extends StatelessWidget {
                         item.translationName!,
                         style: TextStyle(
                           fontSize: 35,
-                          color: myColor.myAccentColor,
+                          color: myColor.primary,
                         ),
                         textDirection: TextDirection.ltr,
                         textAlign: TextAlign.center,
@@ -58,7 +58,7 @@ class SecondVolumeFlipBackCard extends StatelessWidget {
                 splashRadius: 20,
                 icon: Icon(
                   CupertinoIcons.share,
-                  color: Theme.of(context).colorScheme.myAccentColor,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
                 onPressed: () {
                   showCupertinoModalPopup(

@@ -29,7 +29,7 @@ class FlipShareCopySecond extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     final appLocalizations = AppLocalizations.of(context)!;
     return Card(
-      color: myColor.mainChapterCardColor,
+      color: myColor.primary,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
@@ -47,7 +47,7 @@ class FlipShareCopySecond extends StatelessWidget {
               width: double.maxFinite,
               child: Text(
                 appLocalizations.share,
-                style: TextStyle(fontSize: 18, color: myColor.myAccentColor),
+                style: TextStyle(fontSize: 18, color: myColor.primary),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -62,7 +62,7 @@ class FlipShareCopySecond extends StatelessWidget {
               ),
               trailing: Icon(
                 CupertinoIcons.doc_on_clipboard,
-                color: myColor.myAccentColor,
+                color: myColor.primary,
               ),
               title: Text(
                 appLocalizations.copy,
@@ -86,7 +86,7 @@ class FlipShareCopySecond extends StatelessWidget {
               ),
               trailing: Icon(
                 CupertinoIcons.share,
-                color: myColor.myAccentColor,
+                color: myColor.primary,
               ),
               title: Text(
                 appLocalizations.share,
@@ -112,7 +112,7 @@ class FlipShareCopySecond extends StatelessWidget {
               ),
               trailing: Icon(
                 CupertinoIcons.photo_fill,
-                color: myColor.myAccentColor,
+                color: myColor.primary,
               ),
               title: Text(
                 appLocalizations.share_picture,

@@ -17,7 +17,7 @@ class FirstVolumeFlipFrontCard extends StatelessWidget {
     final myColor = Theme.of(context).colorScheme;
     return Card(
       elevation: 5,
-      color: myColor.flipBackColor,
+      color: myColor.primary,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
@@ -35,7 +35,7 @@ class FirstVolumeFlipFrontCard extends StatelessWidget {
                         item.arabicName!,
                         style: TextStyle(
                           fontSize: 35,
-                          color: myColor.myAccentColor,
+                          color: myColor.primary,
                           fontFamily: 'Scheherazade',
                         ),
                         textDirection: TextDirection.rtl,
@@ -59,7 +59,7 @@ class FirstVolumeFlipFrontCard extends StatelessWidget {
                 splashRadius: 20,
                 icon: Icon(
                   CupertinoIcons.share,
-                  color: Theme.of(context).colorScheme.myAccentColor,
+                  color: Theme.of(context).colorScheme.primary,
                 ),
                 onPressed: () {
                   showCupertinoModalPopup(

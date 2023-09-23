@@ -30,7 +30,7 @@ class ChangeCategoryPopup extends StatelessWidget {
         ),
       ],
       child: Card(
-        color: Theme.of(context).colorScheme.mainChapterCardColor,
+        color: Theme.of(context).colorScheme.primary,
         elevation: 0,
         margin: const EdgeInsets.all(16),
         shape: RoundedRectangleBorder(
@@ -51,7 +51,7 @@ class ChangeCategoryPopup extends StatelessWidget {
                     autofocus: true,
                     autocorrect: false,
                     maxLength: 150,
-                    cursorColor: myColor.myAccentColor,
+                    cursorColor: myColor.primary,
                     textAlign: TextAlign.center,
                     onChanged: (value) {
                       changeCategoryState.onCategoryTextChanged(value);
@@ -63,15 +63,15 @@ class ChangeCategoryPopup extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(
                           color: changeCategoryState.getCategoryTitle.isEmpty
-                              ? myColor.priorityMediumColor
-                              : myColor.myAccentColor,
+                              ? myColor.primary
+                              : myColor.primary,
                           width: 1.5,
                         ),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
-                          color: changeCategoryState.getCategoryTitle.isEmpty ? myColor.priorityMediumColor : myColor.myAccentColor,
+                          color: changeCategoryState.getCategoryTitle.isEmpty ? myColor.primary : myColor.primary,
                           width: 1.5,
                         ),
                       ),
@@ -85,7 +85,7 @@ class ChangeCategoryPopup extends StatelessWidget {
                           showDialog(
                             context: context,
                             builder: (_) => AlertDialog(
-                              backgroundColor: myColor.mainChapterCardColor,
+                              backgroundColor: myColor.primary,
                               shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(15),
@@ -121,25 +121,25 @@ class ChangeCategoryPopup extends StatelessWidget {
                   return Center(
                     child: ToggleButtons(
                       borderRadius: BorderRadius.circular(25),
-                      splashColor: myColor.myAccentColor.withOpacity(0.1),
-                      fillColor: myColor.myAccentColor.withOpacity(0.2),
+                      splashColor: myColor.primary.withOpacity(0.1),
+                      fillColor: myColor.primary.withOpacity(0.2),
                       isSelected: addCategoryState.getIsPrioritySelected,
                       children: [
                         CircleAvatar(
                           radius: 12.5,
-                          backgroundColor: myColor.priorityWithoutColor,
+                          backgroundColor: myColor.primary,
                         ),
                         CircleAvatar(
                           radius: 12.5,
-                          backgroundColor: myColor.priorityLowColor,
+                          backgroundColor: myColor.primary,
                         ),
                         CircleAvatar(
                           radius: 12.5,
-                          backgroundColor: myColor.priorityHighColor,
+                          backgroundColor: myColor.primary,
                         ),
                         CircleAvatar(
                           maxRadius: 12.5,
-                          backgroundColor: myColor.priorityMediumColor,
+                          backgroundColor: myColor.primary,
                         ),
                       ],
                       onPressed: (index) {
@@ -163,14 +163,14 @@ class ChangeCategoryPopup extends StatelessWidget {
                         style: TextButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25),
-                            side: BorderSide(color: myColor.myPrimaryColor),
+                            side: BorderSide(color: myColor.primary),
                           ),
-                          foregroundColor: myColor.myPrimaryColor,
+                          foregroundColor: myColor.primary,
                         ),
                         child: Text(
                           appLocalizations.change,
                           style: TextStyle(
-                            color: myColor.myPrimaryColor,
+                            color: myColor.primary,
                           ),
                         ),
                         onPressed: () {

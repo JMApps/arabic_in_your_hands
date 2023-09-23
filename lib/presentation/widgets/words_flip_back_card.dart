@@ -15,7 +15,7 @@ class WordsFlipBackCard extends StatelessWidget {
     final myColor = Theme.of(context).colorScheme;
     return Card(
       elevation: 10,
-      color: myColor.flipBackColor,
+      color: myColor.primary,
       margin: const EdgeInsets.all(16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(25),
@@ -31,7 +31,7 @@ class WordsFlipBackCard extends StatelessWidget {
                 item.word,
                 style: TextStyle(
                   fontSize: 35,
-                  color: myColor.myAccentColor,
+                  color: myColor.primary,
                 ),
                 textAlign: TextAlign.center,
               ),

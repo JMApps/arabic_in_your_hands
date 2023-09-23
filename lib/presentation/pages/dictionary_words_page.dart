@@ -63,7 +63,6 @@ class DictionaryWordsPage extends StatelessWidget {
                     color: HexColor.fromHex(categoryColor),
                   ),
                   Card(
-                    color: Theme.of(context).colorScheme.myAccentColor,
                     margin: const EdgeInsets.only(
                       left: 8,
                       top: 8,
@@ -106,7 +105,6 @@ class DictionaryWordsPage extends StatelessWidget {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        backgroundColor: Theme.of(context).colorScheme.fabDictionaryColor,
         child: const Icon(
           CupertinoIcons.add,
           color: Colors.white,

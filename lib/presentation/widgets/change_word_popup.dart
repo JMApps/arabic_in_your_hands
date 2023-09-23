@@ -27,7 +27,7 @@ class ChangeWordPopup extends StatelessWidget {
         ),
       ],
       child: Card(
-        color: myColor.mainChapterCardColor,
+        color: myColor.primary,
         elevation: 0,
         margin: const EdgeInsets.all(16),
         shape: RoundedRectangleBorder(
@@ -48,7 +48,7 @@ class ChangeWordPopup extends StatelessWidget {
                     autofocus: true,
                     autocorrect: false,
                     maxLength: 50,
-                    cursorColor: myColor.myAccentColor,
+                    cursorColor: myColor.primary,
                     textAlign: TextAlign.center,
                     onChanged: (value) {
                       changeWordState.onChangeWordText(value);
@@ -60,8 +60,8 @@ class ChangeWordPopup extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(
                           color: changeWordState.getWord.isEmpty
-                              ? myColor.priorityMediumColor
-                              : myColor.myAccentColor,
+                              ? myColor.primary
+                              : myColor.primary,
                           width: 1.5,
                         ),
                       ),
@@ -69,8 +69,8 @@ class ChangeWordPopup extends StatelessWidget {
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
                           color: changeWordState.getWord.isEmpty
-                              ? myColor.priorityMediumColor
-                              : myColor.myAccentColor,
+                              ? myColor.primary
+                              : myColor.primary,
                           width: 1.5,
                         ),
                       ),
@@ -84,7 +84,7 @@ class ChangeWordPopup extends StatelessWidget {
                           showDialog(
                             context: context,
                             builder: (_) => AlertDialog(
-                              backgroundColor: myColor.mainChapterCardColor,
+                              backgroundColor: myColor.primary,
                               shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(15),
@@ -111,7 +111,7 @@ class ChangeWordPopup extends StatelessWidget {
                     autofocus: false,
                     autocorrect: false,
                     maxLength: 75,
-                    cursorColor: myColor.myAccentColor,
+                    cursorColor: myColor.primary,
                     textAlign: TextAlign.center,
                     onChanged: (value) {
                       changeWordState.onChangeWordTranslationText(value);
@@ -123,8 +123,8 @@ class ChangeWordPopup extends StatelessWidget {
                         borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(
                           color: changeWordState.getWordTranslation.isEmpty
-                              ? myColor.priorityMediumColor
-                              : myColor.myAccentColor,
+                              ? myColor.primary
+                              : myColor.primary,
                           width: 1.5,
                         ),
                       ),
@@ -132,8 +132,8 @@ class ChangeWordPopup extends StatelessWidget {
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
                           color: changeWordState.getWordTranslation.isEmpty
-                              ? myColor.priorityMediumColor
-                              : myColor.myAccentColor,
+                              ? myColor.primary
+                              : myColor.primary,
                           width: 1.5,
                         ),
                       ),
@@ -145,14 +145,14 @@ class ChangeWordPopup extends StatelessWidget {
                       style: TextButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
-                          side: BorderSide(color: myColor.myPrimaryColor),
+                          side: BorderSide(color: myColor.primary),
                         ),
-                        foregroundColor: myColor.myAccentColor,
+                        foregroundColor: myColor.primary,
                       ),
                       child: Text(
                         appLocalizations.change,
                         style: TextStyle(
-                          color: myColor.myPrimaryColor,
+                          color: myColor.primary,
                         ),
                       ),
                       onPressed: () {

@@ -22,11 +22,6 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
     final MainNavigationState navigationState =
         Provider.of<MainNavigationState>(context);
     return Card(
-      color: navigationState.getCurrentFirstSelectedItem == model.id
-          ? myColor.subChapterSelectedColor
-          : model.id.isOdd
-              ? myColor.subChapterUnSelectedOddColor
-              : myColor.subChapterUnSelectedIsOddColor,
       margin: const EdgeInsets.only(
         left: 16,
         bottom: 16,
@@ -43,12 +38,6 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
                   borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(12.5),
                     bottomRight: Radius.circular(12.5),
-                  ),
-                  gradient: LinearGradient(
-                    colors: [
-                      myColor.subChapterFirstGradientColor,
-                      myColor.subChapterSecondGradientColor,
-                    ],
                   ),
                 ),
                 child: Text(

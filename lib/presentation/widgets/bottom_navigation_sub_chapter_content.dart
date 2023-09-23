@@ -17,7 +17,6 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
     final getWatchContentPlayer = context.watch<ContentPlayerState>();
     getWatchContentPlayer.getPlayer.setSpeed(context.watch<PlaySpeedState>().getPlaySpeed);
     return Material(
-      color: myColor.bottomNavigationBarColor,
       borderRadius: const BorderRadius.only(
         topLeft: Radius.circular(20),
         topRight: Radius.circular(20),
@@ -46,7 +45,7 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               icon: Icon(
                 CupertinoIcons.arrow_2_squarepath,
                 color: getWatchContentPlayer.getPlayListLoopState
-                    ? myColor.myAccentColor
+                    ? myColor.primary
                     : const Color(0xFFFFFFFF),
               ),
               splashRadius: 20,
@@ -58,7 +57,7 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               padding: const EdgeInsets.all(0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: myColor.myAccentColor.withOpacity(0.3),
+                color: myColor.primary.withOpacity(0.3),
               ),
               child: IconButton(
                 icon: const Icon(
@@ -75,7 +74,7 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               padding: const EdgeInsets.all(0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: myColor.myAccentColor.withOpacity(0.3),
+                color: myColor.primary.withOpacity(0.3),
               ),
               child: IconButton(
                 icon: Icon(
@@ -94,7 +93,7 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               padding: const EdgeInsets.all(0),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
-                color: myColor.myAccentColor.withOpacity(0.3),
+                color: myColor.primary.withOpacity(0.3),
               ),
               child: IconButton(
                 icon: const Icon(
@@ -111,7 +110,7 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
               icon: Icon(
                 CupertinoIcons.arrow_counterclockwise,
                 color: getWatchContentPlayer.getTrackLoopState
-                    ? myColor.myAccentColor
+                    ? myColor.primary
                     : const Color(0xFFFFFFFF),
               ),
               splashRadius: 20,

@@ -1,7 +1,5 @@
 import 'package:arabicinyourhands/data/database/model/dictionary_category_arguments.dart';
 import 'package:arabicinyourhands/data/database/model/dictionary_words_flip_arguments.dart';
-import 'package:arabicinyourhands/data/database/model/volume_first_item_flip_content_arguments.dart';
-import 'package:arabicinyourhands/data/database/model/volume_second_item_flip_content_arguments.dart';
 import 'package:arabicinyourhands/domain/arguments/first_sub_chapter_args.dart';
 import 'package:arabicinyourhands/domain/arguments/second_sub_chapter_args.dart';
 import 'package:arabicinyourhands/presentation/pages/dictionary_words_page.dart';
@@ -16,33 +14,28 @@ class AppRoutes {
   static Route appGeneratorRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
       case '/first_vol_contents_page':
-        final FirstSubChapterArgs firstSubChapterArgs = routeSettings.arguments as FirstSubChapterArgs;
+        final FirstSubChapterArgs firstSubChapterArgs =
+            routeSettings.arguments as FirstSubChapterArgs;
         return MaterialPageRoute(
-          builder: (_) => FirstVolContentsPage(firstVolSubChapterModel: firstSubChapterArgs.model), settings: routeSettings);
+            builder: (_) => FirstVolContentsPage(
+                firstVolSubChapterModel: firstSubChapterArgs.model),
+            settings: routeSettings);
       case '/first_volume_content_flip':
-        final VolumeFirstItemFlipContentArguments flipContentArguments =
-            routeSettings.arguments as VolumeFirstItemFlipContentArguments;
         return MaterialPageRoute(
-            builder: (_) => FirstVolumeContentFlipModePage(
-                  firstVolumeSubChapterId:
-                      flipContentArguments.firstVolumeSubChapterId,
-                  dialogTitle: flipContentArguments.dialogTitle,
-                ),
+            builder: (_) => FirstVolumeContentFlipModePage(),
             settings: routeSettings);
       case '/second_vol_contents_page':
-        final SecondSubChapterArgs secondubChapterArgs = routeSettings.arguments as SecondSubChapterArgs;
+        final SecondSubChapterArgs secondubChapterArgs =
+            routeSettings.arguments as SecondSubChapterArgs;
         return MaterialPageRoute(
-            builder: (_) => SecondVolContentsPage(secondVolSubChapterModel: secondubChapterArgs.model), settings: routeSettings);
-      case '/second_volume_content_flip':
-        final VolumeSecondItemFlipContentArguments flipContentArguments =
-            routeSettings.arguments as VolumeSecondItemFlipContentArguments;
-        return MaterialPageRoute(
-            builder: (_) => SecondVolumeContentFlipModePage(
-                  secondVolumeSubChapterId:
-                      flipContentArguments.secondVolumeSubChapterId,
-                  dialogTitle: flipContentArguments.dialogTitle,
-                ),
+            builder: (_) => SecondVolContentsPage(
+                secondVolSubChapterModel: secondubChapterArgs.model),
             settings: routeSettings);
+      case '/second_volume_content_flip':
+        return MaterialPageRoute(
+            builder: (_) => SecondVolumeContentFlipModePage(),
+            settings: routeSettings);
+        // User words
       case '/category_words_content':
         final DictionaryCategoryArguments dictionaryCategoryArguments =
             routeSettings.arguments as DictionaryCategoryArguments;

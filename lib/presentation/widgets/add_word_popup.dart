@@ -18,7 +18,6 @@ class AddWordPopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myColor = Theme.of(context).colorScheme;
     final appLocalizations = AppLocalizations.of(context)!;
     return MultiProvider(
       providers: [
@@ -27,7 +26,6 @@ class AddWordPopup extends StatelessWidget {
         ),
       ],
       child: Card(
-        color: myColor.mainChapterCardColor,
         elevation: 0,
         margin: const EdgeInsets.all(16),
         shape: RoundedRectangleBorder(
@@ -48,7 +46,6 @@ class AddWordPopup extends StatelessWidget {
                     autofocus: true,
                     autocorrect: false,
                     maxLength: 50,
-                    cursorColor: myColor.myAccentColor,
                     textAlign: TextAlign.center,
                     onChanged: (value) {
                       addWordState.onWordTextChanged(value);
@@ -59,18 +56,12 @@ class AddWordPopup extends StatelessWidget {
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(
-                          color: addWordState.getWord.isEmpty
-                              ? myColor.priorityMediumColor
-                              : myColor.myAccentColor,
                           width: 1.5,
                         ),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
-                          color: addWordState.getWord.isEmpty
-                              ? myColor.priorityMediumColor
-                              : myColor.myAccentColor,
                           width: 1.5,
                         ),
                       ),
@@ -84,7 +75,6 @@ class AddWordPopup extends StatelessWidget {
                           showDialog(
                             context: context,
                             builder: (_) => AlertDialog(
-                              backgroundColor: myColor.mainChapterCardColor,
                               shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(15),
@@ -111,7 +101,6 @@ class AddWordPopup extends StatelessWidget {
                     autofocus: false,
                     autocorrect: false,
                     maxLength: 75,
-                    cursorColor: myColor.myAccentColor,
                     textAlign: TextAlign.center,
                     onChanged: (value) {
                       addWordState.onWordTranslationTextChanged(value);
@@ -122,18 +111,12 @@ class AddWordPopup extends StatelessWidget {
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(
-                          color: addWordState.getWordTranslation.isEmpty
-                              ? myColor.priorityMediumColor
-                              : myColor.myAccentColor,
                           width: 1.5,
                         ),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
-                          color: addWordState.getWordTranslation.isEmpty
-                              ? myColor.priorityMediumColor
-                              : myColor.myAccentColor,
                           width: 1.5,
                         ),
                       ),
@@ -145,14 +128,11 @@ class AddWordPopup extends StatelessWidget {
                       style: TextButton.styleFrom(
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(25),
-                          side: BorderSide(color: myColor.myPrimaryColor),
                         ),
-                        foregroundColor: myColor.myPrimaryColor,
                       ),
                       child: Text(
                         appLocalizations.add,
                         style: TextStyle(
-                          color: myColor.myPrimaryColor,
                         ),
                       ),
                       onPressed: () {

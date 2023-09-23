@@ -27,7 +27,7 @@ class SearchCategoryDelegate extends SearchDelegate {
                 icon: AnimatedIcons.menu_close,
                 color: Theme.of(context)
                     .colorScheme
-                    .bottomNavigationSelectedItemColor,
+                    .primary,
                 progress: transitionAnimation,
               ),
               onPressed: () {
@@ -43,7 +43,7 @@ class SearchCategoryDelegate extends SearchDelegate {
     return IconButton(
       icon: Icon(
         Icons.arrow_back_ios,
-        color: Theme.of(context).colorScheme.chapterIconColor,
+        color: Theme.of(context).colorScheme.primary,
       ),
       onPressed: () {
         close(context, null);

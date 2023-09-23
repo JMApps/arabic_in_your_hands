@@ -11,7 +11,6 @@ class AddCategoryPopup extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myColor = Theme.of(context).colorScheme;
     final appLocalizations = AppLocalizations.of(context)!;
     return MultiProvider(
       providers: [
@@ -20,7 +19,6 @@ class AddCategoryPopup extends StatelessWidget {
         ),
       ],
       child: Card(
-        color: Theme.of(context).colorScheme.mainChapterCardColor,
         elevation: 0,
         margin: const EdgeInsets.all(16),
         shape: RoundedRectangleBorder(
@@ -41,7 +39,6 @@ class AddCategoryPopup extends StatelessWidget {
                     autofocus: true,
                     autocorrect: false,
                     maxLength: 150,
-                    cursorColor: myColor.myAccentColor,
                     textAlign: TextAlign.center,
                     onChanged: (value) {
                       addCategoryState.onCategoryTextChanged(value);
@@ -52,18 +49,12 @@ class AddCategoryPopup extends StatelessWidget {
                       errorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(50),
                         borderSide: BorderSide(
-                          color: addCategoryState.getCategoryTitle.isEmpty
-                              ? myColor.priorityMediumColor
-                              : myColor.myAccentColor,
                           width: 1.5,
                         ),
                       ),
                       focusedErrorBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25),
                         borderSide: BorderSide(
-                          color: addCategoryState.getCategoryTitle.isEmpty
-                              ? myColor.priorityMediumColor
-                              : myColor.myAccentColor,
                           width: 1.5,
                         ),
                       ),
@@ -77,7 +68,6 @@ class AddCategoryPopup extends StatelessWidget {
                           showDialog(
                             context: context,
                             builder: (_) => AlertDialog(
-                              backgroundColor: myColor.mainChapterCardColor,
                               shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(15),
@@ -113,25 +103,19 @@ class AddCategoryPopup extends StatelessWidget {
                   return Center(
                     child: ToggleButtons(
                       borderRadius: BorderRadius.circular(25),
-                      splashColor: myColor.myAccentColor.withOpacity(0.1),
-                      fillColor: myColor.myAccentColor.withOpacity(0.2),
                       isSelected: addCategoryState.getIsPrioritySelected,
                       children: [
                         CircleAvatar(
                           radius: 12.5,
-                          backgroundColor: myColor.priorityWithoutColor,
                         ),
                         CircleAvatar(
                           radius: 12.5,
-                          backgroundColor: myColor.priorityLowColor,
                         ),
                         CircleAvatar(
                           radius: 12.5,
-                          backgroundColor: myColor.priorityHighColor,
                         ),
                         CircleAvatar(
                           maxRadius: 12.5,
-                          backgroundColor: myColor.priorityMediumColor,
                         ),
                       ],
                       onPressed: (index) {
@@ -155,14 +139,11 @@ class AddCategoryPopup extends StatelessWidget {
                         style: TextButton.styleFrom(
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(25),
-                            side: BorderSide(color: myColor.myPrimaryColor),
                           ),
-                          foregroundColor: myColor.myPrimaryColor,
                         ),
                         child: Text(
                           appLocalizations.add,
                           style: TextStyle(
-                            color: myColor.myPrimaryColor,
                           ),
                         ),
                         onPressed: () {

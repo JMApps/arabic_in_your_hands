@@ -21,9 +21,6 @@ class DictionaryWordItem extends StatelessWidget {
     final myColor = Theme.of(context).colorScheme;
     final appLocalizations = AppLocalizations.of(context)!;
     return Card(
-      color: item.id.isOdd
-          ? myColor.mainChapterCardColor
-          : myColor.mainChapterCardColor.withOpacity(0.8),
       margin: const EdgeInsets.all(8),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(15),
@@ -41,7 +38,6 @@ class DictionaryWordItem extends StatelessWidget {
                       item.word,
                       style: TextStyle(
                         fontSize: 18,
-                        color: Theme.of(context).colorScheme.myAccentColor,
                       ),
                       textAlign: TextAlign.center,
                     ),
@@ -73,7 +69,6 @@ class DictionaryWordItem extends StatelessWidget {
             context: context,
             builder: (context) {
               return Card(
-                color: myColor.mainChapterCardColor,
                 margin: const EdgeInsets.all(16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(25),
@@ -95,7 +90,6 @@ class DictionaryWordItem extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: myColor.myAccentColor,
                           ),
                           textAlign: TextAlign.center,
                         ),
@@ -119,7 +113,6 @@ class DictionaryWordItem extends StatelessWidget {
                         ),
                         trailing: Icon(
                           CupertinoIcons.pencil_circle,
-                          color: myColor.myAccentColor,
                         ),
                         onTap: () {
                           Navigator.of(context).pop();
@@ -155,7 +148,6 @@ class DictionaryWordItem extends StatelessWidget {
                         ),
                         trailing: Icon(
                           CupertinoIcons.doc_on_clipboard,
-                          color: myColor.myAccentColor,
                         ),
                         title: Text(
                           appLocalizations.copy,
@@ -189,7 +181,6 @@ class DictionaryWordItem extends StatelessWidget {
                         ),
                         trailing: Icon(
                           CupertinoIcons.delete,
-                          color: myColor.myAccentColor,
                         ),
                         onTap: () {
                           Navigator.of(context).pop();
@@ -204,7 +195,6 @@ class DictionaryWordItem extends StatelessWidget {
                                     child: Text(
                                       appLocalizations.no,
                                       style: TextStyle(
-                                        color: myColor.myAccentColor,
                                       ),
                                     ),
                                     onPressed: () {
@@ -215,7 +205,6 @@ class DictionaryWordItem extends StatelessWidget {
                                     child: Text(
                                       appLocalizations.yes,
                                       style: TextStyle(
-                                        color: myColor.myAccentColor,
                                       ),
                                     ),
                                     onPressed: () {
