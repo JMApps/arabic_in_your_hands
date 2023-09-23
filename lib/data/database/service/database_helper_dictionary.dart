@@ -6,8 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DatabaseHelperDictionary {
-  static final DatabaseHelperDictionary _instance =
-      DatabaseHelperDictionary.internal();
+  static final DatabaseHelperDictionary _instance = DatabaseHelperDictionary.internal();
 
   factory DatabaseHelperDictionary() => _instance;
   static Database? _db;

@@ -1,6 +1,5 @@
 import 'package:arabicinyourhands/core/state/provider/flip_page_state.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
-import 'package:arabicinyourhands/presentation/lists/volume_first_flip_card_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -69,11 +68,11 @@ class FirstVolumeContentFlipModePage extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(
-              child: VolumeFirstFlipCardList(
-                firstVolumeSubChapterId: firstVolumeSubChapterId,
-              ),
-            ),
+            // Expanded(
+            //   child: VolumeFirstFlipCardList(
+            //     firstVolumeSubChapterId: firstVolumeSubChapterId,
+            //   ),
+            // ),
           ],
         ),
       ),

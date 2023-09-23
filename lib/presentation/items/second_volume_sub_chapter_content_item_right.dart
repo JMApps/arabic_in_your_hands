@@ -1,8 +1,8 @@
 import 'package:arabicinyourhands/core/state/provider/content_player_state.dart';
 import 'package:arabicinyourhands/core/state/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/core/state/provider/volume_content_dialog_visibility_state.dart';
-import 'package:arabicinyourhands/data/database/model/volume_second_item_sub_chapter_content_model.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
+import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_content_entity.dart';
 import 'package:arabicinyourhands/presentation/widgets/dialog_share_copy_second.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,7 +15,7 @@ class SecondVolumeSubChapterContentItemRight extends StatelessWidget {
     required this.index,
   }) : super(key: key);
 
-  final VolumeSecondItemSubChapterContentModel item;
+  final FirstVolContentEntity item;
   final int index;
 
   @override

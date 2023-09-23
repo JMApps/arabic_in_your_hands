@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:arabicinyourhands/core/state/provider/dictionary_content_state.dart';
-import 'package:arabicinyourhands/data/database/model/volume_second_item_sub_chapter_content_model.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
+import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_content_entity.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -19,7 +19,7 @@ class FlipShareCopySecond extends StatelessWidget {
     required this.isFront,
   }) : super(key: key);
 
-  final VolumeSecondItemSubChapterContentModel item;
+  final FirstVolContentEntity item;
   final bool isFront;
   final _screenshotController = ScreenshotController();
 
@@ -130,7 +130,7 @@ class FlipShareCopySecond extends StatelessWidget {
   }
 
   _takeScreenshot(
-      VolumeSecondItemSubChapterContentModel item, bool isFront) async {
+      FirstVolContentEntity item, bool isFront) async {
     final unit8List = await _screenshotController.captureFromWidget(
         _toPicture(item, isFront),
         delay: const Duration(seconds: 0));
@@ -146,7 +146,7 @@ class FlipShareCopySecond extends StatelessWidget {
     );
   }
 
-  Widget _toPicture(VolumeSecondItemSubChapterContentModel item, bool isFront) {
+  Widget _toPicture(FirstVolContentEntity item, bool isFront) {
     return Card(
       elevation: 3,
       color: const Color(0xFFF5F5F5),

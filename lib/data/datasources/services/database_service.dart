@@ -5,10 +5,10 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-class DatabaseHelper {
-  static final DatabaseHelper _instance = DatabaseHelper.internal();
+class DatabaseService {
+  static final DatabaseService _instance = DatabaseService.internal();
 
-  factory DatabaseHelper() => _instance;
+  factory DatabaseService() => _instance;
   static Database? _db;
 
   Future<Database> get db async {
@@ -19,7 +19,7 @@ class DatabaseHelper {
     return _db!;
   }
 
-  DatabaseHelper.internal();
+  DatabaseService.internal();
 
   Future<Database> initializeDatabase() async {
 
@@ -27,7 +27,7 @@ class DatabaseHelper {
         ? await getExternalStorageDirectory()
         : await getApplicationSupportDirectory();
 
-    const String databaseName = 'arabic_databse.db';
+    const String databaseName = 'arabic_database.db';
 
     String path = join(documentDirectory!.path, databaseName);
     var exists = await databaseExists(path);

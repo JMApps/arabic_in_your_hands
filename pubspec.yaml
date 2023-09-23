@@ -1,17 +1,16 @@
 name: arabicinyourhands
 description: Arabic in your hands
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: 'none'
 
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.16.2 <3.0.0"
+  sdk: '>=3.1.0 <4.0.0'
 
 dependencies:
   flutter:
     sdk: flutter
-
   flutter_localizations:
     sdk: flutter
 
@@ -48,8 +47,8 @@ flutter:
   generate: true
 
   assets:
-    - assets/audios/
     - assets/databases/
+    - assets/audios/
     - assets/icons/
 
   fonts:

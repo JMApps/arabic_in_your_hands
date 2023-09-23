@@ -1,5 +1,5 @@
 import 'package:arabicinyourhands/core/state/provider/flip_page_state.dart';
-import 'package:arabicinyourhands/data/database/model/volume_first_item_sub_chapter_content_model.dart';
+import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_content_entity.dart';
 import 'package:arabicinyourhands/presentation/widgets/first_volume_flip_back_card.dart';
 import 'package:arabicinyourhands/presentation/widgets/first_volume_flip_front_card.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +10,7 @@ class FirstVolumeFlipCardItem extends StatelessWidget {
   const FirstVolumeFlipCardItem({Key? key, required this.item})
       : super(key: key);
 
-  final VolumeFirstItemSubChapterContentModel item;
+  final FirstVolContentEntity item;
 
   @override
   Widget build(BuildContext context) {

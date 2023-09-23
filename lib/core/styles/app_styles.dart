@@ -1,6 +1,6 @@
 import 'package:arabicinyourhands/presentation/pages/dictionary_categories_page.dart';
-import 'package:arabicinyourhands/presentation/pages/first_volume_content_page.dart';
-import 'package:arabicinyourhands/presentation/pages/second_volume_content_page.dart';
+import 'package:arabicinyourhands/presentation/pages/firstVolume/first_vol_chapters_page.dart';
+import 'package:arabicinyourhands/presentation/pages/seconVolume/second_vol_chapters_page.dart';
 import 'package:arabicinyourhands/presentation/pages/settings_content_page.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -29,8 +29,8 @@ class AppStyles {
   );
 
   static const List<Widget> mainPages = <Widget>[
-    FirstVolumeContentPage(),
-    SecondVolumeContentPage(),
+    FirstVolChaptersPage(),
+    SecondVolChaptersPage(),
     DictionaryCategoriesPage(),
     SettingsContentPage(),
   ];
