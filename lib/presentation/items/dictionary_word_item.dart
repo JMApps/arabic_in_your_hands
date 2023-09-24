@@ -1,12 +1,12 @@
 import 'package:arabicinyourhands/core/state/provider/dictionary_content_state.dart';
-import 'package:arabicinyourhands/data/database/model/dictionary_word_model.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
-import 'package:arabicinyourhands/presentation/widgets/change_word_popup.dart';
+import 'package:arabicinyourhands/data/database/model/dictionary_word_model.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/change_word_popup.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class DictionaryWordItem extends StatelessWidget {
   const DictionaryWordItem({
@@ -18,7 +18,6 @@ class DictionaryWordItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myColor = Theme.of(context).colorScheme;
     final appLocalizations = AppLocalizations.of(context)!;
     return Card(
       margin: const EdgeInsets.all(8),

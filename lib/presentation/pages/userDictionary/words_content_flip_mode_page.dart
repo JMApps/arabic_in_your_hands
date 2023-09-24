@@ -1,11 +1,10 @@
 import 'package:arabicinyourhands/core/state/provider/words_flip_page_state.dart';
-import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/lists/words_flip_card_list.dart';
-import 'package:arabicinyourhands/presentation/widgets/add_word_popup.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/add_word_popup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class WordsContentFlipModePage extends StatelessWidget {
   const WordsContentFlipModePage({

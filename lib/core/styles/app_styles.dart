@@ -1,4 +1,4 @@
-import 'package:arabicinyourhands/presentation/pages/dictionary_categories_page.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/dictionary_categories_page.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/first_vol_chapters_page.dart';
 import 'package:arabicinyourhands/presentation/pages/seconVolume/second_vol_chapters_page.dart';
 import 'package:arabicinyourhands/presentation/pages/settings_content_page.dart';

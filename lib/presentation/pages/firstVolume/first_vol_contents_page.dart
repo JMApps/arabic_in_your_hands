@@ -4,7 +4,7 @@ import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_sub_chapter_entity.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/lists/first_vol_content_list.dart';
-import 'package:arabicinyourhands/presentation/widgets/bottom_navigation_sub_chapter_content.dart';
+import 'package:arabicinyourhands/presentation/widgets/content_player_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -72,7 +72,7 @@ class FirstVolContentsPage extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: const BottomNavigationSubChapterContent(),
+        bottomNavigationBar: const ContantPlayerContainer(),
       ),
     );
   }

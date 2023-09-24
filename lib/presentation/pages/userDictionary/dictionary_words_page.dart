@@ -1,7 +1,7 @@
 import 'package:arabicinyourhands/data/database/model/dictionary_words_flip_arguments.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/lists/dictionary_words_list.dart';
-import 'package:arabicinyourhands/presentation/widgets/add_word_popup.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/add_word_popup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

@@ -2,12 +2,12 @@ import 'package:arabicinyourhands/data/database/model/dictionary_category_argume
 import 'package:arabicinyourhands/data/database/model/dictionary_words_flip_arguments.dart';
 import 'package:arabicinyourhands/domain/arguments/first_sub_chapter_args.dart';
 import 'package:arabicinyourhands/domain/arguments/second_sub_chapter_args.dart';
-import 'package:arabicinyourhands/presentation/pages/dictionary_words_page.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/dictionary_words_page.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/first_vol_contents_page.dart';
-import 'package:arabicinyourhands/presentation/pages/first_volume_content_flip_mode_page.dart';
+import 'package:arabicinyourhands/presentation/pages/firstVolume/first_volume_content_flip_mode_page.dart';
 import 'package:arabicinyourhands/presentation/pages/seconVolume/second_vol_contents_page.dart';
-import 'package:arabicinyourhands/presentation/pages/second_volume_content_flip_mode_page.dart';
-import 'package:arabicinyourhands/presentation/pages/words_content_flip_mode_page.dart';
+import 'package:arabicinyourhands/presentation/pages/seconVolume/second_volume_content_flip_mode_page.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/words_content_flip_mode_page.dart';
 import 'package:flutter/material.dart';
 
 class AppRoutes {
