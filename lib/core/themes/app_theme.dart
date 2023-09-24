@@ -87,10 +87,6 @@ extension ColorSchemeS on ColorScheme {
       ? const Color(0xFF166551)
       : const Color(0xFF0B8FE8);
 
-  Color get selectedSideColor => brightness == Brightness.light
-      ? const Color(0xFF202C31)
-      : const Color(0xFF0B8FE8);
-
   Color get lightAccent => brightness == Brightness.light
       ? const Color(0xFF1DE9B6)
       : const Color(0xFF26A2FF);
