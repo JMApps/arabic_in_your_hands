@@ -76,3 +76,6 @@ flutter:
     - family: Noto Sans
       fonts:
         - asset: assets/fonts/noto_sans.ttf
+    - family: Montserrat
+      fonts:
+        - asset: assets/fonts/montserrat_medium.ttf

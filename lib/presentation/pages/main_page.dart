@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
+import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/uiState/main_navigation_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final AppLocalizations locale = AppLocalizations.of(context)!;
     final MainNavigationState navigationState = Provider.of<MainNavigationState>(context);
+    final ColorScheme appColors = Theme.of(context).colorScheme;
     return Scaffold(
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 250),
@@ -21,6 +23,12 @@ class MainPage extends StatelessWidget {
         child: AppStyles.mainPages[navigationState.getCurrentIndex],
       ),
       bottomNavigationBar: SalomonBottomBar(
+        curve: Curves.easeInCubic,
+        duration: const Duration(milliseconds: 250),
+        itemShape: AppStyles.mainShapeMini,
+        backgroundColor: appColors.primaryColor,
+        selectedItemColor: appColors.lightAccent,
+        unselectedItemColor: appColors.lightAccent,
         items: [
           SalomonBottomBarItem(
             icon: const Icon(Icons.filter_1_outlined),
@@ -39,8 +47,6 @@ class MainPage extends StatelessWidget {
             title: Text(locale.settings),
           ),
         ],
-        duration: const Duration(milliseconds: 250),
-        itemShape: AppStyles.mainShapeMini,
         currentIndex: navigationState.getCurrentIndex,
         onTap: (int index) {
           navigationState.changeCurrentIndex(index);

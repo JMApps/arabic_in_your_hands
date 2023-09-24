@@ -35,6 +35,7 @@ class _SecondVolumeSubChapterListState extends State<SecondVolumeSubChapterList>
       builder: (BuildContext context, AsyncSnapshot<List<SecondVolSubChapterEntity>> snapshot) {
         if (snapshot.hasData) {
           return GridView.builder(
+            padding: const EdgeInsets.only(left: 16),
             scrollDirection: Axis.horizontal,
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {

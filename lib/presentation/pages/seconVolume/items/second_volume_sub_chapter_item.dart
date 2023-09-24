@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
+import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/arguments/second_sub_chapter_args.dart';
 import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_sub_chapter_entity.dart';
 import 'package:arabicinyourhands/presentation/uiState/main_navigation_state.dart';
@@ -17,15 +18,32 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myColor = Theme.of(context).colorScheme;
-    final MainNavigationState navigationState =
-        Provider.of<MainNavigationState>(context);
+    final ColorScheme appColors = Theme.of(context).colorScheme;
+    final MainNavigationState navigationState = Provider.of<MainNavigationState>(context);
     return Card(
-      margin: const EdgeInsets.only(
-        left: 16,
-        bottom: 16,
-      ),
+      color: appColors.subTitleChapterCardColor,
+      margin: const EdgeInsets.only(bottom: 16, right: 16),
+      shape: navigationState.getCurrentSecondSelectedItem == model.id
+          ? RoundedRectangleBorder(
+              borderRadius: AppStyles.mainBorder,
+              side: BorderSide(
+                width: 2,
+                color: appColors.selectedSideColor,
+              ),
+            )
+          : AppStyles.mainShape,
       child: InkWell(
+        onTap: () {
+          navigationState.changeSecondSelectedItem(model.id);
+          Navigator.pushNamed(
+            context,
+            '/second_vol_contents_page',
+            arguments: SecondSubChapterArgs(
+              model: model,
+            ),
+          );
+        },
+        borderRadius: AppStyles.mainBorder,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Column(
@@ -38,6 +56,7 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
                     bottomLeft: Radius.circular(12.5),
                     bottomRight: Radius.circular(12.5),
                   ),
+                  gradient: appColors.mainGradient,
                 ),
                 child: Text(
                   model.dialogTitle,
@@ -50,9 +69,10 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
               Expanded(
                 child: Center(
                   child: Text(
-                    model.dialogTitle,
+                    model.dialogSubTitle,
                     style: const TextStyle(
                       fontSize: 16,
+                      color: Colors.white,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -61,16 +81,6 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
             ],
           ),
         ),
-        onTap: () {
-          navigationState.changeSecondSelectedItem(model.id);
-          Navigator.pushNamed(
-            context,
-            '/second_vol_contents_page',
-            arguments: SecondSubChapterArgs(
-              model: model,
-            ),
-          );
-        },
       ),
     );
   }

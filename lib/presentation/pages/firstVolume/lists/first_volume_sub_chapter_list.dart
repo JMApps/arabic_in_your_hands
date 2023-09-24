@@ -11,8 +11,7 @@ class FirstVolumeSubChapterList extends StatefulWidget {
   final int firstChapterId;
 
   @override
-  State<FirstVolumeSubChapterList> createState() =>
-      _FirstVolumeSubChapterListState();
+  State<FirstVolumeSubChapterList> createState() => _FirstVolumeSubChapterListState();
 }
 
 class _FirstVolumeSubChapterListState extends State<FirstVolumeSubChapterList> {
@@ -36,6 +35,7 @@ class _FirstVolumeSubChapterListState extends State<FirstVolumeSubChapterList> {
       builder: (BuildContext context, AsyncSnapshot<List<FirstVolSubChapterEntity>> snapshot) {
         if (snapshot.hasData) {
           return GridView.builder(
+            padding: const EdgeInsets.only(left: 16),
             scrollDirection: Axis.horizontal,
             itemCount: snapshot.data!.length,
             itemBuilder: (context, index) {

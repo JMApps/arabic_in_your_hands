@@ -1,63 +1,54 @@
+import 'package:arabicinyourhands/core/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
   static final lightTheme = ThemeData(
+    colorScheme: ColorScheme.fromSeed(
+      brightness: Brightness.light,
+      seedColor: AppColors.firstColor,
+      secondary: AppColors.secondColor,
+    ),
+    useMaterial3: true,
     scaffoldBackgroundColor: const Color(0xFFCFD8DC),
-    fontFamily: 'Noto sans',
-    colorScheme: const ColorScheme.light(),
+    fontFamily: 'Montserrat',
     appBarTheme: const AppBarTheme(
-      backgroundColor: Color(0xFF263238),
       centerTitle: true,
       elevation: 0,
       titleTextStyle: TextStyle(
         fontSize: 20,
-        fontFamily: 'Noto sans',
+        fontFamily: 'Montserrat',
+          color: Color(0xFFFFFFFF)
       ),
     ),
     inputDecorationTheme: const InputDecorationTheme(
       alignLabelWithHint: true,
       floatingLabelAlignment: FloatingLabelAlignment.center,
       border: InputBorder.none,
-      errorStyle: TextStyle(
-        color: Color(0xFF616161),
-      ),
-      hintStyle: TextStyle(
-        color: Color(0xFF616161),
-      ),
-    ),
-    textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: Color(0xFF00796B),
-      selectionColor: Color(0x5900796B),
     ),
   );
 
   static final darkTheme = ThemeData(
-    scaffoldBackgroundColor: const Color(0xFF263238),
-    fontFamily: 'Noto sans',
-    colorScheme: const ColorScheme.dark(),
+    colorScheme: ColorScheme.fromSeed(
+      brightness: Brightness.dark,
+      seedColor: AppColors.firstColor,
+      secondary: AppColors.secondColor,
+    ),
+    useMaterial3: true,
+    scaffoldBackgroundColor: const Color(0xFF192226),
+    fontFamily: 'Montserrat',
     appBarTheme: const AppBarTheme(
-      backgroundColor: Color(0xFF192226),
       centerTitle: true,
       elevation: 0,
       titleTextStyle: TextStyle(
         fontSize: 20,
-        fontFamily: 'Noto sans',
+        fontFamily: 'Montserrat',
+        color: Color(0xFFFFFFFF)
       ),
     ),
     inputDecorationTheme: const InputDecorationTheme(
       alignLabelWithHint: true,
       floatingLabelAlignment: FloatingLabelAlignment.center,
       border: InputBorder.none,
-      errorStyle: TextStyle(
-        color: Colors.transparent
-      ),
-      hintStyle: TextStyle(
-        color: Color(0xFF9E9E9E),
-      ),
-    ),
-    textSelectionTheme: const TextSelectionThemeData(
-      cursorColor: Color(0xFF0098DA),
-      selectionColor: Color(0x590098DA),
     ),
   );
 }
@@ -78,132 +69,53 @@ extension HexColor on Color {
 }
 
 extension ColorSchemeS on ColorScheme {
-  Color get myAccentColor => brightness == Brightness.light
-      ? const Color(0xFF00796B)
-      : const Color(0xFF0098DA);
-
-  Color get myPrimaryColor => brightness == Brightness.light
-      ? const Color(0xFF263238)
-      : const Color(0xFF1F4E5D);
-
-  Color get bottomNavigationBarColor => brightness == Brightness.light
-      ? const Color(0xFF263238)
+  Color get primaryColor => brightness == Brightness.light
+      ? const Color(0xFF202C31)
       : const Color(0xFF192226);
 
-  Color get bottomNavigationSettingItemColor => brightness == Brightness.light
-      ? const Color(0xFFCFD8DC)
-      : const Color(0xFF90A4AE);
+  Color get primaryDark => brightness == Brightness.light
+      ? const Color(0xFF2C3F42)
+      : const Color(0xFF346384);
 
-  Color get bottomNavigationSelectedItemColor => brightness == Brightness.light
+  Color get mainIconColor => brightness == Brightness.light
+      ? const Color(0xFF166551)
+      : const Color(0xFF0B8FE8);
+
+  Color get mainTitleColor => brightness == Brightness.light
+      ? const Color(0xFF166551)
+      : const Color(0xFF0B8FE8);
+
+  Color get selectedSideColor => brightness == Brightness.light
+      ? const Color(0xFF202C31)
+      : const Color(0xFF0B8FE8);
+
+  Color get lightAccent => brightness == Brightness.light
       ? const Color(0xFF1DE9B6)
-      : const Color(0xFF00E5FF);
-
-  Color get bottomNavigationUnSelectedItemColor =>
-      brightness == Brightness.light
-          ? const Color(0xFF009688)
-          : const Color(0xFF0288D1);
-
-  Color get mainChapterCardColor => brightness == Brightness.light
-      ? const Color(0xFFF5F5F5)
-      : const Color(0xFF192226);
+      : const Color(0xFF26A2FF);
 
   Color get titleChapterCardColor => brightness == Brightness.light
       ? const Color(0xFFD5FFEF)
-      : const Color(0xFF19282D);
-
-  Color get chapterNumberContainerColor => brightness == Brightness.light
-      ? const Color(0xFF263238)
-      : const Color(0xFF0288D1);
-
-  Color get chapterIconColor => brightness == Brightness.light
-      ? const Color(0xFF00796B)
-      : const Color(0xFF03A9F4);
-
-  Color get chapterTitleColor => brightness == Brightness.light
-      ? const Color(0xFF263238)
-      : const Color(0xFFE0E0E0);
-
-  Color get chapterSubTitleColor => brightness == Brightness.light
-      ? const Color(0xFF00796B)
-      : const Color(0xFF40C4FF);
-
-  Color get subChapterSelectedColor => brightness == Brightness.light
-      ? const Color(0xFF263238)
-      : const Color(0xFF1F4550);
-
-  Color get subChapterUnSelectedOddColor => brightness == Brightness.light
-      ? const Color(0xFF209372)
-      : const Color(0xFF1C282C);
-
-  Color get subChapterUnSelectedIsOddColor => brightness == Brightness.light
-      ? const Color(0xFF28B78D)
       : const Color(0xFF192226);
 
-  Color get subChapterFirstGradientColor => brightness == Brightness.light
-      ? const Color(0xFFBEFFEF)
-      : const Color(0xFF152C33);
-
-  Color get subChapterSecondGradientColor => brightness == Brightness.light
-      ? const Color(0xFFFFFFFF)
-      : const Color(0xFF144756);
-
-  Color get contentItemFirstLeftGradientColor => brightness == Brightness.light
-      ? const Color(0xFFBEFFEF)
-      : const Color(0xFF153946);
-
-  Color get contentItemSecondLeftGradientColor => brightness == Brightness.light
-      ? const Color(0xFFFAFAFA)
-      : const Color(0xFF132F3B);
-
-  Color get contentItemFirstRightGradientColor => brightness == Brightness.light
-      ? const Color(0xBFBEEBFF)
-      : const Color(0xFF2C3E42);
-
-  Color get contentItemSecondRightGradientColor =>
-      brightness == Brightness.light
-          ? const Color(0xFFFAFAFA)
-          : const Color(0xFF192226);
-
-  Color get contentItemFirstSelectedGradientColor =>
-      brightness == Brightness.light
-          ? const Color(0xBFFFEABD)
-          : const Color(0xFF2F2B1E);
-
-  Color get contentItemSecondSelectedGradientColor =>
-      brightness == Brightness.light
-          ? const Color(0xFFFFFFFF)
-          : const Color(0xFF262219);
-
-  Color get fabDictionaryColor => brightness == Brightness.light
+  Color get subTitleChapterCardColor => brightness == Brightness.light
       ? const Color(0xFF209372)
-      : const Color(0xFF18708A);
+      : const Color(0xFF192226);
 
-  Color get flipFrontColor => brightness == Brightness.light
-      ? const Color(0xFFFFFDE7)
-      : const Color(0xFF262419);
+  Color get mainCardColor => brightness == Brightness.light
+      ? const Color(0xFFFFFFFF)
+      : const Color(0xFF202C31);
 
-  Color get flipBackColor => brightness == Brightness.light
-      ? const Color(0xFFF5F5F5)
-      : const Color(0xFF182325);
-
-  Color get priorityWithoutColor => brightness == Brightness.light
-      ? const Color(0xFF9E9E9E)
-      : const Color(0xFF424242);
-
-  Color get priorityLowColor => brightness == Brightness.light
-      ? const Color(0xFFFFB74D)
-      : const Color(0xFFF57C00);
-
-  Color get priorityHighColor => brightness == Brightness.light
-      ? const Color(0xFF4DB6AC)
-      : const Color(0xFF00796B);
-
-  Color get priorityMediumColor => brightness == Brightness.light
-      ? const Color(0xFFE57373)
-      : const Color(0xFFD32F2F);
-
-  Color get searchDelegateAppBarBackgroundColor =>
-      brightness == Brightness.light
-          ? const Color(0xFF263238)
-          : const Color(0xFF192226);
+  LinearGradient get mainGradient => brightness == Brightness.light
+      ? const LinearGradient(
+          colors: [
+            Color(0xFFB2DFDB),
+            Color(0xFFFFFFFF),
+          ],
+        )
+      : const LinearGradient(
+          colors: [
+            Color(0xFF192226),
+            Color(0xFF192226),
+          ],
+        );
 }

@@ -18,15 +18,32 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final myColor = Theme.of(context).colorScheme;
-    final MainNavigationState navigationState =
-        Provider.of<MainNavigationState>(context);
+    final ColorScheme appColors = Theme.of(context).colorScheme;
+    final MainNavigationState navigationState = Provider.of<MainNavigationState>(context);
     return Card(
-      margin: const EdgeInsets.only(
-        left: 16,
-        bottom: 16,
-      ),
+      color: appColors.subTitleChapterCardColor,
+      margin: const EdgeInsets.only(bottom: 16, right: 16),
+      shape: navigationState.getCurrentFirstSelectedItem == model.id
+          ? RoundedRectangleBorder(
+              borderRadius: AppStyles.mainBorder,
+              side: BorderSide(
+                width: 2,
+                color: appColors.selectedSideColor,
+              ),
+            )
+          : AppStyles.mainShape,
       child: InkWell(
+        onTap: () {
+          navigationState.changeFirstSelectedItem(model.id);
+          Navigator.pushNamed(
+            context,
+            '/first_vol_contents_page',
+            arguments: FirstSubChapterArgs(
+              model: model,
+            ),
+          );
+        },
+        borderRadius: AppStyles.mainBorder,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 32),
           child: Column(
@@ -39,6 +56,7 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
                     bottomLeft: Radius.circular(12.5),
                     bottomRight: Radius.circular(12.5),
                   ),
+                  gradient: appColors.mainGradient,
                 ),
                 child: Text(
                   model.dialogTitle,
@@ -51,9 +69,10 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
               Expanded(
                 child: Center(
                   child: Text(
-                    model.dialogTitle,
+                    model.dialogSubTitle,
                     style: const TextStyle(
                       fontSize: 16,
+                      color: Colors.white,
                     ),
                     textAlign: TextAlign.center,
                   ),
@@ -62,16 +81,6 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
             ],
           ),
         ),
-        onTap: () {
-          navigationState.changeFirstSelectedItem(model.id);
-          Navigator.pushNamed(
-            context,
-            '/first_vol_contents_page',
-            arguments: FirstSubChapterArgs(
-              model: model,
-            ),
-          );
-        },
       ),
     );
   }
