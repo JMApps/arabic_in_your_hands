@@ -1,12 +1,11 @@
 import 'package:arabicinyourhands/core/state/provider/flip_page_state.dart';
-import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-class SecondVolumeContentFlipModePage extends StatelessWidget {
-  const SecondVolumeContentFlipModePage({
+class FirstVolumeContentFlipModePage extends StatelessWidget {
+  const FirstVolumeContentFlipModePage({
     Key? key,
   }) : super(key: key);
 
@@ -55,8 +54,8 @@ class SecondVolumeContentFlipModePage extends StatelessWidget {
               ),
             ),
             // Expanded(
-            //   child: VolumeSecondFlipCardList(
-            //     secondVolumeSubChapterId: secondVolumeSubChapterId,
+            //   child: VolumeFirstFlipCardList(
+            //     firstVolumeSubChapterId: firstVolumeSubChapterId,
             //   ),
             // ),
           ],
