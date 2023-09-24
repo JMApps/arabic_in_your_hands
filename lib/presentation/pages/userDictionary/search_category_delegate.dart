@@ -1,6 +1,5 @@
 import 'package:arabicinyourhands/core/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/data/database/model/dictionary_category_model.dart';
-import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/items/dictionary_category_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
