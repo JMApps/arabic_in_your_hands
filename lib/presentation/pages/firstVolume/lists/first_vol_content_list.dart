@@ -6,6 +6,7 @@ import 'package:arabicinyourhands/presentation/pages/firstVolume/items/first_vol
 import 'package:arabicinyourhands/presentation/pages/firstVolume/items/first_vol_content_item_right.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FirstVolContentList extends StatefulWidget {
   const FirstVolContentList({super.key, required this.firstSubChapterId});
@@ -23,16 +24,17 @@ class _FirstVolContentListState extends State<FirstVolContentList> {
   @override
   void initState() {
     _firstVolContentsDataRepository = FirstVolContentsDataRepository();
-    _firstVolContentsUseCase = FirstVolContentsUseCase(_firstVolContentsDataRepository);
+    _firstVolContentsUseCase =
+        FirstVolContentsUseCase(_firstVolContentsDataRepository);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations locale = AppLocalizations.of(context)!;
     return FutureBuilder<List<FirstVolContentEntity>>(
       future: _firstVolContentsUseCase.fetchFirstContentsById(
-        /// TODO
-        tableName: 'Table_of_first_contents_ru',
+        tableName: locale.tableNameFirstVolContents,
         firstSubChapterId: widget.firstSubChapterId,
       ),
       builder: (BuildContext context, AsyncSnapshot<List<FirstVolContentEntity>> snapshot) {

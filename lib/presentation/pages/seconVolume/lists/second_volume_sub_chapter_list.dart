@@ -4,6 +4,7 @@ import 'package:arabicinyourhands/domain/usecases/seconVolume/second_vol_sub_cha
 import 'package:arabicinyourhands/presentation/pages/seconVolume/items/second_volume_sub_chapter_item.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SecondVolumeSubChapterList extends StatefulWidget {
   const SecondVolumeSubChapterList({super.key, required this.secondChapterId});
@@ -27,9 +28,10 @@ class _SecondVolumeSubChapterListState extends State<SecondVolumeSubChapterList>
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations locale = AppLocalizations.of(context)!;
     return FutureBuilder<List<SecondVolSubChapterEntity>>(
       future: _secondVolSubChaptersUseCase.fetchSecondSubChaptersById(
-        tableName: 'Table_of_second_sub_chapters_ru',
+        tableName: locale.tableNameSecondVolSubChapters,
         chapterId: widget.secondChapterId,
       ),
       builder: (BuildContext context, AsyncSnapshot<List<SecondVolSubChapterEntity>> snapshot) {

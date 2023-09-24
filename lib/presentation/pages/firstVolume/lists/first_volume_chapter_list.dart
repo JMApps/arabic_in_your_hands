@@ -5,6 +5,7 @@ import 'package:arabicinyourhands/presentation/pages/firstVolume/items/first_vol
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FirstVolumeChapterList extends StatefulWidget {
   const FirstVolumeChapterList({super.key});
@@ -26,9 +27,10 @@ class _FirstVolumeChapterListState extends State<FirstVolumeChapterList> {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations locale = AppLocalizations.of(context)!;
     return FutureBuilder<List<FirstVolChapterEntity>>(
       future: _firstVolChaptersUseCase.fetchFirstChapters(
-        tableName: 'Table_of_first_chapters_ru',
+        tableName: locale.tableNameFirstVolChapters,
       ),
       builder: (BuildContext context, AsyncSnapshot<List<FirstVolChapterEntity>> snapshot) {
         if (snapshot.hasData) {

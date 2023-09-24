@@ -5,6 +5,7 @@ import 'package:arabicinyourhands/presentation/pages/seconVolume/items/second_vo
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SecondVolumeChapterList extends StatefulWidget {
   const SecondVolumeChapterList({super.key});
@@ -26,9 +27,10 @@ class _SecondVolumeChapterListState extends State<SecondVolumeChapterList> {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations locale = AppLocalizations.of(context)!;
     return FutureBuilder<List<SecondVolChapterEntity>>(
       future: _secondVolChaptersUseCase.fetchSecondChapters(
-        tableName: 'Table_of_second_chapters_ru',
+        tableName: locale.tableNameSecondVolChapters,
       ),
       builder: (BuildContext context, AsyncSnapshot<List<SecondVolChapterEntity>> snapshot) {
         if (snapshot.hasData) {
