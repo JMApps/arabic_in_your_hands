@@ -30,12 +30,15 @@ class _SecondVolContentListState extends State<SecondVolContentList> {
   Widget build(BuildContext context) {
     return FutureBuilder<List<SecondVolContentEntity>>(
       future: _secondVolContentsUseCase.fetchSecondContentsById(
+        /// TODO
         tableName: 'Table_of_second_contents_ru',
         secondSubChapterId: widget.secondSubChapterId,
       ),
-      builder: (BuildContext context, AsyncSnapshot<List<SecondVolContentEntity>> snapshot) {
+      builder: (BuildContext context,
+          AsyncSnapshot<List<SecondVolContentEntity>> snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
             itemCount: snapshot.data!.length,
             itemBuilder: (BuildContext context, index) {
               final SecondVolContentEntity model = snapshot.data![index];

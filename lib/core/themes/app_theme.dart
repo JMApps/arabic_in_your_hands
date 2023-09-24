@@ -5,8 +5,8 @@ class AppTheme {
   static final lightTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
       brightness: Brightness.light,
-      seedColor: AppColors.firstColor,
-      secondary: AppColors.secondColor,
+      seedColor: const Color(0xFF202C31),
+      secondary: const Color(0xFF166551),
     ),
     useMaterial3: true,
     scaffoldBackgroundColor: const Color(0xFFCFD8DC),
@@ -14,10 +14,13 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       centerTitle: true,
       elevation: 0,
+      iconTheme: IconThemeData(
+        color: AppColors.whiteColor,
+      ),
       titleTextStyle: TextStyle(
         fontSize: 20,
         fontFamily: 'Montserrat',
-          color: Color(0xFFFFFFFF)
+        color: AppColors.whiteColor,
       ),
     ),
     inputDecorationTheme: const InputDecorationTheme(
@@ -30,19 +33,22 @@ class AppTheme {
   static final darkTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
       brightness: Brightness.dark,
-      seedColor: AppColors.firstColor,
-      secondary: AppColors.secondColor,
+      seedColor: const Color(0xFF192226),
+      secondary: const Color(0xFF0B8FE8),
     ),
     useMaterial3: true,
-    scaffoldBackgroundColor: const Color(0xFF192226),
+    scaffoldBackgroundColor: const Color(0xFF202C31),
     fontFamily: 'Montserrat',
     appBarTheme: const AppBarTheme(
       centerTitle: true,
       elevation: 0,
+      iconTheme: IconThemeData(
+        color: AppColors.whiteColor,
+      ),
       titleTextStyle: TextStyle(
         fontSize: 20,
         fontFamily: 'Montserrat',
-        color: Color(0xFFFFFFFF)
+        color: AppColors.whiteColor,
       ),
     ),
     inputDecorationTheme: const InputDecorationTheme(
@@ -81,10 +87,6 @@ extension ColorSchemeS on ColorScheme {
       ? const Color(0xFF166551)
       : const Color(0xFF0B8FE8);
 
-  Color get mainTitleColor => brightness == Brightness.light
-      ? const Color(0xFF166551)
-      : const Color(0xFF0B8FE8);
-
   Color get selectedSideColor => brightness == Brightness.light
       ? const Color(0xFF202C31)
       : const Color(0xFF0B8FE8);
@@ -104,6 +106,14 @@ extension ColorSchemeS on ColorScheme {
   Color get mainCardColor => brightness == Brightness.light
       ? const Color(0xFFFFFFFF)
       : const Color(0xFF202C31);
+
+  Color get leftDialogColor => brightness == Brightness.light
+      ? const Color(0xFF166551)
+      : const Color(0xFF0B8FE8);
+
+  Color get rightDialogColor => brightness == Brightness.light
+      ? const Color(0xFF0B8FE8)
+      : const Color(0xFF209372);
 
   LinearGradient get mainGradient => brightness == Brightness.light
       ? const LinearGradient(

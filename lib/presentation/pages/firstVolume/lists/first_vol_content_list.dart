@@ -1,3 +1,4 @@
+import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/data/repositories/firstVolume/first_vol_contents_data_repository.dart';
 import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_content_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/firstVolume/first_vol_contents_use_case.dart';
@@ -30,12 +31,14 @@ class _FirstVolContentListState extends State<FirstVolContentList> {
   Widget build(BuildContext context) {
     return FutureBuilder<List<FirstVolContentEntity>>(
       future: _firstVolContentsUseCase.fetchFirstContentsById(
+        /// TODO
         tableName: 'Table_of_first_contents_ru',
         firstSubChapterId: widget.firstSubChapterId,
       ),
       builder: (BuildContext context, AsyncSnapshot<List<FirstVolContentEntity>> snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
+            padding: AppStyles.mainMardingMini,
             itemCount: snapshot.data!.length,
             itemBuilder: (BuildContext context, index) {
               final FirstVolContentEntity model = snapshot.data![index];

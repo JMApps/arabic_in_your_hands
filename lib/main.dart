@@ -4,9 +4,9 @@ import 'package:arabicinyourhands/core/colors/app_colors.dart';
 import 'package:arabicinyourhands/core/state/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/core/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/core/state/provider/play_speed_state.dart';
-import 'package:arabicinyourhands/core/state/provider/volume_content_dialog_visibility_state.dart';
 import 'package:arabicinyourhands/core/strings/app_constraints.dart';
 import 'package:arabicinyourhands/presentation/pages/root_page.dart';
+import 'package:arabicinyourhands/presentation/uiState/dialog_show_state.dart';
 import 'package:arabicinyourhands/presentation/uiState/main_navigation_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -38,10 +38,10 @@ void main() async {
           create: (_) => MainNavigationState(),
         ),
         ChangeNotifierProvider(
-          create: (_) => ContentSettingsState(),
+          create: (_) => DialogShowState(),
         ),
         ChangeNotifierProvider(
-          create: (_) => VolumeContentDialogVisibilityState(),
+          create: (_) => ContentSettingsState(),
         ),
         ChangeNotifierProvider(
           create: (_) => PlaySpeedState(),

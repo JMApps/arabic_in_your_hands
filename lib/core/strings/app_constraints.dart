@@ -1,6 +1,7 @@
 class AppConstraints {
   static const String keyMainSettingBox = 'key_main_setting_box';
 
+  // Settings
   static const String keyArabicTextSize = 'key_arabic_text_size';
   static const String keyTranslationTextSize = 'key_translation_text_size';
   static const String keyArabicFontIndex = 'key_arabic_font_index';
@@ -11,6 +12,7 @@ class AppConstraints {
   static const String keyThemeIsUser = 'key_theme_is_user';
   static const String keyAppInfoDialogShow = 'key_app_info_dialog_show';
 
+  // Buckets
   static const String keyBucketFirstVolumeChapters = 'key_bucket_first_volume_chapters';
   static const String keyBucketSecondVolumeChapters = 'key_bucket_second_volume_chapters';
 }

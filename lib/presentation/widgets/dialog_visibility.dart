@@ -1,84 +1,63 @@
-import 'package:arabicinyourhands/core/state/provider/volume_content_dialog_visibility_state.dart';
-import 'package:arabicinyourhands/core/themes/app_theme.dart';
+import 'package:arabicinyourhands/core/styles/app_styles.dart';
+import 'package:arabicinyourhands/presentation/uiState/dialog_show_state.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class DialogVisibility extends StatelessWidget {
   const DialogVisibility({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final myColor = Theme.of(context).colorScheme;
-    final appLocalizations = AppLocalizations.of(context)!;
-    return Card(
-      color: myColor.primary,
-      margin: const EdgeInsets.all(16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.only(
-          right: 16,
-          bottom: 16,
-          left: 16,
-        ),
-        child: Wrap(
-          children: [
-            Container(
-              padding: const EdgeInsets.only(top: 16),
-              width: double.maxFinite,
-              child: Text(
-                appLocalizations.visible_mode,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: myColor.primary,
-                ),
-                textAlign: TextAlign.center,
+    final ColorScheme appColors = Theme.of(context).colorScheme;
+    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final DialogShowState dialogShowState = Provider.of<DialogShowState>(context);
+    return Container(
+      padding: AppStyles.mainMarding,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            locale.visible_mode,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+              color: appColors.secondary,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          const SizedBox(height: 8),
+          SwitchListTile.adaptive(
+            shape: AppStyles.mainShape,
+            contentPadding: AppStyles.mainMardingHorizontal,
+            title: Text(
+              locale.show_hide_arabic_text,
+              style: const TextStyle(
+                fontSize: 18,
               ),
             ),
-            const Divider(
-              indent: 24,
-              endIndent: 24,
+            activeColor: appColors.secondary,
+            value: dialogShowState.getDialogArabicIsShow,
+            onChanged: (bool? value) {
+              dialogShowState.changeArabicShowing();
+            },
+          ),
+          SwitchListTile.adaptive(
+            shape: AppStyles.mainShape,
+            contentPadding: AppStyles.mainMardingHorizontal,
+            title: Text(
+              locale.show_hide_translation_text,
+              style: const TextStyle(
+                fontSize: 18,
+              ),
             ),
-            SwitchListTile.adaptive(
-              contentPadding: const EdgeInsets.symmetric(
-                horizontal: 16,
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              title: Text(
-                appLocalizations.show_hide_arabic_text,
-                style: const TextStyle(fontSize: 18),
-              ),
-              activeColor: myColor.primary,
-              value: context.watch<VolumeContentDialogVisibilityState>().getFirstDialogVisibility,
-              onChanged: (bool? value) {
-                context.read<VolumeContentDialogVisibilityState>().updateFirstVisibilityState(value!);
-              },
-            ),
-            const Divider(
-              indent: 24,
-              endIndent: 24,
-            ),
-            SwitchListTile.adaptive(
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              title: Text(
-                appLocalizations.show_hide_translation_text,
-                style: const TextStyle(fontSize: 18),
-              ),
-              activeColor: myColor.primary,
-              value: context.watch<VolumeContentDialogVisibilityState>().getSecondDialogVisibility,
-              onChanged: (bool? value) {
-                context.read<VolumeContentDialogVisibilityState>().updateSecondVisibilityState(value!);
-              },
-            ),
-          ],
-        ),
+            activeColor: appColors.secondary,
+            value: dialogShowState.getDialogTranslationIsShow,
+            onChanged: (bool? value) {
+              dialogShowState.changeTranslationShowing();
+            },
+          ),
+        ],
       ),
     );
   }

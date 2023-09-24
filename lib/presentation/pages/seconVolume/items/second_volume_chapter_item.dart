@@ -66,7 +66,7 @@ class SecondVolumeChapterItem extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 22,
                           fontFamily: 'Scheherazade',
-                          color: appColors.mainTitleColor,
+                          color: appColors.secondary,
                         ),
                         textAlign: TextAlign.center,
                         textDirection: TextDirection.rtl,

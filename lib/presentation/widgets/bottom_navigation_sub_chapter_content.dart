@@ -1,6 +1,5 @@
 import 'package:arabicinyourhands/core/state/provider/content_player_state.dart';
 import 'package:arabicinyourhands/core/state/provider/play_speed_state.dart';
-import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/widgets/dialog_visibility.dart';
 import 'package:arabicinyourhands/presentation/widgets/play_speed.dart';
 import 'package:flutter/cupertino.dart';
@@ -33,8 +32,9 @@ class BottomNavigationSubChapterContent extends StatelessWidget {
                 color: Colors.red[200],
               ),
               onPressed: () {
-                showCupertinoModalPopup(
+                showModalBottomSheet(
                   context: context,
+                  isScrollControlled: true,
                   builder: (BuildContext context) {
                     return const DialogVisibility();
                   },
