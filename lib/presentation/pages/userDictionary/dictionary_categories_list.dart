@@ -1,5 +1,5 @@
 import 'package:arabicinyourhands/core/state/provider/dictionary_content_state.dart';
-import 'package:arabicinyourhands/presentation/items/dictionary_category_item.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/dictionary_category_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';

@@ -1,5 +1,5 @@
 import 'package:arabicinyourhands/core/state/provider/words_flip_page_state.dart';
-import 'package:arabicinyourhands/presentation/lists/words_flip_card_list.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/words_flip_card_list.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/add_word_popup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

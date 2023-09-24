@@ -1,4 +1,4 @@
-import 'package:arabicinyourhands/presentation/lists/dictionary_categories_list.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/dictionary_categories_list.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/add_category_popup.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/search_category_delegate.dart';
 import 'package:flutter/cupertino.dart';
