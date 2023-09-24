@@ -1,8 +1,7 @@
 import 'package:arabicinyourhands/core/colors/app_colors.dart';
-import 'package:arabicinyourhands/core/state/provider/content_player_state.dart';
-import 'package:arabicinyourhands/core/state/provider/play_speed_state.dart';
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
+import 'package:arabicinyourhands/presentation/uiState/content_player_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/dialog_visibility.dart';
 import 'package:arabicinyourhands/presentation/widgets/play_speed.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,9 +14,7 @@ class ContantPlayerContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
-    final contentPlayerWithoutListen = Provider.of<ContentPlayerState>(context, listen: false);
-    final getWatchContentPlayer = context.watch<ContentPlayerState>();
-    getWatchContentPlayer.getPlayer.setSpeed(context.watch<PlaySpeedState>().getPlaySpeed);
+    final ContentPlayerState playerState = Provider.of<ContentPlayerState>(context);
     return Container(
       padding: AppStyles.mainMardingMini,
       color: appColors.primaryColor,
@@ -41,15 +38,11 @@ class ContantPlayerContainer extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               CupertinoIcons.arrow_2_squarepath,
-              color: getWatchContentPlayer.getPlayListLoopState
-                  ? appColors.inversePrimary
-                  : AppColors.whiteColor,
+              color: AppColors.whiteColor,
             ),
-            onPressed: () {
-              contentPlayerWithoutListen.changePlayListLoopState();
-            },
+            onPressed: () {},
           ),
           FloatingActionButton.small(
             backgroundColor: appColors.inversePrimary,
@@ -57,21 +50,13 @@ class ContantPlayerContainer extends StatelessWidget {
             child: const Icon(
               CupertinoIcons.backward_end,
             ),
-            onPressed: () {
-              contentPlayerWithoutListen.previousTrack();
-            },
+            onPressed: () {},
           ),
           FloatingActionButton(
             backgroundColor: appColors.inversePrimary,
             elevation: 0,
-            child: Icon(
-              getWatchContentPlayer.getPlayingState
-                  ? CupertinoIcons.pause
-                  : CupertinoIcons.play,
-            ),
-            onPressed: () {
-              contentPlayerWithoutListen.playPause();
-            },
+            child: const Icon(CupertinoIcons.play),
+            onPressed: () {},
           ),
           FloatingActionButton.small(
             backgroundColor: appColors.inversePrimary,
@@ -79,20 +64,14 @@ class ContantPlayerContainer extends StatelessWidget {
             child: const Icon(
               CupertinoIcons.forward_end,
             ),
-            onPressed: () {
-              contentPlayerWithoutListen.nextTrack();
-            },
+            onPressed: () {},
           ),
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               CupertinoIcons.arrow_counterclockwise,
-              color: getWatchContentPlayer.getTrackLoopState
-                  ? appColors.inversePrimary
-                  : AppColors.whiteColor,
+              color: AppColors.whiteColor,
             ),
-            onPressed: () {
-              contentPlayerWithoutListen.trackLoopState();
-            },
+            onPressed: () {},
           ),
           FloatingActionButton.small(
             backgroundColor: appColors.inversePrimary,

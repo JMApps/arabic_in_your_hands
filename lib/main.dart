@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:arabicinyourhands/core/colors/app_colors.dart';
 import 'package:arabicinyourhands/core/state/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/core/state/provider/dictionary_content_state.dart';
-import 'package:arabicinyourhands/core/state/provider/play_speed_state.dart';
 import 'package:arabicinyourhands/core/strings/app_constraints.dart';
 import 'package:arabicinyourhands/presentation/pages/root_page.dart';
 import 'package:arabicinyourhands/presentation/uiState/dialog_show_state.dart';
@@ -42,9 +41,6 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => ContentSettingsState(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => PlaySpeedState(),
         ),
         ChangeNotifierProvider(
           create: (_) => DictionaryContentState(),

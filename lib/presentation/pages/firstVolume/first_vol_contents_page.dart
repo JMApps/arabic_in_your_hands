@@ -1,5 +1,5 @@
 import 'package:arabicinyourhands/core/colors/app_colors.dart';
-import 'package:arabicinyourhands/core/state/provider/content_player_state.dart';
+import 'package:arabicinyourhands/presentation/uiState/content_player_state.dart';
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_sub_chapter_entity.dart';

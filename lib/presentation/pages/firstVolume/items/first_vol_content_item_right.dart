@@ -1,4 +1,4 @@
-import 'package:arabicinyourhands/core/state/provider/content_player_state.dart';
+import 'package:arabicinyourhands/presentation/uiState/content_player_state.dart';
 import 'package:arabicinyourhands/core/state/provider/content_settings_state.dart';
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
@@ -107,9 +107,7 @@ class FirstVolContentItemRight extends StatelessWidget {
               ],
             ),
           ),
-          onTap: () {
-            getReadContentPlay.playOne(index);
-          },
+          onTap: () {},
           onLongPress: () {
             showModalBottomSheet(
               context: context,
