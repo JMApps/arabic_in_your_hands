@@ -22,16 +22,6 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
     final MainNavigationState navigationState = Provider.of<MainNavigationState>(context);
     return Card(
       color: appColors.subTitleChapterCardColor,
-      margin: const EdgeInsets.only(bottom: 16, right: 16),
-      shape: navigationState.getCurrentFirstSelectedItem == model.id
-          ? RoundedRectangleBorder(
-              borderRadius: AppStyles.mainBorder,
-              side: BorderSide(
-                width: 2,
-                color: appColors.selectedSideColor,
-              ),
-            )
-          : AppStyles.mainShape,
       child: InkWell(
         onTap: () {
           navigationState.changeFirstSelectedItem(model.id);

@@ -85,7 +85,7 @@ class FirstVolumeChapterItem extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 150,
+            height: 200,
             child: PageStorage(
               bucket: globalBucketFirstVolumeSubChapters,
               child: FirstVolumeSubChapterList(
