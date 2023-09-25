@@ -36,6 +36,7 @@ class FirstVolChapterItem extends StatelessWidget {
                   FloatingActionButton.small(
                     onPressed: null,
                     elevation: 0,
+                    heroTag: 'first_${model.id}',
                     backgroundColor: appColors.primaryDark,
                     child: Text(
                       model.id.toString(),

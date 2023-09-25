@@ -36,6 +36,7 @@ class SecondVolChapterItem extends StatelessWidget {
                   FloatingActionButton.small(
                     onPressed: null,
                     elevation: 0,
+                    heroTag: 'second_${model.id}',
                     backgroundColor: appColors.primaryDark,
                     child: Text(
                       model.id.toString(),
@@ -53,7 +54,7 @@ class SecondVolChapterItem extends StatelessWidget {
                         vertical: -4,
                       ),
                       trailing: SvgPicture.asset(
-                        'assets/icons/ic_one_${model.id}.svg',
+                        'assets/icons/ic_two_${model.id}.svg',
                         width: 35,
                         height: 35,
                         colorFilter: ColorFilter.mode(
