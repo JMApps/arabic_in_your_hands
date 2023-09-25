@@ -10,7 +10,6 @@ class AppConstraints {
   static const String keyDisplayWakeClock = 'key_display_wake_lock';
   static const String keyThemeIsAdaptive = 'key_theme_is_adaptive';
   static const String keyThemeIsUser = 'key_theme_is_user';
-  static const String keyAppInfoDialogShow = 'key_app_info_dialog_show';
 
   // Buckets
   static const String keyBucketFirstVolumeChapters = 'key_bucket_first_volume_chapters';

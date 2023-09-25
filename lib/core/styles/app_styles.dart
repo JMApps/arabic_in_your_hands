@@ -38,4 +38,32 @@ class AppStyles {
     DictionaryCategoriesPage(),
     SettingsContentPage(),
   ];
+
+  static const List<String> contentArabicFontList = [
+    'Font 1',
+    'Font 2',
+    'Font 3',
+  ];
+
+  static const List<String> contentTranslationFontList = [
+    'Font 1',
+    'Font 2',
+    'Font 3',
+  ];
+
+  static const List<TextAlign> contentArabicFontAlign = [
+    TextAlign.end,
+    TextAlign.center,
+    TextAlign.start,
+    TextAlign.justify,
+  ];
+
+  static const List<TextAlign> contentTranslationFontAlign = [
+    TextAlign.start,
+    TextAlign.center,
+    TextAlign.end,
+    TextAlign.justify,
+  ];
+
+  static const TextStyle mainTextStyle = TextStyle(fontSize: 18);
 }

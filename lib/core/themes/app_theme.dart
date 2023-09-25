@@ -5,7 +5,7 @@ class AppTheme {
   static final lightTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
       brightness: Brightness.light,
-      seedColor: const Color(0xFF15A180),
+      seedColor: const Color(0xFF0A4B3A),
       secondary: const Color(0xFF15A180),
     ),
     useMaterial3: true,
