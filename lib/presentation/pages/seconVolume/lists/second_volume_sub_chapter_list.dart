@@ -13,18 +13,22 @@ class SecondVolumeSubChapterList extends StatefulWidget {
   final int secondChapterId;
 
   @override
-  State<SecondVolumeSubChapterList> createState() => _SecondVolumeSubChapterListState();
+  State<SecondVolumeSubChapterList> createState() =>
+      _SecondVolumeSubChapterListState();
 }
 
-class _SecondVolumeSubChapterListState extends State<SecondVolumeSubChapterList> {
-  late final SecondVolSubChaptersDataRepository _secondVolSubChaptersDataRepository;
+class _SecondVolumeSubChapterListState
+    extends State<SecondVolumeSubChapterList> {
+  late final SecondVolSubChaptersDataRepository
+      _secondVolSubChaptersDataRepository;
   late final SecondVolSubChaptersUseCase _secondVolSubChaptersUseCase;
   late final PageController _pageController;
 
   @override
   void initState() {
     _secondVolSubChaptersDataRepository = SecondVolSubChaptersDataRepository();
-    _secondVolSubChaptersUseCase = SecondVolSubChaptersUseCase(_secondVolSubChaptersDataRepository);
+    _secondVolSubChaptersUseCase =
+        SecondVolSubChaptersUseCase(_secondVolSubChaptersDataRepository);
     _pageController = PageController();
     super.initState();
   }
@@ -38,7 +42,8 @@ class _SecondVolumeSubChapterListState extends State<SecondVolumeSubChapterList>
         tableName: locale.tableNameSecondVolSubChapters,
         chapterId: widget.secondChapterId,
       ),
-      builder: (BuildContext context, AsyncSnapshot<List<SecondVolSubChapterEntity>> snapshot) {
+      builder: (BuildContext context,
+          AsyncSnapshot<List<SecondVolSubChapterEntity>> snapshot) {
         if (snapshot.hasData) {
           return Column(
             children: [
@@ -48,7 +53,7 @@ class _SecondVolumeSubChapterListState extends State<SecondVolumeSubChapterList>
                     IconButton(
                       onPressed: () {
                         _pageController.previousPage(
-                          duration: const Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 150),
                           curve: Curves.easeInCubic,
                         );
                       },
@@ -62,7 +67,8 @@ class _SecondVolumeSubChapterListState extends State<SecondVolumeSubChapterList>
                         scrollDirection: Axis.horizontal,
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
-                          final SecondVolSubChapterEntity model = snapshot.data![index];
+                          final SecondVolSubChapterEntity model =
+                              snapshot.data![index];
                           return SecondVolumeSubChapterItem(
                             model: model,
                             index: index,
@@ -73,7 +79,7 @@ class _SecondVolumeSubChapterListState extends State<SecondVolumeSubChapterList>
                     IconButton(
                       onPressed: () {
                         _pageController.nextPage(
-                          duration: const Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 150),
                           curve: Curves.easeInCubic,
                         );
                       },
@@ -84,7 +90,7 @@ class _SecondVolumeSubChapterListState extends State<SecondVolumeSubChapterList>
                   ],
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
               SmoothPageIndicator(
                 onDotClicked: (index) => _pageController.animateToPage(
                   index,
@@ -101,7 +107,7 @@ class _SecondVolumeSubChapterListState extends State<SecondVolumeSubChapterList>
                   activeDotColor: appColors.secondary,
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
             ],
           );
         } else if (snapshot.hasError) {

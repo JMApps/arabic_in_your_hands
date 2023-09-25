@@ -25,12 +25,12 @@ class FirstVolumeChapterItem extends StatelessWidget {
       child: Column(
         children: [
           Card(
-            margin: AppStyles.mainMarding,
+            margin: AppStyles.mainMardingMini,
             shape: AppStyles.mainShape,
             color: appColors.titleChapterCardColor,
             elevation: 0.5,
             child: Padding(
-              padding: AppStyles.mainMarding,
+              padding: AppStyles.mainMardingMini,
               child: Row(
                 children: [
                   FloatingActionButton.small(

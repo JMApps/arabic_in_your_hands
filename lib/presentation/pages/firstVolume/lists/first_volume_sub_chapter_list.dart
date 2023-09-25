@@ -48,7 +48,7 @@ class _FirstVolumeSubChapterListState extends State<FirstVolumeSubChapterList> {
                     IconButton(
                       onPressed: () {
                         _pageController.previousPage(
-                          duration: const Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 150),
                           curve: Curves.easeInCubic,
                         );
                       },
@@ -73,7 +73,7 @@ class _FirstVolumeSubChapterListState extends State<FirstVolumeSubChapterList> {
                     IconButton(
                       onPressed: () {
                         _pageController.nextPage(
-                          duration: const Duration(milliseconds: 500),
+                          duration: const Duration(milliseconds: 150),
                           curve: Curves.easeInCubic,
                         );
                       },
@@ -84,7 +84,7 @@ class _FirstVolumeSubChapterListState extends State<FirstVolumeSubChapterList> {
                   ],
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 8),
               SmoothPageIndicator(
                 onDotClicked: (index) => _pageController.animateToPage(
                   index,
@@ -101,7 +101,7 @@ class _FirstVolumeSubChapterListState extends State<FirstVolumeSubChapterList> {
                   activeDotColor: appColors.secondary,
                 ),
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 12),
             ],
           );
         } else if (snapshot.hasError) {
