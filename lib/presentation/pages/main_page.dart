@@ -27,7 +27,7 @@ class MainPage extends StatelessWidget {
         duration: const Duration(milliseconds: 250),
         itemShape: AppStyles.mainShapeMini,
         backgroundColor: appColors.primaryColor,
-        selectedItemColor: appColors.lightAccent,
+        selectedItemColor: appColors.primary,
         unselectedItemColor: appColors.lightAccent,
         items: [
           SalomonBottomBarItem(
