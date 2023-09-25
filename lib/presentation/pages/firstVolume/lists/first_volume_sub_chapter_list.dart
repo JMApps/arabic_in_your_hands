@@ -3,9 +3,9 @@ import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_sub_chap
 import 'package:arabicinyourhands/domain/usecases/firstVolume/first_vol_sub_chapters_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/items/fist_vol_sub_chapter_item.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
+import 'package:arabicinyourhands/presentation/widgets/main_smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class FirstVolSubChapterList extends StatefulWidget {
   const FirstVolSubChapterList({super.key, required this.firstChapterId});
@@ -17,28 +17,30 @@ class FirstVolSubChapterList extends StatefulWidget {
 }
 
 class _FirstVolSubChapterListState extends State<FirstVolSubChapterList> {
-  late final FirstVolSubChaptersDataRepository _firstVolSubChaptersDataRepository;
+  late final FirstVolSubChaptersDataRepository
+      _firstVolSubChaptersDataRepository;
   late final FirstVolSubChaptersUseCase _firstVolSubChaptersUseCase;
   late final PageController _pageController;
 
   @override
   void initState() {
     _firstVolSubChaptersDataRepository = FirstVolSubChaptersDataRepository();
-    _firstVolSubChaptersUseCase = FirstVolSubChaptersUseCase(_firstVolSubChaptersDataRepository);
+    _firstVolSubChaptersUseCase =
+        FirstVolSubChaptersUseCase(_firstVolSubChaptersDataRepository);
     _pageController = PageController();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme appColors = Theme.of(context).colorScheme;
     final AppLocalizations locale = AppLocalizations.of(context)!;
     return FutureBuilder<List<FirstVolSubChapterEntity>>(
       future: _firstVolSubChaptersUseCase.fetchFirstChaptersById(
         tableName: locale.tableNameFirstVolSubChapters,
         chapterId: widget.firstChapterId,
       ),
-      builder: (BuildContext context, AsyncSnapshot<List<FirstVolSubChapterEntity>> snapshot) {
+      builder: (BuildContext context,
+          AsyncSnapshot<List<FirstVolSubChapterEntity>> snapshot) {
         if (snapshot.hasData) {
           return Column(
             children: [
@@ -64,7 +66,8 @@ class _FirstVolSubChapterListState extends State<FirstVolSubChapterList> {
                         scrollDirection: Axis.horizontal,
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
-                          final FirstVolSubChapterEntity model = snapshot.data![index];
+                          final FirstVolSubChapterEntity model =
+                              snapshot.data![index];
                           return FirstVolumeSubChapterItem(
                             model: model,
                             index: index,
@@ -89,21 +92,9 @@ class _FirstVolSubChapterListState extends State<FirstVolSubChapterList> {
                 ),
               ),
               const SizedBox(height: 8),
-              SmoothPageIndicator(
-                onDotClicked: (index) => _pageController.animateToPage(
-                  index,
-                  duration: const Duration(milliseconds: 50),
-                  curve: Curves.slowMiddle,
-                ),
+              MainSmoothPageIndicator(
                 controller: _pageController,
-                count: snapshot.data!.length,
-                effect: ScrollingDotsEffect(
-                  maxVisibleDots: 7,
-                  dotWidth: 8,
-                  dotHeight: 8,
-                  dotColor: Colors.grey,
-                  activeDotColor: appColors.secondary,
-                ),
+                length: snapshot.data!.length,
               ),
               const SizedBox(height: 12),
             ],

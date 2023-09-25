@@ -3,9 +3,9 @@ import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_sub_ch
 import 'package:arabicinyourhands/domain/usecases/seconVolume/second_vol_sub_chapters_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/seconVolume/items/second_vol_sub_chapter_item.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
+import 'package:arabicinyourhands/presentation/widgets/main_smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class SeconVolSubChapterList extends StatefulWidget {
   const SeconVolSubChapterList({super.key, required this.secondChapterId});
@@ -31,7 +31,6 @@ class _SeconVolSubChapterListState extends State<SeconVolSubChapterList> {
 
   @override
   Widget build(BuildContext context) {
-    final ColorScheme appColors = Theme.of(context).colorScheme;
     final AppLocalizations locale = AppLocalizations.of(context)!;
     return FutureBuilder<List<SecondVolSubChapterEntity>>(
       future: _secondVolSubChaptersUseCase.fetchSecondSubChaptersById(
@@ -91,21 +90,9 @@ class _SeconVolSubChapterListState extends State<SeconVolSubChapterList> {
                 ),
               ),
               const SizedBox(height: 8),
-              SmoothPageIndicator(
-                onDotClicked: (index) => _pageController.animateToPage(
-                  index,
-                  duration: const Duration(milliseconds: 50),
-                  curve: Curves.slowMiddle,
-                ),
+              MainSmoothPageIndicator(
                 controller: _pageController,
-                count: snapshot.data!.length,
-                effect: ScrollingDotsEffect(
-                  maxVisibleDots: 7,
-                  dotWidth: 8,
-                  dotHeight: 8,
-                  dotColor: Colors.grey,
-                  activeDotColor: appColors.secondary,
-                ),
+                length: snapshot.data!.length,
               ),
               const SizedBox(height: 8),
             ],
