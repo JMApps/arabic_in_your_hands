@@ -24,8 +24,7 @@ class _FirstVolContentListState extends State<FirstVolContentList> {
   @override
   void initState() {
     _firstVolContentsDataRepository = FirstVolContentsDataRepository();
-    _firstVolContentsUseCase =
-        FirstVolContentsUseCase(_firstVolContentsDataRepository);
+    _firstVolContentsUseCase = FirstVolContentsUseCase(_firstVolContentsDataRepository);
     super.initState();
   }
 
@@ -40,7 +39,7 @@ class _FirstVolContentListState extends State<FirstVolContentList> {
       builder: (BuildContext context, AsyncSnapshot<List<FirstVolContentEntity>> snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
-            padding: AppStyles.mainMardingMini,
+            padding: AppStyles.mainMardingHorizontalMini,
             itemCount: snapshot.data!.length,
             itemBuilder: (BuildContext context, index) {
               final FirstVolContentEntity model = snapshot.data![index];

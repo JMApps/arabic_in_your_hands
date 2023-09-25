@@ -1,9 +1,8 @@
-import 'package:arabicinyourhands/core/colors/app_colors.dart';
-import 'package:arabicinyourhands/presentation/uiState/content_player_state.dart';
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_sub_chapter_entity.dart';
 import 'package:arabicinyourhands/presentation/pages/seconVolume/lists/second_vol_content_list.dart';
+import 'package:arabicinyourhands/presentation/uiState/content_player_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/content_player_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -45,14 +44,13 @@ class SecondVolContentsPage extends StatelessWidget {
                 child: Card(
                   margin: AppStyles.mainMardingMini,
                   shape: AppStyles.mainShape,
-                  color: appColors.secondary,
+                  color: appColors.inversePrimary,
                   child: Padding(
-                    padding: AppStyles.mainMardingMini,
+                    padding: AppStyles.mainMarding,
                     child: Text(
                       secondVolSubChapterModel.dialogSubTitle,
                       style: const TextStyle(
                         fontSize: 18,
-                        color: AppColors.whiteColor,
                       ),
                       textAlign: TextAlign.center,
                     ),

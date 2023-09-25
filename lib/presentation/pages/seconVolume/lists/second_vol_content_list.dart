@@ -1,3 +1,4 @@
+import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/data/repositories/secondVolume/second_vol_contents_data_repository.dart';
 import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_content_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/seconVolume/second_vol_contents_use_case.dart';
@@ -35,11 +36,10 @@ class _SecondVolContentListState extends State<SecondVolContentList> {
         tableName: locale.tableNameSecondVolContents,
         secondSubChapterId: widget.secondSubChapterId,
       ),
-      builder: (BuildContext context,
-          AsyncSnapshot<List<SecondVolContentEntity>> snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<List<SecondVolContentEntity>> snapshot) {
         if (snapshot.hasData) {
           return ListView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
+            padding: AppStyles.mainMardingHorizontalMini,
             itemCount: snapshot.data!.length,
             itemBuilder: (BuildContext context, index) {
               final SecondVolContentEntity model = snapshot.data![index];

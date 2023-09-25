@@ -5,8 +5,8 @@ class AppTheme {
   static final lightTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
       brightness: Brightness.light,
-      seedColor: const Color(0xFF202C31),
-      secondary: const Color(0xFF166551),
+      seedColor: const Color(0xFF15A180),
+      secondary: const Color(0xFF15A180),
     ),
     useMaterial3: true,
     scaffoldBackgroundColor: const Color(0xFFCFD8DC),
@@ -86,10 +86,6 @@ extension ColorSchemeS on ColorScheme {
   Color get mainIconColor => brightness == Brightness.light
       ? const Color(0xFF166551)
       : const Color(0xFF0B8FE8);
-
-  Color get lightAccent => brightness == Brightness.light
-      ? const Color(0xFF1DE9B6)
-      : const Color(0xFF26A2FF);
 
   Color get titleChapterCardColor => brightness == Brightness.light
       ? const Color(0xFFD5FFEF)
