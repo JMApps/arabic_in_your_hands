@@ -1,7 +1,8 @@
-import 'package:arabicinyourhands/core/state/provider/flip_page_state.dart';
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_sub_chapter_entity.dart';
+import 'package:arabicinyourhands/presentation/pages/seconVolume/lists/second_vol_content_flip_list.dart';
+import 'package:arabicinyourhands/presentation/uiState/content_flip_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -20,7 +21,7 @@ class SecondVolContentsFlipPage extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => FlipPageState(),
+          create: (_) => ContentFlipState(),
         ),
       ],
       child: Scaffold(
@@ -28,13 +29,17 @@ class SecondVolContentsFlipPage extends StatelessWidget {
           title: Text(secondVolSubChapterEntity.dialogTitle),
           backgroundColor: appColors.primaryColor,
           actions: [
-            IconButton(
-              icon: const Icon(
-                CupertinoIcons.arrow_2_circlepath,
-                color: Colors.white,
-              ),
-              onPressed: () {
-                // Flip card
+            Consumer<ContentFlipState>(
+              builder: (BuildContext context, flipState, Widget? child) {
+                return IconButton(
+                  icon: const Icon(
+                    CupertinoIcons.arrow_2_circlepath,
+                    color: Colors.white,
+                  ),
+                  onPressed: () {
+                    flipState.changeFlipSide();
+                  },
+                );
               },
             ),
           ],
@@ -55,6 +60,11 @@ class SecondVolContentsFlipPage extends StatelessWidget {
                   ),
                   textAlign: TextAlign.center,
                 ),
+              ),
+            ),
+            Expanded(
+              child: SecondVolContentFlipList(
+                secondSubChapterId: secondVolSubChapterEntity.id,
               ),
             ),
           ],
