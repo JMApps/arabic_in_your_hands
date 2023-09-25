@@ -45,13 +45,13 @@ class _SecondVolContentListState extends State<SecondVolContentList> {
               final SecondVolContentEntity model = snapshot.data![index];
               return index.isOdd
                   ? SecondVolContentItemLeft(
-                      model: model,
-                      index: index,
-                    )
+                model: model,
+                index: index,
+              )
                   : SecondVolContentItemRight(
-                      model: model,
-                      index: index,
-                    );
+                model: model,
+                index: index,
+              );
             },
           );
         } else if (snapshot.hasError) {
@@ -65,3 +65,4 @@ class _SecondVolContentListState extends State<SecondVolContentList> {
     );
   }
 }
+

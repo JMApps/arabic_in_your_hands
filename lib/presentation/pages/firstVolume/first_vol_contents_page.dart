@@ -1,5 +1,6 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
+import 'package:arabicinyourhands/domain/arguments/first_sub_chapter_args.dart';
 import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_sub_chapter_entity.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/lists/first_vol_content_list.dart';
 import 'package:arabicinyourhands/presentation/uiState/content_player_state.dart';
@@ -11,10 +12,10 @@ import 'package:provider/provider.dart';
 class FirstVolContentsPage extends StatelessWidget {
   const FirstVolContentsPage({
     super.key,
-    required this.firstVolSubChapterModel,
+    required this.firstVolSubChapterEntity,
   });
 
-  final FirstVolSubChapterEntity firstVolSubChapterModel;
+  final FirstVolSubChapterEntity firstVolSubChapterEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +39,21 @@ class FirstVolContentsPage extends StatelessWidget {
                 snap: false,
                 forceElevated: innerBoxIsScrolled,
                 expandedHeight: 60,
-                title: Text(firstVolSubChapterModel.dialogTitle),
+                title: Text(firstVolSubChapterEntity.dialogTitle),
+                actions: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pushNamed(
+                        context,
+                        '/first_vol_contents_flip_page',
+                        arguments: FirstSubChapterArgs(
+                          model: firstVolSubChapterEntity,
+                        ),
+                      );
+                    },
+                    icon: const Icon(CupertinoIcons.creditcard),
+                  ),
+                ],
               ),
               SliverToBoxAdapter(
                 child: Card(
@@ -48,7 +63,7 @@ class FirstVolContentsPage extends StatelessWidget {
                   child: Padding(
                     padding: AppStyles.mainMarding,
                     child: Text(
-                      firstVolSubChapterModel.dialogSubTitle,
+                      firstVolSubChapterEntity.dialogSubTitle,
                       style: const TextStyle(
                         fontSize: 18,
                       ),
@@ -64,8 +79,8 @@ class FirstVolContentsPage extends StatelessWidget {
             removeBottom: true,
             removeTop: true,
             child: CupertinoScrollbar(
-              child: FirstVolContentList(
-                firstSubChapterId: firstVolSubChapterModel.id,
+              child: FirstVolContentsList(
+                firstSubChapterId: firstVolSubChapterEntity.id,
               ),
             ),
           ),

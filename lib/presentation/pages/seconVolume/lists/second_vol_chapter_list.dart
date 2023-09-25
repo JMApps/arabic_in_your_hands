@@ -1,20 +1,20 @@
 import 'package:arabicinyourhands/data/repositories/secondVolume/second_vol_chapters_data_repository.dart';
 import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_chapter_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/seconVolume/second_vol_chapters_use_case.dart';
-import 'package:arabicinyourhands/presentation/pages/seconVolume/items/second_volume_chapter_item.dart';
+import 'package:arabicinyourhands/presentation/pages/seconVolume/items/second_vol_chapter_item.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SecondVolumeChapterList extends StatefulWidget {
-  const SecondVolumeChapterList({super.key});
+class SecondVolChapterList extends StatefulWidget {
+  const SecondVolChapterList({super.key});
 
   @override
-  State<SecondVolumeChapterList> createState() => _SecondVolumeChapterListState();
+  State<SecondVolChapterList> createState() => _SecondVolChapterListState();
 }
 
-class _SecondVolumeChapterListState extends State<SecondVolumeChapterList> {
+class _SecondVolChapterListState extends State<SecondVolChapterList> {
   late final SecondVolChaptersDataRepository _secondVolChaptersDataRepository;
   late final SecondVolChaptersUseCase _secondVolChaptersUseCase;
 
@@ -45,7 +45,7 @@ class _SecondVolumeChapterListState extends State<SecondVolumeChapterList> {
                   child: SlideAnimation(
                     verticalOffset: 150,
                     child: FadeInAnimation(
-                      child: SecondVolumeChapterItem(
+                      child: SecondVolChapterItem(
                         model: model,
                         index: index,
                       ),
@@ -66,3 +66,4 @@ class _SecondVolumeChapterListState extends State<SecondVolumeChapterList> {
     );
   }
 }
+

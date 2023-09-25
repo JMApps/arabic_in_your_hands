@@ -1,22 +1,22 @@
 import 'package:arabicinyourhands/data/repositories/firstVolume/first_vol_sub_chapters_data_repository.dart';
 import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_sub_chapter_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/firstVolume/first_vol_sub_chapters_use_case.dart';
-import 'package:arabicinyourhands/presentation/pages/firstVolume/items/fist_volume_sub_chapter_item.dart';
+import 'package:arabicinyourhands/presentation/pages/firstVolume/items/fist_vol_sub_chapter_item.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class FirstVolumeSubChapterList extends StatefulWidget {
-  const FirstVolumeSubChapterList({super.key, required this.firstChapterId});
+class FirstVolSubChapterList extends StatefulWidget {
+  const FirstVolSubChapterList({super.key, required this.firstChapterId});
 
   final int firstChapterId;
 
   @override
-  State<FirstVolumeSubChapterList> createState() => _FirstVolumeSubChapterListState();
+  State<FirstVolSubChapterList> createState() => _FirstVolSubChapterListState();
 }
 
-class _FirstVolumeSubChapterListState extends State<FirstVolumeSubChapterList> {
+class _FirstVolSubChapterListState extends State<FirstVolSubChapterList> {
   late final FirstVolSubChaptersDataRepository _firstVolSubChaptersDataRepository;
   late final FirstVolSubChaptersUseCase _firstVolSubChaptersUseCase;
   late final PageController _pageController;
@@ -47,10 +47,12 @@ class _FirstVolumeSubChapterListState extends State<FirstVolumeSubChapterList> {
                   children: [
                     IconButton(
                       onPressed: () {
-                        _pageController.previousPage(
-                          duration: const Duration(milliseconds: 150),
-                          curve: Curves.easeInCubic,
-                        );
+                        if (_pageController.hasClients) {
+                          _pageController.previousPage(
+                            duration: const Duration(milliseconds: 150),
+                            curve: Curves.easeInCubic,
+                          );
+                        }
                       },
                       icon: const Icon(
                         Icons.arrow_back_ios_outlined,
@@ -72,10 +74,12 @@ class _FirstVolumeSubChapterListState extends State<FirstVolumeSubChapterList> {
                     ),
                     IconButton(
                       onPressed: () {
-                        _pageController.nextPage(
-                          duration: const Duration(milliseconds: 150),
-                          curve: Curves.easeInCubic,
-                        );
+                        if (_pageController.hasClients) {
+                          _pageController.nextPage(
+                            duration: const Duration(milliseconds: 150),
+                            curve: Curves.easeInCubic,
+                          );
+                        }
                       },
                       icon: const Icon(
                         Icons.arrow_forward_ios_outlined,

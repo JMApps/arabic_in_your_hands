@@ -8,16 +8,16 @@ import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class FirstVolContentList extends StatefulWidget {
-  const FirstVolContentList({super.key, required this.firstSubChapterId});
+class FirstVolContentsList extends StatefulWidget {
+  const FirstVolContentsList({super.key, required this.firstSubChapterId});
 
   final int firstSubChapterId;
 
   @override
-  State<FirstVolContentList> createState() => _FirstVolContentListState();
+  State<FirstVolContentsList> createState() => _FirstVolContentsListState();
 }
 
-class _FirstVolContentListState extends State<FirstVolContentList> {
+class _FirstVolContentsListState extends State<FirstVolContentsList> {
   late final FirstVolContentsDataRepository _firstVolContentsDataRepository;
   late final FirstVolContentsUseCase _firstVolContentsUseCase;
 
@@ -45,13 +45,13 @@ class _FirstVolContentListState extends State<FirstVolContentList> {
               final FirstVolContentEntity model = snapshot.data![index];
               return index.isOdd
                   ? FirstVolContentItemLeft(
-                      model: model,
-                      index: index,
-                    )
+                model: model,
+                index: index,
+              )
                   : FirstVolContentItemRight(
-                      model: model,
-                      index: index,
-                    );
+                model: model,
+                index: index,
+              );
             },
           );
         } else if (snapshot.hasError) {
@@ -65,3 +65,4 @@ class _FirstVolContentListState extends State<FirstVolContentList> {
     );
   }
 }
+

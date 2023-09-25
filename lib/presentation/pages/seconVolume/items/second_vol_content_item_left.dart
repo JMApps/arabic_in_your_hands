@@ -9,10 +9,10 @@ import 'package:provider/provider.dart';
 
 class SecondVolContentItemLeft extends StatelessWidget {
   const SecondVolContentItemLeft({
-    Key? key,
+    super.key,
     required this.model,
     required this.index,
-  }) : super(key: key);
+  });
 
   final SecondVolContentEntity model;
   final int index;
@@ -20,8 +20,10 @@ class SecondVolContentItemLeft extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
-    final ContentSettingsState settingsState = Provider.of<ContentSettingsState>(context);
-    final DialogShowState dialogShowState = Provider.of<DialogShowState>(context);
+    final ContentSettingsState settingsState =
+        Provider.of<ContentSettingsState>(context);
+    final DialogShowState dialogShowState =
+        Provider.of<DialogShowState>(context);
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
       elevation: 0,
@@ -44,11 +46,13 @@ class SecondVolContentItemLeft extends StatelessWidget {
                           child: Text(
                             '${model.arabicName}',
                             style: TextStyle(
-                              fontFamily: AppStyles.contentArabicFontList[settingsState.getArabicFontIndex],
+                              fontFamily: AppStyles.contentArabicFontList[
+                                  settingsState.getArabicFontIndex],
                               fontSize: settingsState.getArabicTextSize,
                               color: appColors.primary,
                             ),
-                            textAlign: AppStyles.contentArabicFontAlign[settingsState.getTextAlignIndex],
+                            textAlign: AppStyles.contentArabicFontAlign[
+                                settingsState.getTextAlignIndex],
                             textDirection: TextDirection.rtl,
                           ),
                         )
@@ -61,10 +65,12 @@ class SecondVolContentItemLeft extends StatelessWidget {
                     child: Text(
                       model.arabicContent,
                       style: TextStyle(
-                        fontFamily: AppStyles.contentArabicFontList[settingsState.getArabicFontIndex],
+                        fontFamily: AppStyles.contentArabicFontList[
+                            settingsState.getArabicFontIndex],
                         fontSize: settingsState.getArabicTextSize,
                       ),
-                      textAlign: AppStyles.contentArabicFontAlign[settingsState.getTextAlignIndex],
+                      textAlign: AppStyles.contentArabicFontAlign[
+                          settingsState.getTextAlignIndex],
                       textDirection: TextDirection.rtl,
                     ),
                   ),
@@ -78,11 +84,13 @@ class SecondVolContentItemLeft extends StatelessWidget {
                           child: Text(
                             '${model.translationName}',
                             style: TextStyle(
-                              fontFamily: AppStyles.contentTranslationFontList[settingsState.getTranslationFontIndex],
+                              fontFamily: AppStyles.contentTranslationFontList[
+                                  settingsState.getTranslationFontIndex],
                               fontSize: settingsState.getTranslationTextSize,
                               color: appColors.primary,
                             ),
-                            textAlign: AppStyles.contentTranslationFontAlign[settingsState.getTextAlignIndex],
+                            textAlign: AppStyles.contentTranslationFontAlign[
+                                settingsState.getTextAlignIndex],
                           ),
                         )
                       : const SizedBox(),
@@ -94,10 +102,12 @@ class SecondVolContentItemLeft extends StatelessWidget {
                     child: Text(
                       model.translationContent,
                       style: TextStyle(
-                        fontFamily: AppStyles.contentTranslationFontList[settingsState.getTranslationFontIndex],
+                        fontFamily: AppStyles.contentTranslationFontList[
+                            settingsState.getTranslationFontIndex],
                         fontSize: settingsState.getTranslationTextSize,
                       ),
-                      textAlign: AppStyles.contentTranslationFontAlign[settingsState.getTextAlignIndex],
+                      textAlign: AppStyles.contentTranslationFontAlign[
+                          settingsState.getTextAlignIndex],
                     ),
                   ),
                 ),

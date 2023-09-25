@@ -6,8 +6,8 @@ import 'package:arabicinyourhands/presentation/uiState/main_navigation_state.dar
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class SecondVolumeSubChapterItem extends StatelessWidget {
-  const SecondVolumeSubChapterItem({
+class SecondVolSubChapterItem extends StatelessWidget {
+  const SecondVolSubChapterItem({
     super.key,
     required this.model,
     required this.index,
@@ -19,7 +19,8 @@ class SecondVolumeSubChapterItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
-    final MainNavigationState navigationState = Provider.of<MainNavigationState>(context);
+    final MainNavigationState navigationState =
+        Provider.of<MainNavigationState>(context);
     return Card(
       color: appColors.subTitleChapterCardColor,
       child: InkWell(

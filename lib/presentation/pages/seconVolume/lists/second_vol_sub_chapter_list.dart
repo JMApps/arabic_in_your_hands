@@ -1,34 +1,30 @@
 import 'package:arabicinyourhands/data/repositories/secondVolume/second_vol_sub_chapters_data_repository.dart';
 import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_sub_chapter_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/seconVolume/second_vol_sub_chapters_use_case.dart';
-import 'package:arabicinyourhands/presentation/pages/seconVolume/items/second_volume_sub_chapter_item.dart';
+import 'package:arabicinyourhands/presentation/pages/seconVolume/items/second_vol_sub_chapter_item.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
-class SecondVolumeSubChapterList extends StatefulWidget {
-  const SecondVolumeSubChapterList({super.key, required this.secondChapterId});
+class SeconVolSubChapterList extends StatefulWidget {
+  const SeconVolSubChapterList({super.key, required this.secondChapterId});
 
   final int secondChapterId;
 
   @override
-  State<SecondVolumeSubChapterList> createState() =>
-      _SecondVolumeSubChapterListState();
+  State<SeconVolSubChapterList> createState() => _SeconVolSubChapterListState();
 }
 
-class _SecondVolumeSubChapterListState
-    extends State<SecondVolumeSubChapterList> {
-  late final SecondVolSubChaptersDataRepository
-      _secondVolSubChaptersDataRepository;
+class _SeconVolSubChapterListState extends State<SeconVolSubChapterList> {
+  late final SecondVolSubChaptersDataRepository _secondVolSubChaptersDataRepository;
   late final SecondVolSubChaptersUseCase _secondVolSubChaptersUseCase;
   late final PageController _pageController;
 
   @override
   void initState() {
     _secondVolSubChaptersDataRepository = SecondVolSubChaptersDataRepository();
-    _secondVolSubChaptersUseCase =
-        SecondVolSubChaptersUseCase(_secondVolSubChaptersDataRepository);
+    _secondVolSubChaptersUseCase = SecondVolSubChaptersUseCase(_secondVolSubChaptersDataRepository);
     _pageController = PageController();
     super.initState();
   }
@@ -52,10 +48,12 @@ class _SecondVolumeSubChapterListState
                   children: [
                     IconButton(
                       onPressed: () {
-                        _pageController.previousPage(
-                          duration: const Duration(milliseconds: 150),
-                          curve: Curves.easeInCubic,
-                        );
+                        if (_pageController.hasClients) {
+                          _pageController.previousPage(
+                            duration: const Duration(milliseconds: 150),
+                            curve: Curves.easeInCubic,
+                          );
+                        }
                       },
                       icon: const Icon(
                         Icons.arrow_back_ios_outlined,
@@ -68,8 +66,8 @@ class _SecondVolumeSubChapterListState
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
                           final SecondVolSubChapterEntity model =
-                              snapshot.data![index];
-                          return SecondVolumeSubChapterItem(
+                          snapshot.data![index];
+                          return SecondVolSubChapterItem(
                             model: model,
                             index: index,
                           );
@@ -78,10 +76,12 @@ class _SecondVolumeSubChapterListState
                     ),
                     IconButton(
                       onPressed: () {
-                        _pageController.nextPage(
-                          duration: const Duration(milliseconds: 150),
-                          curve: Curves.easeInCubic,
-                        );
+                        if (_pageController.hasClients) {
+                          _pageController.nextPage(
+                            duration: const Duration(milliseconds: 150),
+                            curve: Curves.easeInCubic,
+                          );
+                        }
                       },
                       icon: const Icon(
                         Icons.arrow_forward_ios_outlined,
@@ -121,3 +121,4 @@ class _SecondVolumeSubChapterListState
     );
   }
 }
+
