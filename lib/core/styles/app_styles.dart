@@ -40,15 +40,15 @@ class AppStyles {
   ];
 
   static const List<String> contentArabicFontList = [
-    'Font 1',
-    'Font 2',
-    'Font 3',
+    'Scheherazade',
+    'Lateef',
+    'Markazi',
   ];
 
   static const List<String> contentTranslationFontList = [
-    'Font 1',
-    'Font 2',
-    'Font 3',
+    'Gilroy',
+    'Roboto',
+    'Montserrat',
   ];
 
   static const List<TextAlign> contentArabicFontAlign = [

@@ -55,27 +55,18 @@ flutter:
     - family: Scheherazade
       fonts:
         - asset: assets/fonts/scheherazade.ttf
-    - family: Calibri
-      fonts:
-        - asset: assets/fonts/calibri.ttf
     - family: Lateef
       fonts:
         - asset: assets/fonts/lateef.ttf
+    - family: Markazi
+      fonts:
+        - asset: assets/fonts/markazi.ttf
     - family: Gilroy
       fonts:
-        - asset: assets/fonts/gilroy_light.ttf
-    - family: Gilroy medium
-      fonts:
         - asset: assets/fonts/gilroy_medium.ttf
-    - family: Play
-      fonts:
-        - asset: assets/fonts/play.ttf
     - family: Roboto
       fonts:
         - asset: assets/fonts/roboto_slab.ttf
-    - family: Noto Sans
-      fonts:
-        - asset: assets/fonts/noto_sans.ttf
     - family: Montserrat
       fonts:
         - asset: assets/fonts/montserrat_medium.ttf

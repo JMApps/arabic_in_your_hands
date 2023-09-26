@@ -35,15 +35,15 @@ class SettingsContentPage extends StatelessWidget {
                   padding: const EdgeInsets.all(4),
                   children: const <int, Widget>{
                     0: Text(
-                      'Font 1',
+                      'Scheher.',
                       style: AppStyles.mainTextStyle,
                     ),
                     1: Text(
-                      'Font 2',
+                      'Lateef',
                       style: AppStyles.mainTextStyle,
                     ),
                     2: Text(
-                      'Font 3',
+                      'Markazi',
                       style: AppStyles.mainTextStyle,
                     ),
                   },
@@ -63,15 +63,15 @@ class SettingsContentPage extends StatelessWidget {
                   padding: const EdgeInsets.all(4),
                   children: const <int, Widget>{
                     0: Text(
-                      'Font 1',
+                      'Gilroy',
                       style: AppStyles.mainTextStyle,
                     ),
                     1: Text(
-                      'Font 2',
+                      'Roboto',
                       style: AppStyles.mainTextStyle,
                     ),
                     2: Text(
-                      'Font 3',
+                      'Montserrat',
                       style: AppStyles.mainTextStyle,
                     ),
                   },
