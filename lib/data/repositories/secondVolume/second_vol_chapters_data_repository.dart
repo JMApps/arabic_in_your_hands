@@ -8,6 +8,14 @@ class SecondVolChaptersDataRepository implements SecondVolChaptersRepository {
 
   final DatabaseService _databaseHelper = DatabaseService();
 
+  static final SecondVolChaptersDataRepository _instance = SecondVolChaptersDataRepository._internal();
+
+  SecondVolChaptersDataRepository._internal();
+
+  static SecondVolChaptersDataRepository getInstance() {
+    return _instance;
+  }
+
   @override
   Future<List<SecondVolChapterEntity>> getSecondVolChapters({required String tableName}) async {
     final Database database = await _databaseHelper.db;

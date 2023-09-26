@@ -8,6 +8,14 @@ class SecondVolContentsDataRepository implements SecondVolContentRepository {
 
   final DatabaseService _databaseHelper = DatabaseService();
 
+  static final SecondVolContentsDataRepository _instance = SecondVolContentsDataRepository._internal();
+
+  SecondVolContentsDataRepository._internal();
+
+  static SecondVolContentsDataRepository getInstance() {
+    return _instance;
+  }
+
   @override
   Future<List<SecondVolContentEntity>> getSecondContents({required String tableName}) async {
     final Database database = await _databaseHelper.db;

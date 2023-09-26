@@ -15,7 +15,7 @@ class FirstVolSubChaptersUseCase {
     }
   }
 
-  Future<List<FirstVolSubChapterEntity>> fetchFirstChaptersById({required String tableName, required int chapterId}) async {
+  Future<List<FirstVolSubChapterEntity>> fetchFirstSubChaptersById({required String tableName, required int chapterId}) async {
     try {
       final List<FirstVolSubChapterEntity> firstSubChaptersById = await _firstVolSubChaptersRepository.getFirstVolSubChaptersById(tableName: tableName, chapterId: chapterId);
       return firstSubChaptersById;

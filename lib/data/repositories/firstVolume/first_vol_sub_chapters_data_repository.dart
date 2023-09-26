@@ -8,6 +8,14 @@ class FirstVolSubChaptersDataRepository implements FirstVolSubChaptersRepository
 
   final DatabaseService _databaseHelper = DatabaseService();
 
+  static final FirstVolSubChaptersDataRepository _instance = FirstVolSubChaptersDataRepository._internal();
+
+  FirstVolSubChaptersDataRepository._internal();
+
+  static FirstVolSubChaptersDataRepository getInstance() {
+    return _instance;
+  }
+
   @override
   Future<List<FirstVolSubChapterEntity>> getFirstVolSubChapters({required String tableName}) async {
     final Database database = await _databaseHelper.db;

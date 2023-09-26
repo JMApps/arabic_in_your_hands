@@ -1,7 +1,6 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_chapter_entity.dart';
-import 'package:arabicinyourhands/main.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/lists/first_volume_sub_chapter_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -87,12 +86,8 @@ class FirstVolChapterItem extends StatelessWidget {
           ),
           SizedBox(
             height: 200,
-            child: PageStorage(
-              bucket: globalBucketFirstVolumeSubChapters,
-              child: FirstVolSubChapterList(
-                key: PageStorageKey<int>(model.id),
-                firstChapterId: model.id,
-              ),
+            child: FirstVolSubChapterList(
+              firstChapterId: model.id,
             ),
           ),
         ],

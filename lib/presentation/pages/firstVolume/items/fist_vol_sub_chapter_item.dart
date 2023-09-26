@@ -8,11 +8,9 @@ class FirstVolumeSubChapterItem extends StatelessWidget {
   const FirstVolumeSubChapterItem({
     super.key,
     required this.model,
-    required this.index,
   });
 
   final FirstVolSubChapterEntity model;
-  final int index;
 
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,7 @@
 import 'package:arabicinyourhands/data/repositories/secondVolume/second_vol_sub_chapters_data_repository.dart';
 import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_sub_chapter_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/seconVolume/second_vol_sub_chapters_use_case.dart';
+import 'package:arabicinyourhands/main.dart';
 import 'package:arabicinyourhands/presentation/pages/seconVolume/items/second_vol_sub_chapter_item.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:arabicinyourhands/presentation/widgets/main_smooth_page_indicator.dart';
@@ -19,14 +20,11 @@ class SeconVolSubChapterList extends StatefulWidget {
 class _SeconVolSubChapterListState extends State<SeconVolSubChapterList> {
   late final SecondVolSubChaptersDataRepository _secondVolSubChaptersDataRepository;
   late final SecondVolSubChaptersUseCase _secondVolSubChaptersUseCase;
-  late final PageController _pageController;
+  final PageController _pageController = PageController();
 
-  @override
-  void initState() {
-    _secondVolSubChaptersDataRepository = SecondVolSubChaptersDataRepository();
+  _SeconVolSubChapterListState() {
+    _secondVolSubChaptersDataRepository = SecondVolSubChaptersDataRepository.getInstance();
     _secondVolSubChaptersUseCase = SecondVolSubChaptersUseCase(_secondVolSubChaptersDataRepository);
-    _pageController = PageController();
-    super.initState();
   }
 
   @override
@@ -37,8 +35,7 @@ class _SeconVolSubChapterListState extends State<SeconVolSubChapterList> {
         tableName: locale.tableNameSecondVolSubChapters,
         chapterId: widget.secondChapterId,
       ),
-      builder: (BuildContext context,
-          AsyncSnapshot<List<SecondVolSubChapterEntity>> snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<List<SecondVolSubChapterEntity>> snapshot) {
         if (snapshot.hasData) {
           return Column(
             children: [
@@ -59,18 +56,20 @@ class _SeconVolSubChapterListState extends State<SeconVolSubChapterList> {
                       ),
                     ),
                     Expanded(
-                      child: PageView.builder(
-                        controller: _pageController,
-                        scrollDirection: Axis.horizontal,
-                        itemCount: snapshot.data!.length,
-                        itemBuilder: (context, index) {
-                          final SecondVolSubChapterEntity model =
-                          snapshot.data![index];
-                          return SecondVolSubChapterItem(
-                            model: model,
-                            index: index,
-                          );
-                        },
+                      child: PageStorage(
+                        bucket: globalBucketSecondVolumeSubChapters,
+                        child: PageView.builder(
+                          key: PageStorageKey<int>(widget.secondChapterId),
+                          controller: _pageController,
+                          scrollDirection: Axis.horizontal,
+                          itemCount: snapshot.data!.length,
+                          itemBuilder: (context, index) {
+                            final SecondVolSubChapterEntity model = snapshot.data![index];
+                            return SecondVolSubChapterItem(
+                              model: model,
+                            );
+                          },
+                        ),
                       ),
                     ),
                     IconButton(
@@ -94,7 +93,7 @@ class _SeconVolSubChapterListState extends State<SeconVolSubChapterList> {
                 controller: _pageController,
                 length: snapshot.data!.length,
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 12),
             ],
           );
         } else if (snapshot.hasError) {
@@ -108,4 +107,3 @@ class _SeconVolSubChapterListState extends State<SeconVolSubChapterList> {
     );
   }
 }
-

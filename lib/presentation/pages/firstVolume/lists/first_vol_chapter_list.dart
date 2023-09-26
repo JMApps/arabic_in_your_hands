@@ -18,11 +18,9 @@ class _FirstVolChapterListState extends State<FirstVolChapterList> {
   late final FirstVolChaptersDataRepository _firstVolChaptersDataRepository;
   late final FirstVolChaptersUseCase _firstVolChaptersUseCase;
 
-  @override
-  void initState() {
-    _firstVolChaptersDataRepository = FirstVolChaptersDataRepository();
+  _FirstVolChapterListState() {
+    _firstVolChaptersDataRepository = FirstVolChaptersDataRepository.getInstance();
     _firstVolChaptersUseCase = FirstVolChaptersUseCase(_firstVolChaptersDataRepository);
-    super.initState();
   }
 
   @override
