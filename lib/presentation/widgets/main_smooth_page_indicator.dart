@@ -23,7 +23,7 @@ class MainSmoothPageIndicator extends StatelessWidget {
       controller: controller,
       count: length,
       effect: ScrollingDotsEffect(
-        maxVisibleDots: 7,
+        maxVisibleDots: 5,
         dotWidth: 8,
         dotHeight: 8,
         dotColor: Colors.grey,
