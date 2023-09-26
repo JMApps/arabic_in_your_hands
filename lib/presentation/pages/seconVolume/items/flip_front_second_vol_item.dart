@@ -1,6 +1,8 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_content_entity.dart';
+import 'package:arabicinyourhands/presentation/uiState/content_settings_state.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class FlipFrontSecondVolItem extends StatelessWidget {
   const FlipFrontSecondVolItem({
@@ -15,19 +17,34 @@ class FlipFrontSecondVolItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
+    final ContentSettingsState settingsState = Provider.of<ContentSettingsState>(context);
     return Card(
       margin: AppStyles.mainMardingHorizontal,
       child: Center(
-        child: Padding(
-          padding: AppStyles.mainMarding,
-          child: Text(
+        child: ListTile(
+          title: model.arabicName != null
+              ? SizedBox(
+            width: double.infinity,
+            child: Text(
+              '${model.arabicName}',
+              style: TextStyle(
+                fontFamily: AppStyles.contentArabicFontList[settingsState.getArabicFontIndex],
+                fontSize: settingsState.getArabicTextSize,
+                color: appColors.primary,
+              ),
+              textAlign: AppStyles.contentArabicFontAlign[settingsState.getTextAlignIndex],
+              textDirection: TextDirection.rtl,
+            ),
+          )
+              : const SizedBox(),
+          subtitle:  Text(
             model.arabicContent,
             style: TextStyle(
-              fontSize: 35,
-              color: appColors.primary,
+              fontFamily: AppStyles.contentArabicFontList[settingsState.getArabicFontIndex],
+              fontSize: settingsState.getArabicTextSize,
             ),
+            textAlign: AppStyles.contentArabicFontAlign[settingsState.getTextAlignIndex],
             textDirection: TextDirection.rtl,
-            textAlign: TextAlign.center,
           ),
         ),
       ),
