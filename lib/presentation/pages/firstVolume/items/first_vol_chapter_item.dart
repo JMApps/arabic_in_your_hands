@@ -20,13 +20,10 @@ class FirstVolChapterItem extends StatelessWidget {
     final ColorScheme appColors = Theme.of(context).colorScheme;
     return Card(
       margin: AppStyles.mainMardingMini,
-      color: appColors.mainCardColor,
       child: Column(
         children: [
           Card(
             margin: AppStyles.mainMardingMini,
-            shape: AppStyles.mainShape,
-            color: appColors.titleChapterCardColor,
             elevation: 0.5,
             child: Padding(
               padding: AppStyles.mainMardingMini,
@@ -85,7 +82,7 @@ class FirstVolChapterItem extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 200,
+            height: 215,
             child: FirstVolSubChapterList(
               firstChapterId: model.id,
             ),

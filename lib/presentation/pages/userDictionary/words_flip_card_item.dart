@@ -1,7 +1,7 @@
 import 'package:arabicinyourhands/core/state/provider/words_flip_page_state.dart';
 import 'package:arabicinyourhands/data/database/model/dictionary_word_model.dart';
-import 'package:arabicinyourhands/presentation/widgets/words_flip_back_card.dart';
-import 'package:arabicinyourhands/presentation/widgets/words_flip_front_card.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/words_flip_back_card.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/words_flip_front_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_flip_card/flutter_flip_card.dart';
 import 'package:provider/provider.dart';

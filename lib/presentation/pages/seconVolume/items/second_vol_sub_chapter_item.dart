@@ -55,9 +55,10 @@ class SecondVolSubChapterItem extends StatelessWidget {
                   child: Text(
                     model.dialogSubTitle,
                     style: const TextStyle(
-                      fontSize: 16,
+                      fontSize: 18,
                       color: Colors.white,
                     ),
+                    overflow: TextOverflow.fade,
                     textAlign: TextAlign.center,
                   ),
                 ),

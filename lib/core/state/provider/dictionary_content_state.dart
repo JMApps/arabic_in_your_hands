@@ -56,10 +56,4 @@ class DictionaryContentState with ChangeNotifier {
       ),
     );
   }
-
-  @override
-  void dispose() {
-    _dictionaryDatabaseQuery.con.closeDB();
-    super.dispose();
-  }
 }

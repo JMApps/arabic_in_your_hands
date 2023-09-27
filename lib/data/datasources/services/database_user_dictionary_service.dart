@@ -10,7 +10,6 @@ class DatabaseHelperDictionary {
 
   factory DatabaseHelperDictionary() => _instance;
   static Database? _db;
-  final _databaseVersion = 1;
 
   Future<Database> get db async {
     if (_db != null) {
@@ -47,11 +46,7 @@ class DatabaseHelperDictionary {
       }
     }
 
-    var onOpen = await openDatabase(existsDictionaryData ? pathDictionaryData : pathDictionary, version: _databaseVersion);
+    var onOpen = await openDatabase(existsDictionaryData ? pathDictionaryData : pathDictionary);
     return onOpen;
-  }
-
-  closeDB () {
-    _db!.close();
   }
 }

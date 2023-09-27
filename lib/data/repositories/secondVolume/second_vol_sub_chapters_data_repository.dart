@@ -1,4 +1,4 @@
-import 'package:arabicinyourhands/data/datasources/services/database_service.dart';
+import 'package:arabicinyourhands/data/datasources/services/database_content_service.dart';
 import 'package:arabicinyourhands/data/models/secondVolume/second_vol_sub_chapter_model.dart';
 import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_sub_chapter_entity.dart';
 import 'package:arabicinyourhands/domain/repositories/seconVolume/second_vol_sub_chapter_repository.dart';
@@ -6,7 +6,7 @@ import 'package:sqflite/sqflite.dart';
 
 class SecondVolSubChaptersDataRepository implements SecondVolSubChaptersRepository {
 
-  final DatabaseService _databaseHelper = DatabaseService();
+  final DatabaseContentService _databaseHelper = DatabaseContentService();
 
   static final SecondVolSubChaptersDataRepository _instance = SecondVolSubChaptersDataRepository._internal();
 

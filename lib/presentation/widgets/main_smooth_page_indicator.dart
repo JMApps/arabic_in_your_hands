@@ -15,18 +15,17 @@ class MainSmoothPageIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
     return SmoothPageIndicator(
+      controller: controller,
+      count: length,
       onDotClicked: (index) => controller.animateToPage(
         index,
         duration: const Duration(milliseconds: 50),
         curve: Curves.slowMiddle,
       ),
-      controller: controller,
-      count: length,
       effect: ScrollingDotsEffect(
         maxVisibleDots: 5,
         dotWidth: 8,
         dotHeight: 8,
-        dotColor: Colors.grey,
         activeDotColor: appColors.secondary,
       ),
     );

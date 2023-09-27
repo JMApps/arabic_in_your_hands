@@ -42,7 +42,7 @@ class _FirstVolContentsListState extends State<FirstVolContentsList> {
             itemBuilder: (BuildContext context, index) {
               final FirstVolContentEntity model = snapshot.data![index];
               return index.isOdd
-                  ? FirstVolContentItemLeft(
+                  ? FirstVoContentItemLeft(
                 model: model,
                 index: index,
               )

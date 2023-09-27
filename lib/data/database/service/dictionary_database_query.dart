@@ -1,6 +1,6 @@
 import 'package:arabicinyourhands/data/database/model/dictionary_category_model.dart';
 import 'package:arabicinyourhands/data/database/model/dictionary_word_model.dart';
-import 'package:arabicinyourhands/data/database/service/database_helper_dictionary.dart';
+import 'package:arabicinyourhands/data/datasources/services/database_user_dictionary_service.dart';
 import 'package:sqflite/sqflite.dart' as sql;
 
 class DictionaryDatabaseQuery {

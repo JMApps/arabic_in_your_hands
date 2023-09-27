@@ -23,21 +23,21 @@ class FlipFrontSecondVolItem extends StatelessWidget {
       child: Center(
         child: ListTile(
           title: model.arabicName != null
-              ? SizedBox(
-            width: double.infinity,
-            child: Text(
-              '${model.arabicName}',
-              style: TextStyle(
-                fontFamily: AppStyles.contentArabicFontList[settingsState.getArabicFontIndex],
-                fontSize: settingsState.getArabicTextSize,
-                color: appColors.primary,
-              ),
-              textAlign: AppStyles.contentArabicFontAlign[settingsState.getTextAlignIndex],
-              textDirection: TextDirection.rtl,
-            ),
-          )
+              ? Padding(
+                  padding: const EdgeInsets.only(bottom: 4),
+                  child: Text(
+                    '${model.arabicName}',
+                    style: TextStyle(
+                      fontFamily: AppStyles.contentArabicFontList[settingsState.getArabicFontIndex],
+                      fontSize: settingsState.getArabicTextSize,
+                      color: appColors.primary,
+                    ),
+                    textAlign: AppStyles.contentArabicFontAlign[settingsState.getTextAlignIndex],
+                    textDirection: TextDirection.rtl,
+                  ),
+                )
               : const SizedBox(),
-          subtitle:  Text(
+          subtitle: Text(
             model.arabicContent,
             style: TextStyle(
               fontFamily: AppStyles.contentArabicFontList[settingsState.getArabicFontIndex],

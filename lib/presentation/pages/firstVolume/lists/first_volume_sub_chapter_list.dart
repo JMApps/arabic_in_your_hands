@@ -51,9 +51,7 @@ class _FirstVolSubChapterListState extends State<FirstVolSubChapterList> {
                           );
                         }
                       },
-                      icon: const Icon(
-                        Icons.arrow_back_ios_outlined,
-                      ),
+                      icon: const Icon(Icons.arrow_back_ios_outlined),
                     ),
                     Expanded(
                       child: PageStorage(
@@ -81,9 +79,7 @@ class _FirstVolSubChapterListState extends State<FirstVolSubChapterList> {
                           );
                         }
                       },
-                      icon: const Icon(
-                        Icons.arrow_forward_ios_outlined,
-                      ),
+                      icon: const Icon(Icons.arrow_forward_ios_outlined),
                     ),
                   ],
                 ),

@@ -22,19 +22,16 @@ class FlipBackSecondVolItem extends StatelessWidget {
       child: Center(
         child: ListTile(
           title: model.translationName != null
-              ? SizedBox(
-            width: double.infinity,
-            child: Text(
-              '${model.translationName}',
-              style: TextStyle(
-                fontFamily: AppStyles.contentTranslationFontList[settingsState.getTranslationFontIndex],
-                fontSize: settingsState.getTranslationTextSize,
-              ),
-              textAlign: AppStyles.contentTranslationFontAlign[settingsState.getTextAlignIndex],
-            ),
-          )
+              ? Text(
+                  '${model.translationName}',
+                  style: TextStyle(
+                    fontFamily: AppStyles.contentTranslationFontList[settingsState.getTranslationFontIndex],
+                    fontSize: settingsState.getTranslationTextSize,
+                  ),
+                  textAlign: AppStyles.contentTranslationFontAlign[settingsState.getTextAlignIndex],
+                )
               : const SizedBox(),
-          subtitle:  Text(
+          subtitle: Text(
             model.translationContent,
             style: TextStyle(
               fontFamily: AppStyles.contentTranslationFontList[settingsState.getTranslationFontIndex],

@@ -49,7 +49,6 @@ class FirstVolContentsFlipPage extends StatelessWidget {
           children: [
             Card(
               margin: AppStyles.mainMardingMini,
-              shape: AppStyles.mainShape,
               color: appColors.inversePrimary,
               child: Padding(
                 padding: AppStyles.mainMarding,

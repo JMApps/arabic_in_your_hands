@@ -20,10 +20,8 @@ class SecondVolContentItemLeft extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
-    final ContentSettingsState settingsState =
-        Provider.of<ContentSettingsState>(context);
-    final DialogShowState dialogShowState =
-        Provider.of<DialogShowState>(context);
+    final ContentSettingsState settingsState = Provider.of<ContentSettingsState>(context);
+    final DialogShowState dialogShowState = Provider.of<DialogShowState>(context);
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
       elevation: 0,
@@ -37,22 +35,21 @@ class SecondVolContentItemLeft extends StatelessWidget {
             duration: const Duration(milliseconds: 75),
             curve: Curves.easeInCubic,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Visibility(
                   visible: dialogShowState.getDialogArabicIsShow,
                   child: model.arabicName != null
-                      ? SizedBox(
-                          width: double.infinity,
+                      ? Padding(
+                          padding: const EdgeInsets.only(bottom: 4),
                           child: Text(
                             '${model.arabicName}',
                             style: TextStyle(
-                              fontFamily: AppStyles.contentArabicFontList[
-                                  settingsState.getArabicFontIndex],
+                              fontFamily: AppStyles.contentArabicFontList[settingsState.getArabicFontIndex],
                               fontSize: settingsState.getArabicTextSize,
                               color: appColors.primary,
                             ),
-                            textAlign: AppStyles.contentArabicFontAlign[
-                                settingsState.getTextAlignIndex],
+                            textAlign: AppStyles.contentArabicFontAlign[settingsState.getTextAlignIndex],
                             textDirection: TextDirection.rtl,
                           ),
                         )
@@ -60,55 +57,40 @@ class SecondVolContentItemLeft extends StatelessWidget {
                 ),
                 Visibility(
                   visible: dialogShowState.getDialogArabicIsShow,
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Text(
-                      model.arabicContent,
-                      style: TextStyle(
-                        fontFamily: AppStyles.contentArabicFontList[
-                            settingsState.getArabicFontIndex],
-                        fontSize: settingsState.getArabicTextSize,
-                      ),
-                      textAlign: AppStyles.contentArabicFontAlign[
-                          settingsState.getTextAlignIndex],
-                      textDirection: TextDirection.rtl,
+                  child: Text(
+                    model.arabicContent,
+                    style: TextStyle(
+                      fontFamily: AppStyles.contentArabicFontList[settingsState.getArabicFontIndex],
+                      fontSize: settingsState.getArabicTextSize,
                     ),
+                    textAlign: AppStyles.contentArabicFontAlign[settingsState.getTextAlignIndex],
+                    textDirection: TextDirection.rtl,
                   ),
                 ),
                 const SizedBox(height: 8),
                 Visibility(
                   visible: dialogShowState.getDialogTranslationIsShow,
                   child: model.translationName != null
-                      ? SizedBox(
-                          width: double.infinity,
-                          child: Text(
-                            '${model.translationName}',
-                            style: TextStyle(
-                              fontFamily: AppStyles.contentTranslationFontList[
-                                  settingsState.getTranslationFontIndex],
-                              fontSize: settingsState.getTranslationTextSize,
-                              color: appColors.primary,
-                            ),
-                            textAlign: AppStyles.contentTranslationFontAlign[
-                                settingsState.getTextAlignIndex],
-                          ),
-                        )
+                      ? Text(
+                        '${model.translationName}',
+                        style: TextStyle(
+                          fontFamily: AppStyles.contentTranslationFontList[settingsState.getTranslationFontIndex],
+                          fontSize: settingsState.getTranslationTextSize,
+                          color: appColors.primary,
+                        ),
+                        textAlign: AppStyles.contentTranslationFontAlign[settingsState.getTextAlignIndex],
+                      )
                       : const SizedBox(),
                 ),
                 Visibility(
                   visible: dialogShowState.getDialogTranslationIsShow,
-                  child: SizedBox(
-                    width: double.infinity,
-                    child: Text(
-                      model.translationContent,
-                      style: TextStyle(
-                        fontFamily: AppStyles.contentTranslationFontList[
-                            settingsState.getTranslationFontIndex],
-                        fontSize: settingsState.getTranslationTextSize,
-                      ),
-                      textAlign: AppStyles.contentTranslationFontAlign[
-                          settingsState.getTextAlignIndex],
+                  child: Text(
+                    model.translationContent,
+                    style: TextStyle(
+                      fontFamily: AppStyles.contentTranslationFontList[settingsState.getTranslationFontIndex],
+                      fontSize: settingsState.getTranslationTextSize,
                     ),
+                    textAlign: AppStyles.contentTranslationFontAlign[settingsState.getTextAlignIndex],
                   ),
                 ),
               ],

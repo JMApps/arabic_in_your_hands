@@ -1,6 +1,4 @@
-import 'package:arabicinyourhands/core/strings/app_constraints.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
-import 'package:arabicinyourhands/main.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/lists/first_vol_chapter_list.dart';
 import 'package:arabicinyourhands/presentation/widgets/main_app_icon.dart';
 import 'package:arabicinyourhands/presentation/widgets/share_links_button.dart';
@@ -24,15 +22,8 @@ class FirstVolChaptersPage extends StatelessWidget {
           ShareLinksButton(),
         ],
       ),
-      body: PageStorage(
-        bucket: globalBucketFirstVolumeChapters,
-        child: const CupertinoScrollbar(
-          child: FirstVolChapterList(
-            key: PageStorageKey<String>(
-              AppConstraints.keyBucketFirstVolumeChapters,
-            ),
-          ),
-        ),
+      body: const CupertinoScrollbar(
+        child: FirstVolChapterList(),
       ),
     );
   }

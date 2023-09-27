@@ -5,10 +5,10 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-class DatabaseService {
-  static final DatabaseService _instance = DatabaseService.internal();
+class DatabaseContentService {
+  static final DatabaseContentService _instance = DatabaseContentService.internal();
 
-  factory DatabaseService() => _instance;
+  factory DatabaseContentService() => _instance;
   static Database? _db;
 
   Future<Database> get db async {
@@ -19,7 +19,7 @@ class DatabaseService {
     return _db!;
   }
 
-  DatabaseService.internal();
+  DatabaseContentService.internal();
 
   Future<Database> initializeDatabase() async {
 

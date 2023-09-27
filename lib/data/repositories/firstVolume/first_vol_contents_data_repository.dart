@@ -1,4 +1,4 @@
-import 'package:arabicinyourhands/data/datasources/services/database_service.dart';
+import 'package:arabicinyourhands/data/datasources/services/database_content_service.dart';
 import 'package:arabicinyourhands/data/models/firstVolume/first_vol_content_model.dart';
 import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_content_entity.dart';
 import 'package:arabicinyourhands/domain/repositories/firstVolume/first_vol_content_repository.dart';
@@ -6,7 +6,7 @@ import 'package:sqflite/sqlite_api.dart';
 
 class FirstVolContentsDataRepository implements FirstVolContentRepository {
 
-  final DatabaseService _databaseHelper = DatabaseService();
+  final DatabaseContentService _databaseHelper = DatabaseContentService();
 
   static final FirstVolContentsDataRepository _instance = FirstVolContentsDataRepository._internal();
 
