@@ -6,7 +6,7 @@ class UserDictionaryCategoryEntity {
   final String addDateTime;
   final String changeDateTime;
 
-  UserDictionaryCategoryEntity({
+  const UserDictionaryCategoryEntity({
     required this.id,
     required this.wordCategoryTitle,
     required this.wordCategoryColor,
