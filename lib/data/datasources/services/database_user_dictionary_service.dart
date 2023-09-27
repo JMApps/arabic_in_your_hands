@@ -5,10 +5,10 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-class DatabaseHelperDictionary {
-  static final DatabaseHelperDictionary _instance = DatabaseHelperDictionary.internal();
+class DatabaseUserDictionaryService {
+  static final DatabaseUserDictionaryService _instance = DatabaseUserDictionaryService.internal();
 
-  factory DatabaseHelperDictionary() => _instance;
+  factory DatabaseUserDictionaryService() => _instance;
   static Database? _db;
 
   Future<Database> get db async {
@@ -19,7 +19,7 @@ class DatabaseHelperDictionary {
     return _db!;
   }
 
-  DatabaseHelperDictionary.internal();
+  DatabaseUserDictionaryService.internal();
 
   Future<Database> initializeDatabase() async {
     Directory? documentDirectory = Platform.isAndroid
