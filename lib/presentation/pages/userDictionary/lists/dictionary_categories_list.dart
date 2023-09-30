@@ -3,10 +3,11 @@ import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictiona
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_category_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_categories_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/items/dictionary_category_item.dart';
+import 'package:arabicinyourhands/presentation/widgets/category_is_empty.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DictionaryCategoriesList extends StatefulWidget {
   const DictionaryCategoriesList({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class _DictionaryCategoriesListState extends State<DictionaryCategoriesList> {
 
   @override
   Widget build(BuildContext context) {
-    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final AppLocalizations? locale = AppLocalizations.of(context);
     return FutureBuilder<List<UserDictionaryCategoryEntity>>(
       future: _categoriesUseCase.fetchWordCategories(),
       builder: (BuildContext context, AsyncSnapshot<List<UserDictionaryCategoryEntity>> snapshot) {
@@ -56,15 +57,8 @@ class _DictionaryCategoriesListState extends State<DictionaryCategoriesList> {
         } else if (snapshot.hasError) {
           return ErrorDataText(error: snapshot.error.toString());
         } else {
-          return Center(
-            child: Padding(
-              padding: AppStyles.mainMarding,
-              child: Text(
-                locale.dictionary_category_add_first,
-                style: const TextStyle(fontSize: 18),
-                textAlign: TextAlign.center,
-              ),
-            ),
+          return CategoryIsEmpty(
+            message: locale!.categories_is_empty,
           );
         }
       },

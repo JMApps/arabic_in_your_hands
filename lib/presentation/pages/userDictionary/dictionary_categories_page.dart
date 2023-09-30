@@ -1,6 +1,7 @@
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/lists/dictionary_categories_list.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/add_category_popup.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/search_category_delegate.dart';
 import 'package:arabicinyourhands/presentation/widgets/main_app_icon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,14 @@ class DictionaryCategoriesPage extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(CupertinoIcons.search),
-            onPressed: () {},
+            onPressed: () {
+              showSearch(
+                context: context,
+                delegate: SearchCategoryDelegate(
+                  hintText: locale.search_categories,
+                ),
+              );
+            },
           ),
         ],
       ),
