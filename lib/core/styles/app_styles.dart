@@ -14,7 +14,7 @@ class AppStyles {
 
   static const RoundedRectangleBorder mainShape = RoundedRectangleBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(20),
+      Radius.circular(12.5),
     ),
   );
 
@@ -35,6 +35,7 @@ class AppStyles {
   static const List<Widget> mainPages = <Widget>[
     FirstVolChaptersPage(),
     SecondVolChaptersPage(),
+    DictionaryCategoriesPage(),
     DictionaryCategoriesPage(),
     SettingsContentPage(),
   ];

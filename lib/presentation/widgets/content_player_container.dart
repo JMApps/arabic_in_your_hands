@@ -24,7 +24,7 @@ class ContantPlayerContainer extends StatelessWidget {
           IconButton(
             icon: Icon(
               CupertinoIcons.eye_fill,
-              color: appColors.inversePrimary,
+              color: appColors.secondary,
               size: 35,
             ),
             onPressed: () {
@@ -45,7 +45,7 @@ class ContantPlayerContainer extends StatelessWidget {
             onPressed: () {},
           ),
           FloatingActionButton.small(
-            backgroundColor: appColors.inversePrimary,
+            backgroundColor: appColors.secondary,
             elevation: 0,
             heroTag: 'media_1',
             child: const Icon(
@@ -53,15 +53,15 @@ class ContantPlayerContainer extends StatelessWidget {
             ),
             onPressed: () {},
           ),
-          FloatingActionButton(
-            backgroundColor: appColors.inversePrimary,
+          FloatingActionButton.small(
+            backgroundColor: appColors.secondary,
             elevation: 0,
             heroTag: 'media_2',
             child: const Icon(CupertinoIcons.play),
             onPressed: () {},
           ),
           FloatingActionButton.small(
-            backgroundColor: appColors.inversePrimary,
+            backgroundColor: appColors.secondary,
             elevation: 0,
             heroTag: 'media_3',
             child: const Icon(
@@ -77,7 +77,7 @@ class ContantPlayerContainer extends StatelessWidget {
             onPressed: () {},
           ),
           FloatingActionButton.small(
-            backgroundColor: appColors.inversePrimary,
+            backgroundColor: appColors.secondary,
             elevation: 0,
             heroTag: 'media_4',
             child: const Icon(

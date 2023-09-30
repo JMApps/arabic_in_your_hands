@@ -106,6 +106,7 @@ class SettingsContentPage extends StatelessWidget {
                   style: AppStyles.mainTextStyle,
                 ),
                 Slider(
+                  activeColor: appColors.secondary,
                   value: settingsState.getArabicTextSize,
                   min: 14,
                   max: 100,
@@ -120,12 +121,12 @@ class SettingsContentPage extends StatelessWidget {
                   style: AppStyles.mainTextStyle,
                 ),
                 Slider(
+                  activeColor: appColors.secondary,
                   value: settingsState.getTranslationTextSize,
                   min: 14,
                   max: 100,
                   divisions: 100,
-                  label:
-                      settingsState.getTranslationTextSize.round().toString(),
+                  label: settingsState.getTranslationTextSize.round().toString(),
                   onChanged: (double? size) {
                     settingsState.changeTextSize = size!;
                   },

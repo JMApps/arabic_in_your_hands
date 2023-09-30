@@ -7,6 +7,15 @@ class CategoryProiriyState extends ChangeNotifier {
 
   Priorities get categoryPriority => _categoryPriority;
 
+  Color _categoryColor = Colors.grey;
+
+  Color get getCategoryColor => _categoryColor;
+
+  set setCategoryColor(Color value) {
+    _categoryColor = value;
+    notifyListeners();
+  }
+
   int _priorityIndex = 0;
 
   int get getPriorityIndex => _priorityIndex;

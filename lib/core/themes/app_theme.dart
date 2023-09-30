@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/core/colors/app_colors.dart';
+import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:flutter/material.dart';
 
 class AppTheme {
@@ -26,7 +27,9 @@ class AppTheme {
     inputDecorationTheme: const InputDecorationTheme(
       alignLabelWithHint: true,
       floatingLabelAlignment: FloatingLabelAlignment.center,
-      border: InputBorder.none,
+      border: OutlineInputBorder(
+        borderRadius: AppStyles.mainBorder,
+      ),
     ),
   );
 
@@ -54,7 +57,9 @@ class AppTheme {
     inputDecorationTheme: const InputDecorationTheme(
       alignLabelWithHint: true,
       floatingLabelAlignment: FloatingLabelAlignment.center,
-      border: InputBorder.none,
+      border: OutlineInputBorder(
+        borderRadius: AppStyles.mainBorder,
+      ),
     ),
   );
 }
