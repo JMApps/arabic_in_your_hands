@@ -16,14 +16,12 @@ class DictionaryCategoriesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(locale.categories),
-        backgroundColor: appColors.primaryDark,
+        backgroundColor: appColors.primaryColor,
         leading: const MainAppIcon(),
         actions: [
           IconButton(
             icon: const Icon(CupertinoIcons.search),
-            onPressed: () {
-
-            },
+            onPressed: () {},
           ),
         ],
       ),
@@ -31,7 +29,7 @@ class DictionaryCategoriesPage extends StatelessWidget {
         child: DictionaryCategoriesList(),
       ),
       floatingActionButton: FloatingActionButton(
-        child: const Icon(CupertinoIcons.add),
+        backgroundColor: appColors.secondary,
         onPressed: () {
           showModalBottomSheet(
             context: context,
@@ -48,6 +46,7 @@ class DictionaryCategoriesPage extends StatelessWidget {
             },
           );
         },
+        child: const Icon(CupertinoIcons.add),
       ),
     );
   }

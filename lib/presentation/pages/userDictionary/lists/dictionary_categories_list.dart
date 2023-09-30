@@ -20,7 +20,7 @@ class _DictionaryCategoriesListState extends State<DictionaryCategoriesList> {
 
   @override
   void initState() {
-    _categoriesUseCase = UserDictionaryCategoriesUseCase(UserDictionaryCategoryDataRepository.getInstance());
+    _categoriesUseCase = UserDictionaryCategoriesUseCase(UserDictionaryCategoryDataRepository());
     super.initState();
   }
 
@@ -30,9 +30,10 @@ class _DictionaryCategoriesListState extends State<DictionaryCategoriesList> {
     return FutureBuilder<List<UserDictionaryCategoryEntity>>(
       future: _categoriesUseCase.fetchWordCategories(),
       builder: (BuildContext context, AsyncSnapshot<List<UserDictionaryCategoryEntity>> snapshot) {
-        if (snapshot.hasData) {
+        if (snapshot.hasData && snapshot.data!.isNotEmpty) {
           return AnimationLimiter(
             child: ListView.builder(
+              padding: AppStyles.mainMardingMini,
               itemCount: snapshot.data!.length,
               itemBuilder: (context, index) {
                 final UserDictionaryCategoryEntity model = snapshot.data![index];
@@ -43,7 +44,8 @@ class _DictionaryCategoriesListState extends State<DictionaryCategoriesList> {
                     verticalOffset: 150,
                     child: FadeInAnimation(
                       child: DictionaryCategoryItem(
-                        item: model,
+                        model: model,
+                        index: index,
                       ),
                     ),
                   ),
