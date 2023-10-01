@@ -24,7 +24,8 @@ class _CategoryOptionsState extends State<CategoryOptions> {
 
   @override
   void initState() {
-    _categoriesUseCase = UserDictionaryCategoriesUseCase(UserDictionaryCategoryDataRepository.getInstance());
+    _categoriesUseCase = UserDictionaryCategoriesUseCase(
+        UserDictionaryCategoryDataRepository.getInstance());
     super.initState();
   }
 
@@ -36,7 +37,8 @@ class _CategoryOptionsState extends State<CategoryOptions> {
       future: _categoriesUseCase.fetchWordCategoryById(
         categoryId: widget.categoryId,
       ),
-      builder: (BuildContext context, AsyncSnapshot<List<UserDictionaryCategoryEntity>> snapshot) {
+      builder: (BuildContext context,
+          AsyncSnapshot<List<UserDictionaryCategoryEntity>> snapshot) {
         if (snapshot.hasData && snapshot.data!.isNotEmpty) {
           final UserDictionaryCategoryEntity model = snapshot.data![0];
           return Container(
@@ -50,13 +52,13 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: appColors.secondary,
+                    color: appColors.error,
                   ),
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: 8),
-                ListTile(
-                  onTap: () {
+                OutlinedButton(
+                  onPressed: () {
                     Navigator.pop(context);
                     showModalBottomSheet(
                       context: context,
@@ -73,11 +75,13 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                       },
                     );
                   },
-                  shape: AppStyles.mainShape,
-                  title: Text(locale.change),
+                  child: Text(
+                    locale.change,
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-                ListTile(
-                  onTap: () {
+                OutlinedButton(
+                  onPressed: () {
                     showModalBottomSheet(
                       context: context,
                       builder: (_) => Padding(
@@ -91,38 +95,47 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                color: appColors.secondary,
+                                color: appColors.error,
                               ),
                               textAlign: TextAlign.center,
                             ),
                             const SizedBox(height: 8),
-                            ListTile(
-                              onTap: () {
+                            OutlinedButton(
+                              onPressed: () {
                                 Navigator.pop(context);
                                 Navigator.of(context).pop();
-                                _categoriesUseCase.deleteCategory(categoryId: model.id);
+                                _categoriesUseCase.deleteCategory(
+                                    categoryId: model.id);
                               },
-                              shape: AppStyles.mainShape,
-                              title: Text(locale.delete),
+                              child: Text(
+                                locale.delete,
+                                style: TextStyle(color: appColors.error),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
-                            ListTile(
-                              onTap: () {
+                            OutlinedButton(
+                              onPressed: () {
                                 Navigator.pop(context);
                                 Navigator.of(context).pop();
                               },
-                              shape: AppStyles.mainShape,
-                              title: Text(locale.cancel),
+                              child: Text(
+                                locale.cancel,
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ],
                         ),
                       ),
                     );
                   },
-                  shape: AppStyles.mainShape,
-                  title: Text(locale.delete),
+                  child: Text(
+                    locale.delete,
+                    style: TextStyle(color: appColors.error),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
-                ListTile(
-                  onTap: () {
+                OutlinedButton(
+                  onPressed: () {
                     showModalBottomSheet(
                       context: context,
                       builder: (_) => Padding(
@@ -136,35 +149,43 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
-                                color: appColors.secondary,
+                                color: appColors.error,
                               ),
                               textAlign: TextAlign.center,
                             ),
                             const SizedBox(height: 8),
-                            ListTile(
-                              onTap: () {
+                            OutlinedButton(
+                              onPressed: () {
                                 Navigator.pop(context);
                                 Navigator.of(context).pop();
                                 _categoriesUseCase.deleteAllCategories();
                               },
-                              shape: AppStyles.mainShape,
-                              title: Text(locale.delete),
+                              child: Text(
+                                locale.delete,
+                                style: TextStyle(color: appColors.error),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
-                            ListTile(
-                              onTap: () {
+                            OutlinedButton(
+                              onPressed: () {
                                 Navigator.pop(context);
                                 Navigator.of(context).pop();
                               },
-                              shape: AppStyles.mainShape,
-                              title: Text(locale.cancel),
+                              child: Text(
+                                locale.cancel,
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ],
                         ),
                       ),
                     );
                   },
-                  shape: AppStyles.mainShape,
-                  title: Text(locale.deleteAll),
+                  child: Text(
+                    locale.deleteAll,
+                    style: TextStyle(color: appColors.error),
+                    textAlign: TextAlign.center,
+                  ),
                 ),
               ],
             ),
