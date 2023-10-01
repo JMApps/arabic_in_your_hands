@@ -53,4 +53,13 @@ class UserDictionaryCategoriesUseCase {
       throw Exception(e.toString());
     }
   }
+
+  Future<int> deleteAllCategories() async {
+    try {
+      final int categoryEntity = await _userDictionaryCategoryRepository.deleteAllCategories();
+      return categoryEntity;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
 }

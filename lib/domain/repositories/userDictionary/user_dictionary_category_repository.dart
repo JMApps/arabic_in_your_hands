@@ -12,4 +12,6 @@ abstract class UserDictionaryCategoryRepository {
   Future<int> changeCategory({required UserDictionaryChangeCategoryEntity model});
 
   Future<int> deleteCategory({required int categoryId});
+
+  Future<int> deleteAllCategories();
 }

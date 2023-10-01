@@ -10,6 +10,14 @@ import 'package:sqflite/sqflite.dart' as sql;
 class UserDictionaryCategoryDataRepository implements UserDictionaryCategoryRepository {
   final DatabaseUserDictionaryService _databaseUserDictionaryService = DatabaseUserDictionaryService();
 
+  static final UserDictionaryCategoryDataRepository _instance = UserDictionaryCategoryDataRepository._internal();
+
+  UserDictionaryCategoryDataRepository._internal();
+
+  static UserDictionaryCategoryDataRepository getInstance() {
+    return _instance;
+  }
+
   @override
   Future<List<UserDictionaryCategoryEntity>> getAllCategories() async {
     final Database dbClient = await _databaseUserDictionaryService.db;
@@ -21,7 +29,7 @@ class UserDictionaryCategoryDataRepository implements UserDictionaryCategoryRepo
   @override
   Future<List<UserDictionaryCategoryEntity>> getCategoryById({required int categoryId}) async {
     final Database dbClient = await _databaseUserDictionaryService.db;
-    final List<Map<String, Object?>> resours = await dbClient.query('Table_of_word_categories', where: 'id = $categoryId');
+    final List<Map<String, Object?>> resours = await dbClient.query('Table_of_word_categories', where: '_id = $categoryId');
     List<UserDictionaryCategoryEntity>? wordCaterories = resours.isNotEmpty ? resours.map((c) => _mapToEntity(UserDictionaryCategoryModel.fromMap(c))).toList() : [];
     return wordCaterories;
   }
@@ -60,6 +68,14 @@ class UserDictionaryCategoryDataRepository implements UserDictionaryCategoryRepo
     final int deleteCategory = await dbClient.delete('Table_of_word_categories', where: '_id == $categoryId');
     await dbClient.delete('Table_of_words', where: 'displayBy == $categoryId');
     return deleteCategory;
+  }
+
+  @override
+  Future<int> deleteAllCategories() async {
+    final Database dbClient = await _databaseUserDictionaryService.db;
+    final int deleteAllCategories = await dbClient.delete('Table_of_word_categories');
+    await dbClient.delete('Table_of_words');
+    return deleteAllCategories;
   }
 
   // Mapping to entity

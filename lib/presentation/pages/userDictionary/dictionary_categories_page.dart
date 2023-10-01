@@ -1,4 +1,3 @@
-import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/lists/dictionary_categories_list.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/add_category_popup.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/search_category_delegate.dart';
@@ -17,7 +16,6 @@ class DictionaryCategoriesPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(locale.categories),
-        backgroundColor: appColors.primaryColor,
         leading: const MainAppIcon(),
         actions: [
           IconButton(

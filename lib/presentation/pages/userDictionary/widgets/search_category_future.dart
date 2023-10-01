@@ -25,7 +25,8 @@ class _SearchCategoryFutureState extends State<SearchCategoryFuture> {
 
   @override
   void initState() {
-    _categoriesUseCase = UserDictionaryCategoriesUseCase(UserDictionaryCategoryDataRepository());
+    _categoriesUseCase = UserDictionaryCategoriesUseCase(
+        UserDictionaryCategoryDataRepository.getInstance());
     super.initState();
   }
 
@@ -39,22 +40,29 @@ class _SearchCategoryFutureState extends State<SearchCategoryFuture> {
           _categories = snapshot.data;
           _recentCategories = widget.query.isEmpty
               ? _categories
-              : _categories.where((element) => element.id.toString().contains(widget.query) || element.wordCategoryTitle.contains(widget.query.toLowerCase())).toList();
-          return _recentCategories.isEmpty
-              ? CategoryIsEmpty(message: locale!.search_is_not_results)
-              : CupertinoScrollbar(
-                  child: ListView.builder(
-                    padding: AppStyles.mainMardingMini,
-                    itemCount: _recentCategories.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      final UserDictionaryCategoryEntity model = _recentCategories[index];
-                      return DictionaryCategoryItem(
-                        model: model,
-                        index: index,
-                      );
-                    },
-                  ),
-                );
+              : _categories.where((element) =>
+                      element.id.toString().contains(widget.query) ||
+                      element.wordCategoryTitle.contains(widget.query.toLowerCase())).toList();
+          if (_recentCategories.isEmpty && widget.query.isNotEmpty) {
+            return CategoryIsEmpty(message: locale!.search_is_not_results);
+          } else if (_recentCategories.isEmpty) {
+            return CategoryIsEmpty(message: locale!.categories_is_empty);
+          } else {
+            return CupertinoScrollbar(
+              child: ListView.builder(
+                padding: AppStyles.mainMardingMini,
+                itemCount: _recentCategories.length,
+                itemBuilder: (BuildContext context, int index) {
+                  final UserDictionaryCategoryEntity model =
+                      _recentCategories[index];
+                  return DictionaryCategoryItem(
+                    model: model,
+                    index: index,
+                  );
+                },
+              ),
+            );
+          }
         } else {
           return const Center(
             child: CircularProgressIndicator.adaptive(),

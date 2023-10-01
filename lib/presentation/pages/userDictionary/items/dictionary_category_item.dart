@@ -3,6 +3,7 @@ import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/data/database/model/dictionary_category_arguments.dart';
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_category_entity.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/category_options.dart';
 import 'package:flutter/material.dart';
 
 class DictionaryCategoryItem extends StatelessWidget {
@@ -22,6 +23,25 @@ class DictionaryCategoryItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       child: InkWell(
+        onTap: () {
+          Navigator.pushNamed(
+            context,
+            '/category_words_content',
+            arguments: DictionaryCategoryArguments(
+              model.id,
+              model.wordCategoryTitle,
+              model.wordCategoryColor,
+              model.priority,
+            ),
+          );
+        },
+        onLongPress: () {
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            builder: (_) => CategoryOptions(categoryId: model.id),
+          );
+        },
         borderRadius: AppStyles.mainBorder,
         child: Container(
           padding: AppStyles.mainMarding,
@@ -46,19 +66,6 @@ class DictionaryCategoryItem extends StatelessWidget {
             ],
           ),
         ),
-        onTap: () {
-          Navigator.pushNamed(
-            context,
-            '/category_words_content',
-            arguments: DictionaryCategoryArguments(
-              model.id,
-              model.wordCategoryTitle,
-              model.wordCategoryColor,
-              model.priority,
-            ),
-          );
-        },
-        onLongPress: () {},
       ),
     );
   }

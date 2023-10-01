@@ -3,26 +3,30 @@ import 'package:flutter/material.dart';
 
 class CategoryProiriyState extends ChangeNotifier {
 
-  Priorities _categoryPriority = Priorities.without;
+  late Priorities _categoryPriority;
 
   Priorities get categoryPriority => _categoryPriority;
 
-  Color _categoryColor = Colors.grey;
+  late int? _priorityIndex;
 
-  Color get getCategoryColor => _categoryColor;
+  int get getPriorityIndex => _priorityIndex!;
+
+  late Color? _categoryColor;
+
+  Color get getCategoryColor => _categoryColor!;
+
+  CategoryProiriyState([this._priorityIndex = 0, this._categoryColor = Colors.grey]) {
+    _categoryPriority = Priorities.values[_priorityIndex!];
+  }
 
   set setCategoryColor(Color value) {
     _categoryColor = value;
     notifyListeners();
   }
 
-  int _priorityIndex = 0;
-
-  int get getPriorityIndex => _priorityIndex;
-
   set setPriorityIndex(int value) {
     _priorityIndex = value;
-    _categoryPriority = Priorities.values[_priorityIndex];
+    _categoryPriority = Priorities.values[_priorityIndex!];
     notifyListeners();
   }
 }

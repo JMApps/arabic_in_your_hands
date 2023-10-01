@@ -2,9 +2,8 @@ import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/sear
 import 'package:flutter/material.dart';
 
 class SearchCategoryDelegate extends SearchDelegate {
-  SearchCategoryDelegate({
-    required String hintText,
-  }) : super(searchFieldLabel: hintText, keyboardType: TextInputType.text);
+  SearchCategoryDelegate({required String hintText})
+      : super(searchFieldLabel: hintText, keyboardType: TextInputType.text);
 
   @override
   ThemeData appBarTheme(BuildContext context) {

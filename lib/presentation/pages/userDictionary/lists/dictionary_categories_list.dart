@@ -21,7 +21,7 @@ class _DictionaryCategoriesListState extends State<DictionaryCategoriesList> {
 
   @override
   void initState() {
-    _categoriesUseCase = UserDictionaryCategoriesUseCase(UserDictionaryCategoryDataRepository());
+    _categoriesUseCase = UserDictionaryCategoriesUseCase(UserDictionaryCategoryDataRepository.getInstance());
     super.initState();
   }
 

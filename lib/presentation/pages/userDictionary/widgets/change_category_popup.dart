@@ -2,7 +2,8 @@ import 'package:arabicinyourhands/core/enums/priority.dart';
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictionary_category_data_repository.dart';
-import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_add_category_entity.dart';
+import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_category_entity.dart';
+import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_change_category_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_categories_use_case.dart';
 import 'package:arabicinyourhands/presentation/uiState/dictionary/category_priority_state.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,21 +12,25 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:provider/provider.dart';
 
-class AddCategoryPopup extends StatefulWidget {
-  const AddCategoryPopup({Key? key}) : super(key: key);
+class ChangeCategoryPopup extends StatefulWidget {
+  const ChangeCategoryPopup({Key? key, required this.model}) : super(key: key);
+
+  final UserDictionaryCategoryEntity model;
 
   @override
-  State<AddCategoryPopup> createState() => _AddCategoryPopupState();
+  State<ChangeCategoryPopup> createState() => _ChangeCategoryPopupState();
 }
 
-class _AddCategoryPopupState extends State<AddCategoryPopup> {
+class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
   late final UserDictionaryCategoriesUseCase _categoriesUseCase;
-  final TextEditingController _textWordCategoryEditing = TextEditingController();
+  late final UserDictionaryChangeCategoryEntity newCategory;
+  late final TextEditingController _textWordCategoryEditing;
 
   @override
   void initState() {
     super.initState();
     _categoriesUseCase = UserDictionaryCategoriesUseCase(UserDictionaryCategoryDataRepository.getInstance());
+    _textWordCategoryEditing = TextEditingController(text: widget.model.wordCategoryTitle);
   }
 
   @override
@@ -34,7 +39,10 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => CategoryProiriyState(),
+          create: (_) => CategoryProiriyState(
+            widget.model.priority,
+            HexColor.fromHex(widget.model.wordCategoryColor),
+          ),
         ),
       ],
       child: Container(
@@ -67,11 +75,10 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                               color: Colors.transparent,
                               child: MaterialColorPicker(
                                 alignment: WrapAlignment.center,
-                                iconSelected: CupertinoIcons.checkmark_alt,
+                                iconSelected: CupertinoIcons.check_mark_circled,
                                 elevation: 0.5,
                                 allowShades: false,
                                 onMainColorChange: (ColorSwatch? color) {
-                                  debugPrint(color.toString());
                                   priorityState.setCategoryColor = color!;
                                 },
                                 selectedColor: priorityState.getCategoryColor,
@@ -136,19 +143,23 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                 const SizedBox(height: 16),
                 OutlinedButton(
                   onPressed: () async {
-                    if (_textWordCategoryEditing.text.isNotEmpty) {
-                      final UserDictionaryAddCategoryEntity model = UserDictionaryAddCategoryEntity(
+                    if (widget.model.wordCategoryTitle != _textWordCategoryEditing.text ||
+                        HexColor.fromHex(widget.model.wordCategoryColor) != priorityState.getCategoryColor ||
+                        widget.model.priority != priorityState.getPriorityIndex) {
+                      final UserDictionaryChangeCategoryEntity model = UserDictionaryChangeCategoryEntity(
+                        id: widget.model.id,
                         wordCategoryTitle: _textWordCategoryEditing.text,
                         wordCategoryColor: priorityState.getCategoryColor.toHex(),
                         priority: priorityState.getPriorityIndex,
-                        addDateTime: DateTime.now().toString(),
                         changeDateTime: DateTime.now().toString(),
                       );
                       Navigator.pop(context);
-                      await _categoriesUseCase.addCategory(model: model);
+                      await _categoriesUseCase.changeCategory(model: model);
+                    } else {
+                      Navigator.pop(context);
                     }
                   },
-                  child: Text(locale.add),
+                  child: Text(locale.change),
                 ),
               ],
             );
