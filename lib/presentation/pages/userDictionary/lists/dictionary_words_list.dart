@@ -1,0 +1,71 @@
+import 'package:arabicinyourhands/core/styles/app_styles.dart';
+import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictionary_word_data_repository.dart';
+import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_word_entity.dart';
+import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_words_use_case.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/items/dictionary_word_item.dart';
+import 'package:arabicinyourhands/presentation/widgets/category_is_empty.dart';
+import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+
+class DictionaryWordsList extends StatefulWidget {
+  const DictionaryWordsList({
+    Key? key,
+    required this.categoryId,
+  }) : super(key: key);
+
+  final int categoryId;
+
+  @override
+  State<DictionaryWordsList> createState() => _DictionaryWordsListState();
+}
+
+class _DictionaryWordsListState extends State<DictionaryWordsList> {
+  late final UserDictionaryWordsUseCase _dictionaryWordsUseCase;
+
+  @override
+  void initState() {
+    super.initState();
+    _dictionaryWordsUseCase = UserDictionaryWordsUseCase(UserDictionaryWordDataRepository.getInstance());
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final AppLocalizations? locale = AppLocalizations.of(context);
+    return FutureBuilder<List<UserDictionaryWordEntity>>(
+      future: _dictionaryWordsUseCase.fetchCategoryWords(categoryId: widget.categoryId),
+      builder: (BuildContext context, AsyncSnapshot<List<UserDictionaryWordEntity>> snapshot) {
+        if (snapshot.hasData && snapshot.data!.isNotEmpty) {
+          return CupertinoScrollbar(
+            child: AnimationLimiter(
+              child: ListView.builder(
+                padding: AppStyles.mainMardingMini,
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  final UserDictionaryWordEntity model = snapshot.data![index];
+                  return AnimationConfiguration.staggeredList(
+                    position: index,
+                    duration: const Duration(milliseconds: 250),
+                    child: SlideAnimation(
+                      verticalOffset: 150,
+                      child: FadeInAnimation(
+                        child: DictionaryWordItem(
+                          model: model,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          );
+        } else if (snapshot.hasError) {
+          return ErrorDataText(error: snapshot.error.toString());
+        } else {
+          return CategoryIsEmpty(message: locale!.dictionary_word_add_first);
+        }
+      },
+    );
+  }
+}
