@@ -1,7 +1,6 @@
-import 'package:arabicinyourhands/data/database/model/dictionary_category_arguments.dart';
-import 'package:arabicinyourhands/data/database/model/dictionary_words_flip_arguments.dart';
 import 'package:arabicinyourhands/domain/arguments/first_sub_chapter_args.dart';
 import 'package:arabicinyourhands/domain/arguments/second_sub_chapter_args.dart';
+import 'package:arabicinyourhands/domain/arguments/word_category_args.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/first_vol_contents_flip_page.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/first_vol_contents_page.dart';
 import 'package:arabicinyourhands/presentation/pages/seconVolume/second_vol_contents_flip_page.dart';
@@ -52,29 +51,23 @@ class AppRoutes {
 
       // User words
       case '/category_words_content':
-        final DictionaryCategoryArguments dictionaryCategoryArguments =
-            routeSettings.arguments as DictionaryCategoryArguments;
+        final WordCategoryArgs wordCategoryArgs =
+            routeSettings.arguments as WordCategoryArgs;
         return MaterialPageRoute(
-            builder: (_) => DictionaryWordsPage(
-                  categoryId: dictionaryCategoryArguments.categoryId,
-                  categoryTitle: dictionaryCategoryArguments.categoryTitle,
-                  categoryColor: dictionaryCategoryArguments.categoryColor,
-                  categoryPriority:
-                      dictionaryCategoryArguments.categoryPriority,
-                ),
-            settings: routeSettings);
+          builder: (_) => DictionaryWordsPage(
+            categoryModel: wordCategoryArgs.model,
+          ),
+          settings: routeSettings,
+        );
       case '/words_content_flip':
-        final DictionaryWordFlipArguments dictionaryWordFlipArguments =
-            routeSettings.arguments as DictionaryWordFlipArguments;
+        final WordCategoryArgs wordCategoryArgs =
+            routeSettings.arguments as WordCategoryArgs;
         return MaterialPageRoute(
-            builder: (_) => WordsContentFlipModePage(
-                  wordsCategoryId: dictionaryWordFlipArguments.wordsCategoryId,
-                  wordsCategoryTitle:
-                      dictionaryWordFlipArguments.wordsCategoryTitle,
-                  wordsCategoryPriority:
-                      dictionaryWordFlipArguments.wordsCategoryPriority,
-                ),
-            settings: routeSettings);
+          builder: (_) => WordsContentFlipModePage(
+            categoryModel: wordCategoryArgs.model,
+          ),
+          settings: routeSettings,
+        );
       default:
         throw Exception('Invalid route ${routeSettings.name}');
     }
