@@ -46,7 +46,6 @@ class UserDictionaryWordDataRepository implements UserDictionaryWordRepository {
   Future<int> addWord({required UserDictionaryAddWordEntity model}) async {
     final Database dbClient = await _databaseUserDictionaryService.db;
     final Map<String, dynamic> word = {
-      '_id': model.id,
       'displayBy': model.displayBy,
       'word': model.word,
       'wordTranscription': model.wordTranslate,
@@ -69,7 +68,6 @@ class UserDictionaryWordDataRepository implements UserDictionaryWordRepository {
       'wordTranslate': model.wordTranslate,
       'wordItemColor': model.changeDateTime,
       'changeDateTime': DateTime.now().toString(),
-      'priority': model.priority,
     };
     final int newWordCategory = await dbClient.update('Table_of_word_categories', newWord, conflictAlgorithm: sql.ConflictAlgorithm.replace, where: '_id = ${model.id}');
     return newWordCategory;

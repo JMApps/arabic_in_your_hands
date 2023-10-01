@@ -4,7 +4,6 @@ class UserDictionaryChangeWordEntity {
   final String wordTranslate;
   final String wordItemColor;
   final String changeDateTime;
-  final int priority;
 
   const UserDictionaryChangeWordEntity({
     required this.id,
@@ -12,6 +11,5 @@ class UserDictionaryChangeWordEntity {
     required this.wordTranslate,
     required this.wordItemColor,
     required this.changeDateTime,
-    required this.priority,
   });
 }
