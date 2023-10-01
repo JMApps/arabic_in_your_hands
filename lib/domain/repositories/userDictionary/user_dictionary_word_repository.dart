@@ -5,6 +5,8 @@ import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary
 abstract class UserDictionaryWordRepository {
   Future<List<UserDictionaryWordEntity>> getAllWords();
 
+  Future<List<UserDictionaryWordEntity>> getWordById({required int wordId});
+
   Future<List<UserDictionaryWordEntity>> getWordsByCategoryId({required int categoryId});
 
   Future<int> addWord({required UserDictionaryAddWordEntity model});

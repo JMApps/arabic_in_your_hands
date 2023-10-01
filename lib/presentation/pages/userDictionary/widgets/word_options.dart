@@ -1,11 +1,7 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
-import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictionary_category_data_repository.dart';
 import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictionary_word_data_repository.dart';
-import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_category_entity.dart';
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_word_entity.dart';
-import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_categories_use_case.dart';
 import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_words_use_case.dart';
-import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/change_category_popup.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -14,9 +10,11 @@ class WordOptions extends StatefulWidget {
   const WordOptions({
     Key? key,
     required this.categoryId,
+    required this.wordId,
   }) : super(key: key);
 
   final int categoryId;
+  final int wordId;
 
   @override
   State<WordOptions> createState() => _WordOptionsState();
@@ -36,8 +34,8 @@ class _WordOptionsState extends State<WordOptions> {
     final ColorScheme appColors = Theme.of(context).colorScheme;
     final AppLocalizations locale = AppLocalizations.of(context)!;
     return FutureBuilder<List<UserDictionaryWordEntity>>(
-      future: _wordsUseCase.fetchCategoryWords(
-        categoryId: widget.categoryId,
+      future: _wordsUseCase.fetchWordById(
+        wordId: widget.wordId,
       ),
       builder: (BuildContext context, AsyncSnapshot<List<UserDictionaryWordEntity>> snapshot) {
         if (snapshot.hasData && snapshot.data!.isNotEmpty) {
@@ -49,7 +47,7 @@ class _WordOptionsState extends State<WordOptions> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  locale.change,
+                  model.word,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -70,7 +68,7 @@ class _WordOptionsState extends State<WordOptions> {
                             padding: MediaQuery.of(context).viewInsets,
                             duration: const Duration(milliseconds: 250),
                             curve: Curves.decelerate,
-                            child: ChangeCategoryPopup(model: model),
+                            child: Container() // Change word popup
                           ),
                         );
                       },
@@ -92,7 +90,7 @@ class _WordOptionsState extends State<WordOptions> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              locale.dictionary_category_delete_message,
+                              locale.dictionary_word_delete_message,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -105,8 +103,7 @@ class _WordOptionsState extends State<WordOptions> {
                               onPressed: () {
                                 Navigator.pop(context);
                                 Navigator.of(context).pop();
-                                _categoriesUseCase.deleteCategory(
-                                    categoryId: model.id);
+                                _wordsUseCase.deleteWord(wordId: model.id);
                               },
                               child: Text(
                                 locale.delete,
@@ -146,7 +143,7 @@ class _WordOptionsState extends State<WordOptions> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              locale.dictionary_all_delete_message,
+                              locale.allWordsDeleteMessage,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -159,7 +156,7 @@ class _WordOptionsState extends State<WordOptions> {
                               onPressed: () {
                                 Navigator.pop(context);
                                 Navigator.of(context).pop();
-                                _categoriesUseCase.deleteAllCategories();
+                                _wordsUseCase.deleteWordsCategory(categoryId: widget.categoryId);
                               },
                               child: Text(
                                 locale.delete,

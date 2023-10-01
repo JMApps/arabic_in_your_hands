@@ -52,6 +52,7 @@ class _DictionaryWordsListState extends State<DictionaryWordsList> {
                       child: FadeInAnimation(
                         child: DictionaryWordItem(
                           model: model,
+                          categoryId: widget.categoryId,
                         ),
                       ),
                     ),
