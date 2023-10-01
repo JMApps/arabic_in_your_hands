@@ -1,7 +1,7 @@
 import 'package:arabicinyourhands/core/colors/app_colors.dart';
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
-import 'package:arabicinyourhands/data/database/model/dictionary_category_arguments.dart';
+import 'package:arabicinyourhands/domain/arguments/word_category_args.dart';
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_category_entity.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/category_options.dart';
 import 'package:flutter/material.dart';
@@ -27,12 +27,7 @@ class DictionaryCategoryItem extends StatelessWidget {
           Navigator.pushNamed(
             context,
             '/category_words_content',
-            arguments: DictionaryCategoryArguments(
-              model.id,
-              model.wordCategoryTitle,
-              model.wordCategoryColor,
-              model.priority,
-            ),
+            arguments: WordCategoryArgs(model: model),
           );
         },
         onLongPress: () {
