@@ -40,12 +40,12 @@ class MainPage extends StatelessWidget {
             title: Text(locale.volume_2),
           ),
           SalomonBottomBarItem(
-            icon: const Icon(CupertinoIcons.add),
-            title: Text(locale.words),
-          ),
-          SalomonBottomBarItem(
             icon: const Icon(Icons.translate),
             title: Text(locale.dictionary),
+          ),
+          SalomonBottomBarItem(
+            icon: const Icon(CupertinoIcons.add),
+            title: Text(locale.words),
           ),
           SalomonBottomBarItem(
             icon: const Icon(CupertinoIcons.settings),
