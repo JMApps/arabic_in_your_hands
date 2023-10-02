@@ -24,8 +24,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
 
   @override
   void initState() {
-    _categoriesUseCase = UserDictionaryCategoriesUseCase(
-        UserDictionaryCategoryDataRepository.getInstance());
+    _categoriesUseCase = UserDictionaryCategoriesUseCase(UserDictionaryCategoryDataRepository.getInstance());
     super.initState();
   }
 
@@ -37,8 +36,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
       future: _categoriesUseCase.fetchWordCategoryById(
         categoryId: widget.categoryId,
       ),
-      builder: (BuildContext context,
-          AsyncSnapshot<List<UserDictionaryCategoryEntity>> snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<List<UserDictionaryCategoryEntity>> snapshot) {
         if (snapshot.hasData && snapshot.data!.isNotEmpty) {
           final UserDictionaryCategoryEntity model = snapshot.data![0];
           return Container(
@@ -145,7 +143,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              locale.dictionary_all_delete_message,
+                              locale.allCategoriesDeleteMessage,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,

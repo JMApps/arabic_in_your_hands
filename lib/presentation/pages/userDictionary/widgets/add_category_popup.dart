@@ -40,7 +40,7 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
       child: Container(
         padding: AppStyles.mainMarding,
         child: Consumer<CategoryProiriyState>(
-          builder: (BuildContext context, priorityState, _) {
+          builder: (BuildContext context, categoryState, _) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
@@ -72,9 +72,9 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                                 allowShades: false,
                                 onMainColorChange: (ColorSwatch? color) {
                                   debugPrint(color.toString());
-                                  priorityState.setCategoryColor = color!;
+                                  categoryState.setCategoryColor = color!;
                                 },
-                                selectedColor: priorityState.getCategoryColor,
+                                selectedColor: categoryState.getCategoryColor,
                               ),
                             ),
                             actions: [
@@ -91,7 +91,7 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                       padding: EdgeInsets.zero,
                       icon: Icon(
                         Icons.color_lens_outlined,
-                        color: priorityState.getCategoryColor,
+                        color: categoryState.getCategoryColor,
                       ),
                     ),
                   ),
@@ -105,10 +105,10 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                   child: ToggleButtons(
                     borderRadius: AppStyles.mainBorder,
                     isSelected: [
-                      priorityState.categoryPriority == Priorities.without,
-                      priorityState.categoryPriority == Priorities.low,
-                      priorityState.categoryPriority == Priorities.medium,
-                      priorityState.categoryPriority == Priorities.high,
+                      categoryState.categoryPriority == Priorities.without,
+                      categoryState.categoryPriority == Priorities.low,
+                      categoryState.categoryPriority == Priorities.medium,
+                      categoryState.categoryPriority == Priorities.high,
                     ],
                     children: const <CircleAvatar>[
                       CircleAvatar(
@@ -129,7 +129,7 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                       ),
                     ],
                     onPressed: (int priorityIndex) {
-                      priorityState.setPriorityIndex = priorityIndex;
+                      categoryState.setPriorityIndex = priorityIndex;
                     },
                   ),
                 ),
@@ -139,10 +139,8 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                     if (_textWordCategoryEditing.text.isNotEmpty) {
                       final UserDictionaryAddCategoryEntity model = UserDictionaryAddCategoryEntity(
                         wordCategoryTitle: _textWordCategoryEditing.text,
-                        wordCategoryColor: priorityState.getCategoryColor.toHex(),
-                        priority: priorityState.getPriorityIndex,
-                        addDateTime: DateTime.now().toString(),
-                        changeDateTime: DateTime.now().toString(),
+                        wordCategoryColor: categoryState.getCategoryColor.toHex(),
+                        priority: categoryState.getPriorityIndex,
                       );
                       Navigator.pop(context);
                       await _categoriesUseCase.addCategory(model: model);

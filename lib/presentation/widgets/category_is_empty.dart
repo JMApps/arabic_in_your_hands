@@ -14,7 +14,7 @@ class CategoryIsEmpty extends StatelessWidget {
     return Center(
       child: Padding(
         padding: AppStyles.mainMarding,
-        child: Text(
+        child: SelectableText(
           message,
           style: const TextStyle(fontSize: 18),
           textAlign: TextAlign.center,

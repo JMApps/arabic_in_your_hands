@@ -17,6 +17,7 @@ class DictionaryWordItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      elevation: 0.5,
       margin: const EdgeInsets.only(bottom: 8),
       child: ListTile(
         shape: AppStyles.mainShape,
