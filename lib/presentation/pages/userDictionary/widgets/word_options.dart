@@ -40,7 +40,7 @@ class _WordOptionsState extends State<WordOptions> {
       builder: (BuildContext context, AsyncSnapshot<List<UserDictionaryWordEntity>> snapshot) {
         if (snapshot.hasData && snapshot.data!.isNotEmpty) {
           final UserDictionaryWordEntity model = snapshot.data![0];
-          return Container(
+          return Padding(
             padding: AppStyles.mainMarding,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -63,13 +63,11 @@ class _WordOptionsState extends State<WordOptions> {
                       context: context,
                       isScrollControlled: true,
                       builder: (context) {
-                        return SingleChildScrollView(
-                          child: AnimatedPadding(
-                            padding: MediaQuery.of(context).viewInsets,
-                            duration: const Duration(milliseconds: 250),
-                            curve: Curves.decelerate,
-                            child: Container() // Change word popup
-                          ),
+                        return AnimatedPadding(
+                          padding: MediaQuery.of(context).viewInsets,
+                          duration: const Duration(milliseconds: 250),
+                          curve: Curves.decelerate,
+                          child: Container() // Change word popup
                         );
                       },
                     );
