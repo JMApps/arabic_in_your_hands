@@ -1,5 +1,6 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictionary_category_data_repository.dart';
+import 'package:arabicinyourhands/data/state/user_dictionary_category_state.dart';
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_category_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_categories_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/change_category_popup.dart';
@@ -7,6 +8,7 @@ import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class CategoryOptions extends StatefulWidget {
   const CategoryOptions({
@@ -112,7 +114,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                                     ),
                                   ),
                                 );
-                                _categoriesUseCase.deleteCategory(categoryId: model.id);
+                                Provider.of<UserDictionaryCategoryState>(context, listen: false).deleteCategory(categoryId: model.id);
                               },
                               child: Text(
                                 locale.delete,
@@ -174,7 +176,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                                     ),
                                   ),
                                 );
-                                _categoriesUseCase.deleteAllCategories();
+                                Provider.of<UserDictionaryCategoryState>(context, listen: false).deleteAllCategories();
                               },
                               child: Text(
                                 locale.delete,

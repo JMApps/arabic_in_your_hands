@@ -1,9 +1,8 @@
 import 'package:arabicinyourhands/core/enums/priority.dart';
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
-import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictionary_category_data_repository.dart';
+import 'package:arabicinyourhands/data/state/user_dictionary_category_state.dart';
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_add_category_entity.dart';
-import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_categories_use_case.dart';
 import 'package:arabicinyourhands/presentation/uiState/dictionary/category_priority_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,15 +19,8 @@ class AddCategoryPopup extends StatefulWidget {
 }
 
 class _AddCategoryPopupState extends State<AddCategoryPopup> {
-  late final UserDictionaryCategoriesUseCase _categoriesUseCase;
   final TextEditingController _textWordCategoryEditing = TextEditingController();
   final FocusNode focusCategory = FocusNode();
-
-  @override
-  void initState() {
-    super.initState();
-    _categoriesUseCase = UserDictionaryCategoriesUseCase(UserDictionaryCategoryDataRepository.getInstance());
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +70,6 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                                 elevation: 0.5,
                                 allowShades: false,
                                 onMainColorChange: (ColorSwatch? color) {
-                                  debugPrint(color.toString());
                                   categoryState.setCategoryColor = color!;
                                 },
                                 selectedColor: categoryState.getCategoryColor,
@@ -159,7 +150,7 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                           ),
                         ),
                       );
-                      await _categoriesUseCase.addCategory(model: model);
+                      Provider.of<UserDictionaryCategoryState>(context, listen: false).addCategory(model: model);
                     } else if (_textWordCategoryEditing.text.isEmpty) {
                       categoryState.setCategoryState = '';
                       focusCategory.requestFocus();
