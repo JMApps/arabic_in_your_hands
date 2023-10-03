@@ -3,7 +3,7 @@ import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictiona
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_category_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_categories_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/items/dictionary_category_item.dart';
-import 'package:arabicinyourhands/presentation/widgets/category_is_empty.dart';
+import 'package:arabicinyourhands/presentation/widgets/future_is_empty.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -44,9 +44,9 @@ class _SearchCategoryFutureState extends State<SearchCategoryFuture> {
                       element.id.toString().contains(widget.query) ||
                       element.wordCategoryTitle.contains(widget.query.toLowerCase())).toList();
           if (_recentCategories.isEmpty && widget.query.isNotEmpty) {
-            return CategoryIsEmpty(message: locale!.search_is_not_results);
+            return FutureIsEmpty(message: locale!.search_is_not_results);
           } else if (_recentCategories.isEmpty) {
-            return CategoryIsEmpty(message: locale!.categories_is_empty);
+            return FutureIsEmpty(message: locale!.categories_is_empty);
           } else {
             return CupertinoScrollbar(
               child: ListView.builder(

@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:arabicinyourhands/core/colors/app_colors.dart';
-import 'package:arabicinyourhands/core/state/provider/dictionary_content_state.dart';
 import 'package:arabicinyourhands/core/strings/app_constraints.dart';
 import 'package:arabicinyourhands/data/state/user_dictionary_category_state.dart';
 import 'package:arabicinyourhands/presentation/pages/root_page.dart';
@@ -42,9 +41,6 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => ContentSettingsState(),
-        ),
-        ChangeNotifierProvider(
-          create: (_) => DictionaryContentState(),
         ),
         ChangeNotifierProvider(
           create: (_) => UserDictionaryCategoryState(),

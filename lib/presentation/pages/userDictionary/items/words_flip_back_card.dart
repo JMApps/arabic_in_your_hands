@@ -1,36 +1,32 @@
-import 'package:arabicinyourhands/data/database/model/dictionary_word_model.dart';
+import 'package:arabicinyourhands/core/styles/app_styles.dart';
+import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_word_entity.dart';
 import 'package:flutter/material.dart';
 
 class WordsFlipBackCard extends StatelessWidget {
   const WordsFlipBackCard({
-    Key? key,
-    required this.item,
-  }) : super(key: key);
+    super.key,
+    required this.model,
+  });
 
-  final DictionaryWordModel item;
+  final UserDictionaryWordEntity model;
 
   @override
   Widget build(BuildContext context) {
-    final myColor = Theme.of(context).colorScheme;
+    final ColorScheme appColors = Theme.of(context).colorScheme;
     return Card(
-      elevation: 10,
-      color: myColor.primary,
-      margin: const EdgeInsets.all(16),
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25),
-      ),
+      margin: AppStyles.mainMardingHorizontal,
       child: Center(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.all(16),
+          padding: AppStyles.mainMarding,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                item.word,
+                model.word,
                 style: TextStyle(
                   fontSize: 35,
-                  color: myColor.primary,
+                  color: appColors.secondary,
                 ),
                 textAlign: TextAlign.center,
               ),

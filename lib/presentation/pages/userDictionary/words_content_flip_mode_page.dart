@@ -1,6 +1,8 @@
-import 'package:arabicinyourhands/core/state/provider/words_flip_page_state.dart';
-import 'package:arabicinyourhands/presentation/pages/userDictionary/words_flip_card_list.dart';
-import 'package:arabicinyourhands/presentation/pages/userDictionary/add_word_popup.dart';
+import 'package:arabicinyourhands/core/styles/app_styles.dart';
+import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_category_entity.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/lists/words_flip_card_list.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/add_word_popup.dart';
+import 'package:arabicinyourhands/presentation/uiState/content_flip_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -9,64 +11,51 @@ import 'package:provider/provider.dart';
 class WordsContentFlipModePage extends StatelessWidget {
   const WordsContentFlipModePage({
     Key? key,
-    required this.wordsCategoryId,
-    required this.wordsCategoryTitle,
-    required this.wordsCategoryPriority,
+    required this.categoryModel,
   }) : super(key: key);
 
-  final int wordsCategoryId;
-  final String wordsCategoryTitle;
-  final int wordsCategoryPriority;
+  final UserDictionaryCategoryEntity categoryModel;
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations? locale = AppLocalizations.of(context);
+    final ColorScheme appColors = Theme.of(context).colorScheme;
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<WordsFlipPageState>(
-          create: (_) => WordsFlipPageState(),
+        ChangeNotifierProvider<ContentFlipState>(
+          create: (_) => ContentFlipState(),
         ),
       ],
       child: Scaffold(
         appBar: AppBar(
-          title: Text(AppLocalizations.of(context)!.flip_card_mode),
+          title: Text(locale!.flip_card_mode),
           actions: [
             IconButton(
-              splashRadius: 20,
-              icon: const Icon(
-                CupertinoIcons.add_circled,
-                color: Colors.white,
-              ),
+              icon: const Icon(CupertinoIcons.add_circled),
               onPressed: () {
                 showModalBottomSheet(
-                  backgroundColor: Colors.transparent,
                   isScrollControlled: true,
                   context: context,
                   builder: (context) {
-                    return SingleChildScrollView(
-                      child: AnimatedPadding(
-                        padding: MediaQuery.of(context).viewInsets,
-                        duration: const Duration(milliseconds: 250),
-                        curve: Curves.decelerate,
-                        child: AddWordPopup(
-                          categoryId: wordsCategoryId,
-                          categoryPriority: wordsCategoryPriority,
-                        ),
+                    return AnimatedPadding(
+                      padding: MediaQuery.of(context).viewInsets,
+                      duration: const Duration(milliseconds: 250),
+                      curve: Curves.decelerate,
+                      child: AddWordPopup(
+                        categoryId: categoryModel.id,
+                        categoryPriority: categoryModel.priority,
                       ),
                     );
                   },
                 );
               },
             ),
-            Consumer<WordsFlipPageState>(
-              builder: (context, wordsFlipState, _) {
+            Consumer<ContentFlipState>(
+              builder: (context, flipMode, _) {
                 return IconButton(
-                  splashRadius: 20,
-                  icon: const Icon(
-                    CupertinoIcons.creditcard_fill,
-                    color: Colors.white,
-                  ),
+                  icon: const Icon(CupertinoIcons.creditcard_fill),
                   onPressed: () {
-                    wordsFlipState.changeCardMode();
+                    flipMode.changeFlipSide();
                   },
                 );
               },
@@ -74,32 +63,24 @@ class WordsContentFlipModePage extends StatelessWidget {
           ],
         ),
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            Card(
-              margin: const EdgeInsets.only(
-                left: 8,
-                top: 16,
-                right: 8,
+            Container(
+              margin: AppStyles.mainMardingMini,
+              padding: AppStyles.mainMardingMini,
+              decoration: BoxDecoration(
+                color: appColors.secondary,
+                borderRadius: AppStyles.mainBorder,
               ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Container(
-                width: double.maxFinite,
-                padding: const EdgeInsets.all(8),
-                child: Text(
-                  wordsCategoryTitle,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    color: Colors.white,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
+              child: Text(
+                categoryModel.wordCategoryTitle,
+                style: const TextStyle(fontSize: 18),
+                textAlign: TextAlign.center,
               ),
             ),
             Expanded(
               child: WordsFlipCardList(
-                wordsCategoryId: wordsCategoryId,
+                wordsCategoryId: categoryModel.id,
               ),
             ),
           ],
