@@ -4,7 +4,7 @@ import 'package:arabicinyourhands/data/state/user_dictionary_category_state.dart
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_category_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_categories_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/items/dictionary_category_item.dart';
-import 'package:arabicinyourhands/presentation/widgets/category_is_empty.dart';
+import 'package:arabicinyourhands/presentation/widgets/future_is_empty.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -61,7 +61,7 @@ class _DictionaryCategoriesListState extends State<DictionaryCategoriesList> {
             } else if (snapshot.hasError) {
               return ErrorDataText(error: snapshot.error.toString());
             } else {
-              return CategoryIsEmpty(
+              return FutureIsEmpty(
                 message: locale!.categories_is_empty,
               );
             }

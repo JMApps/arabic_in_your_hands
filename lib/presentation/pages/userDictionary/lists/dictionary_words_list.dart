@@ -3,7 +3,7 @@ import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictiona
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_word_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_words_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/items/dictionary_word_item.dart';
-import 'package:arabicinyourhands/presentation/widgets/category_is_empty.dart';
+import 'package:arabicinyourhands/presentation/widgets/future_is_empty.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -64,7 +64,7 @@ class _DictionaryWordsListState extends State<DictionaryWordsList> {
         } else if (snapshot.hasError) {
           return ErrorDataText(error: snapshot.error.toString());
         } else {
-          return CategoryIsEmpty(message: locale!.dictionary_word_add_first);
+          return FutureIsEmpty(message: locale!.dictionary_word_add_first);
         }
       },
     );

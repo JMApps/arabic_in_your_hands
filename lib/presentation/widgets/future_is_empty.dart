@@ -1,8 +1,8 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:flutter/material.dart';
 
-class CategoryIsEmpty extends StatelessWidget {
-  const CategoryIsEmpty({
+class FutureIsEmpty extends StatelessWidget {
+  const FutureIsEmpty({
     super.key,
     required this.message,
   });
