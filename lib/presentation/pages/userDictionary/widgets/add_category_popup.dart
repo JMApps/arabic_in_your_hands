@@ -5,6 +5,7 @@ import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictiona
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_add_category_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_categories_use_case.dart';
 import 'package:arabicinyourhands/presentation/uiState/dictionary/category_priority_state.dart';
+import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -21,6 +22,7 @@ class AddCategoryPopup extends StatefulWidget {
 class _AddCategoryPopupState extends State<AddCategoryPopup> {
   late final UserDictionaryCategoriesUseCase _categoriesUseCase;
   final TextEditingController _textWordCategoryEditing = TextEditingController();
+  final FocusNode focusCategory = FocusNode();
 
   @override
   void initState() {
@@ -31,6 +33,7 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations? locale = AppLocalizations.of(context);
+    final ColorScheme appColors = Theme.of(context).colorScheme;
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -54,8 +57,12 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                   autocorrect: false,
                   maxLength: 150,
                   textAlign: TextAlign.center,
+                  onChanged: (String? value) {
+                    categoryState.setCategoryState = value!;
+                  },
                   decoration: InputDecoration(
                     label: Text(locale!.enter_category_name),
+                    errorText: categoryState.getCategoryState ? locale.enter_category_name : null,
                     suffixIcon: IconButton(
                       onPressed: () {
                         showDialog(
@@ -143,7 +150,19 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                         priority: categoryState.getPriorityIndex,
                       );
                       Navigator.pop(context);
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: appColors.secondary,
+                          duration: const Duration(milliseconds: 500),
+                          content: SnackBarMessage(
+                            message: locale.dictionary_category_category_added,
+                          ),
+                        ),
+                      );
                       await _categoriesUseCase.addCategory(model: model);
+                    } else if (_textWordCategoryEditing.text.isEmpty) {
+                      categoryState.setCategoryState = '';
+                      focusCategory.requestFocus();
                     }
                   },
                   child: Text(locale.add),

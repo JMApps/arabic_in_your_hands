@@ -4,6 +4,7 @@ import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary
 import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_categories_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/change_category_popup.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
+import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -102,8 +103,16 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                               onPressed: () {
                                 Navigator.pop(context);
                                 Navigator.of(context).pop();
-                                _categoriesUseCase.deleteCategory(
-                                    categoryId: model.id);
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: appColors.secondary,
+                                    duration: const Duration(milliseconds: 500),
+                                    content: SnackBarMessage(
+                                      message: locale.dictionary_category_category_deleted,
+                                    ),
+                                  ),
+                                );
+                                _categoriesUseCase.deleteCategory(categoryId: model.id);
                               },
                               child: Text(
                                 locale.delete,
@@ -156,6 +165,15 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                               onPressed: () {
                                 Navigator.pop(context);
                                 Navigator.of(context).pop();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: appColors.secondary,
+                                    duration: const Duration(milliseconds: 500),
+                                    content: SnackBarMessage(
+                                      message: locale.deleted,
+                                    ),
+                                  ),
+                                );
                                 _categoriesUseCase.deleteAllCategories();
                               },
                               child: Text(

@@ -6,6 +6,7 @@ import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_change_category_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_categories_use_case.dart';
 import 'package:arabicinyourhands/presentation/uiState/dictionary/category_priority_state.dart';
+import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -25,6 +26,7 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
   late final UserDictionaryCategoriesUseCase _categoriesUseCase;
   late final UserDictionaryChangeCategoryEntity newCategory;
   late final TextEditingController _textWordCategoryEditing;
+  final FocusNode focusCategory = FocusNode();
 
   @override
   void initState() {
@@ -36,6 +38,7 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations? locale = AppLocalizations.of(context);
+    final ColorScheme appColors = Theme.of(context).colorScheme;
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -48,7 +51,7 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
       child: Container(
         padding: AppStyles.mainMarding,
         child: Consumer<CategoryProiriyState>(
-          builder: (BuildContext context, priorityState, _) {
+          builder: (BuildContext context, categoryState, _) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
@@ -62,8 +65,12 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
                   autocorrect: false,
                   maxLength: 150,
                   textAlign: TextAlign.center,
+                  onChanged: (String? value) {
+                    categoryState.setCategoryState = value!;
+                  },
                   decoration: InputDecoration(
                     label: Text(locale!.enter_category_name),
+                    errorText: categoryState.getCategoryState ? locale.enter_category_name : null,
                     suffixIcon: IconButton(
                       onPressed: () {
                         showDialog(
@@ -79,9 +86,9 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
                                 elevation: 0.5,
                                 allowShades: false,
                                 onMainColorChange: (ColorSwatch? color) {
-                                  priorityState.setCategoryColor = color!;
+                                  categoryState.setCategoryColor = color!;
                                 },
-                                selectedColor: priorityState.getCategoryColor,
+                                selectedColor: categoryState.getCategoryColor,
                               ),
                             ),
                             actions: [
@@ -98,7 +105,7 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
                       padding: EdgeInsets.zero,
                       icon: Icon(
                         Icons.color_lens_outlined,
-                        color: priorityState.getCategoryColor,
+                        color: categoryState.getCategoryColor,
                       ),
                     ),
                   ),
@@ -112,10 +119,10 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
                   child: ToggleButtons(
                     borderRadius: AppStyles.mainBorder,
                     isSelected: [
-                      priorityState.categoryPriority == Priorities.without,
-                      priorityState.categoryPriority == Priorities.low,
-                      priorityState.categoryPriority == Priorities.medium,
-                      priorityState.categoryPriority == Priorities.high,
+                      categoryState.categoryPriority == Priorities.without,
+                      categoryState.categoryPriority == Priorities.low,
+                      categoryState.categoryPriority == Priorities.medium,
+                      categoryState.categoryPriority == Priorities.high,
                     ],
                     children: const <CircleAvatar>[
                       CircleAvatar(
@@ -136,27 +143,38 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
                       ),
                     ],
                     onPressed: (int priorityIndex) {
-                      priorityState.setPriorityIndex = priorityIndex;
+                      categoryState.setPriorityIndex = priorityIndex;
                     },
                   ),
                 ),
                 const SizedBox(height: 16),
                 OutlinedButton(
                   onPressed: () async {
-                    if (widget.model.wordCategoryTitle != _textWordCategoryEditing.text ||
-                        HexColor.fromHex(widget.model.wordCategoryColor) != priorityState.getCategoryColor ||
-                        widget.model.priority != priorityState.getPriorityIndex) {
-                      final UserDictionaryChangeCategoryEntity model = UserDictionaryChangeCategoryEntity(
-                        id: widget.model.id,
-                        wordCategoryTitle: _textWordCategoryEditing.text,
-                        wordCategoryColor: priorityState.getCategoryColor.toHex(),
-                        priority: priorityState.getPriorityIndex,
-                        changeDateTime: DateTime.now().toString(),
-                      );
-                      Navigator.pop(context);
-                      await _categoriesUseCase.changeCategory(model: model);
-                    } else {
-                      Navigator.pop(context);
+                    if (_textWordCategoryEditing.text.isNotEmpty) {
+                      if (widget.model.wordCategoryTitle != _textWordCategoryEditing.text ||
+                          widget.model.wordCategoryColor.toString() != categoryState.getCategoryColor.toString() ||
+                          widget.model.priority != categoryState.getPriorityIndex) {
+                        final UserDictionaryChangeCategoryEntity model = UserDictionaryChangeCategoryEntity(
+                          id: widget.model.id,
+                          wordCategoryTitle: _textWordCategoryEditing.text,
+                          wordCategoryColor: categoryState.getCategoryColor.toHex(),
+                          priority: categoryState.getPriorityIndex,
+                        );
+                        Navigator.pop(context);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: appColors.secondary,
+                            duration: const Duration(milliseconds: 500),
+                            content: SnackBarMessage(
+                              message: locale.changed,
+                            ),
+                          ),
+                        );
+                        await _categoriesUseCase.changeCategory(model: model);
+                      }
+                    } else if (_textWordCategoryEditing.text.isEmpty) {
+                      categoryState.setCategoryState = '';
+                      focusCategory.requestFocus();
                     }
                   },
                   child: Text(locale.change),

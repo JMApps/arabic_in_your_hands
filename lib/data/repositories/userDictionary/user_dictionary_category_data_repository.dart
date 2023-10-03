@@ -56,7 +56,7 @@ class UserDictionaryCategoryDataRepository implements UserDictionaryCategoryRepo
       'wordCategoryTitle': model.wordCategoryTitle,
       'wordCategoryColor': model.wordCategoryColor,
       'priority': model.priority,
-      'changeDateTime': model.changeDateTime,
+      'changeDateTime': DateTime.now().toString(),
     };
     final int newWordCategory = await dbClient.update('Table_of_word_categories', newCategory, conflictAlgorithm: sql.ConflictAlgorithm.replace, where: '_id = ${model.id}');
     return newWordCategory;

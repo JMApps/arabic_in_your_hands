@@ -15,6 +15,10 @@ class CategoryProiriyState extends ChangeNotifier {
 
   Color get getCategoryColor => _categoryColor!;
 
+  bool _categoryState = false;
+
+  bool get getCategoryState => _categoryState;
+
   CategoryProiriyState([this._priorityIndex = 0, this._categoryColor = Colors.grey]) {
     _categoryPriority = Priorities.values[_priorityIndex!];
   }
@@ -27,6 +31,11 @@ class CategoryProiriyState extends ChangeNotifier {
   set setPriorityIndex(int value) {
     _priorityIndex = value;
     _categoryPriority = Priorities.values[_priorityIndex!];
+    notifyListeners();
+  }
+
+  set setCategoryState(String category) {
+    _categoryState = category.isEmpty;
     notifyListeners();
   }
 }
