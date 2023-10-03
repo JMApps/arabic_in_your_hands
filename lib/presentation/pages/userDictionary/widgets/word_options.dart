@@ -1,5 +1,6 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictionary_word_data_repository.dart';
+import 'package:arabicinyourhands/data/state/user_dictionary_word_state.dart';
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_word_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_words_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/change_word_popup.dart';
@@ -7,6 +8,7 @@ import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class WordOptions extends StatefulWidget {
   const WordOptions({
@@ -112,7 +114,7 @@ class _WordOptionsState extends State<WordOptions> {
                                     ),
                                   ),
                                 );
-                                _wordsUseCase.deleteWord(wordId: model.id);
+                                Provider.of<UserDictionaryWordState>(context, listen: false).deleteWord(wordId: model.id);
                               },
                               child: Text(
                                 locale.delete,
@@ -174,7 +176,7 @@ class _WordOptionsState extends State<WordOptions> {
                                     ),
                                   ),
                                 );
-                                _wordsUseCase.deleteWordsCategory(categoryId: widget.categoryId);
+                                Provider.of<UserDictionaryWordState>(context, listen: false).deleteWordsCategory(categoryId: widget.categoryId);
                               },
                               child: Text(
                                 locale.delete,

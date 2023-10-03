@@ -1,9 +1,8 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
-import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictionary_word_data_repository.dart';
+import 'package:arabicinyourhands/data/state/user_dictionary_word_state.dart';
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_change_word_entity.dart';
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_word_entity.dart';
-import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_words_use_case.dart';
 import 'package:arabicinyourhands/presentation/uiState/dictionary/word_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,7 +24,6 @@ class ChangeWordPopup extends StatefulWidget {
 }
 
 class _ChangeWordPopupState extends State<ChangeWordPopup> {
-  late final UserDictionaryWordsUseCase _dictionaryWordsUseCase;
   late final TextEditingController _wordEditing;
   late final TextEditingController _wordTranslateEditing;
   final FocusNode focusWord = FocusNode();
@@ -34,7 +32,6 @@ class _ChangeWordPopupState extends State<ChangeWordPopup> {
   @override
   void initState() {
     super.initState();
-    _dictionaryWordsUseCase = UserDictionaryWordsUseCase(UserDictionaryWordDataRepository.getInstance());
     _wordEditing = TextEditingController(text: widget.model.word);
     _wordTranslateEditing = TextEditingController(text: widget.model.wordTranslate);
   }
@@ -163,7 +160,7 @@ class _ChangeWordPopupState extends State<ChangeWordPopup> {
                             ),
                           ),
                         );
-                        _dictionaryWordsUseCase.changeWord(model: model);
+                        Provider.of<UserDictionaryWordState>(context, listen: false).changeWord(model: model);
                       }
                     } else if (_wordEditing.text.isEmpty) {
                       wordState.setWordState = '';

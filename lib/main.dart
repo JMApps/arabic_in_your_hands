@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:arabicinyourhands/core/colors/app_colors.dart';
 import 'package:arabicinyourhands/core/strings/app_constraints.dart';
 import 'package:arabicinyourhands/data/state/user_dictionary_category_state.dart';
+import 'package:arabicinyourhands/data/state/user_dictionary_word_state.dart';
 import 'package:arabicinyourhands/presentation/pages/root_page.dart';
 import 'package:arabicinyourhands/presentation/uiState/content_settings_state.dart';
 import 'package:arabicinyourhands/presentation/uiState/dialog_show_state.dart';
@@ -44,6 +45,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => UserDictionaryCategoryState(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => UserDictionaryWordState(),
         ),
       ],
       child: const RootPage(),

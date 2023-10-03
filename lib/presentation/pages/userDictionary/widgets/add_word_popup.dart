@@ -1,8 +1,7 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
-import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictionary_word_data_repository.dart';
+import 'package:arabicinyourhands/data/state/user_dictionary_word_state.dart';
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_add_word_entity.dart';
-import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_words_use_case.dart';
 import 'package:arabicinyourhands/presentation/uiState/dictionary/word_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/cupertino.dart';
@@ -26,17 +25,10 @@ class AddWordPopup extends StatefulWidget {
 }
 
 class _AddWordPopupState extends State<AddWordPopup> {
-  late final UserDictionaryWordsUseCase _dictionaryWordsUseCase;
   final TextEditingController _wordEditing = TextEditingController();
   final TextEditingController _wordTranslateEditing = TextEditingController();
   final FocusNode focusWord = FocusNode();
   final FocusNode focusWordTranslate = FocusNode();
-
-  @override
-  void initState() {
-    super.initState();
-    _dictionaryWordsUseCase = UserDictionaryWordsUseCase(UserDictionaryWordDataRepository.getInstance());
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -151,7 +143,7 @@ class _AddWordPopupState extends State<AddWordPopup> {
                           ),
                         ),
                       );
-                      _dictionaryWordsUseCase.addWord(model: model);
+                      Provider.of<UserDictionaryWordState>(context, listen: false).addWord(model: model);
                     } else if (_wordEditing.text.isEmpty) {
                       wordState.setWordState = '';
                       focusWord.requestFocus();
