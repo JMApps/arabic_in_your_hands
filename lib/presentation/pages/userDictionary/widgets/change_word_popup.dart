@@ -1,7 +1,8 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictionary_word_data_repository.dart';
-import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_add_word_entity.dart';
+import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_change_word_entity.dart';
+import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_word_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_words_use_case.dart';
 import 'package:arabicinyourhands/presentation/uiState/dictionary/word_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
@@ -11,24 +12,22 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:provider/provider.dart';
 
-class AddWordPopup extends StatefulWidget {
-  const AddWordPopup({
+class ChangeWordPopup extends StatefulWidget {
+  const ChangeWordPopup({
     Key? key,
-    required this.categoryId,
-    required this.categoryPriority,
+    required this.model,
   }) : super(key: key);
 
-  final int categoryId;
-  final int categoryPriority;
+  final UserDictionaryWordEntity model;
 
   @override
-  State<AddWordPopup> createState() => _AddWordPopupState();
+  State<ChangeWordPopup> createState() => _ChangeWordPopupState();
 }
 
-class _AddWordPopupState extends State<AddWordPopup> {
+class _ChangeWordPopupState extends State<ChangeWordPopup> {
   late final UserDictionaryWordsUseCase _dictionaryWordsUseCase;
-  final TextEditingController _wordEditing = TextEditingController();
-  final TextEditingController _wordTranslateEditing = TextEditingController();
+  late final TextEditingController _wordEditing;
+  late final TextEditingController _wordTranslateEditing;
   final FocusNode focusWord = FocusNode();
   final FocusNode focusWordTranslate = FocusNode();
 
@@ -36,6 +35,8 @@ class _AddWordPopupState extends State<AddWordPopup> {
   void initState() {
     super.initState();
     _dictionaryWordsUseCase = UserDictionaryWordsUseCase(UserDictionaryWordDataRepository.getInstance());
+    _wordEditing = TextEditingController(text: widget.model.word);
+    _wordTranslateEditing = TextEditingController(text: widget.model.wordTranslate);
   }
 
   @override
@@ -45,7 +46,9 @@ class _AddWordPopupState extends State<AddWordPopup> {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<WordState>(
-          create: (_) => WordState(),
+          create: (_) => WordState(
+            HexColor.fromHex(widget.model.wordItemColor),
+          ),
         ),
       ],
       child: Container(
@@ -70,7 +73,8 @@ class _AddWordPopupState extends State<AddWordPopup> {
                     wordState.setWordState = value!;
                   },
                   decoration: InputDecoration(
-                    errorText: wordState.getWordState ? locale!.enter_word : null,
+                    errorText:
+                        wordState.getWordState ? locale!.enter_word : null,
                     label: Text(locale!.word),
                     suffixIcon: IconButton(
                       onPressed: () {
@@ -87,7 +91,6 @@ class _AddWordPopupState extends State<AddWordPopup> {
                                 elevation: 0.5,
                                 allowShades: false,
                                 onMainColorChange: (ColorSwatch? color) {
-                                  debugPrint(color.toString());
                                   wordState.setWordColor = color!;
                                 },
                                 selectedColor: wordState.getWordColor,
@@ -127,31 +130,41 @@ class _AddWordPopupState extends State<AddWordPopup> {
                     wordState.setWordTranslateState = value!;
                   },
                   decoration: InputDecoration(
-                    errorText: wordState.getWordTranslateState ? locale.enter_translation : null,
+                    errorText: wordState.getWordTranslateState
+                        ? locale.enter_translation
+                        : null,
                     label: Text(locale.translation),
                   ),
                 ),
                 const SizedBox(height: 4),
                 OutlinedButton(
                   onPressed: () {
-                    if (_wordEditing.text.isNotEmpty && _wordTranslateEditing.text.isNotEmpty) {
-                      final UserDictionaryAddWordEntity model = UserDictionaryAddWordEntity(
-                        displayBy: widget.categoryId,
-                        word: _wordEditing.text,
-                        wordTranslate: _wordTranslateEditing.text,
-                        wordItemColor: wordState.getWordColor.toHex(),
-                      );
-                      Navigator.pop(context);
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          backgroundColor: appColors.secondary,
-                          duration: const Duration(milliseconds: 500),
-                          content: SnackBarMessage(
-                            message: locale.dictionary_word_category_added,
+                    if (_wordEditing.text.isNotEmpty &&
+                        _wordTranslateEditing.text.isNotEmpty) {
+                      if (_wordEditing.text != widget.model.word ||
+                          _wordTranslateEditing.text !=
+                              widget.model.wordTranslate ||
+                          wordState.getWordColor.toString() !=
+                              widget.model.wordItemColor.toString()) {
+                        final UserDictionaryChangeWordEntity model =
+                            UserDictionaryChangeWordEntity(
+                          id: widget.model.id,
+                          word: _wordEditing.text,
+                          wordTranslate: _wordTranslateEditing.text,
+                          wordItemColor: wordState.getWordColor.toHex(),
+                        );
+                        Navigator.pop(context);
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(
+                            backgroundColor: appColors.secondary,
+                            duration: const Duration(milliseconds: 500),
+                            content: SnackBarMessage(
+                              message: locale.changed,
+                            ),
                           ),
-                        ),
-                      );
-                      _dictionaryWordsUseCase.addWord(model: model);
+                        );
+                        _dictionaryWordsUseCase.changeWord(model: model);
+                      }
                     } else if (_wordEditing.text.isEmpty) {
                       wordState.setWordState = '';
                       focusWord.requestFocus();
@@ -160,9 +173,7 @@ class _AddWordPopupState extends State<AddWordPopup> {
                       focusWordTranslate.requestFocus();
                     }
                   },
-                  child: Text(
-                    locale.add,
-                  ),
+                  child: Text(locale.change),
                 ),
               ],
             );

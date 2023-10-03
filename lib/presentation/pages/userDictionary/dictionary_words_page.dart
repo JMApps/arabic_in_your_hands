@@ -57,6 +57,7 @@ class DictionaryWordsPage extends StatelessWidget {
                   ),
                   const SizedBox(height: 8),
                   Card(
+                    elevation: 0,
                     margin: AppStyles.mainMardingHorizontalMini,
                     color: appColors.secondary,
                     child: Padding(
@@ -83,7 +84,7 @@ class DictionaryWordsPage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: HexColor.fromHex(categoryModel.wordCategoryColor),
+        backgroundColor: appColors.secondary,
         child: const Icon(CupertinoIcons.add),
         onPressed: () {
           showModalBottomSheet(

@@ -53,7 +53,7 @@ class UserDictionaryWordDataRepository implements UserDictionaryWordRepository {
       'wordItemColor': model.wordItemColor,
       'addDateTime': DateTime.now().toString(),
       'changeDateTime': DateTime.now().toString(),
-      'priority': model.priority,
+      'priority': 0,
     };
     final int wordCategory = await dbClient.insert('Table_of_words', word, conflictAlgorithm: sql.ConflictAlgorithm.replace);
     return wordCategory;
@@ -66,10 +66,10 @@ class UserDictionaryWordDataRepository implements UserDictionaryWordRepository {
       '_id': model.id,
       'word': model.word,
       'wordTranslate': model.wordTranslate,
-      'wordItemColor': model.changeDateTime,
+      'wordItemColor': model.wordItemColor,
       'changeDateTime': DateTime.now().toString(),
     };
-    final int newWordCategory = await dbClient.update('Table_of_word_categories', newWord, conflictAlgorithm: sql.ConflictAlgorithm.replace, where: '_id = ${model.id}');
+    final int newWordCategory = await dbClient.update('Table_of_words', newWord, conflictAlgorithm: sql.ConflictAlgorithm.replace, where: '_id = ${model.id}');
     return newWordCategory;
   }
 

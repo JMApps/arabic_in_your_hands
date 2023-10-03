@@ -2,7 +2,9 @@ import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictionary_word_data_repository.dart';
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_word_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_words_use_case.dart';
+import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/change_word_popup.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
+import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -67,7 +69,7 @@ class _WordOptionsState extends State<WordOptions> {
                           padding: MediaQuery.of(context).viewInsets,
                           duration: const Duration(milliseconds: 250),
                           curve: Curves.decelerate,
-                          child: Container() // Change word popup
+                          child: ChangeWordPopup(model: model),
                         );
                       },
                     );
@@ -101,6 +103,15 @@ class _WordOptionsState extends State<WordOptions> {
                               onPressed: () {
                                 Navigator.pop(context);
                                 Navigator.of(context).pop();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: appColors.secondary,
+                                    duration: const Duration(milliseconds: 500),
+                                    content: SnackBarMessage(
+                                      message: locale.dictionary_word_category_deleted,
+                                    ),
+                                  ),
+                                );
                                 _wordsUseCase.deleteWord(wordId: model.id);
                               },
                               child: Text(
@@ -154,6 +165,15 @@ class _WordOptionsState extends State<WordOptions> {
                               onPressed: () {
                                 Navigator.pop(context);
                                 Navigator.of(context).pop();
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    backgroundColor: appColors.secondary,
+                                    duration: const Duration(milliseconds: 500),
+                                    content: SnackBarMessage(
+                                      message: locale.deleted,
+                                    ),
+                                  ),
+                                );
                                 _wordsUseCase.deleteWordsCategory(categoryId: widget.categoryId);
                               },
                               child: Text(
