@@ -1,3 +1,4 @@
+import 'package:arabicinyourhands/presentation/pages/arabicDictionary/arabic_dictionary_page.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/dictionary_categories_page.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/first_vol_chapters_page.dart';
 import 'package:arabicinyourhands/presentation/pages/seconVolume/second_vol_chapters_page.dart';
@@ -35,7 +36,7 @@ class AppStyles {
   static const List<Widget> mainPages = <Widget>[
     FirstVolChaptersPage(),
     SecondVolChaptersPage(),
-    DictionaryCategoriesPage(),
+    ArabicDictionaryPage(),
     DictionaryCategoriesPage(),
     SettingsContentPage(),
   ];

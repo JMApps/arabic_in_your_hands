@@ -68,5 +68,6 @@
   "deleted": "Удалено",
   "allCategoriesDeleteMessage": "Вы уверены, что хотите удалить все категории и слова?",
   "categories_is_empty": "Добавьте первую категорию",
-  "allWordsDeleteMessage": "Вы уверены, что хотите все слова из этой категории?"
+  "allWordsDeleteMessage": "Вы уверены, что хотите все слова из этой категории?",
+  "arabicDictionary": "Арабский словарь"
 }
