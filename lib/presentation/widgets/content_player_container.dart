@@ -21,12 +21,11 @@ class ContentPlayerContaier extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          IconButton(
-            icon: Icon(
-              CupertinoIcons.eye_fill,
-              color: appColors.secondary,
-              size: 35,
-            ),
+          FloatingActionButton.small(
+            backgroundColor: appColors.mainCardColor,
+            elevation: 0,
+            heroTag: 'media_1',
+            child: const Icon(CupertinoIcons.eye_fill),
             onPressed: () {
               showModalBottomSheet(
                 context: context,
@@ -77,7 +76,7 @@ class ContentPlayerContaier extends StatelessWidget {
             onPressed: () {},
           ),
           FloatingActionButton.small(
-            backgroundColor: appColors.secondary,
+            backgroundColor: appColors.mainCardColor,
             elevation: 0,
             heroTag: 'media_4',
             child: const Icon(
@@ -98,4 +97,3 @@ class ContentPlayerContaier extends StatelessWidget {
     );
   }
 }
-
