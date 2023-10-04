@@ -12,10 +12,10 @@ class SettingsContentPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
-    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final AppLocalizations? locale = AppLocalizations.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text(locale.settings),
+        title: Text(locale!.settings),
         backgroundColor: appColors.primaryColor,
       ),
       body: SingleChildScrollView(

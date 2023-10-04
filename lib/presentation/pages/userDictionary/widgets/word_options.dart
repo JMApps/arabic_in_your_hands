@@ -12,10 +12,10 @@ import 'package:provider/provider.dart';
 
 class WordOptions extends StatefulWidget {
   const WordOptions({
-    Key? key,
+    super.key,
     required this.categoryId,
     required this.wordId,
-  }) : super(key: key);
+  });
 
   final int categoryId;
   final int wordId;
@@ -36,7 +36,7 @@ class _WordOptionsState extends State<WordOptions> {
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
-    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final AppLocalizations? locale = AppLocalizations.of(context);
     return FutureBuilder<List<UserDictionaryWordEntity>>(
       future: _wordsUseCase.fetchWordById(
         wordId: widget.wordId,
@@ -77,7 +77,7 @@ class _WordOptionsState extends State<WordOptions> {
                     );
                   },
                   child: Text(
-                    locale.change,
+                    locale!.change,
                     textAlign: TextAlign.center,
                   ),
                 ),

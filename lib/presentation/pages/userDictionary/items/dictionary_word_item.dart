@@ -6,10 +6,10 @@ import 'package:flutter/material.dart';
 
 class DictionaryWordItem extends StatelessWidget {
   const DictionaryWordItem({
-    Key? key,
+    super.key,
     required this.model,
     required this.categoryId,
-  }) : super(key: key);
+  });
 
   final UserDictionaryWordEntity model;
   final int categoryId;

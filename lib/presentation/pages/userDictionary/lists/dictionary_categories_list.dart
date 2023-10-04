@@ -12,7 +12,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 class DictionaryCategoriesList extends StatefulWidget {
-  const DictionaryCategoriesList({Key? key}) : super(key: key);
+  const DictionaryCategoriesList({super.key});
 
   @override
   State<DictionaryCategoriesList> createState() => _DictionaryCategoriesListState();

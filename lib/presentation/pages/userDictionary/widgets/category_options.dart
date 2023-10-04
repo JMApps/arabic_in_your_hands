@@ -12,9 +12,9 @@ import 'package:provider/provider.dart';
 
 class CategoryOptions extends StatefulWidget {
   const CategoryOptions({
-    Key? key,
+    super.key,
     required this.categoryId,
-  }) : super(key: key);
+  });
 
   final int categoryId;
 
@@ -110,7 +110,8 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                                     backgroundColor: appColors.secondary,
                                     duration: const Duration(milliseconds: 500),
                                     content: SnackBarMessage(
-                                      message: locale.dictionary_category_category_deleted,
+                                      message: locale
+                                          .dictionary_category_category_deleted,
                                     ),
                                   ),
                                 );

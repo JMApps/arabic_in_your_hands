@@ -18,13 +18,11 @@ class FirstVolSubChapterList extends StatefulWidget {
 }
 
 class _FirstVolSubChapterListState extends State<FirstVolSubChapterList> {
-  late final FirstVolSubChaptersDataRepository _firstVolSubChaptersDataRepository;
   late final FirstVolSubChaptersUseCase _firstVolSubChaptersUseCase;
   final PageController _pageController = PageController();
 
   _FirstVolSubChapterListState() {
-    _firstVolSubChaptersDataRepository = FirstVolSubChaptersDataRepository.getInstance();
-    _firstVolSubChaptersUseCase = FirstVolSubChaptersUseCase(_firstVolSubChaptersDataRepository);
+    _firstVolSubChaptersUseCase = FirstVolSubChaptersUseCase(FirstVolSubChaptersDataRepository.getInstance());
   }
 
   @override

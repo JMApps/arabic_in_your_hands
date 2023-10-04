@@ -9,7 +9,7 @@ class DictionaryWordModel {
   final String changeDateTime;
   final int priority;
 
-  DictionaryWordModel({
+  const DictionaryWordModel({
     required this.id,
     required this.displayBy,
     required this.word,

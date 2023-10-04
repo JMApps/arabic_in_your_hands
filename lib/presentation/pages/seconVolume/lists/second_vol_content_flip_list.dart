@@ -25,14 +25,12 @@ class SecondVolContentFlipList extends StatefulWidget {
 }
 
 class _SecondVolContentFlipListState extends State<SecondVolContentFlipList> {
-  late final SecondVolContentsDataRepository _secondVolContentsDataRepository;
   late final SecondVolContentsUseCase _secondVolContentsUseCase;
   late final PageController _pageController = PageController();
   final FlipCardController _flipCardController = FlipCardController();
 
   _SecondVolContentFlipListState() {
-    _secondVolContentsDataRepository = SecondVolContentsDataRepository.getInstance();
-    _secondVolContentsUseCase = SecondVolContentsUseCase(_secondVolContentsDataRepository);
+    _secondVolContentsUseCase = SecondVolContentsUseCase(SecondVolContentsDataRepository.getInstance());
   }
 
   @override

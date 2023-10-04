@@ -11,11 +11,11 @@ class SecondVolChaptersPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final AppLocalizations? locale = AppLocalizations.of(context);
     final ColorScheme appColors = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
-        title: Text(locale.volume_2),
+        title: Text(locale!.volume_2),
         backgroundColor: appColors.primaryColor,
         leading: const MainAppIcon(),
         actions: const [

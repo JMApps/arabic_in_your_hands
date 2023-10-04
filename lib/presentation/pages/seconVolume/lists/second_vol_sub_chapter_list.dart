@@ -9,7 +9,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SeconVolSubChapterList extends StatefulWidget {
-  const SeconVolSubChapterList({super.key, required this.secondChapterId});
+  const SeconVolSubChapterList({
+    super.key,
+    required this.secondChapterId,
+  });
 
   final int secondChapterId;
 
@@ -18,13 +21,11 @@ class SeconVolSubChapterList extends StatefulWidget {
 }
 
 class _SeconVolSubChapterListState extends State<SeconVolSubChapterList> {
-  late final SecondVolSubChaptersDataRepository _secondVolSubChaptersDataRepository;
   late final SecondVolSubChaptersUseCase _secondVolSubChaptersUseCase;
   final PageController _pageController = PageController();
 
   _SeconVolSubChapterListState() {
-    _secondVolSubChaptersDataRepository = SecondVolSubChaptersDataRepository.getInstance();
-    _secondVolSubChaptersUseCase = SecondVolSubChaptersUseCase(_secondVolSubChaptersDataRepository);
+    _secondVolSubChaptersUseCase = SecondVolSubChaptersUseCase(SecondVolSubChaptersDataRepository.getInstance());
   }
 
   @override
@@ -62,7 +63,8 @@ class _SeconVolSubChapterListState extends State<SeconVolSubChapterList> {
                           scrollDirection: Axis.horizontal,
                           itemCount: snapshot.data!.length,
                           itemBuilder: (context, index) {
-                            final SecondVolSubChapterEntity model = snapshot.data![index];
+                            final SecondVolSubChapterEntity model =
+                                snapshot.data![index];
                             return SecondVolSubChapterItem(
                               model: model,
                             );

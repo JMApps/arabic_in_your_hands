@@ -6,7 +6,7 @@ class DictionaryCategoryModel {
   final String addDateTime;
   final String changeDateTime;
 
-  DictionaryCategoryModel({
+  const DictionaryCategoryModel({
     required this.id,
     required this.wordCategoryTitle,
     required this.wordCategoryColor,

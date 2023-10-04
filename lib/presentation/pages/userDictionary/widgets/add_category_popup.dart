@@ -12,7 +12,7 @@ import 'package:flutter_material_color_picker/flutter_material_color_picker.dart
 import 'package:provider/provider.dart';
 
 class AddCategoryPopup extends StatefulWidget {
-  const AddCategoryPopup({Key? key}) : super(key: key);
+  const AddCategoryPopup({super.key});
 
   @override
   State<AddCategoryPopup> createState() => _AddCategoryPopupState();

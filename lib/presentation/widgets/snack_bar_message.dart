@@ -2,7 +2,10 @@ import 'package:arabicinyourhands/core/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class SnackBarMessage extends StatelessWidget {
-  const SnackBarMessage({super.key, required this.message});
+  const SnackBarMessage({
+    super.key,
+    required this.message,
+  });
 
   final String message;
 

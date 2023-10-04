@@ -13,9 +13,9 @@ import 'package:provider/provider.dart';
 
 class WordsFlipCardList extends StatefulWidget {
   const WordsFlipCardList({
-    Key? key,
+    super.key,
     required this.wordsCategoryId,
-  }) : super(key: key);
+  });
 
   final int wordsCategoryId;
 

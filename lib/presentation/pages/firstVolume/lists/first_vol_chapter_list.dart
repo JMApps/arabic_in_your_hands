@@ -17,20 +17,18 @@ class FirstVolChapterList extends StatefulWidget {
 }
 
 class _FirstVolChapterListState extends State<FirstVolChapterList> {
-  late final FirstVolChaptersDataRepository _firstVolChaptersDataRepository;
   late final FirstVolChaptersUseCase _firstVolChaptersUseCase;
 
   _FirstVolChapterListState() {
-    _firstVolChaptersDataRepository = FirstVolChaptersDataRepository.getInstance();
-    _firstVolChaptersUseCase = FirstVolChaptersUseCase(_firstVolChaptersDataRepository);
+    _firstVolChaptersUseCase = FirstVolChaptersUseCase(FirstVolChaptersDataRepository.getInstance());
   }
 
   @override
   Widget build(BuildContext context) {
-    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final AppLocalizations? locale = AppLocalizations.of(context);
     return FutureBuilder<List<FirstVolChapterEntity>>(
       future: _firstVolChaptersUseCase.fetchFirstChapters(
-        tableName: locale.tableNameFirstVolChapters,
+        tableName: locale!.tableNameFirstVolChapters,
       ),
       builder: (BuildContext context,
           AsyncSnapshot<List<FirstVolChapterEntity>> snapshot) {

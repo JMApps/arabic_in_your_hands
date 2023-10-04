@@ -53,7 +53,7 @@ class WordsContentFlipModePage extends StatelessWidget {
             Consumer<ContentFlipState>(
               builder: (context, flipMode, _) {
                 return IconButton(
-                  icon: const Icon(CupertinoIcons.creditcard_fill),
+                  icon: const Icon(CupertinoIcons.rotate_right),
                   onPressed: () {
                     flipMode.changeFlipSide();
                   },

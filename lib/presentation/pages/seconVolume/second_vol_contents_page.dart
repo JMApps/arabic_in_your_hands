@@ -84,7 +84,7 @@ class SecondVolContentsPage extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: const ContantPlayerContainer(),
+        bottomNavigationBar: const ContentPlayerContaier(),
       ),
     );
   }

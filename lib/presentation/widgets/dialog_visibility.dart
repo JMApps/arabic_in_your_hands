@@ -5,12 +5,12 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 class DialogVisibility extends StatelessWidget {
-  const DialogVisibility({Key? key}) : super(key: key);
+  const DialogVisibility({super.key});
 
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
-    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final AppLocalizations? locale = AppLocalizations.of(context);
     final DialogShowState dialogShowState = Provider.of<DialogShowState>(context);
     return Container(
       padding: AppStyles.mainMarding,
@@ -18,7 +18,7 @@ class DialogVisibility extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            locale.visible_mode,
+            locale!.visible_mode,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -62,3 +62,4 @@ class DialogVisibility extends StatelessWidget {
     );
   }
 }
+

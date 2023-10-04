@@ -13,9 +13,9 @@ import 'package:provider/provider.dart';
 
 class DictionaryWordsList extends StatefulWidget {
   const DictionaryWordsList({
-    Key? key,
+    super.key,
     required this.categoryId,
-  }) : super(key: key);
+  });
 
   final int categoryId;
 
@@ -50,9 +50,9 @@ class _DictionaryWordsListState extends State<DictionaryWordsList> {
                       final UserDictionaryWordEntity model = snapshot.data![index];
                       return AnimationConfiguration.staggeredList(
                         position: index,
-                        duration: const Duration(milliseconds: 250),
+                        duration: const Duration(milliseconds: 350),
                         child: SlideAnimation(
-                          verticalOffset: 150,
+                          verticalOffset: 250,
                           child: FadeInAnimation(
                             child: DictionaryWordItem(
                               model: model,

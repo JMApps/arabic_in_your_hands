@@ -4,28 +4,28 @@ import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:clipboard/clipboard.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FirstVolShareCopy extends StatelessWidget {
   const FirstVolShareCopy({
-    Key? key,
+    super.key,
     required this.model,
-  }) : super(key: key);
+  });
 
   final FirstVolContentEntity model;
 
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
-    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final AppLocalizations? locale = AppLocalizations.of(context);
     return Container(
       padding: AppStyles.mainMarding,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            locale.share,
+            locale!.share,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,

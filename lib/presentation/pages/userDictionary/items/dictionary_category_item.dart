@@ -8,10 +8,10 @@ import 'package:flutter/material.dart';
 
 class DictionaryCategoryItem extends StatelessWidget {
   const DictionaryCategoryItem({
-    Key? key,
+    super.key,
     required this.model,
     required this.index,
-  }) : super(key: key);
+  });
 
   final UserDictionaryCategoryEntity model;
   final int index;

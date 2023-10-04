@@ -9,23 +9,23 @@ import 'package:share_plus/share_plus.dart';
 
 class SecondVolShareCopy extends StatelessWidget {
   const SecondVolShareCopy({
-    Key? key,
+    super.key,
     required this.model,
-  }) : super(key: key);
+  });
 
   final SecondVolContentEntity model;
 
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
-    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final AppLocalizations? locale = AppLocalizations.of(context);
     return Container(
       padding: AppStyles.mainMarding,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            locale.share,
+            locale!.share,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,

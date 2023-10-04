@@ -25,8 +25,7 @@ class _SearchCategoryFutureState extends State<SearchCategoryFuture> {
 
   @override
   void initState() {
-    _categoriesUseCase = UserDictionaryCategoriesUseCase(
-        UserDictionaryCategoryDataRepository.getInstance());
+    _categoriesUseCase = UserDictionaryCategoriesUseCase(UserDictionaryCategoryDataRepository.getInstance());
     super.initState();
   }
 

@@ -33,7 +33,7 @@ class SecondVolContentsFlipPage extends StatelessWidget {
               builder: (BuildContext context, flipState, Widget? child) {
                 return IconButton(
                   icon: const Icon(
-                    CupertinoIcons.arrow_2_circlepath,
+                    CupertinoIcons.rotate_right,
                     color: Colors.white,
                   ),
                   onPressed: () {

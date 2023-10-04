@@ -13,9 +13,9 @@ import 'package:provider/provider.dart';
 
 class ChangeWordPopup extends StatefulWidget {
   const ChangeWordPopup({
-    Key? key,
+    super.key,
     required this.model,
-  }) : super(key: key);
+  });
 
   final UserDictionaryWordEntity model;
 
@@ -139,12 +139,9 @@ class _ChangeWordPopupState extends State<ChangeWordPopup> {
                     if (_wordEditing.text.isNotEmpty &&
                         _wordTranslateEditing.text.isNotEmpty) {
                       if (_wordEditing.text != widget.model.word ||
-                          _wordTranslateEditing.text !=
-                              widget.model.wordTranslate ||
-                          wordState.getWordColor.toString() !=
-                              widget.model.wordItemColor.toString()) {
-                        final UserDictionaryChangeWordEntity model =
-                            UserDictionaryChangeWordEntity(
+                          _wordTranslateEditing.text != widget.model.wordTranslate ||
+                          wordState.getWordColor.toString() != widget.model.wordItemColor.toString()) {
+                        final UserDictionaryChangeWordEntity model = UserDictionaryChangeWordEntity(
                           id: widget.model.id,
                           word: _wordEditing.text,
                           wordTranslate: _wordTranslateEditing.text,

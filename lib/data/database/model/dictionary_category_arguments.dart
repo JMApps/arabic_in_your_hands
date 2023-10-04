@@ -4,7 +4,7 @@ class DictionaryCategoryArguments {
   final String categoryColor;
   final int categoryPriority;
 
-  DictionaryCategoryArguments(
+  const DictionaryCategoryArguments(
     this.categoryId,
     this.categoryTitle,
     this.categoryColor,

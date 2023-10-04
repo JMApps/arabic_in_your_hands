@@ -10,9 +10,9 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DictionaryWordsPage extends StatelessWidget {
   const DictionaryWordsPage({
-    Key? key,
+    super.key,
     required this.categoryModel,
-  }) : super(key: key);
+  });
 
   final UserDictionaryCategoryEntity categoryModel;
 

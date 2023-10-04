@@ -3,7 +3,7 @@ class DictionaryWordFlipArguments {
   final String wordsCategoryTitle;
   final int wordsCategoryPriority;
 
-  DictionaryWordFlipArguments(
+  const DictionaryWordFlipArguments(
     this.wordsCategoryId,
     this.wordsCategoryTitle,
     this.wordsCategoryPriority,

@@ -8,9 +8,9 @@ class ShareLinksButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final AppLocalizations? locale = AppLocalizations.of(context);
     return IconButton(
-      tooltip: locale.share_links_app,
+      tooltip: locale!.share_links_app,
       icon: const Icon(
         CupertinoIcons.share,
         color: Colors.white,

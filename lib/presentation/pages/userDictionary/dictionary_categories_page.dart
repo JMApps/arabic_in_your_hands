@@ -7,15 +7,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DictionaryCategoriesPage extends StatelessWidget {
-  const DictionaryCategoriesPage({Key? key}) : super(key: key);
+  const DictionaryCategoriesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final AppLocalizations locale = AppLocalizations.of(context)!;
+    final AppLocalizations? locale = AppLocalizations.of(context);
     final ColorScheme appColors = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
-        title: Text(locale.categories),
+        title: Text(locale!.categories),
         leading: const MainAppIcon(),
         actions: [
           IconButton(

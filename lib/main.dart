@@ -13,11 +13,11 @@ import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
-final globalBucketFirstVolumeChapters = PageStorageBucket();
-final globalBucketFirstVolumeSubChapters = PageStorageBucket();
+final PageStorageBucket globalBucketFirstVolumeChapters = PageStorageBucket();
+final PageStorageBucket globalBucketFirstVolumeSubChapters = PageStorageBucket();
 
-final globalBucketSecondVolumeChapters = PageStorageBucket();
-final globalBucketSecondVolumeSubChapters = PageStorageBucket();
+final PageStorageBucket globalBucketSecondVolumeChapters = PageStorageBucket();
+final PageStorageBucket globalBucketSecondVolumeSubChapters = PageStorageBucket();
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

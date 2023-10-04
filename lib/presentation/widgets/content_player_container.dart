@@ -8,8 +8,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class ContantPlayerContainer extends StatelessWidget {
-  const ContantPlayerContainer({Key? key}) : super(key: key);
+class ContentPlayerContaier extends StatelessWidget {
+  const ContentPlayerContaier({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -98,3 +98,4 @@ class ContantPlayerContainer extends StatelessWidget {
     );
   }
 }
+

@@ -15,8 +15,8 @@ class MainSmoothPageIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
     return SmoothPageIndicator(
-      controller: controller,
       count: length,
+      controller: controller,
       onDotClicked: (index) => controller.animateToPage(
         index,
         duration: const Duration(milliseconds: 50),

@@ -9,10 +9,10 @@ import 'package:provider/provider.dart';
 
 class FirstVolContentItemRight extends StatelessWidget {
   const FirstVolContentItemRight({
-    Key? key,
+    super.key,
     required this.model,
     required this.index,
-  }) : super(key: key);
+  });
 
   final FirstVolContentEntity model;
   final int index;

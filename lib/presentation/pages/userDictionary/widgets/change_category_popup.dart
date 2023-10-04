@@ -13,7 +13,10 @@ import 'package:flutter_material_color_picker/flutter_material_color_picker.dart
 import 'package:provider/provider.dart';
 
 class ChangeCategoryPopup extends StatefulWidget {
-  const ChangeCategoryPopup({Key? key, required this.model}) : super(key: key);
+  const ChangeCategoryPopup({
+    super.key,
+    required this.model,
+  });
 
   final UserDictionaryCategoryEntity model;
 
@@ -67,7 +70,9 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
                   },
                   decoration: InputDecoration(
                     label: Text(locale!.enter_category_name),
-                    errorText: categoryState.getCategoryState ? locale.enter_category_name : null,
+                    errorText: categoryState.getCategoryState
+                        ? locale.enter_category_name
+                        : null,
                     suffixIcon: IconButton(
                       onPressed: () {
                         showDialog(
@@ -151,7 +156,8 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
                       if (widget.model.wordCategoryTitle != _textWordCategoryEditing.text ||
                           widget.model.wordCategoryColor.toString() != categoryState.getCategoryColor.toString() ||
                           widget.model.priority != categoryState.getPriorityIndex) {
-                        final UserDictionaryChangeCategoryEntity model = UserDictionaryChangeCategoryEntity(
+                        final UserDictionaryChangeCategoryEntity model =
+                            UserDictionaryChangeCategoryEntity(
                           id: widget.model.id,
                           wordCategoryTitle: _textWordCategoryEditing.text,
                           wordCategoryColor: categoryState.getCategoryColor.toHex(),

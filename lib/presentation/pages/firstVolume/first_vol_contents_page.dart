@@ -84,7 +84,7 @@ class FirstVolContentsPage extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: const ContantPlayerContainer(),
+        bottomNavigationBar: const ContentPlayerContaier(),
       ),
     );
   }

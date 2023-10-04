@@ -12,10 +12,10 @@ import 'package:provider/provider.dart';
 
 class AddWordPopup extends StatefulWidget {
   const AddWordPopup({
-    Key? key,
+    super.key,
     required this.categoryId,
     required this.categoryPriority,
-  }) : super(key: key);
+  });
 
   final int categoryId;
   final int categoryPriority;
@@ -27,8 +27,8 @@ class AddWordPopup extends StatefulWidget {
 class _AddWordPopupState extends State<AddWordPopup> {
   final TextEditingController _wordEditing = TextEditingController();
   final TextEditingController _wordTranslateEditing = TextEditingController();
-  final FocusNode focusWord = FocusNode();
-  final FocusNode focusWordTranslate = FocusNode();
+  final FocusNode _focusWord = FocusNode();
+  final FocusNode _focusWordTranslate = FocusNode();
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class _AddWordPopupState extends State<AddWordPopup> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 TextFormField(
-                  focusNode: focusWord,
+                  focusNode: _focusWord,
                   controller: _wordEditing,
                   textCapitalization: TextCapitalization.sentences,
                   keyboardType: TextInputType.text,
@@ -64,7 +64,7 @@ class _AddWordPopupState extends State<AddWordPopup> {
                   decoration: InputDecoration(
                     errorText: wordState.getWordState ? locale!.enter_word : null,
                     label: Text(locale!.word),
-                    suffixIcon: IconButton(
+                    prefixIcon: IconButton(
                       onPressed: () {
                         showDialog(
                           context: context,
@@ -106,7 +106,7 @@ class _AddWordPopupState extends State<AddWordPopup> {
                 ),
                 const SizedBox(height: 8),
                 TextFormField(
-                  focusNode: focusWordTranslate,
+                  focusNode: _focusWordTranslate,
                   controller: _wordTranslateEditing,
                   textCapitalization: TextCapitalization.sentences,
                   keyboardType: TextInputType.text,
@@ -119,14 +119,17 @@ class _AddWordPopupState extends State<AddWordPopup> {
                     wordState.setWordTranslateState = value!;
                   },
                   decoration: InputDecoration(
-                    errorText: wordState.getWordTranslateState ? locale.enter_translation : null,
+                    errorText: wordState.getWordTranslateState
+                        ? locale.enter_translation
+                        : null,
                     label: Text(locale.translation),
                   ),
                 ),
                 const SizedBox(height: 4),
                 OutlinedButton(
                   onPressed: () {
-                    if (_wordEditing.text.isNotEmpty && _wordTranslateEditing.text.isNotEmpty) {
+                    if (_wordEditing.text.isNotEmpty &&
+                        _wordTranslateEditing.text.isNotEmpty) {
                       final UserDictionaryAddWordEntity model = UserDictionaryAddWordEntity(
                         displayBy: widget.categoryId,
                         word: _wordEditing.text,
@@ -146,15 +149,13 @@ class _AddWordPopupState extends State<AddWordPopup> {
                       Provider.of<UserDictionaryWordState>(context, listen: false).addWord(model: model);
                     } else if (_wordEditing.text.isEmpty) {
                       wordState.setWordState = '';
-                      focusWord.requestFocus();
+                      _focusWord.requestFocus();
                     } else if (_wordTranslateEditing.text.isEmpty) {
                       wordState.setWordTranslateState = '';
-                      focusWordTranslate.requestFocus();
+                      _focusWordTranslate.requestFocus();
                     }
                   },
-                  child: Text(
-                    locale.add,
-                  ),
+                  child: Text(locale.add),
                 ),
               ],
             );
