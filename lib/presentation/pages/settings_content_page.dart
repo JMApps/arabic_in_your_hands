@@ -7,7 +7,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 class SettingsContentPage extends StatelessWidget {
-  const SettingsContentPage({Key? key}) : super(key: key);
+  const SettingsContentPage({super.key});
 
   @override
   Widget build(BuildContext context) {

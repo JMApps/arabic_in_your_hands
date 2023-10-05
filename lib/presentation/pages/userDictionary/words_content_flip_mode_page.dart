@@ -10,9 +10,9 @@ import 'package:provider/provider.dart';
 
 class WordsContentFlipModePage extends StatelessWidget {
   const WordsContentFlipModePage({
-    Key? key,
+    super.key,
     required this.categoryModel,
-  }) : super(key: key);
+  });
 
   final UserDictionaryCategoryEntity categoryModel;
 
