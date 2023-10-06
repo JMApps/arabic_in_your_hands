@@ -63,6 +63,7 @@ flutter:
     - family: Gilroy
       fonts:
         - asset: assets/fonts/gilroy_medium.ttf
+        - asset: assets/fonts/gilroy_light.ttf
     - family: Roboto
       fonts:
         - asset: assets/fonts/roboto_slab.ttf
