@@ -16,20 +16,59 @@ class WordOption extends StatelessWidget {
     return Container(
       padding: AppStyles.mainMarding,
       child: ListTile(
-        title: Text(
-          wordModel.word,
-          style: TextStyle(
-            fontSize: 35,
-            fontFamily: 'Scheherazade',
-            color: appColors.secondary,
-          ),
-          textAlign: TextAlign.center,
-          textDirection: TextDirection.rtl,
+        title: Wrap(
+          runAlignment: WrapAlignment.spaceEvenly,
+          alignment: WrapAlignment.spaceEvenly,
+          crossAxisAlignment: WrapCrossAlignment.center,
+          children: [
+            Text(
+              wordModel.root,
+              style: const TextStyle(
+                fontSize: 20,
+                fontFamily: 'Scheherazade',
+                color: Colors.grey,
+              ),
+              textAlign: TextAlign.center,
+              textDirection: TextDirection.rtl,
+            ),
+            Text(
+              wordModel.word,
+              style: TextStyle(
+                fontSize: 35,
+                fontFamily: 'Scheherazade',
+                color: appColors.secondary,
+              ),
+              textAlign: TextAlign.center,
+              textDirection: TextDirection.rtl,
+            ),
+            Visibility(
+              visible: wordModel.species != null,
+              child: CircleAvatar(
+                backgroundColor: appColors.secondary.withOpacity(0.25),
+                child: Text(
+                  wordModel.species ?? '',
+                  style: const TextStyle(
+                    fontSize: 20,
+                    fontFamily: 'Scheherazade',
+                  ),
+                  textAlign: TextAlign.center,
+                  textDirection: TextDirection.rtl,
+                ),
+              ),
+            ),
+          ],
         ),
-        subtitle: Text(wordModel.meaning ?? '', style: const TextStyle(
-          fontSize: 18,
-          fontFamily: 'Gilroy'
-        ),),
+        subtitle: Padding(
+          padding: const EdgeInsets.only(top: 16),
+          child: Text(
+            wordModel.meaning ?? '',
+            style: const TextStyle(
+              fontSize: 18,
+              fontFamily: 'Gilroy',
+            ),
+            textAlign: TextAlign.center,
+          ),
+        ),
       ),
     );
   }
