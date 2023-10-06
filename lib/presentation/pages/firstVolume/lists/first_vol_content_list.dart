@@ -21,7 +21,7 @@ class _FirstVolContentsListState extends State<FirstVolContentsList> {
   late final FirstVolContentsUseCase _firstVolContentsUseCase;
 
   _FirstVolContentsListState() {
-    _firstVolContentsUseCase = FirstVolContentsUseCase(FirstVolContentsDataRepository.getInstance());
+    _firstVolContentsUseCase = FirstVolContentsUseCase(FirstVolContentsDataRepository());
   }
 
   @override

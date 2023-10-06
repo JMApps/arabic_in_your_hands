@@ -10,14 +10,6 @@ import 'package:sqflite/sqflite.dart' as sql;
 class UserDictionaryCategoryDataRepository implements UserDictionaryCategoryRepository {
   final DatabaseUserDictionaryService _databaseUserDictionaryService = DatabaseUserDictionaryService();
 
-  static final UserDictionaryCategoryDataRepository _instance = UserDictionaryCategoryDataRepository._internal();
-
-  UserDictionaryCategoryDataRepository._internal();
-
-  static UserDictionaryCategoryDataRepository getInstance() {
-    return _instance;
-  }
-
   @override
   Future<List<UserDictionaryCategoryEntity>> getAllCategories() async {
     final Database dbClient = await _databaseUserDictionaryService.db;

@@ -22,7 +22,7 @@ class _FirstVolSubChapterListState extends State<FirstVolSubChapterList> {
   final PageController _pageController = PageController();
 
   _FirstVolSubChapterListState() {
-    _firstVolSubChaptersUseCase = FirstVolSubChaptersUseCase(FirstVolSubChaptersDataRepository.getInstance());
+    _firstVolSubChaptersUseCase = FirstVolSubChaptersUseCase(FirstVolSubChaptersDataRepository());
   }
 
   @override

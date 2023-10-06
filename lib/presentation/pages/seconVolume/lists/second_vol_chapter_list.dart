@@ -20,7 +20,7 @@ class _SecondVolChapterListState extends State<SecondVolChapterList> {
   late final SecondVolChaptersUseCase _secondVolChaptersUseCase;
 
   _SecondVolChapterListState() {
-    _secondVolChaptersUseCase = SecondVolChaptersUseCase(SecondVolChaptersDataRepository.getInstance());
+    _secondVolChaptersUseCase = SecondVolChaptersUseCase(SecondVolChaptersDataRepository());
   }
 
   @override

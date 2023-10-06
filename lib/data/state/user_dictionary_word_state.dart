@@ -5,9 +5,8 @@ import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary
 import 'package:flutter/material.dart';
 
 class UserDictionaryWordState extends ChangeNotifier {
-  final UserDictionaryWordsUseCase _wordsUseCase =
-  UserDictionaryWordsUseCase(
-    UserDictionaryWordDataRepository.getInstance(),
+  final UserDictionaryWordsUseCase _wordsUseCase = UserDictionaryWordsUseCase(
+    UserDictionaryWordDataRepository(),
   );
 
   Future<int> addWord({required UserDictionaryAddWordEntity model}) async {
@@ -16,7 +15,8 @@ class UserDictionaryWordState extends ChangeNotifier {
     return wordEntity;
   }
 
-  Future<int> changeWord({required UserDictionaryChangeWordEntity model}) async {
+  Future<int> changeWord(
+      {required UserDictionaryChangeWordEntity model}) async {
     final int wordEntity = await _wordsUseCase.changeWord(model: model);
     notifyListeners();
     return wordEntity;
@@ -29,7 +29,8 @@ class UserDictionaryWordState extends ChangeNotifier {
   }
 
   Future<int> deleteWordsCategory({required int categoryId}) async {
-    final int wordEntity = await _wordsUseCase.deleteWordsCategory(categoryId: categoryId);
+    final int wordEntity =
+        await _wordsUseCase.deleteWordsCategory(categoryId: categoryId);
     notifyListeners();
     return wordEntity;
   }

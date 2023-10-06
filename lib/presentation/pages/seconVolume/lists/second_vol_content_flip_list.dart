@@ -30,7 +30,7 @@ class _SecondVolContentFlipListState extends State<SecondVolContentFlipList> {
   final FlipCardController _flipCardController = FlipCardController();
 
   _SecondVolContentFlipListState() {
-    _secondVolContentsUseCase = SecondVolContentsUseCase(SecondVolContentsDataRepository.getInstance());
+    _secondVolContentsUseCase = SecondVolContentsUseCase(SecondVolContentsDataRepository());
   }
 
   @override

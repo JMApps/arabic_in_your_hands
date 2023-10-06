@@ -21,7 +21,7 @@ class _SecondVolContentListState extends State<SecondVolContentList> {
   late final SecondVolContentsUseCase _secondVolContentsUseCase;
 
   _SecondVolContentListState() {
-    _secondVolContentsUseCase = SecondVolContentsUseCase(SecondVolContentsDataRepository.getInstance());
+    _secondVolContentsUseCase = SecondVolContentsUseCase(SecondVolContentsDataRepository());
   }
 
   @override

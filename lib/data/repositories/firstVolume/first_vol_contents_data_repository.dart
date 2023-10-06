@@ -8,14 +8,6 @@ class FirstVolContentsDataRepository implements FirstVolContentRepository {
 
   final DatabaseContentService _databaseHelper = DatabaseContentService();
 
-  static final FirstVolContentsDataRepository _instance = FirstVolContentsDataRepository._internal();
-
-  FirstVolContentsDataRepository._internal();
-
-  static FirstVolContentsDataRepository getInstance() {
-    return _instance;
-  }
-
   @override
   Future<List<FirstVolContentEntity>> getFirstContents({required String tableName}) async {
     final Database database = await _databaseHelper.db;

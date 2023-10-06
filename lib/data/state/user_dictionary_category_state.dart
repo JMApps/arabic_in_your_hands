@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 
 class UserDictionaryCategoryState extends ChangeNotifier {
   final UserDictionaryCategoriesUseCase _categoriesUseCase =
-      UserDictionaryCategoriesUseCase(
-    UserDictionaryCategoryDataRepository.getInstance(),
+  UserDictionaryCategoriesUseCase(
+    UserDictionaryCategoryDataRepository(),
   );
 
   Future<int> addCategory({required UserDictionaryAddCategoryEntity model}) async {

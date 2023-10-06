@@ -27,7 +27,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
 
   @override
   void initState() {
-    _categoriesUseCase = UserDictionaryCategoriesUseCase(UserDictionaryCategoryDataRepository.getInstance());
+    _categoriesUseCase = UserDictionaryCategoriesUseCase(UserDictionaryCategoryDataRepository());
     super.initState();
   }
 

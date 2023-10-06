@@ -10,14 +10,6 @@ import 'package:sqflite/sqflite.dart' as sql;
 class UserDictionaryWordDataRepository implements UserDictionaryWordRepository {
   final DatabaseUserDictionaryService _databaseUserDictionaryService = DatabaseUserDictionaryService();
 
-  static final UserDictionaryWordDataRepository _instance = UserDictionaryWordDataRepository._internal();
-
-  UserDictionaryWordDataRepository._internal();
-
-  static UserDictionaryWordDataRepository getInstance() {
-    return _instance;
-  }
-
   @override
   Future<List<UserDictionaryWordEntity>> getAllWords() async {
     final Database dbClient = await _databaseUserDictionaryService.db;

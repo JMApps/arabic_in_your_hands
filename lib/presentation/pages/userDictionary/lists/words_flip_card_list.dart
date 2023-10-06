@@ -30,7 +30,7 @@ class _WordsFlipCardListState extends State<WordsFlipCardList> {
   @override
   void initState() {
     super.initState();
-    _dictionaryWordsUseCase = UserDictionaryWordsUseCase(UserDictionaryWordDataRepository.getInstance());
+    _dictionaryWordsUseCase = UserDictionaryWordsUseCase(UserDictionaryWordDataRepository());
   }
 
   @override

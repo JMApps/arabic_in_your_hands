@@ -29,7 +29,7 @@ class _DictionaryWordsListState extends State<DictionaryWordsList> {
   @override
   void initState() {
     super.initState();
-    _dictionaryWordsUseCase = UserDictionaryWordsUseCase(UserDictionaryWordDataRepository.getInstance());
+    _dictionaryWordsUseCase = UserDictionaryWordsUseCase(UserDictionaryWordDataRepository());
   }
 
   @override
