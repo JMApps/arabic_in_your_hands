@@ -1,43 +1,33 @@
-import 'package:arabicinyourhands/domain/entities/arabicDictionary/article_entity.dart';
-import 'package:arabicinyourhands/domain/entities/arabicDictionary/search_content_entity.dart';
-import 'package:arabicinyourhands/domain/repositories/arabicDictionary/articles_repository.dart';
+import 'package:arabicinyourhands/domain/entities/arabicDictionary/word_entity.dart';
+import 'package:arabicinyourhands/domain/repositories/arabicDictionary/words_repository.dart';
 
-class ArticlesUseCase {
-  final ArticlesRepository _articlesRepository;
+class WordsUseCase {
+  final WordsRepository _wordsRepository;
 
-  ArticlesUseCase(this._articlesRepository);
+  WordsUseCase(this._wordsRepository);
 
-  Future<List<ArticleEntity>> fetchAllArticles() async {
+  Future<List<WordEntity>> fetchAllWords() async {
     try {
-      final List<ArticleEntity> allArticles = await _articlesRepository.getAllArticles();
-      return allArticles;
+      final List<WordEntity> allWords = await _wordsRepository.getAllWords();
+      return allWords;
     } catch (e) {
       throw Exception(e.toString());
     }
   }
 
-  Future<ArticleEntity> fetchArticlById({required int articleId}) async {
+  Future<WordEntity> fetchWordById({required int wordId}) async {
     try {
-      final ArticleEntity articleById = await _articlesRepository.getArticleById(articleId: articleId);
-      return articleById;
+      final WordEntity wordById = await _wordsRepository.getWordById(wordId: wordId);
+      return wordById;
     } catch (e) {
       throw Exception(e.toString());
     }
   }
 
-  Future<List<SearchContentEntry>> fetchSearchWord({required String word}) async {
+  Future<List<WordEntity>> fetchSearchWord({required String word}) async {
     try {
-      final List<SearchContentEntry> searchWord = await _articlesRepository.searchWord(word: word);
+      final List<WordEntity> searchWord = await _wordsRepository.searchWord(word: word);
       return searchWord;
-    } catch (e) {
-      throw Exception(e.toString());
-    }
-  }
-
-  Future<List<SearchContentEntry>> getTranslationsForArticle({required int articleId}) async {
-    try {
-      final List<SearchContentEntry> translations = await _articlesRepository.getTranslationsForArticle(articleId: articleId);
-      return translations;
     } catch (e) {
       throw Exception(e.toString());
     }

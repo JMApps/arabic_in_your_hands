@@ -29,7 +29,7 @@ class _WordOptionsState extends State<WordOptions> {
 
   @override
   void initState() {
-    _wordsUseCase = UserDictionaryWordsUseCase(UserDictionaryWordDataRepository.getInstance());
+    _wordsUseCase = UserDictionaryWordsUseCase(UserDictionaryWordDataRepository());
     super.initState();
   }
 

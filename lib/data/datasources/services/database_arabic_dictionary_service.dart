@@ -27,7 +27,7 @@ class DatabaseArabicDictionaryService {
         ? await getExternalStorageDirectory()
         : await getApplicationSupportDirectory();
 
-    const String databaseName = 'articles.db';
+    const String databaseName = 'words.db';
 
     String path = join(documentDirectory!.path, databaseName);
     var exists = await databaseExists(path);
