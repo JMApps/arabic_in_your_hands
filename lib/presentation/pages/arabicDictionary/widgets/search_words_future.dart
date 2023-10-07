@@ -1,7 +1,7 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/data/repositories/arabicDictionary/words_data_repository.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/word_entity.dart';
-import 'package:arabicinyourhands/domain/usecases/arabicDictionary/articles_use_case.dart';
+import 'package:arabicinyourhands/domain/usecases/arabicDictionary/words_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/items/word_item.dart';
 import 'package:arabicinyourhands/presentation/widgets/future_is_empty.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,6 +29,12 @@ class _SearchWordsFutureState extends State<SearchWordsFuture> {
     super.initState();
   }
 
+  // Функция для удаления огласок из арабских слов
+  String removeDiacritics(String input) {
+    final diacriticsPattern = RegExp(r'[ًٌٍَُِّْ]');
+    return input.replaceAll(diacriticsPattern, '');
+  }
+
   @override
   Widget build(BuildContext context) {
     final AppLocalizations? locale = AppLocalizations.of(context);
@@ -40,14 +46,16 @@ class _SearchWordsFutureState extends State<SearchWordsFuture> {
           _recentWords = widget.query.isEmpty
               ? _words
               : _words.where((element) {
-            final word = element.word;
+
+            final word = removeDiacritics(element.word);
             final shortMeaning = element.shortMeaning;
             final meaning = element.meaning;
 
             return (word.contains(widget.query.toLowerCase())) ||
                 (shortMeaning?.contains(widget.query.toLowerCase()) ?? false) ||
                 (meaning?.contains(widget.query.toLowerCase()) ?? false);
-          }).toList();
+
+              }).toList();
           if (_recentWords.isEmpty && widget.query.isNotEmpty) {
             return FutureIsEmpty(message: locale!.search_is_not_results);
           } else if (_recentWords.isEmpty) {

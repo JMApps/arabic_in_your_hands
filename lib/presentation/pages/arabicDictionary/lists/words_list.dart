@@ -1,7 +1,7 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/data/repositories/arabicDictionary/words_data_repository.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/word_entity.dart';
-import 'package:arabicinyourhands/domain/usecases/arabicDictionary/articles_use_case.dart';
+import 'package:arabicinyourhands/domain/usecases/arabicDictionary/words_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/items/word_item.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/cupertino.dart';

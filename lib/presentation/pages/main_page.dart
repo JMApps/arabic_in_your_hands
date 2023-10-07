@@ -40,7 +40,7 @@ class MainPage extends StatelessWidget {
             title: Text(locale.volume_2),
           ),
           SalomonBottomBarItem(
-            icon: const Icon(Icons.translate),
+            icon: Image.asset('assets/icons/translation.png', width: 25, height: 25),
             title: Text(locale.dictionary),
           ),
           SalomonBottomBarItem(

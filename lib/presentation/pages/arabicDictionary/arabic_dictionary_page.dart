@@ -1,3 +1,5 @@
+import 'package:arabicinyourhands/presentation/pages/arabicDictionary/lists/collections_list.dart';
+import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/add_collection_popup.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/search_words_delegate.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,24 +11,36 @@ class ArabicDictionaryPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations? locale = AppLocalizations.of(context);
+    final ColorScheme appColors = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
-        title: Text(locale!.arabicDictionary),
+        title: Text(locale!.startSearch),
         actions: [
           IconButton(
             onPressed: () {
-              showSearch(context: context, delegate: SearchWordsDelegate(hintText: 'Поиск слов...'));
+              showSearch(
+                context: context,
+                delegate: SearchWordsDelegate(
+                  hintText: locale.startSearch,
+                ),
+              );
             },
             icon: const Icon(CupertinoIcons.search),
           ),
         ],
       ),
-      body: Container(),
-      // floatingActionButton: FloatingActionButton(
-      //   backgroundColor: appColors.secondary,
-      //   onPressed: () {},
-      //   child: const Icon(CupertinoIcons.add),
-      // ),
+      body: const CollectionsList(),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: appColors.secondary,
+        onPressed: () {
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            builder: (_) => const AddCollectionPopup(),
+          );
+        },
+        child: const Icon(CupertinoIcons.add),
+      ),
     );
   }
 }
