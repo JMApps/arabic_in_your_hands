@@ -13,19 +13,19 @@ class CollectionState extends ChangeNotifier {
     return newCollection;
   }
 
-  Future<int> changeCategory({required CollectionChangeEntity model}) async {
+  Future<int> changeCollection({required CollectionChangeEntity model}) async {
     final int changeCollection = await _collectionsUseCase.changeCollection(collectionEntity: model);
     notifyListeners();
     return changeCollection;
   }
 
-  Future<int> deleteCategory({required int collectionId}) async {
+  Future<int> deleteCollection({required int collectionId}) async {
     final int deleteCollection = await _collectionsUseCase.deleteCollection(collectionId: collectionId);
     notifyListeners();
     return deleteCollection;
   }
 
-  Future<int> deleteAllCategories() async {
+  Future<int> deleteAllCollections() async {
     final int deleteAllCollections = await _collectionsUseCase.deleteAllCollections();
     notifyListeners();
     return deleteAllCollections;

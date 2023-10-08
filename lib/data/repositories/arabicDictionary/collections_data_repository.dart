@@ -48,21 +48,21 @@ class CollectionsDataReposioty implements CollectionsRepository {
       'title': collectionEntity.title,
       'change_date_time': DateTime.now().toString(),
     };
-    final int changeCollection = await dbClient.update('Table_of_word_categories', collection, where: 'id = ${collectionEntity.id}', conflictAlgorithm: sql.ConflictAlgorithm.replace);
+    final int changeCollection = await dbClient.update('Table_of_collections', collection, where: 'id = ${collectionEntity.id}', conflictAlgorithm: sql.ConflictAlgorithm.replace);
     return changeCollection;
   }
 
   @override
   Future<int> deleteCollection({required int collectionId}) async {
     final Database dbClient = await _databaseCollectionsService.db;
-    final int deleteCollection = await dbClient.delete('Table_of_word_categories',where: 'id = $collectionId');
+    final int deleteCollection = await dbClient.delete('Table_of_collections',where: 'id = $collectionId');
     return deleteCollection;
   }
 
   @override
   Future<int> deleteAllCollections() async {
     final Database dbClient = await _databaseCollectionsService.db;
-    final int deleteAllCollections = await dbClient.delete('Table_of_word_categories');
+    final int deleteAllCollections = await dbClient.delete('Table_of_collections');
     return deleteAllCollections;
   }
 

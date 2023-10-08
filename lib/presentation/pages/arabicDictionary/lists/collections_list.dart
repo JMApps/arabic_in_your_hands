@@ -61,7 +61,7 @@ class _CollectionsListState extends State<CollectionsList> {
             } else if (snapshot.hasError) {
               return ErrorDataText(error: snapshot.error.toString());
             } else {
-              return FutureIsEmpty(message: locale!.collections_is_empty);
+              return FutureIsEmpty(message: locale!.addFirstCollection);
             }
           },
         );

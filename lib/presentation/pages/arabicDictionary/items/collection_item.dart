@@ -1,5 +1,7 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
+import 'package:arabicinyourhands/domain/arguments/collection_args.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/collection_entity.dart';
+import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/collection_options.dart';
 import 'package:flutter/material.dart';
 
 class CollectionItem extends StatelessWidget {
@@ -20,7 +22,20 @@ class CollectionItem extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          Navigator.pushNamed(
+            context,
+            '/collection_detail_page',
+            arguments: CollectionArgs(model: model),
+          );
+        },
+        onLongPress: () {
+          showModalBottomSheet(
+            context: context,
+            isScrollControlled: true,
+            builder: (_) => CollectionOptions(collectionId: model.id),
+          );
+        },
         borderRadius: AppStyles.mainBorder,
         child: Container(
           padding: AppStyles.mainMarding,
