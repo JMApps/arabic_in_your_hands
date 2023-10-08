@@ -41,16 +41,11 @@ class MainPage extends StatelessWidget {
             title: Text(locale.volume_2),
           ),
           SalomonBottomBarItem(
-            icon: Image.asset(
-              'assets/icons/translation.png',
-              width: 25,
-              height: 25,
-              color: appColors.secondary,
-            ),
+            icon: const Icon(Icons.translate),
             title: Text(locale.dictionary),
           ),
           SalomonBottomBarItem(
-            icon: const Icon(CupertinoIcons.add),
+            icon: const Icon(CupertinoIcons.collections),
             title: Text(locale.words),
           ),
           SalomonBottomBarItem(

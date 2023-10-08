@@ -1,6 +1,7 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/uiState/content_settings_state.dart';
+import 'package:arabicinyourhands/presentation/widgets/main_app_icon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -17,6 +18,7 @@ class SettingsContentPage extends StatelessWidget {
       appBar: AppBar(
         title: Text(locale!.settings),
         backgroundColor: appColors.primaryColor,
+        leading: const MainAppIcon(),
       ),
       body: SingleChildScrollView(
         padding: AppStyles.mainMarding,
