@@ -70,3 +70,6 @@ flutter:
     - family: Montserrat
       fonts:
         - asset: assets/fonts/montserrat_medium.ttf
+    - family: Uthmanic
+      fonts:
+        - asset: assets/fonts/uthmanic.ttf
