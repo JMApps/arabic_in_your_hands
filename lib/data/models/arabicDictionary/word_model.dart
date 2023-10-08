@@ -5,7 +5,6 @@ class WordModel {
   final String? meaning;
   final String root;
   final String? plural;
-  final String? pluralLetters;
   final String? species;
   final String? other;
 
@@ -16,7 +15,6 @@ class WordModel {
     required this.meaning,
     required this.root,
     required this.plural,
-    required this.pluralLetters,
     required this.species,
     required this.other,
   });
@@ -29,7 +27,6 @@ class WordModel {
       meaning: map['meaning'] as String?,
       root: map['root'] as String,
       plural: map['plural'] as String?,
-      pluralLetters: map['plural_letters'] as String?,
       species: map['species'] as String?,
       other: map['other'] as String?,
     );

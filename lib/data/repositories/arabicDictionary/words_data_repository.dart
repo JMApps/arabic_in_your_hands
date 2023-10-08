@@ -48,7 +48,6 @@ class WordsDataReposioty implements WordsRepository {
       meaning: model.meaning,
       root: model.root,
       plural: model.plural,
-      pluralLetters: model.pluralLetters,
       species: model.species,
       other: model.other,
     );
