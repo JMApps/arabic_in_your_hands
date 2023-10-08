@@ -62,6 +62,8 @@
   "wordsDeleted": "Слова удалены",
 
   "addFirstCollection": "Добавьте первую коллекцию",
+  "collectionIsEmpty": "В колекции нет слов",
+  "collectionIsEmptyFlipe": "Чтобы воспользоваться режимом карточек, вы должны добавить слова в текущую коллекцию",
   "addCollection": "Добавить коллекцию",
   "enterNameCollection": "Введите название коллекции",
   "collectionAdded": "Коллекция добавлена",

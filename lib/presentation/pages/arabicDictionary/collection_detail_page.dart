@@ -1,5 +1,6 @@
 import 'package:arabicinyourhands/domain/arguments/collection_args.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/collection_entity.dart';
+import 'package:arabicinyourhands/presentation/pages/arabicDictionary/lists/words_collection_list.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,7 @@ class CollectionDetailPage extends StatelessWidget {
           ),
         ],
       ),
-      body: Container(),
+      body: WordsCollectionList(collectionModel: model),
     );
   }
 }
