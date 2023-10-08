@@ -36,7 +36,10 @@ class _WordsListState extends State<WordsList> {
               itemCount: snapshot.data!.length,
               itemBuilder: (BuildContext context, int index) {
                 final WordEntity model = snapshot.data![index];
-                return WordItem(model: model);
+                return WordItem(
+                  model: model,
+                  index: index,
+                );
               },
             ),
           );

@@ -40,36 +40,53 @@ class _SearchWordsFutureState extends State<SearchWordsFuture> {
     final AppLocalizations? locale = AppLocalizations.of(context);
     return FutureBuilder<List<WordEntity>>(
       future: _wordsUseCase.fetchAllWords(),
-      builder: (BuildContext context, AsyncSnapshot<List<WordEntity>> snapshot) {
+      builder:
+          (BuildContext context, AsyncSnapshot<List<WordEntity>> snapshot) {
         if (snapshot.hasData) {
           _words = snapshot.data!;
           _recentWords = widget.query.isEmpty
               ? []
               : _words.where((element) {
+                  final word = removeDiacritics(element.word);
+                  final shortMeaning = element.shortMeaning;
+                  final meaning = element.meaning;
 
-            final word = removeDiacritics(element.word);
-            final shortMeaning = element.shortMeaning;
-            final meaning = element.meaning;
-
-            return (word.contains(widget.query.toLowerCase())) ||
-                (shortMeaning?.contains(widget.query.toLowerCase()) ?? false) ||
-                (meaning?.contains(widget.query.toLowerCase()) ?? false);
-
-              }).toList();
+                  return (word.contains(widget.query.toLowerCase())) ||
+                      (shortMeaning?.contains(widget.query.toLowerCase()) ??
+                          false) ||
+                      (meaning?.contains(widget.query.toLowerCase()) ?? false);
+                }).toList();
           if (_recentWords.isEmpty && widget.query.isNotEmpty) {
             return FutureIsEmpty(message: locale!.searchResultIsEmpty);
           } else if (_recentWords.isEmpty) {
             return FutureIsEmpty(message: locale!.startSearch);
           } else {
-            return CupertinoScrollbar(
-              child: ListView.builder(
-                padding: AppStyles.mainMardingMini,
-                itemCount: _recentWords.length,
-                itemBuilder: (BuildContext context, int index) {
-                  final WordEntity model = _recentWords[index];
-                  return WordItem(model: model);
-                },
-              ),
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 8, top: 8, left: 8),
+                  child: Text(
+                    '${locale!.mathesFound}${_recentWords.length}',
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+                Expanded(
+                  child: CupertinoScrollbar(
+                    child: ListView.builder(
+                      padding: AppStyles.mainMardingMini,
+                      itemCount: _recentWords.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        final WordEntity model = _recentWords[index];
+                        return WordItem(
+                          model: model,
+                          index: index,
+                        );
+                      },
+                    ),
+                  ),
+                ),
+              ],
             );
           }
         } else {
