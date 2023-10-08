@@ -14,7 +14,8 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AppLocalizations? locale = AppLocalizations.of(context);
-    final MainNavigationState navigationState = Provider.of<MainNavigationState>(context);
+    final MainNavigationState navigationState =
+        Provider.of<MainNavigationState>(context);
     final ColorScheme appColors = Theme.of(context).colorScheme;
     return Scaffold(
       body: AnimatedSwitcher(
@@ -40,7 +41,12 @@ class MainPage extends StatelessWidget {
             title: Text(locale.volume_2),
           ),
           SalomonBottomBarItem(
-            icon: Image.asset('assets/icons/translation.png', width: 25, height: 25),
+            icon: Image.asset(
+              'assets/icons/translation.png',
+              width: 25,
+              height: 25,
+              color: appColors.secondary,
+            ),
             title: Text(locale.dictionary),
           ),
           SalomonBottomBarItem(

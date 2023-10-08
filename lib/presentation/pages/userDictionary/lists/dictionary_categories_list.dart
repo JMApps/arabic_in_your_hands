@@ -37,25 +37,27 @@ class _DictionaryCategoriesListState extends State<DictionaryCategoriesList> {
           builder: (BuildContext context, AsyncSnapshot<List<UserDictionaryCategoryEntity>> snapshot) {
             if (snapshot.hasData && snapshot.data!.isNotEmpty) {
               return AnimationLimiter(
-                child: ListView.builder(
-                  padding: AppStyles.mainMardingMini,
-                  itemCount: snapshot.data!.length,
-                  itemBuilder: (context, index) {
-                    final UserDictionaryCategoryEntity model = snapshot.data![index];
-                    return AnimationConfiguration.staggeredList(
-                      position: index,
-                      duration: const Duration(milliseconds: 250),
-                      child: SlideAnimation(
-                        verticalOffset: 150,
-                        child: FadeInAnimation(
-                          child: DictionaryCategoryItem(
-                            model: model,
-                            index: index,
+                child: CupertinoScrollbar(
+                  child: ListView.builder(
+                    padding: AppStyles.mainMardingMini,
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      final UserDictionaryCategoryEntity model = snapshot.data![index];
+                      return AnimationConfiguration.staggeredList(
+                        position: index,
+                        duration: const Duration(milliseconds: 250),
+                        child: SlideAnimation(
+                          verticalOffset: 150,
+                          child: FadeInAnimation(
+                            child: DictionaryCategoryItem(
+                              model: model,
+                              index: index,
+                            ),
                           ),
                         ),
-                      ),
-                    );
-                  },
+                      );
+                    },
+                  ),
                 ),
               );
             } else if (snapshot.hasError) {

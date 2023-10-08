@@ -44,7 +44,7 @@ class _SearchWordsFutureState extends State<SearchWordsFuture> {
         if (snapshot.hasData) {
           _words = snapshot.data!;
           _recentWords = widget.query.isEmpty
-              ? _words
+              ? []
               : _words.where((element) {
 
             final word = removeDiacritics(element.word);
@@ -59,7 +59,7 @@ class _SearchWordsFutureState extends State<SearchWordsFuture> {
           if (_recentWords.isEmpty && widget.query.isNotEmpty) {
             return FutureIsEmpty(message: locale!.search_is_not_results);
           } else if (_recentWords.isEmpty) {
-            return FutureIsEmpty(message: locale!.search_is_not_results);
+            return FutureIsEmpty(message: locale!.startSearch);
           } else {
             return CupertinoScrollbar(
               child: ListView.builder(

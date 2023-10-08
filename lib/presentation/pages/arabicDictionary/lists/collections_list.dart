@@ -8,6 +8,7 @@ import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:arabicinyourhands/presentation/widgets/future_is_empty.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
 
 class CollectionsList extends StatefulWidget {
@@ -33,8 +34,7 @@ class _CollectionsListState extends State<CollectionsList> {
       builder: (BuildContext context, _, __) {
         return FutureBuilder<List<CollectionEntity>>(
           future: _collectionsUseCase.fetchAllCollections(),
-          builder: (BuildContext context,
-              AsyncSnapshot<List<CollectionEntity>> snapshot) {
+          builder: (BuildContext context, AsyncSnapshot<List<CollectionEntity>> snapshot) {
             if (snapshot.hasData && snapshot.data!.isNotEmpty) {
               return CupertinoScrollbar(
                 child: ListView.builder(
@@ -42,9 +42,18 @@ class _CollectionsListState extends State<CollectionsList> {
                   itemCount: snapshot.data!.length,
                   itemBuilder: (BuildContext context, int index) {
                     final CollectionEntity model = snapshot.data![index];
-                    return CollectionItem(
-                      model: model,
-                      index: index,
+                    return AnimationConfiguration.staggeredList(
+                      position: index,
+                      duration: const Duration(milliseconds: 250),
+                      child: SlideAnimation(
+                        verticalOffset: 150,
+                        child: FadeInAnimation(
+                          child: CollectionItem(
+                            model: model,
+                            index: index,
+                          ),
+                        ),
+                      ),
                     );
                   },
                 ),

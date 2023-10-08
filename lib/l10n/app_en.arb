@@ -78,5 +78,6 @@
   "collections_deleted": "Все коллекции удалены",
   "collections_is_empty": "Добавьте первую коллекцию",
   "enter_collection_name": "Введите название коллекции",
+  "search": "Поиск...",
   "startSearch": "Начните поиск..."
 }

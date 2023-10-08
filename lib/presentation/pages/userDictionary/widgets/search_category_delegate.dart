@@ -3,7 +3,14 @@ import 'package:flutter/material.dart';
 
 class SearchCategoryDelegate extends SearchDelegate {
   SearchCategoryDelegate({required String hintText})
-      : super(searchFieldLabel: hintText, keyboardType: TextInputType.text);
+      : super(
+          searchFieldLabel: hintText,
+          keyboardType: TextInputType.text,
+          searchFieldStyle: const TextStyle(
+            color: Colors.white,
+            fontSize: 17,
+          ),
+        );
 
   @override
   ThemeData appBarTheme(BuildContext context) {
@@ -12,7 +19,7 @@ class SearchCategoryDelegate extends SearchDelegate {
       inputDecorationTheme: const InputDecorationTheme(
         border: InputBorder.none,
         hintStyle: TextStyle(
-          fontSize: 18,
+          fontSize: 17,
           color: Colors.grey,
         ),
       ),

@@ -2,8 +2,16 @@ import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/se
 import 'package:flutter/material.dart';
 
 class SearchWordsDelegate extends SearchDelegate {
-  SearchWordsDelegate({required String hintText})
-      : super(searchFieldLabel: hintText, keyboardType: TextInputType.text);
+  SearchWordsDelegate({
+    required String hintText,
+  }) : super(
+          searchFieldLabel: hintText,
+          keyboardType: TextInputType.text,
+          searchFieldStyle: const TextStyle(
+            color: Colors.white,
+            fontSize: 17,
+          ),
+        );
 
   @override
   ThemeData appBarTheme(BuildContext context) {
@@ -12,8 +20,8 @@ class SearchWordsDelegate extends SearchDelegate {
       inputDecorationTheme: const InputDecorationTheme(
         border: InputBorder.none,
         hintStyle: TextStyle(
-          fontSize: 18,
           color: Colors.grey,
+          fontSize: 17,
         ),
       ),
     );

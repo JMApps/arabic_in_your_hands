@@ -18,8 +18,7 @@ class DictionaryCategoryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Color itemColor =
-        AppColors.priorityColor[model.priority].withOpacity(0.15);
+    final Color itemColor = AppColors.priorityColor[model.priority].withOpacity(0.15);
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
       child: InkWell(

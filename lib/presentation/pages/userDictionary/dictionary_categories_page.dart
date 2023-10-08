@@ -31,9 +31,7 @@ class DictionaryCategoriesPage extends StatelessWidget {
           ),
         ],
       ),
-      body: const CupertinoScrollbar(
-        child: DictionaryCategoriesList(),
-      ),
+      body: const DictionaryCategoriesList(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: appColors.secondary,
         onPressed: () {
@@ -41,13 +39,11 @@ class DictionaryCategoriesPage extends StatelessWidget {
             context: context,
             isScrollControlled: true,
             builder: (context) {
-              return SingleChildScrollView(
-                child: AnimatedPadding(
-                  padding: MediaQuery.of(context).viewInsets,
-                  duration: const Duration(milliseconds: 250),
-                  curve: Curves.decelerate,
-                  child: const AddCategoryPopup(),
-                ),
+              return AnimatedPadding(
+                padding: MediaQuery.of(context).viewInsets,
+                duration: const Duration(milliseconds: 250),
+                curve: Curves.decelerate,
+                child: const AddCategoryPopup(),
               );
             },
           );

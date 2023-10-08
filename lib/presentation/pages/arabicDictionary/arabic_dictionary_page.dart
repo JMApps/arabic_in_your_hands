@@ -21,7 +21,7 @@ class ArabicDictionaryPage extends StatelessWidget {
               showSearch(
                 context: context,
                 delegate: SearchWordsDelegate(
-                  hintText: locale.startSearch,
+                  hintText: locale.search,
                 ),
               );
             },
@@ -36,7 +36,12 @@ class ArabicDictionaryPage extends StatelessWidget {
           showModalBottomSheet(
             context: context,
             isScrollControlled: true,
-            builder: (_) => const AddCollectionPopup(),
+            builder: (context) => AnimatedPadding(
+              padding: MediaQuery.of(context).viewInsets,
+              duration: const Duration(milliseconds: 250),
+              curve: Curves.decelerate,
+              child: const AddCollectionPopup(),
+            ),
           );
         },
         child: const Icon(CupertinoIcons.add),
