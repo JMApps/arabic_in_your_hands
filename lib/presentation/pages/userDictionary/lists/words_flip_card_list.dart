@@ -72,7 +72,7 @@ class _WordsFlipCardListState extends State<WordsFlipCardList> {
             } else if (snapshot.hasError) {
               return ErrorDataText(error: snapshot.error.toString());
             } else {
-              return FutureIsEmpty(message: locale!.words_flip_empty_message);
+              return FutureIsEmpty(message: locale!.wordsFlipEmptyMessage);
             }
           },
         );

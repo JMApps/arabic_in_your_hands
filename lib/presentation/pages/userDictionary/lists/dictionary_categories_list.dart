@@ -64,7 +64,7 @@ class _DictionaryCategoriesListState extends State<DictionaryCategoriesList> {
               return ErrorDataText(error: snapshot.error.toString());
             } else {
               return FutureIsEmpty(
-                message: locale!.categories_is_empty,
+                message: locale!.addFirstCategory,
               );
             }
           },

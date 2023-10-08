@@ -68,7 +68,7 @@ class _DictionaryWordsListState extends State<DictionaryWordsList> {
             } else if (snapshot.hasError) {
               return ErrorDataText(error: snapshot.error.toString());
             } else {
-              return FutureIsEmpty(message: locale!.dictionary_word_add_first);
+              return FutureIsEmpty(message: locale!.addFirstWord);
             }
           },
         );

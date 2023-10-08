@@ -22,7 +22,7 @@ class ArabicDictionaryPage extends StatelessWidget {
             showSearch(
               context: context,
               delegate: SearchWordsDelegate(
-                hintText: locale.search,
+                hintText: locale.searchWords,
               ),
             );
           },
@@ -35,7 +35,7 @@ class ArabicDictionaryPage extends StatelessWidget {
                   showSearch(
                     context: context,
                     delegate: SearchWordsDelegate(
-                      hintText: locale.search,
+                      hintText: locale.searchWords,
                     ),
                   );
                 },

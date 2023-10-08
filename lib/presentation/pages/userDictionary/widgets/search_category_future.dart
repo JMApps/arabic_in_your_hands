@@ -43,9 +43,9 @@ class _SearchCategoryFutureState extends State<SearchCategoryFuture> {
                       element.id.toString().contains(widget.query) ||
                       element.wordCategoryTitle.contains(widget.query.toLowerCase())).toList();
           if (_recentCategories.isEmpty && widget.query.isNotEmpty) {
-            return FutureIsEmpty(message: locale!.search_is_not_results);
+            return FutureIsEmpty(message: locale!.searchCategoryIsEmpty);
           } else if (_recentCategories.isEmpty) {
-            return FutureIsEmpty(message: locale!.categories_is_empty);
+            return FutureIsEmpty(message: locale!.categoryIsNotAdded);
           } else {
             return CupertinoScrollbar(
               child: ListView.builder(

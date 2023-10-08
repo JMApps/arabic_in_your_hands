@@ -77,7 +77,7 @@ class _WordOptionsState extends State<WordOptions> {
                     );
                   },
                   child: Text(
-                    locale!.change,
+                    locale!.changeWord,
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -92,7 +92,7 @@ class _WordOptionsState extends State<WordOptions> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              locale.dictionary_word_delete_message,
+                              locale.deleteWordMessage,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -110,7 +110,7 @@ class _WordOptionsState extends State<WordOptions> {
                                     backgroundColor: appColors.secondary,
                                     duration: const Duration(milliseconds: 500),
                                     content: SnackBarMessage(
-                                      message: locale.dictionary_word_category_deleted,
+                                      message: locale.wordDeleted,
                                     ),
                                   ),
                                 );
@@ -138,7 +138,7 @@ class _WordOptionsState extends State<WordOptions> {
                     );
                   },
                   child: Text(
-                    locale.delete,
+                    locale.deleteWord,
                     style: TextStyle(color: appColors.error),
                     textAlign: TextAlign.center,
                   ),
@@ -154,7 +154,7 @@ class _WordOptionsState extends State<WordOptions> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              locale.allWordsDeleteMessage,
+                              locale.deleteAllWordsMessage,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -172,7 +172,7 @@ class _WordOptionsState extends State<WordOptions> {
                                     backgroundColor: appColors.secondary,
                                     duration: const Duration(milliseconds: 500),
                                     content: SnackBarMessage(
-                                      message: locale.deleted,
+                                      message: locale.wordsDeleted,
                                     ),
                                   ),
                                 );
@@ -200,7 +200,7 @@ class _WordOptionsState extends State<WordOptions> {
                     );
                   },
                   child: Text(
-                    locale.deleteAll,
+                    locale.deleteAllWords,
                     style: TextStyle(color: appColors.error),
                     textAlign: TextAlign.center,
                   ),

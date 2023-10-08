@@ -15,7 +15,7 @@ class FirstVolChaptersPage extends StatelessWidget {
     final ColorScheme appColors = Theme.of(context).colorScheme;
     return Scaffold(
       appBar: AppBar(
-        title: Text(locale!.volume_1),
+        title: Text(locale!.firstVolume),
         backgroundColor: appColors.primaryColor,
         leading: const MainAppIcon(),
         actions: const [

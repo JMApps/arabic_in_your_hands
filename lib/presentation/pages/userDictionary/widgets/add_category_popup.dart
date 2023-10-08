@@ -53,8 +53,8 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                     categoryState.setCategoryState = value!;
                   },
                   decoration: InputDecoration(
-                    label: Text(locale!.enter_category_name),
-                    errorText: categoryState.getCategoryState ? locale.enter_category_name : null,
+                    label: Text(locale!.enterNameCategory),
+                    errorText: categoryState.getCategoryState ? locale.enterNameCategory : null,
                     suffixIcon: IconButton(
                       onPressed: () {
                         showDialog(
@@ -146,7 +146,7 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                           backgroundColor: appColors.secondary,
                           duration: const Duration(milliseconds: 500),
                           content: SnackBarMessage(
-                            message: locale.dictionary_category_category_added,
+                            message: locale.categoryAdded,
                           ),
                         ),
                       );

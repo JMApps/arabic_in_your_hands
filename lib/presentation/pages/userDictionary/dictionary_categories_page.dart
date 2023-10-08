@@ -24,7 +24,7 @@ class DictionaryCategoriesPage extends StatelessWidget {
               showSearch(
                 context: context,
                 delegate: SearchCategoryDelegate(
-                  hintText: locale.search_categories,
+                  hintText: locale.searchCategories,
                 ),
               );
             },

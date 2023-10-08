@@ -62,8 +62,8 @@ class _AddWordPopupState extends State<AddWordPopup> {
                     wordState.setWordState = value!;
                   },
                   decoration: InputDecoration(
-                    errorText: wordState.getWordState ? locale!.enter_word : null,
-                    label: Text(locale!.word),
+                    errorText: wordState.getWordState ? locale!.enterWord : null,
+                    label: Text(locale!.enterWord),
                     prefixIcon: IconButton(
                       onPressed: () {
                         showDialog(
@@ -120,9 +120,9 @@ class _AddWordPopupState extends State<AddWordPopup> {
                   },
                   decoration: InputDecoration(
                     errorText: wordState.getWordTranslateState
-                        ? locale.enter_translation
+                        ? locale.enterWordTranslate
                         : null,
-                    label: Text(locale.translation),
+                    label: Text(locale.addWordTranslate),
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -142,7 +142,7 @@ class _AddWordPopupState extends State<AddWordPopup> {
                           backgroundColor: appColors.secondary,
                           duration: const Duration(milliseconds: 500),
                           content: SnackBarMessage(
-                            message: locale.dictionary_word_category_added,
+                            message: locale.wordAdded,
                           ),
                         ),
                       );

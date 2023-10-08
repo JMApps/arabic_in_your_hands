@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class InputCollectionState extends ChangeNotifier {
 
-  bool _categoryState = false;
+  bool _collectionState = false;
 
-  bool get getCategoryState => _categoryState;
+  bool get getCollectionState => _collectionState;
 
-  set setCategoryState(String category) {
-    _categoryState = category.isEmpty;
+  set setCollectionState(String collection) {
+    _collectionState = collection.isEmpty;
     notifyListeners();
   }
 }

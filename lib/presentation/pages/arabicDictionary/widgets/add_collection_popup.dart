@@ -46,12 +46,12 @@ class _AddCollectionPopupState extends State<AddCollectionPopup> {
                   maxLength: 150,
                   textAlign: TextAlign.center,
                   onChanged: (String? value) {
-                    collectionState.setCategoryState = value!;
+                    collectionState.setCollectionState = value!;
                   },
                   decoration: InputDecoration(
-                    label: Text(locale!.enter_collection_name),
-                    errorText: collectionState.getCategoryState
-                        ? locale.enter_collection_name
+                    label: Text(locale!.enterNameCollection),
+                    errorText: collectionState.getCollectionState
+                        ? locale.enterNameCollection
                         : null,
                   ),
                 ),
@@ -67,13 +67,13 @@ class _AddCollectionPopupState extends State<AddCollectionPopup> {
                           backgroundColor: appColors.secondary,
                           duration: const Duration(milliseconds: 500),
                           content: SnackBarMessage(
-                            message: locale.collection_added,
+                            message: locale.collectionAdded,
                           ),
                         ),
                       );
                       Provider.of<CollectionState>(context, listen: false).addCollection(model: model);
                     } else if (_textEditingCollection.text.isEmpty) {
-                      collectionState.setCategoryState = '';
+                      collectionState.setCollectionState = '';
                       _focusCollection.requestFocus();
                     }
                   },

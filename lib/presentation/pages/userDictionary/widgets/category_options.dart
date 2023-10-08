@@ -49,7 +49,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  locale.change,
+                  model.wordCategoryTitle,
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
@@ -77,7 +77,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                     );
                   },
                   child: Text(
-                    locale.change,
+                    locale.changeCategory,
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -92,7 +92,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              locale.dictionary_category_delete_message,
+                              locale.deleteCategoryMessage,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -110,8 +110,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                                     backgroundColor: appColors.secondary,
                                     duration: const Duration(milliseconds: 500),
                                     content: SnackBarMessage(
-                                      message: locale
-                                          .dictionary_category_category_deleted,
+                                      message: locale.categoryDeleted,
                                     ),
                                   ),
                                 );
@@ -139,7 +138,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                     );
                   },
                   child: Text(
-                    locale.delete,
+                    locale.deleteCategory,
                     style: TextStyle(color: appColors.error),
                     textAlign: TextAlign.center,
                   ),
@@ -155,7 +154,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              locale.allCategoriesDeleteMessage,
+                              locale.deleteAllCategoriesMessage,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -173,7 +172,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                                     backgroundColor: appColors.secondary,
                                     duration: const Duration(milliseconds: 500),
                                     content: SnackBarMessage(
-                                      message: locale.deleted,
+                                      message: locale.categoriesDeleted,
                                     ),
                                   ),
                                 );
@@ -201,7 +200,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                     );
                   },
                   child: Text(
-                    locale.deleteAll,
+                    locale.deleteAllCategories,
                     style: TextStyle(color: appColors.error),
                     textAlign: TextAlign.center,
                   ),

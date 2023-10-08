@@ -18,7 +18,7 @@ class DialogVisibility extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         children: [
           Text(
-            locale!.visible_mode,
+            locale!.visibleMode,
             style: TextStyle(
               fontSize: 18,
               fontWeight: FontWeight.bold,
@@ -31,7 +31,7 @@ class DialogVisibility extends StatelessWidget {
             shape: AppStyles.mainShape,
             contentPadding: AppStyles.mainMardingHorizontal,
             title: Text(
-              locale.show_hide_arabic_text,
+              locale.arabicText,
               style: const TextStyle(
                 fontSize: 18,
               ),
@@ -46,7 +46,7 @@ class DialogVisibility extends StatelessWidget {
             shape: AppStyles.mainShape,
             contentPadding: AppStyles.mainMardingHorizontal,
             title: Text(
-              locale.show_hide_translation_text,
+              locale.translationText,
               style: const TextStyle(
                 fontSize: 18,
               ),

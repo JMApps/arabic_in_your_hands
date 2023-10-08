@@ -25,7 +25,6 @@ class ChangeCategoryPopup extends StatefulWidget {
 }
 
 class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
-  late final UserDictionaryChangeCategoryEntity newCategory;
   late final TextEditingController _textWordCategoryEditing;
   final FocusNode focusCategory = FocusNode();
 
@@ -69,9 +68,9 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
                     categoryState.setCategoryState = value!;
                   },
                   decoration: InputDecoration(
-                    label: Text(locale!.enter_category_name),
+                    label: Text(locale!.enterNameCategory),
                     errorText: categoryState.getCategoryState
-                        ? locale.enter_category_name
+                        ? locale.enterNameCategory
                         : null,
                     suffixIcon: IconButton(
                       onPressed: () {
@@ -156,8 +155,7 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
                       if (widget.model.wordCategoryTitle != _textWordCategoryEditing.text ||
                           widget.model.wordCategoryColor.toString() != categoryState.getCategoryColor.toString() ||
                           widget.model.priority != categoryState.getPriorityIndex) {
-                        final UserDictionaryChangeCategoryEntity model =
-                            UserDictionaryChangeCategoryEntity(
+                        final UserDictionaryChangeCategoryEntity model = UserDictionaryChangeCategoryEntity(
                           id: widget.model.id,
                           wordCategoryTitle: _textWordCategoryEditing.text,
                           wordCategoryColor: categoryState.getCategoryColor.toHex(),
@@ -169,7 +167,7 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
                             backgroundColor: appColors.secondary,
                             duration: const Duration(milliseconds: 500),
                             content: SnackBarMessage(
-                              message: locale.changed,
+                              message: locale.categoryChanged,
                             ),
                           ),
                         );

@@ -16,7 +16,7 @@ class RootPage extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      onGenerateTitle: (context) => AppLocalizations.of(context)!.app_name,
+      onGenerateTitle: (context) => AppLocalizations.of(context)!.appName,
       onGenerateRoute: AppRoutes.appGeneratorRoute,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,

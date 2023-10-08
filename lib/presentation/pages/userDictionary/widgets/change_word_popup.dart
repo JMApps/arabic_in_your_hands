@@ -70,9 +70,8 @@ class _ChangeWordPopupState extends State<ChangeWordPopup> {
                     wordState.setWordState = value!;
                   },
                   decoration: InputDecoration(
-                    errorText:
-                        wordState.getWordState ? locale!.enter_word : null,
-                    label: Text(locale!.word),
+                    errorText: wordState.getWordState ? locale!.enterWord : null,
+                    label: Text(locale!.enterWord),
                     suffixIcon: IconButton(
                       onPressed: () {
                         showDialog(
@@ -128,9 +127,9 @@ class _ChangeWordPopupState extends State<ChangeWordPopup> {
                   },
                   decoration: InputDecoration(
                     errorText: wordState.getWordTranslateState
-                        ? locale.enter_translation
+                        ? locale.enterWordTranslate
                         : null,
-                    label: Text(locale.translation),
+                    label: Text(locale.enterWordTranslate),
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -153,7 +152,7 @@ class _ChangeWordPopupState extends State<ChangeWordPopup> {
                             backgroundColor: appColors.secondary,
                             duration: const Duration(milliseconds: 500),
                             content: SnackBarMessage(
-                              message: locale.changed,
+                              message: locale.wordChanged,
                             ),
                           ),
                         );

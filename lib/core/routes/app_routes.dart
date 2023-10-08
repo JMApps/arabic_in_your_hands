@@ -1,6 +1,9 @@
+import 'package:arabicinyourhands/domain/arguments/collection_args.dart';
 import 'package:arabicinyourhands/domain/arguments/first_sub_chapter_args.dart';
 import 'package:arabicinyourhands/domain/arguments/second_sub_chapter_args.dart';
 import 'package:arabicinyourhands/domain/arguments/word_category_args.dart';
+import 'package:arabicinyourhands/presentation/pages/arabicDictionary/collection_detail_flip_page.dart';
+import 'package:arabicinyourhands/presentation/pages/arabicDictionary/collection_detail_page.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/first_vol_contents_flip_page.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/first_vol_contents_page.dart';
 import 'package:arabicinyourhands/presentation/pages/seconVolume/second_vol_contents_flip_page.dart';
@@ -12,6 +15,7 @@ import 'package:flutter/material.dart';
 class AppRoutes {
   static Route appGeneratorRoute(RouteSettings routeSettings) {
     switch (routeSettings.name) {
+      // Fisrt volume
       case '/first_vol_contents_page':
         final FirstSubChapterArgs firstSubChapterArgs =
             routeSettings.arguments as FirstSubChapterArgs;
@@ -30,6 +34,8 @@ class AppRoutes {
           ),
           settings: routeSettings,
         );
+
+      // Second volume
       case '/second_vol_contents_page':
         final SecondSubChapterArgs secondubChapterArgs =
             routeSettings.arguments as SecondSubChapterArgs;
@@ -65,6 +71,26 @@ class AppRoutes {
         return MaterialPageRoute(
           builder: (_) => WordsContentFlipModePage(
             categoryModel: wordCategoryArgs.model,
+          ),
+          settings: routeSettings,
+        );
+
+      // Collections
+      case '/collection_detail_page':
+        final CollectionArgs collectionArgs =
+        routeSettings.arguments as CollectionArgs;
+        return MaterialPageRoute(
+          builder: (_) => CollectionDetailPage(
+            model: collectionArgs.model,
+          ),
+          settings: routeSettings,
+        );
+      case '/collection_detail_flip_page':
+        final CollectionArgs collectionArgs =
+        routeSettings.arguments as CollectionArgs;
+        return MaterialPageRoute(
+          builder: (_) => CollectionDetailFlipPage(
+            model: collectionArgs.model,
           ),
           settings: routeSettings,
         );

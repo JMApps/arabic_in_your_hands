@@ -28,7 +28,7 @@ class WordsContentFlipModePage extends StatelessWidget {
       ],
       child: Scaffold(
         appBar: AppBar(
-          title: Text(locale!.flip_card_mode),
+          title: Text(locale!.flipCardMode),
           actions: [
             IconButton(
               icon: const Icon(CupertinoIcons.add_circled),

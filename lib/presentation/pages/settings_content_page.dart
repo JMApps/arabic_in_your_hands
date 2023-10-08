@@ -28,7 +28,7 @@ class SettingsContentPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Text(
-                  locale.arabic_text_size,
+                  locale.arabicFont,
                   style: AppStyles.mainTextStyle,
                 ),
                 const SizedBox(height: 8),
@@ -56,7 +56,7 @@ class SettingsContentPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  locale.translation_text_size,
+                  locale.translationFont,
                   style: AppStyles.mainTextStyle,
                 ),
                 const SizedBox(height: 8),
@@ -84,7 +84,7 @@ class SettingsContentPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  locale.text_align,
+                  locale.textAlign,
                   style: AppStyles.mainTextStyle,
                 ),
                 const SizedBox(height: 8),
@@ -104,7 +104,7 @@ class SettingsContentPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  locale.arabic_text_size,
+                  locale.arabicTextSize,
                   style: AppStyles.mainTextStyle,
                 ),
                 Slider(
@@ -119,7 +119,7 @@ class SettingsContentPage extends StatelessWidget {
                   },
                 ),
                 Text(
-                  locale.translation_text_size,
+                  locale.translationTextSize,
                   style: AppStyles.mainTextStyle,
                 ),
                 Slider(
@@ -140,7 +140,7 @@ class SettingsContentPage extends StatelessWidget {
                   },
                   contentPadding: AppStyles.mainMardingHorizontalMini,
                   title: Text(
-                    locale.app_theme,
+                    locale.adaptiveTheme,
                     style: AppStyles.mainTextStyle,
                   ),
                 ),
@@ -153,7 +153,7 @@ class SettingsContentPage extends StatelessWidget {
                         },
                   contentPadding: AppStyles.mainMardingHorizontalMini,
                   title: Text(
-                    locale.user_app_theme,
+                    locale.userTheme,
                   ),
                 ),
                 SwitchListTile(
@@ -163,7 +163,7 @@ class SettingsContentPage extends StatelessWidget {
                   },
                   contentPadding: AppStyles.mainMardingHorizontalMini,
                   title: Text(
-                    locale.wake_lock_display,
+                    locale.displayIsAlways,
                     style: AppStyles.mainTextStyle,
                   ),
                 ),

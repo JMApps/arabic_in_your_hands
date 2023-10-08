@@ -20,7 +20,7 @@ class PlaySpeed extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                locale.play_speed,
+                locale.playSpeed,
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,

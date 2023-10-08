@@ -57,7 +57,7 @@ class _SearchWordsFutureState extends State<SearchWordsFuture> {
 
               }).toList();
           if (_recentWords.isEmpty && widget.query.isNotEmpty) {
-            return FutureIsEmpty(message: locale!.search_is_not_results);
+            return FutureIsEmpty(message: locale!.searchResultIsEmpty);
           } else if (_recentWords.isEmpty) {
             return FutureIsEmpty(message: locale!.startSearch);
           } else {
