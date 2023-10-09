@@ -4,7 +4,6 @@ import 'package:arabicinyourhands/domain/usecases/seconVolume/second_vol_sub_cha
 import 'package:arabicinyourhands/main.dart';
 import 'package:arabicinyourhands/presentation/pages/seconVolume/items/second_vol_sub_chapter_item.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
-import 'package:arabicinyourhands/presentation/widgets/main_smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -87,11 +86,6 @@ class _SeconVolSubChapterListState extends State<SeconVolSubChapterList> {
                 ),
               ),
               const SizedBox(height: 8),
-              MainSmoothPageIndicator(
-                controller: _pageController,
-                length: snapshot.data!.length,
-              ),
-              const SizedBox(height: 12),
             ],
           );
         } else if (snapshot.hasError) {
