@@ -2,7 +2,6 @@ import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/word_entity.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/word_option.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class WordCollectionItem extends StatelessWidget {

@@ -25,10 +25,12 @@ class WordsCollectionDataReposioty implements WordsCollectionRepository {
       'short_meaning': word.shortMeaning,
       'meaning': word.meaning,
       'root': word.root,
+      'plural': word.plural,
       'species': word.species,
       'other': word.other,
+      'display_by': collectionId,
     };
-    final int newWord = await database.insert('Table_of_words_collections', addword, conflictAlgorithm: sql.ConflictAlgorithm.replace);
+    final int newWord = await database.insert('Table_of_words_collections', addword, conflictAlgorithm: sql.ConflictAlgorithm.ignore);
     return newWord;
   }
 

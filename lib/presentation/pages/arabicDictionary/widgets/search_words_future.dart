@@ -40,8 +40,7 @@ class _SearchWordsFutureState extends State<SearchWordsFuture> {
     final AppLocalizations? locale = AppLocalizations.of(context);
     return FutureBuilder<List<WordEntity>>(
       future: _wordsUseCase.fetchAllWords(),
-      builder:
-          (BuildContext context, AsyncSnapshot<List<WordEntity>> snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<List<WordEntity>> snapshot) {
         if (snapshot.hasData) {
           _words = snapshot.data!;
           _recentWords = widget.query.isEmpty

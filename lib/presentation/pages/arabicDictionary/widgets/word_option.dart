@@ -1,6 +1,8 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/word_entity.dart';
+import 'package:arabicinyourhands/presentation/pages/arabicDictionary/lists/add_word_collections_list.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class WordOption extends StatelessWidget {
@@ -59,8 +61,7 @@ class WordOption extends StatelessWidget {
                   Visibility(
                     visible: wordModel.species != null,
                     child: CircleAvatar(
-                      backgroundColor:
-                      appColors.secondary.withOpacity(0.50),
+                      backgroundColor: appColors.secondary.withOpacity(0.50),
                       child: Text(wordModel.species ?? ''),
                     ),
                   ),
@@ -87,6 +88,19 @@ class WordOption extends StatelessWidget {
               ),
               textAlign: TextAlign.center,
             ),
+          ),
+          IconButton(
+            onPressed: () {
+              showModalBottomSheet(
+                context: context,
+                builder: (context) => Container(
+                  padding: AppStyles.mainMarding,
+                  height: 500,
+                  child: AddWordCollectionsList(wordModel: wordModel),
+                ),
+              );
+            },
+            icon: const Icon(CupertinoIcons.bookmark),
           ),
         ],
       ),

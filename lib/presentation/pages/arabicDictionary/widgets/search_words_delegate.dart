@@ -21,7 +21,7 @@ class SearchWordsDelegate extends SearchDelegate {
         border: InputBorder.none,
         hintStyle: TextStyle(
           color: Colors.grey,
-          fontSize: 17,
+          fontSize: 20,
         ),
       ),
     );
