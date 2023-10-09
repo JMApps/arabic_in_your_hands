@@ -27,7 +27,7 @@ class ArabicDictionaryPage extends StatelessWidget {
             );
           },
           child: AppBar(
-            title: Text(locale!.startSearch),
+            title: Text(locale!.searchWords),
             centerTitle: false,
             actions: [
               IconButton(
