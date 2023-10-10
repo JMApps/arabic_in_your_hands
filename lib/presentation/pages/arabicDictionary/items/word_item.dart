@@ -2,7 +2,7 @@ import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/word_entity.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/lists/add_word_collections_list.dart';
-import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/word_option.dart';
+import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/word_detail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +28,9 @@ class WordItem extends StatelessWidget {
           showModalBottomSheet(
             context: context,
             isScrollControlled: true,
-            builder: (context) => WordOption(wordModel: model),
+            useSafeArea: true,
+            showDragHandle: true,
+            builder: (context) => WordDetail(wordModel: model),
           );
         },
         borderRadius: AppStyles.mainBorder,
@@ -38,86 +40,80 @@ class WordItem extends StatelessWidget {
             color: index.isOdd ? itemOddColor : itemEvenColor,
             borderRadius: AppStyles.mainBorder,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+          child: Row(
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        model.word,
-                        style: TextStyle(
-                          fontSize: 35,
-                          fontFamily: 'Uthmanic',
-                          color: appColors.mainIconColor,
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          model.word,
+                          style: const TextStyle(
+                            fontSize: 35,
+                            fontFamily: 'Uthmanic',
+                          ),
+                          textDirection: TextDirection.rtl,
                         ),
-                        textDirection: TextDirection.rtl,
-                      ),
-                      const SizedBox(width: 8),
-                      Visibility(
-                        visible: model.plural != null,
-                        child: Text(
+                        const SizedBox(width: 8),
+                        if (model.plural != null )Text(
                           model.plural ?? '',
                           style: const TextStyle(
                             fontSize: 25,
                             fontFamily: 'Uthmanic',
-                            color: Color(0xFF9E9E9E),
+                            color: Colors.grey,
                           ),
-                          textDirection: TextDirection.rtl,
                         ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                    if (model.shortMeaning != null) Text(
+                      model.shortMeaning ?? '',
+                      style: const TextStyle(
+                        fontSize: 18,
+                        fontFamily: 'Gilroy',
+                        fontWeight: FontWeight.w100,
                       ),
-                    ],
-                  ),
-                  Column(
-                    children: [
-                      Visibility(
-                        visible: model.species != null,
-                        child: CircleAvatar(
-                          backgroundColor:
-                              appColors.secondary.withOpacity(0.50),
-                          child: Text(model.species ?? ''),
-                        ),
-                      ),
-                      Text(
-                        model.root,
-                        style: const TextStyle(
-                          fontSize: 25,
-                          fontFamily: 'Uthmanic',
-                          color: Color(0xFF616161),
-                        ),
-                        textDirection: TextDirection.rtl,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              Visibility(
-                visible: model.shortMeaning != null,
-                child: Text(
-                  model.shortMeaning ?? '',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    fontFamily: 'Gilroy',
-                    fontWeight: FontWeight.w100,
-                  ),
-                  textAlign: TextAlign.start,
+                    )
+                  ],
                 ),
               ),
-              IconButton(
-                onPressed: () {
-                  showModalBottomSheet(
-                    context: context,
-                    builder: (context) => Container(
-                      padding: AppStyles.mainMarding,
-                      height: 500,
-                      child: AddWordCollectionsList(wordModel: model),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  if (model.species != null) CircleAvatar(
+                    radius: 20,
+                    backgroundColor: appColors.secondary,
+                    child: Text(
+                      model.species ?? '',
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontFamily: 'Gilroy',
+                      ),
                     ),
-                  );
-                },
-                icon: const Icon(CupertinoIcons.bookmark),
+                  ),
+                  Text(
+                    model.root,
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontFamily: 'Uthmanic',
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        builder: (context) => Container(
+                          padding: AppStyles.mainMarding,
+                          height: 500,
+                          child: AddWordCollectionsList(wordModel: model),
+                        ),
+                      );
+                    },
+                    icon: const Icon(CupertinoIcons.add_circled),
+                  ),
+                ],
               ),
             ],
           ),

@@ -154,7 +154,7 @@ class _WordOptionsState extends State<WordOptions> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             Text(
-                              locale.deleteAllWordsMessage,
+                              locale.deleteAllCategoryWordsMessage,
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
