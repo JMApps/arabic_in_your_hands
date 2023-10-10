@@ -1,6 +1,5 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/data/state/collection_state.dart';
-import 'package:arabicinyourhands/domain/entities/arabicDictionary/collection_add_entity.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/collection_change_entity.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/collection_entity.dart';
 import 'package:arabicinyourhands/presentation/uiState/dictionary/input_collection_state.dart';
@@ -87,13 +86,15 @@ class _ChangeCollectionPopupState extends State<ChangeCollectionPopup> {
                           ),
                         );
                         Provider.of<CollectionState>(context, listen: false).changeCollection(model: model);
+                      } else {
+                        Navigator.pop(context);
                       }
                     } else if (_textEditingCollection.text.isEmpty) {
                       collectionState.setCollectionState = '';
                       _focusCollection.requestFocus();
                     }
                   },
-                  child: Text(locale.add),
+                  child: Text(locale.change),
                 ),
               ],
             ),
