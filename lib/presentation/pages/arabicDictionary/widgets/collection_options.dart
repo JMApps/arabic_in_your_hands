@@ -1,14 +1,9 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/data/repositories/arabicDictionary/collections_data_repository.dart';
-import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictionary_category_data_repository.dart';
 import 'package:arabicinyourhands/data/state/collection_state.dart';
-import 'package:arabicinyourhands/data/state/user_dictionary_category_state.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/collection_entity.dart';
-import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_category_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/arabicDictionary/coolections_use_case.dart';
-import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_categories_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/change_collection_popup.dart';
-import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/change_category_popup.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/material.dart';

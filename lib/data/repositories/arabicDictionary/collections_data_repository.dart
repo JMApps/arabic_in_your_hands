@@ -56,6 +56,7 @@ class CollectionsDataReposioty implements CollectionsRepository {
   Future<int> deleteCollection({required int collectionId}) async {
     final Database dbClient = await _databaseCollectionsService.db;
     final int deleteCollection = await dbClient.delete('Table_of_collections',where: 'id = $collectionId');
+    await dbClient.delete('Table_of_words_collections',where: 'display_by = $collectionId');
     return deleteCollection;
   }
 
@@ -63,6 +64,7 @@ class CollectionsDataReposioty implements CollectionsRepository {
   Future<int> deleteAllCollections() async {
     final Database dbClient = await _databaseCollectionsService.db;
     final int deleteAllCollections = await dbClient.delete('Table_of_collections');
+    await dbClient.delete('Table_of_words_collections');
     return deleteAllCollections;
   }
 
