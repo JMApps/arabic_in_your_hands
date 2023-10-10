@@ -34,19 +34,6 @@ class AppTheme {
           width: 0.5,
         ),
       ),
-      errorBorder: OutlineInputBorder(
-        borderRadius: AppStyles.mainBorder,
-        borderSide: BorderSide(
-          color: Color(0xFFEF5350),
-        ),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: AppStyles.mainBorder,
-        borderSide: BorderSide(
-          width: 1.5,
-          color: Color(0xFF209372),
-        ),
-      ),
     ),
   );
 
@@ -79,19 +66,6 @@ class AppTheme {
         borderRadius: AppStyles.mainBorder,
         borderSide: BorderSide(
           width: 0.5,
-        ),
-      ),
-      errorBorder: OutlineInputBorder(
-        borderRadius: AppStyles.mainBorder,
-        borderSide: BorderSide(
-          color: Color(0xBFEF5350),
-        ),
-      ),
-      focusedBorder: OutlineInputBorder(
-        borderRadius: AppStyles.mainBorder,
-        borderSide: BorderSide(
-          width: 1.5,
-          color: Color(0xFF0B8FE8),
         ),
       ),
     ),

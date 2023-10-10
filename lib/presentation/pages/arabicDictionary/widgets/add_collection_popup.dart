@@ -49,6 +49,13 @@ class _AddCollectionPopupState extends State<AddCollectionPopup> {
                     collectionState.setCollectionState = value!;
                   },
                   decoration: InputDecoration(
+                    floatingLabelAlignment: FloatingLabelAlignment.center,
+                    border: const OutlineInputBorder(
+                      borderRadius: AppStyles.mainBorder,
+                      borderSide: BorderSide(
+                        width: 0.5,
+                      ),
+                    ),
                     label: Text(locale!.enterNameCollection),
                     errorText: collectionState.getCollectionState
                         ? locale.enterNameCollection
@@ -71,7 +78,8 @@ class _AddCollectionPopupState extends State<AddCollectionPopup> {
                           ),
                         ),
                       );
-                      Provider.of<CollectionState>(context, listen: false).addCollection(model: model);
+                      Provider.of<CollectionState>(context, listen: false)
+                          .addCollection(model: model);
                     } else if (_textEditingCollection.text.isEmpty) {
                       collectionState.setCollectionState = '';
                       _focusCollection.requestFocus();

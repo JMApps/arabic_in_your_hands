@@ -1,9 +1,7 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
-import 'package:arabicinyourhands/data/repositories/arabicDictionary/collections_data_repository.dart';
 import 'package:arabicinyourhands/data/state/collection_state.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/collection_entity.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/word_entity.dart';
-import 'package:arabicinyourhands/domain/usecases/arabicDictionary/coolections_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/items/add_word_collection_item.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/add_collection_popup.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
@@ -26,13 +24,6 @@ class AddWordCollectionsList extends StatefulWidget {
 }
 
 class _AddWordCollectionsListState extends State<AddWordCollectionsList> {
-  late final CollectionsUseCase _collectionsUseCase;
-
-  @override
-  void initState() {
-    super.initState();
-    _collectionsUseCase = CollectionsUseCase(CollectionsDataReposioty());
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +34,7 @@ class _AddWordCollectionsListState extends State<AddWordCollectionsList> {
           child: Consumer<CollectionState>(
             builder: (BuildContext context, _, __) {
               return FutureBuilder<List<CollectionEntity>>(
-                future: _collectionsUseCase.fetchAllCollections(),
+                future: Provider.of<CollectionState>(context).fetchAllCollections(),
                 builder: (BuildContext context, AsyncSnapshot<List<CollectionEntity>> snapshot) {
                   if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                     return ListView.builder(
