@@ -78,8 +78,7 @@ class _AddCollectionPopupState extends State<AddCollectionPopup> {
                           ),
                         ),
                       );
-                      Provider.of<CollectionState>(context, listen: false)
-                          .addCollection(model: model);
+                      Provider.of<CollectionState>(context, listen: false).addCollection(model: model);
                     } else if (_textEditingCollection.text.isEmpty) {
                       collectionState.setCollectionState = '';
                       _focusCollection.requestFocus();
