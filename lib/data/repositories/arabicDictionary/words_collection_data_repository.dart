@@ -17,6 +17,14 @@ class WordsCollectionDataReposioty implements WordsCollectionRepository {
   }
 
   @override
+  Future<WordEntity> getWordById({required int wordId}) async {
+    final Database database = await _databaseCollectionsService.db;
+    final List<Map<String, Object?>> resources = await database.query('Table_of_words_collections', where: 'id = $wordId');
+    final WordEntity? wordById = resources.isNotEmpty ? _mapToEntity(WordModel.fromMap(resources.first)) : null;
+    return wordById!;
+  }
+
+  @override
   Future<int> addWordToCollection({required WordEntity word, required int collectionId}) async {
     final Database database = await _databaseCollectionsService.db;
     final Map<String, dynamic> addword = {
@@ -35,7 +43,14 @@ class WordsCollectionDataReposioty implements WordsCollectionRepository {
   }
 
   @override
-  Future<int> removeWordFromCollection({required int wordId}) async {
+  Future<int> deleteAllWordsFromCollection({required int collectionId}) async {
+    final Database dbClient = await _databaseCollectionsService.db;
+    final int deleteWord = await dbClient.delete('Table_of_words_collections', where: 'display_by = $collectionId');
+    return deleteWord;
+  }
+
+  @override
+  Future<int> deleteWordFromCollection({required int wordId}) async {
     final Database dbClient = await _databaseCollectionsService.db;
     final int deleteWord = await dbClient.delete('Table_of_words_collections', where: 'id = $wordId');
     return deleteWord;

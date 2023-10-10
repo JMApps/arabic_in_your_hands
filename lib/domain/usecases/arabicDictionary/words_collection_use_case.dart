@@ -15,6 +15,15 @@ class WordsCollectionUseCase {
     }
   }
 
+  Future<WordEntity> fetchWordById({required int wordId}) async {
+    try {
+      final WordEntity wordById = await _wordsCollectionRepository.getWordById(wordId: wordId);
+      return wordById;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
   Future<int> addWordToCollection({required WordEntity word, required int collectionId}) async {
     try {
       final int addWord = await _wordsCollectionRepository.addWordToCollection(word: word, collectionId: collectionId);
@@ -24,9 +33,19 @@ class WordsCollectionUseCase {
     }
   }
 
-  Future<int> removeWordFromCollection({required int collectionId}) async {
+  Future<int> deleteWordFromCollection({required int wordId}) async {
     try {
-      final int removeWord = await _wordsCollectionRepository.removeWordFromCollection(wordId: collectionId);
+      final int removeWord = await _wordsCollectionRepository.deleteWordFromCollection(wordId: wordId);
+      return removeWord;
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+
+  Future<int> deleteAllWordsFromCollection({required int collectionId}) async {
+    try {
+      final int removeWord = await _wordsCollectionRepository.deleteAllWordsFromCollection(collectionId: collectionId);
       return removeWord;
     } catch (e) {
       throw Exception(e.toString());
