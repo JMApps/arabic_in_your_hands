@@ -1,8 +1,8 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/word_entity.dart';
+import 'package:arabicinyourhands/presentation/pages/arabicDictionary/items/word_in_detail.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/word_collection_options.dart';
-import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/word_detail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,7 +32,7 @@ class WordCollectionItem extends StatelessWidget {
             isScrollControlled: true,
             useSafeArea: true,
             showDragHandle: true,
-            builder: (context) => WordDetail(wordModel: model),
+            builder: (context) => WordInDetail(wordModel: model),
           );
         },
         onLongPress: () {
