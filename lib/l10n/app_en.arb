@@ -52,6 +52,7 @@
   "addWordTranslate": "Добавить перевод",
   "enterWordTranslate": "Введите перевод",
   "wordAdded": "Слово добавлено",
+  "wordAddedToCollection": "Слово добавлено в коллекцию",
   "changeWord": "Изменить слово",
   "wordChanged": "Слово изменено",
   "deleteWord": "Удалить слово",

@@ -3,7 +3,9 @@ import 'package:arabicinyourhands/data/state/word_collection_state.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/collection_entity.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/word_entity.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/collection_options.dart';
+import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
 class AddWordCollectionItem extends StatelessWidget {
@@ -21,6 +23,7 @@ class AddWordCollectionItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
+    final AppLocalizations? locale = AppLocalizations.of(context);
     final Color itemOddColor = appColors.primary.withOpacity(0.05);
     final Color itemEvenColor = appColors.primary.withOpacity(0.15);
     return Container(
@@ -28,7 +31,18 @@ class AddWordCollectionItem extends StatelessWidget {
       child: InkWell(
         onTap: () async {
           Navigator.pop(context);
-          await Provider.of<WordCollectionState>(context, listen: false).addWordToCollection(word: wordModel, collectionId: collectionModel.id);
+          await Provider.of<WordCollectionState>(context, listen: false)
+              .addWordToCollection(word: wordModel, collectionId: collectionModel.id).then(
+                (value) => ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: appColors.secondary,
+                    duration: const Duration(milliseconds: 500),
+                    content: SnackBarMessage(
+                      message: locale!.wordAddedToCollection,
+                    ),
+                  ),
+                ),
+              );
         },
         onLongPress: () {
           showModalBottomSheet(

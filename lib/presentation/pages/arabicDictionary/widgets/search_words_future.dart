@@ -64,7 +64,7 @@ class _SearchWordsFutureState extends State<SearchWordsFuture> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(right: 8, top: 8, left: 8),
+                  padding: AppStyles.mainMardingMini,
                   child: Text(
                     '${locale!.mathesFound}${_recentWords.length}',
                     textAlign: TextAlign.start,
@@ -73,7 +73,7 @@ class _SearchWordsFutureState extends State<SearchWordsFuture> {
                 Expanded(
                   child: CupertinoScrollbar(
                     child: ListView.builder(
-                      padding: AppStyles.mainMardingMini,
+                      padding: const EdgeInsets.only(left: 8, bottom: 8, right: 8),
                       itemCount: _recentWords.length,
                       itemBuilder: (BuildContext context, int index) {
                         final WordEntity model = _recentWords[index];

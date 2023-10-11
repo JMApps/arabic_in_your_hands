@@ -3,6 +3,7 @@ import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/word_entity.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/word_collection_options.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/word_detail.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class WordCollectionItem extends StatelessWidget {
@@ -41,6 +42,7 @@ class WordCollectionItem extends StatelessWidget {
             builder: (context) => WordCollectionOptions(wordId: model.id, wordCollectionId: wordCollectionId),
           );
         },
+        borderRadius: AppStyles.mainBorder,
         child: Container(
           padding: AppStyles.mainMarding,
           decoration: BoxDecoration(
@@ -106,6 +108,16 @@ class WordCollectionItem extends StatelessWidget {
                       fontSize: 20,
                       fontFamily: 'Uthmanic',
                     ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        isScrollControlled: true,
+                        builder: (context) => WordCollectionOptions(wordId: model.id, wordCollectionId: wordCollectionId),
+                      );
+                    },
+                    icon: const Icon(CupertinoIcons.minus_circle),
                   ),
                 ],
               ),
