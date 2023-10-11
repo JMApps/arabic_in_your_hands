@@ -75,7 +75,7 @@ class WordItem extends StatelessWidget {
                         fontFamily: 'Gilroy',
                         fontWeight: FontWeight.w100,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
