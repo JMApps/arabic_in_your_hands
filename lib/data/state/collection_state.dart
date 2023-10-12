@@ -10,13 +10,11 @@ class CollectionState extends ChangeNotifier {
 
   Future<List<CollectionEntity>> fetchAllCollections() async {
     final List<CollectionEntity> allCollections = await _collectionsUseCase.fetchAllCollections();
-    notifyListeners();
     return allCollections;
   }
 
   Future<CollectionEntity> fetchCollectionById({required int collectionId}) async {
     final CollectionEntity collectionById = await _collectionsUseCase.fetchCollectionById(collectionId: collectionId);
-    notifyListeners();
     return collectionById;
   }
 

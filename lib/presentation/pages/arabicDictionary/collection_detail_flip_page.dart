@@ -1,4 +1,5 @@
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/collection_entity.dart';
+import 'package:arabicinyourhands/presentation/pages/arabicDictionary/lists/words_collection_flip_list.dart';
 import 'package:arabicinyourhands/presentation/uiState/content_flip_state.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,7 @@ class CollectionDetailFlipPage extends StatelessWidget {
             ),
           ],
         ),
-        body: Container(),
+        body: WordsCollectionFlipList(collectionModel: model)
       ),
     );
   }
