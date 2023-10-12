@@ -35,6 +35,10 @@ class AppTheme {
         ),
       ),
     ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      showDragHandle: true,
+      dragHandleSize: Size(64, 3),
+    ),
   );
 
   static final darkTheme = ThemeData(
@@ -68,6 +72,10 @@ class AppTheme {
           width: 0.5,
         ),
       ),
+    ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      showDragHandle: true,
+      dragHandleSize: Size(64, 3),
     ),
   );
 }
