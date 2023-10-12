@@ -1,8 +1,6 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
-import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictionary_category_data_repository.dart';
 import 'package:arabicinyourhands/data/state/user_dictionary_category_state.dart';
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_category_entity.dart';
-import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_categories_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/change_category_popup.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
@@ -10,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-class CategoryOptions extends StatefulWidget {
+class CategoryOptions extends StatelessWidget {
   const CategoryOptions({
     super.key,
     required this.categoryId,
@@ -19,31 +17,18 @@ class CategoryOptions extends StatefulWidget {
   final int categoryId;
 
   @override
-  State<CategoryOptions> createState() => _CategoryOptionsState();
-}
-
-class _CategoryOptionsState extends State<CategoryOptions> {
-  late final UserDictionaryCategoriesUseCase _categoriesUseCase;
-
-  @override
-  void initState() {
-    _categoriesUseCase = UserDictionaryCategoriesUseCase(UserDictionaryCategoryDataRepository());
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
     final AppLocalizations locale = AppLocalizations.of(context)!;
-    return FutureBuilder<List<UserDictionaryCategoryEntity>>(
-      future: _categoriesUseCase.fetchWordCategoryById(
-        categoryId: widget.categoryId,
+    return FutureBuilder<UserDictionaryCategoryEntity>(
+      future: Provider.of<UserDictionaryCategoryState>(context, listen: false).fetchWordCategoryById(
+        categoryId: categoryId,
       ),
-      builder: (BuildContext context, AsyncSnapshot<List<UserDictionaryCategoryEntity>> snapshot) {
-        if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-          final UserDictionaryCategoryEntity model = snapshot.data![0];
+      builder: (BuildContext context, AsyncSnapshot<UserDictionaryCategoryEntity> snapshot) {
+        if (snapshot.hasData) {
+          final UserDictionaryCategoryEntity model = snapshot.data!;
           return Container(
-            padding: AppStyles.mainMarding,
+            padding: AppStyles.mainMardingWithoutTop,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
@@ -51,13 +36,14 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                 Text(
                   model.wordCategoryTitle,
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: appColors.error,
+                    fontFamily: 'Gilroy',
+                    color: appColors.secondary,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 16),
                 OutlinedButton(
                   onPressed: () {
                     Navigator.pop(context);
@@ -65,13 +51,11 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                       context: context,
                       isScrollControlled: true,
                       builder: (context) {
-                        return SingleChildScrollView(
-                          child: AnimatedPadding(
-                            padding: MediaQuery.of(context).viewInsets,
-                            duration: const Duration(milliseconds: 250),
-                            curve: Curves.decelerate,
-                            child: ChangeCategoryPopup(model: model),
-                          ),
+                        return AnimatedPadding(
+                          padding: MediaQuery.of(context).viewInsets,
+                          duration: const Duration(milliseconds: 250),
+                          curve: Curves.decelerate,
+                          child: ChangeCategoryPopup(model: model),
                         );
                       },
                     );
@@ -85,8 +69,8 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                   onPressed: () {
                     showModalBottomSheet(
                       context: context,
-                      builder: (_) => Padding(
-                        padding: AppStyles.mainMardingMini,
+                      builder: (context) => Padding(
+                        padding: AppStyles.mainMarding,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           mainAxisSize: MainAxisSize.min,
@@ -96,6 +80,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: 'Gilroy',
                                 color: appColors.error,
                               ),
                               textAlign: TextAlign.center,
@@ -148,7 +133,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                     showModalBottomSheet(
                       context: context,
                       builder: (_) => Padding(
-                        padding: AppStyles.mainMardingMini,
+                        padding: AppStyles.mainMarding,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           mainAxisSize: MainAxisSize.min,
@@ -158,6 +143,7 @@ class _CategoryOptionsState extends State<CategoryOptions> {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: 'Gilroy',
                                 color: appColors.error,
                               ),
                               textAlign: TextAlign.center,

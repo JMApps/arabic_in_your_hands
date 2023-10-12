@@ -1,14 +1,13 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
-import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_word_entity.dart';
 import 'package:flutter/material.dart';
 
 class WordsFlipBackCard extends StatelessWidget {
   const WordsFlipBackCard({
     super.key,
-    required this.model,
+    required this.word,
   });
 
-  final UserDictionaryWordEntity model;
+  final String word;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +22,7 @@ class WordsFlipBackCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                model.word,
+                word,
                 style: TextStyle(
                   fontSize: 35,
                   color: appColors.secondary,

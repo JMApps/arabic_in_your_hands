@@ -1,8 +1,6 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
-import 'package:arabicinyourhands/data/repositories/userDictionary/user_dictionary_word_data_repository.dart';
 import 'package:arabicinyourhands/data/state/user_dictionary_word_state.dart';
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_word_entity.dart';
-import 'package:arabicinyourhands/domain/usecases/usetDictionary/user_dictionary_words_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/change_word_popup.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
@@ -10,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-class WordOptions extends StatefulWidget {
+class WordOptions extends StatelessWidget {
   const WordOptions({
     super.key,
     required this.categoryId,
@@ -21,31 +19,18 @@ class WordOptions extends StatefulWidget {
   final int wordId;
 
   @override
-  State<WordOptions> createState() => _WordOptionsState();
-}
-
-class _WordOptionsState extends State<WordOptions> {
-  late final UserDictionaryWordsUseCase _wordsUseCase;
-
-  @override
-  void initState() {
-    _wordsUseCase = UserDictionaryWordsUseCase(UserDictionaryWordDataRepository());
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
     final AppLocalizations? locale = AppLocalizations.of(context);
-    return FutureBuilder<List<UserDictionaryWordEntity>>(
-      future: _wordsUseCase.fetchWordById(
-        wordId: widget.wordId,
+    return FutureBuilder<UserDictionaryWordEntity>(
+      future: Provider.of<UserDictionaryWordState>(context).fetchWordById(
+        wordId: wordId,
       ),
-      builder: (BuildContext context, AsyncSnapshot<List<UserDictionaryWordEntity>> snapshot) {
-        if (snapshot.hasData && snapshot.data!.isNotEmpty) {
-          final UserDictionaryWordEntity model = snapshot.data![0];
+      builder: (BuildContext context, AsyncSnapshot<UserDictionaryWordEntity> snapshot) {
+        if (snapshot.hasData) {
+          final UserDictionaryWordEntity model = snapshot.data!;
           return Padding(
-            padding: AppStyles.mainMarding,
+            padding: AppStyles.mainMardingWithoutTop,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
@@ -55,11 +40,12 @@ class _WordOptionsState extends State<WordOptions> {
                   style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: appColors.error,
+                    fontFamily: 'Gilroy',
+                    color: appColors.secondary,
                   ),
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 16),
                 OutlinedButton(
                   onPressed: () {
                     Navigator.pop(context);
@@ -86,7 +72,7 @@ class _WordOptionsState extends State<WordOptions> {
                     showModalBottomSheet(
                       context: context,
                       builder: (_) => Padding(
-                        padding: AppStyles.mainMardingMini,
+                        padding: AppStyles.mainMardingWithoutTop,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           mainAxisSize: MainAxisSize.min,
@@ -96,6 +82,7 @@ class _WordOptionsState extends State<WordOptions> {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: 'Gilroy',
                                 color: appColors.error,
                               ),
                               textAlign: TextAlign.center,
@@ -147,8 +134,9 @@ class _WordOptionsState extends State<WordOptions> {
                   onPressed: () {
                     showModalBottomSheet(
                       context: context,
+                      showDragHandle: true,
                       builder: (_) => Padding(
-                        padding: AppStyles.mainMardingMini,
+                        padding: AppStyles.mainMardingWithoutTop,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           mainAxisSize: MainAxisSize.min,
@@ -176,7 +164,7 @@ class _WordOptionsState extends State<WordOptions> {
                                     ),
                                   ),
                                 );
-                                Provider.of<UserDictionaryWordState>(context, listen: false).deleteWordsCategory(categoryId: widget.categoryId);
+                                Provider.of<UserDictionaryWordState>(context, listen: false).deleteWordsCategory(categoryId: categoryId);
                               },
                               child: Text(
                                 locale.delete,

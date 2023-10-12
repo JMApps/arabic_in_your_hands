@@ -24,11 +24,11 @@ class WordsFlipCardItem extends StatelessWidget {
       controller: FlipCardController(),
       animationDuration: const Duration(milliseconds: 300),
       frontWidget: flipMode.getCardSideMode
-          ? WordsFlipBackCard(model: model)
-          : WordsFlipFrontCard(model: model),
+          ? WordsFlipBackCard(word: model.word)
+          : WordsFlipFrontCard(wordTranslate: model.wordTranslate),
       backWidget: flipMode.getCardSideMode
-          ? WordsFlipFrontCard(model: model)
-          : WordsFlipBackCard(model: model),
+          ? WordsFlipFrontCard(wordTranslate: model.wordTranslate)
+          : WordsFlipBackCard(word: model.word),
     );
   }
 }

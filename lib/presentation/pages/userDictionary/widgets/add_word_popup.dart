@@ -41,7 +41,7 @@ class _AddWordPopupState extends State<AddWordPopup> {
         ),
       ],
       child: Container(
-        padding: AppStyles.mainMarding,
+        padding: AppStyles.mainMardingWithoutTop,
         child: Consumer<WordState>(
           builder: (context, wordState, _) {
             return Column(
@@ -128,12 +128,11 @@ class _AddWordPopupState extends State<AddWordPopup> {
                 const SizedBox(height: 4),
                 OutlinedButton(
                   onPressed: () {
-                    if (_wordEditing.text.isNotEmpty &&
-                        _wordTranslateEditing.text.isNotEmpty) {
-                      final UserDictionaryAddWordEntity model = UserDictionaryAddWordEntity(
+                    if (_wordEditing.text.trim().isNotEmpty && _wordTranslateEditing.text.trim().isNotEmpty) {
+                      final  newWord = UserDictionaryAddWordEntity(
                         displayBy: widget.categoryId,
-                        word: _wordEditing.text,
-                        wordTranslate: _wordTranslateEditing.text,
+                        word: _wordEditing.text.trim(),
+                        wordTranslate: _wordTranslateEditing.text.trim(),
                         wordItemColor: wordState.getWordColor.toHex(),
                       );
                       Navigator.pop(context);
@@ -146,11 +145,11 @@ class _AddWordPopupState extends State<AddWordPopup> {
                           ),
                         ),
                       );
-                      Provider.of<UserDictionaryWordState>(context, listen: false).addWord(model: model);
-                    } else if (_wordEditing.text.isEmpty) {
+                      Provider.of<UserDictionaryWordState>(context, listen: false).addWord(model: newWord);
+                    } else if (_wordEditing.text.trim().isEmpty) {
                       wordState.setWordState = '';
                       _focusWord.requestFocus();
-                    } else if (_wordTranslateEditing.text.isEmpty) {
+                    } else if (_wordTranslateEditing.text.trim().isEmpty) {
                       wordState.setWordTranslateState = '';
                       _focusWordTranslate.requestFocus();
                     }

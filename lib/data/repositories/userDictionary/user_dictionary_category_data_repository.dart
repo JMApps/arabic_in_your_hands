@@ -19,11 +19,11 @@ class UserDictionaryCategoryDataRepository implements UserDictionaryCategoryRepo
   }
 
   @override
-  Future<List<UserDictionaryCategoryEntity>> getCategoryById({required int categoryId}) async {
+  Future<UserDictionaryCategoryEntity> getCategoryById({required int categoryId}) async {
     final Database dbClient = await _databaseUserDictionaryService.db;
     final List<Map<String, Object?>> resours = await dbClient.query('Table_of_word_categories', where: '_id = $categoryId');
-    List<UserDictionaryCategoryEntity>? wordCaterories = resours.isNotEmpty ? resours.map((c) => _mapToEntity(UserDictionaryCategoryModel.fromMap(c))).toList() : [];
-    return wordCaterories;
+    final UserDictionaryCategoryEntity? categoryByid = resours.isNotEmpty ? _mapToEntity(UserDictionaryCategoryModel.fromMap(resours.first)) : null;
+    return categoryByid!;
   }
 
   @override

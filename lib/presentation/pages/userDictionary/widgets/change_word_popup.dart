@@ -26,14 +26,15 @@ class ChangeWordPopup extends StatefulWidget {
 class _ChangeWordPopupState extends State<ChangeWordPopup> {
   late final TextEditingController _wordEditing;
   late final TextEditingController _wordTranslateEditing;
+
   final FocusNode focusWord = FocusNode();
   final FocusNode focusWordTranslate = FocusNode();
 
   @override
   void initState() {
     super.initState();
-    _wordEditing = TextEditingController(text: widget.model.word);
-    _wordTranslateEditing = TextEditingController(text: widget.model.wordTranslate);
+    _wordEditing = TextEditingController(text: widget.model.word.trim());
+    _wordTranslateEditing = TextEditingController(text: widget.model.wordTranslate.trim());
   }
 
   @override
@@ -135,17 +136,14 @@ class _ChangeWordPopupState extends State<ChangeWordPopup> {
                 const SizedBox(height: 4),
                 OutlinedButton(
                   onPressed: () {
-                    if (_wordEditing.text.isNotEmpty &&
-                        _wordTranslateEditing.text.isNotEmpty) {
-                      if (_wordEditing.text != widget.model.word ||
-                          _wordTranslateEditing.text != widget.model.wordTranslate ||
-                          wordState.getWordColor.toString() != widget.model.wordItemColor.toString()) {
-                        final UserDictionaryChangeWordEntity model = UserDictionaryChangeWordEntity(
-                          id: widget.model.id,
-                          word: _wordEditing.text,
-                          wordTranslate: _wordTranslateEditing.text,
-                          wordItemColor: wordState.getWordColor.toHex(),
-                        );
+                    if (_wordEditing.text.trim().isNotEmpty && _wordTranslateEditing.text.trim().isNotEmpty) {
+                      final UserDictionaryChangeWordEntity changeWord = UserDictionaryChangeWordEntity(
+                        id: widget.model.id,
+                        word: _wordEditing.text.trim(),
+                        wordTranslate: _wordTranslateEditing.text.trim(),
+                        wordItemColor: wordState.getWordColor.toHex(),
+                      );
+                      if (!widget.model.equals(changeWord)) {
                         Navigator.pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -156,12 +154,14 @@ class _ChangeWordPopupState extends State<ChangeWordPopup> {
                             ),
                           ),
                         );
-                        Provider.of<UserDictionaryWordState>(context, listen: false).changeWord(model: model);
+                        Provider.of<UserDictionaryWordState>(context, listen: false).changeWord(model: changeWord);
+                      } else {
+                        Navigator.pop(context);
                       }
-                    } else if (_wordEditing.text.isEmpty) {
+                    } else if (_wordEditing.text.trim().isEmpty) {
                       wordState.setWordState = '';
                       focusWord.requestFocus();
-                    } else if (_wordTranslateEditing.text.isEmpty) {
+                    } else if (_wordTranslateEditing.text.trim().isEmpty) {
                       wordState.setWordTranslateState = '';
                       focusWordTranslate.requestFocus();
                     }

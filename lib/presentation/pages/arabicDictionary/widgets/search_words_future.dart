@@ -51,10 +51,8 @@ class _SearchWordsFutureState extends State<SearchWordsFuture> {
                   final meaning = element.meaning;
 
                   return (word.contains(widget.query.toLowerCase())) ||
-                      (shortMeaning?.contains(widget.query.toLowerCase()) ??
-                          false) ||
-                      (meaning?.contains(widget.query.toLowerCase()) ?? false);
-                }).toList();
+                      (shortMeaning?.contains(widget.query.toLowerCase()) ?? false) ||
+                      (meaning?.contains(widget.query.toLowerCase()) ?? false);}).toList();
           if (_recentWords.isEmpty && widget.query.isNotEmpty) {
             return FutureIsEmpty(message: locale!.searchResultIsEmpty);
           } else if (_recentWords.isEmpty) {

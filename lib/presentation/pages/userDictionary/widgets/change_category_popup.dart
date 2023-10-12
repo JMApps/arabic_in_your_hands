@@ -31,7 +31,7 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
   @override
   void initState() {
     super.initState();
-    _textWordCategoryEditing = TextEditingController(text: widget.model.wordCategoryTitle);
+    _textWordCategoryEditing = TextEditingController(text: widget.model.wordCategoryTitle.trim());
   }
 
   @override
@@ -48,7 +48,7 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
         ),
       ],
       child: Container(
-        padding: AppStyles.mainMarding,
+        padding: AppStyles.mainMardingWithoutTop,
         child: Consumer<CategoryProiriyState>(
           builder: (BuildContext context, categoryState, _) {
             return Column(
@@ -151,16 +151,14 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
                 const SizedBox(height: 16),
                 OutlinedButton(
                   onPressed: () async {
-                    if (_textWordCategoryEditing.text.isNotEmpty) {
-                      if (widget.model.wordCategoryTitle != _textWordCategoryEditing.text ||
-                          widget.model.wordCategoryColor.toString() != categoryState.getCategoryColor.toString() ||
-                          widget.model.priority != categoryState.getPriorityIndex) {
-                        final UserDictionaryChangeCategoryEntity model = UserDictionaryChangeCategoryEntity(
-                          id: widget.model.id,
-                          wordCategoryTitle: _textWordCategoryEditing.text,
-                          wordCategoryColor: categoryState.getCategoryColor.toHex(),
-                          priority: categoryState.getPriorityIndex,
-                        );
+                    if (_textWordCategoryEditing.text.trim().isNotEmpty) {
+                      final newModel = UserDictionaryChangeCategoryEntity(
+                        id: widget.model.id,
+                        wordCategoryTitle: _textWordCategoryEditing.text.trim(),
+                        wordCategoryColor: categoryState.getCategoryColor.toHex(),
+                        priority: categoryState.getPriorityIndex,
+                      );
+                      if (!widget.model.equals(newModel)) {
                         Navigator.pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
@@ -171,9 +169,11 @@ class _ChangeCategoryPopupState extends State<ChangeCategoryPopup> {
                             ),
                           ),
                         );
-                        Provider.of<UserDictionaryCategoryState>(context, listen: false).changeCategory(model: model);
+                        Provider.of<UserDictionaryCategoryState>(context, listen: false).changeCategory(model: newModel);
+                      } else {
+                        Navigator.pop(context);
                       }
-                    } else if (_textWordCategoryEditing.text.isEmpty) {
+                    } else {
                       categoryState.setCategoryState = '';
                       focusCategory.requestFocus();
                     }

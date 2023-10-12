@@ -34,8 +34,8 @@ class WordsContentFlipModePage extends StatelessWidget {
               icon: const Icon(CupertinoIcons.add_circled),
               onPressed: () {
                 showModalBottomSheet(
-                  isScrollControlled: true,
                   context: context,
+                  isScrollControlled: true,
                   builder: (context) {
                     return AnimatedPadding(
                       padding: MediaQuery.of(context).viewInsets,
@@ -53,7 +53,11 @@ class WordsContentFlipModePage extends StatelessWidget {
             Consumer<ContentFlipState>(
               builder: (context, flipMode, _) {
                 return IconButton(
-                  icon: const Icon(CupertinoIcons.rotate_right),
+                  icon: Icon(
+                    flipMode.getCardSideMode
+                        ? CupertinoIcons.rotate_right
+                        : CupertinoIcons.rotate_left,
+                  ),
                   onPressed: () {
                     flipMode.changeFlipSide();
                   },

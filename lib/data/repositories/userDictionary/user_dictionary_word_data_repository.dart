@@ -19,11 +19,11 @@ class UserDictionaryWordDataRepository implements UserDictionaryWordRepository {
   }
 
   @override
-  Future<List<UserDictionaryWordEntity>> getWordById({required int wordId}) async {
+  Future<UserDictionaryWordEntity> getWordById({required int wordId}) async {
     final Database dbClient = await _databaseUserDictionaryService.db;
     final List<Map<String, Object?>> resours = await dbClient.query('Table_of_words', where: '_id = $wordId');
-    List<UserDictionaryWordEntity>? wordById = resours.isNotEmpty ? resours.map((c) => _mapToEntity(UserDictionaryWordModel.fromMap(c))).toList() : [];
-    return wordById;
+    final UserDictionaryWordEntity? wordById = resours.isNotEmpty ? _mapToEntity(UserDictionaryWordModel.fromMap(resours.first)) : null;
+    return wordById!;
   }
 
   @override

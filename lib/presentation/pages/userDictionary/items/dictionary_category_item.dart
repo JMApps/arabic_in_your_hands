@@ -21,43 +21,34 @@ class DictionaryCategoryItem extends StatelessWidget {
     final Color itemColor = AppColors.priorityColor[model.priority].withOpacity(0.15);
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
-      child: InkWell(
-        onTap: () {
-          Navigator.pushNamed(
-            context,
-            '/category_words_content',
-            arguments: WordCategoryArgs(model: model),
-          );
-        },
-        onLongPress: () {
-          showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            builder: (_) => CategoryOptions(categoryId: model.id),
-          );
-        },
-        borderRadius: AppStyles.mainBorder,
-        child: Container(
-          padding: AppStyles.mainMarding,
-          decoration: BoxDecoration(
-            color: itemColor,
-            borderRadius: AppStyles.mainBorder,
+      child: Container(
+        decoration: BoxDecoration(
+          color: itemColor,
+          borderRadius: AppStyles.mainBorder,
+        ),
+        child: ListTile(
+          onTap: () {
+            Navigator.pushNamed(
+              context,
+              '/category_words_content',
+              arguments: WordCategoryArgs(model: model),
+            );
+          },
+          onLongPress: () {
+            showModalBottomSheet(
+              context: context,
+              builder: (_) => CategoryOptions(categoryId: model.id),
+            );
+          },
+          shape: AppStyles.mainShape,
+          title: Text(
+            model.wordCategoryTitle,
+            style: const TextStyle(fontSize: 16),
+            textAlign: TextAlign.justify,
           ),
-          child: Row(
-            children: [
-              Expanded(
-                child: Text(
-                  model.wordCategoryTitle,
-                  style: const TextStyle(fontSize: 16),
-                  textAlign: TextAlign.justify,
-                ),
-              ),
-              const SizedBox(width: 16),
-              CircleAvatar(
-                radius: 7.5,
-                backgroundColor: HexColor.fromHex(model.wordCategoryColor),
-              )
-            ],
+          trailing: CircleAvatar(
+            radius: 7.5,
+            backgroundColor: HexColor.fromHex(model.wordCategoryColor),
           ),
         ),
       ),

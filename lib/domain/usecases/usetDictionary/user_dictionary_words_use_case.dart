@@ -18,9 +18,9 @@ class UserDictionaryWordsUseCase {
     }
   }
 
-  Future<List<UserDictionaryWordEntity>> fetchWordById({required int wordId}) async {
+  Future<UserDictionaryWordEntity> fetchWordById({required int wordId}) async {
       try {
-        final List<UserDictionaryWordEntity> allWords = await _userDictionaryWordRepository.getWordById(wordId: wordId);
+        final UserDictionaryWordEntity allWords = await _userDictionaryWordRepository.getWordById(wordId: wordId);
         return allWords;
       } catch (e) {
         throw Exception(e.toString());

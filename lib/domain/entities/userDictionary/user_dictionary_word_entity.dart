@@ -1,3 +1,5 @@
+import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_change_word_entity.dart';
+
 class UserDictionaryWordEntity {
   final int id;
   final int displayBy;
@@ -20,4 +22,10 @@ class UserDictionaryWordEntity {
     required this.changeDateTime,
     required this.priority,
   });
+
+  bool equals(UserDictionaryChangeWordEntity other) {
+    return word.trim() == other.word.trim() &&
+        wordTranslate.trim() == other.wordTranslate.trim() &&
+        wordItemColor == other.wordItemColor;
+  }
 }

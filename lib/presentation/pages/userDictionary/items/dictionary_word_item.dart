@@ -39,6 +39,7 @@ class DictionaryWordItem extends StatelessWidget {
           showModalBottomSheet(
             context: context,
             isScrollControlled: true,
+            showDragHandle: true,
             builder: (context) => WordOptions(
               categoryId: categoryId,
               wordId: model.id,

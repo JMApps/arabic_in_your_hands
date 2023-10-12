@@ -34,6 +34,7 @@ class DictionaryCategoriesPage extends StatelessWidget {
       body: const DictionaryCategoriesList(),
       floatingActionButton: FloatingActionButton(
         backgroundColor: appColors.secondary,
+        elevation: 2,
         onPressed: () {
           showModalBottomSheet(
             context: context,

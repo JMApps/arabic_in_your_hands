@@ -8,7 +8,7 @@ class SearchCategoryDelegate extends SearchDelegate {
           keyboardType: TextInputType.text,
           searchFieldStyle: const TextStyle(
             color: Colors.white,
-            fontSize: 17,
+            fontSize: 20,
           ),
         );
 
@@ -19,7 +19,7 @@ class SearchCategoryDelegate extends SearchDelegate {
       inputDecorationTheme: const InputDecorationTheme(
         border: InputBorder.none,
         hintStyle: TextStyle(
-          fontSize: 17,
+          fontSize: 20,
           color: Colors.grey,
         ),
       ),

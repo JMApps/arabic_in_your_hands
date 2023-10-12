@@ -1,4 +1,3 @@
-import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/arguments/word_category_args.dart';
 import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary_category_entity.dart';
@@ -6,7 +5,6 @@ import 'package:arabicinyourhands/presentation/pages/userDictionary/lists/dictio
 import 'package:arabicinyourhands/presentation/pages/userDictionary/widgets/add_word_popup.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DictionaryWordsPage extends StatelessWidget {
   const DictionaryWordsPage({
@@ -18,7 +16,6 @@ class DictionaryWordsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final AppLocalizations? locale = AppLocalizations.of(context);
     final ColorScheme appColors = Theme.of(context).colorScheme;
     return Scaffold(
       body: NestedScrollView(
@@ -32,7 +29,7 @@ class DictionaryWordsPage extends StatelessWidget {
               snap: false,
               forceElevated: innerBoxIsScrolled,
               expandedHeight: 60,
-              title: Text(locale!.words),
+              title: Text(categoryModel.wordCategoryTitle),
               actions: [
                 IconButton(
                   icon: const Icon(CupertinoIcons.creditcard),
@@ -48,28 +45,9 @@ class DictionaryWordsPage extends StatelessWidget {
               ],
             ),
             SliverToBoxAdapter(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(
-                    height: 4,
-                    color: HexColor.fromHex(categoryModel.wordCategoryColor),
-                  ),
-                  const SizedBox(height: 8),
-                  Card(
-                    elevation: 0,
-                    margin: AppStyles.mainMardingHorizontalMini,
-                    color: appColors.secondary,
-                    child: Padding(
-                      padding: AppStyles.mainMardingMini,
-                      child: Text(
-                        categoryModel.wordCategoryTitle,
-                        style: const TextStyle(fontSize: 18),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                  ),
-                ],
+              child: Container(
+                height: 5,
+                color: HexColor.fromHex(categoryModel.wordCategoryColor),
               ),
             ),
           ];
@@ -85,11 +63,13 @@ class DictionaryWordsPage extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: appColors.secondary,
+        elevation: 2,
         child: const Icon(CupertinoIcons.add),
         onPressed: () {
           showModalBottomSheet(
             context: context,
             isScrollControlled: true,
+            showDragHandle: true,
             builder: (context) {
               return AnimatedPadding(
                 padding: MediaQuery.of(context).viewInsets,

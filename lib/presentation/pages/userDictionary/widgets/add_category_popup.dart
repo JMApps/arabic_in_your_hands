@@ -33,7 +33,7 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
         ),
       ],
       child: Container(
-        padding: AppStyles.mainMarding,
+        padding: AppStyles.mainMardingWithoutTop,
         child: Consumer<CategoryProiriyState>(
           builder: (BuildContext context, categoryState, _) {
             return Column(
@@ -134,9 +134,9 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                 const SizedBox(height: 16),
                 OutlinedButton(
                   onPressed: () async {
-                    if (_textWordCategoryEditing.text.isNotEmpty) {
-                      final UserDictionaryAddCategoryEntity model = UserDictionaryAddCategoryEntity(
-                        wordCategoryTitle: _textWordCategoryEditing.text,
+                    if (_textWordCategoryEditing.text.trim().isNotEmpty) {
+                      final newModel = UserDictionaryAddCategoryEntity(
+                        wordCategoryTitle: _textWordCategoryEditing.text.trim(),
                         wordCategoryColor: categoryState.getCategoryColor.toHex(),
                         priority: categoryState.getPriorityIndex,
                       );
@@ -150,8 +150,8 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                           ),
                         ),
                       );
-                      Provider.of<UserDictionaryCategoryState>(context, listen: false).addCategory(model: model);
-                    } else if (_textWordCategoryEditing.text.isEmpty) {
+                      Provider.of<UserDictionaryCategoryState>(context, listen: false).addCategory(model: newModel);
+                    } {
                       categoryState.setCategoryState = '';
                       focusCategory.requestFocus();
                     }

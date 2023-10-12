@@ -5,7 +5,7 @@ import 'package:arabicinyourhands/domain/entities/userDictionary/user_dictionary
 abstract class UserDictionaryCategoryRepository {
   Future<List<UserDictionaryCategoryEntity>> getAllCategories();
 
-  Future<List<UserDictionaryCategoryEntity>> getCategoryById({required int categoryId});
+  Future<UserDictionaryCategoryEntity> getCategoryById({required int categoryId});
 
   Future<int> addCategory({required UserDictionaryAddCategoryEntity model});
 
