@@ -8,13 +8,11 @@ class WordCollectionState extends ChangeNotifier {
 
   Future<List<WordEntity>> fetchWordsByCollectionId({required int collectionId}) async {
     final Future<List<WordEntity>> wordsByCollection = _wordsCollectionUseCase.fetchWordsByCollectionId(collectionId: collectionId);
-    notifyListeners();
     return wordsByCollection;
   }
 
   Future<WordEntity> fetchWordById({required int wordId}) async {
     final Future<WordEntity> wordById = _wordsCollectionUseCase.fetchWordById(wordId: wordId);
-    notifyListeners();
     return wordById;
   }
 
