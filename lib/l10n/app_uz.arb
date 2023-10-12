@@ -52,6 +52,7 @@
   "addWordTranslate": "Добавить перевод",
   "enterWordTranslate": "Введите перевод",
   "wordAdded": "Слово добавлено",
+  "wordAddedToCollection": "Слово добавлено в коллекцию",
   "changeWord": "Изменить слово",
   "wordChanged": "Слово изменено",
   "deleteWord": "Удалить слово",
@@ -94,6 +95,8 @@
   "displayIsAlways": "Не отключать дисплей",
 
   "playSpeed": "Скорость воспроизведения",
+  "oneRepet": "Повтор трека",
+  "allRepet": "Повтор всех треков",
 
   "startSearch": "Начните поиск...",
   "searchResultIsEmpty": "По вашему запросу ничего не найдено",
