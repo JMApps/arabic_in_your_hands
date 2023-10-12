@@ -65,6 +65,7 @@ class _SecondVolContentFlipListState extends State<SecondVolContentFlipList> {
                       child: Consumer<ContentFlipState>(
                         builder: (BuildContext context, flipState, _) {
                           return FlipCard(
+                            animationDuration: const Duration(milliseconds: 300),
                             rotateSide: RotateSide.bottom,
                             controller: _flipCardController,
                             axis: FlipAxis.vertical,
