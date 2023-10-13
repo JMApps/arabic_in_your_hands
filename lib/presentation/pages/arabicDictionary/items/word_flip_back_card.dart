@@ -13,7 +13,9 @@ class WordFlipBackCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: AppStyles.mainMarding,
-      child: Center(
+      child: Container(
+        alignment: Alignment.center,
+        padding: AppStyles.mainMarding,
         child: Text(
           shortMeaning,
           style: const TextStyle(
@@ -21,6 +23,7 @@ class WordFlipBackCard extends StatelessWidget {
             fontFamily: 'Gilroy',
             fontWeight: FontWeight.w100,
           ),
+          textAlign: TextAlign.center,
         ),
       ),
     );

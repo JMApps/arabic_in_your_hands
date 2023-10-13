@@ -104,11 +104,8 @@ class WordItem extends StatelessWidget {
                     onPressed: () {
                       showModalBottomSheet(
                         context: context,
-                        builder: (context) => Container(
-                          padding: AppStyles.mainMarding,
-                          height: 500,
-                          child: AddWordCollectionsList(wordModel: model),
-                        ),
+                        useSafeArea: true,
+                        builder: (context) => AddWordCollectionsList(wordModel: model),
                       );
                     },
                     icon: const Icon(CupertinoIcons.add_circled),

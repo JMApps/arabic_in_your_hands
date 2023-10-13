@@ -14,7 +14,7 @@ class WordInDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
     return SingleChildScrollView(
-      padding: AppStyles.mainMardingHorizontal,
+      padding: AppStyles.mainMardingWithoutTop,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

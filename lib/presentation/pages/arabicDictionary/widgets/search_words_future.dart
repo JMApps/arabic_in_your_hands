@@ -47,12 +47,9 @@ class _SearchWordsFutureState extends State<SearchWordsFuture> {
               ? []
               : _words.where((element) {
                   final word = removeDiacritics(element.word);
-                  final shortMeaning = element.shortMeaning;
-                  final meaning = element.meaning;
-
-                  return (word.contains(widget.query.toLowerCase())) ||
-                      (shortMeaning?.contains(widget.query.toLowerCase()) ?? false) ||
-                      (meaning?.contains(widget.query.toLowerCase()) ?? false);}).toList();
+                  final shortMeaning = element.shortMeaning?.toLowerCase();
+                  // final meaning = element.meaning?.toLowerCase();
+                  return (word.contains(widget.query.toLowerCase())) || (shortMeaning?.contains(widget.query.toLowerCase()) ?? false);}).toList();
           if (_recentWords.isEmpty && widget.query.isNotEmpty) {
             return FutureIsEmpty(message: locale!.searchResultIsEmpty);
           } else if (_recentWords.isEmpty) {
@@ -71,7 +68,7 @@ class _SearchWordsFutureState extends State<SearchWordsFuture> {
                 Expanded(
                   child: CupertinoScrollbar(
                     child: ListView.builder(
-                      padding: const EdgeInsets.only(left: 8, bottom: 8, right: 8),
+                      padding: AppStyles.mainMardingWithoutTopMini,
                       itemCount: _recentWords.length,
                       itemBuilder: (BuildContext context, int index) {
                         final WordEntity model = _recentWords[index];

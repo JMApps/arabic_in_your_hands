@@ -28,9 +28,10 @@ class CollectionDetailFlipPage extends StatelessWidget {
             Consumer<ContentFlipState>(
               builder: (BuildContext context, flipState, Widget? child) {
                 return IconButton(
-                  icon: const Icon(
-                    CupertinoIcons.rotate_right,
-                    color: Colors.white,
+                  icon: Icon(
+                    flipState.getCardSideMode
+                        ? CupertinoIcons.rotate_right
+                        : CupertinoIcons.rotate_left,
                   ),
                   onPressed: () {
                     flipState.changeFlipSide();
@@ -40,7 +41,7 @@ class CollectionDetailFlipPage extends StatelessWidget {
             ),
           ],
         ),
-        body: WordsCollectionFlipList(collectionModel: model)
+        body: WordsCollectionFlipList(collectionModel: model),
       ),
     );
   }

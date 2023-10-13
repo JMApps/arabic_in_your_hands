@@ -1,10 +1,14 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
+import 'package:arabicinyourhands/data/state/word_collection_state.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/word_entity.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/items/word_in_detail.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/word_collection_options.dart';
+import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class WordCollectionItem extends StatelessWidget {
   const WordCollectionItem({
@@ -20,6 +24,7 @@ class WordCollectionItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations? locale = AppLocalizations.of(context);
     final ColorScheme appColors = Theme.of(context).colorScheme;
     final Color itemOddColor = appColors.mainIconColor.withOpacity(0.05);
     final Color itemEvenColor = appColors.mainIconColor.withOpacity(0.15);
@@ -31,7 +36,6 @@ class WordCollectionItem extends StatelessWidget {
             context: context,
             isScrollControlled: true,
             useSafeArea: true,
-            showDragHandle: true,
             builder: (context) => WordInDetail(wordModel: model),
           );
         },
@@ -39,7 +43,10 @@ class WordCollectionItem extends StatelessWidget {
           showModalBottomSheet(
             context: context,
             isScrollControlled: true,
-            builder: (context) => WordCollectionOptions(wordId: model.id, wordCollectionId: wordCollectionId),
+            builder: (context) => WordCollectionOptions(
+              wordId: model.id,
+              wordCollectionId: wordCollectionId,
+            ),
           );
         },
         borderRadius: AppStyles.mainBorder,
@@ -66,42 +73,45 @@ class WordCollectionItem extends StatelessWidget {
                           textDirection: TextDirection.rtl,
                         ),
                         const SizedBox(width: 8),
-                        if (model.plural != null )Text(
-                          model.plural ?? '',
-                          style: const TextStyle(
-                            fontSize: 25,
-                            fontFamily: 'Uthmanic',
-                            color: Colors.grey,
+                        if (model.plural != null)
+                          Text(
+                            model.plural ?? '',
+                            style: const TextStyle(
+                              fontSize: 25,
+                              fontFamily: 'Uthmanic',
+                              color: Colors.grey,
+                            ),
                           ),
-                        ),
                       ],
                     ),
                     const SizedBox(height: 16),
-                    if (model.shortMeaning != null) Text(
-                      model.shortMeaning ?? '',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontFamily: 'Gilroy',
-                        fontWeight: FontWeight.w100,
-                      ),
-                    )
+                    if (model.shortMeaning != null)
+                      Text(
+                        model.shortMeaning ?? '',
+                        style: const TextStyle(
+                          fontSize: 18,
+                          fontFamily: 'Gilroy',
+                          fontWeight: FontWeight.w100,
+                        ),
+                      )
                   ],
                 ),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  if (model.species != null) CircleAvatar(
-                    radius: 20,
-                    backgroundColor: appColors.secondary,
-                    child: Text(
-                      model.species ?? '',
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontFamily: 'Gilroy',
+                  if (model.species != null)
+                    CircleAvatar(
+                      radius: 20,
+                      backgroundColor: appColors.secondary,
+                      child: Text(
+                        model.species ?? '',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontFamily: 'Gilroy',
+                        ),
                       ),
                     ),
-                  ),
                   Text(
                     model.root,
                     style: const TextStyle(
@@ -111,13 +121,23 @@ class WordCollectionItem extends StatelessWidget {
                   ),
                   IconButton(
                     onPressed: () {
-                      showModalBottomSheet(
-                        context: context,
-                        isScrollControlled: true,
-                        builder: (context) => WordCollectionOptions(wordId: model.id, wordCollectionId: wordCollectionId),
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          backgroundColor: appColors.secondary,
+                          duration: const Duration(milliseconds: 500),
+                          content: SnackBarMessage(
+                            message: locale!.wordDeleted,
+                          ),
+                        ),
                       );
+                      Provider.of<WordCollectionState>(context, listen: false)
+                          .deleteWordFromCollection(wordId: model.id);
                     },
-                    icon: const Icon(CupertinoIcons.minus_circle),
+                    icon: Icon(
+                      CupertinoIcons.minus_circle,
+                      size: 30,
+                      color: appColors.primaryColor,
+                    ),
                   ),
                 ],
               ),

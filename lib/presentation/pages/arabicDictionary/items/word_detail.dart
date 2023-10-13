@@ -73,11 +73,7 @@ class WordDetail extends StatelessWidget {
                     onPressed: () {
                       showModalBottomSheet(
                         context: context,
-                        builder: (context) => Container(
-                          padding: AppStyles.mainMarding,
-                          height: 500,
-                          child: AddWordCollectionsList(wordModel: wordModel),
-                        ),
+                        builder: (context) => AddWordCollectionsList(wordModel: wordModel),
                       );
                     },
                     icon: const Icon(CupertinoIcons.add_circled, size: 40),

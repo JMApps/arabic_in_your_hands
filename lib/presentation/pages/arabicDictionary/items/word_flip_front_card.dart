@@ -13,7 +13,9 @@ class WordFlipFrontCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       margin: AppStyles.mainMarding,
-      child: Center(
+      child: Container(
+        alignment: Alignment.center,
+        padding: AppStyles.mainMarding,
         child: Text(
           word,
           style: const TextStyle(
@@ -21,6 +23,7 @@ class WordFlipFrontCard extends StatelessWidget {
             fontFamily: 'Uthmanic',
           ),
           textDirection: TextDirection.rtl,
+          textAlign: TextAlign.center,
         ),
       ),
     );

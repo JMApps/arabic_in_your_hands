@@ -38,7 +38,7 @@ class _AddWordCollectionsListState extends State<AddWordCollectionsList> {
                 builder: (BuildContext context, AsyncSnapshot<List<CollectionEntity>> snapshot) {
                   if (snapshot.hasData && snapshot.data!.isNotEmpty) {
                     return ListView.builder(
-                      padding: AppStyles.mainMardingMini,
+                      padding: AppStyles.mainMardingWithoutTopMini,
                       itemCount: snapshot.data!.length,
                       itemBuilder: (BuildContext context, int index) {
                         final CollectionEntity model = snapshot.data![index];
@@ -86,6 +86,7 @@ class _AddWordCollectionsListState extends State<AddWordCollectionsList> {
             locale!.addCollection,
           ),
         ),
+        const SizedBox(height: 16),
       ],
     );
   }

@@ -13,7 +13,9 @@ class AppStyles {
   static const EdgeInsets mainMardingVertical = EdgeInsets.symmetric(vertical: 16);
   static const EdgeInsets mainMardingVerticalMini = EdgeInsets.symmetric(vertical: 8);
   static const EdgeInsets mainMardingWithoutTop = EdgeInsets.only(left: 16, bottom: 16, right: 16);
+  static const EdgeInsets mainMardingWithoutTopMini = EdgeInsets.only(left: 8, bottom: 8, right: 8);
   static const EdgeInsets mainMardingWithoutBottom = EdgeInsets.only(left: 16, top: 16, right: 16);
+  static const EdgeInsets mainMardingWithoutBottomMini = EdgeInsets.only(left: 8, top: 8, right: 8);
 
   static const RoundedRectangleBorder mainShape = RoundedRectangleBorder(
     borderRadius: BorderRadius.all(

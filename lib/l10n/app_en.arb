@@ -56,7 +56,7 @@
   "changeWord": "Изменить слово",
   "wordChanged": "Слово изменено",
   "deleteWord": "Удалить слово",
-  "deleteWordMessage": "Вы уверены, что хотите данное слово?",
+  "deleteWordMessage": "Вы уверены, что хотите удалить данное слово?",
   "wordDeleted": "Слово удалено",
   "deleteAllWords": "Удалить все слова",
   "deleteAllCategoryWordsMessage": "Вы уверены, что хотите удалить все слова из данной категории?",

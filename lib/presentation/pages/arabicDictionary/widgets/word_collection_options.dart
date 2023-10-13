@@ -29,7 +29,7 @@ class WordCollectionOptions extends StatelessWidget {
         if (snapshot.hasData) {
           final WordEntity model = snapshot.data!;
           return Container(
-            padding: AppStyles.mainMarding,
+            padding: AppStyles.mainMardingWithoutTop,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
@@ -48,8 +48,9 @@ class WordCollectionOptions extends StatelessWidget {
                   onPressed: () {
                     showModalBottomSheet(
                       context: context,
+                      isScrollControlled: true,
                       builder: (_) => Padding(
-                        padding: AppStyles.mainMardingMini,
+                        padding: AppStyles.mainMardingWithoutTop,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           mainAxisSize: MainAxisSize.min,
@@ -59,6 +60,7 @@ class WordCollectionOptions extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: 'Gilroy',
                                 color: appColors.error,
                               ),
                               textAlign: TextAlign.center,
@@ -110,8 +112,9 @@ class WordCollectionOptions extends StatelessWidget {
                   onPressed: () {
                     showModalBottomSheet(
                       context: context,
+                      isScrollControlled: true,
                       builder: (context) => Padding(
-                        padding: AppStyles.mainMardingMini,
+                        padding: AppStyles.mainMardingWithoutTop,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           mainAxisSize: MainAxisSize.min,
@@ -121,6 +124,7 @@ class WordCollectionOptions extends StatelessWidget {
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
+                                fontFamily: 'Gilroy',
                                 color: appColors.error,
                               ),
                               textAlign: TextAlign.center,

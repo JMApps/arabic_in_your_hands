@@ -9,7 +9,7 @@ class SearchWordsDelegate extends SearchDelegate {
           keyboardType: TextInputType.text,
           searchFieldStyle: const TextStyle(
             color: Colors.white,
-            fontSize: 17,
+            fontSize: 20,
           ),
         );
 
