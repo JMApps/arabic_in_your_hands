@@ -151,7 +151,7 @@ class _AddCategoryPopupState extends State<AddCategoryPopup> {
                         ),
                       );
                       Provider.of<UserDictionaryCategoryState>(context, listen: false).addCategory(model: newModel);
-                    } {
+                    } else {
                       categoryState.setCategoryState = '';
                       focusCategory.requestFocus();
                     }

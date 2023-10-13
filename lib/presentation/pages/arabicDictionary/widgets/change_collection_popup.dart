@@ -26,7 +26,7 @@ class _ChangeCollectionPopupState extends State<ChangeCollectionPopup> {
 
   @override
   void initState() {
-    _textEditingCollection = TextEditingController(text: widget.model.title);
+    _textEditingCollection = TextEditingController(text: widget.model.title.trim());
     super.initState();
   }
 
@@ -43,7 +43,7 @@ class _ChangeCollectionPopupState extends State<ChangeCollectionPopup> {
       child: Consumer<InputCollectionState>(
         builder: (BuildContext context, collectionState, _) {
           return Container(
-            padding: AppStyles.mainMarding,
+            padding: AppStyles.mainMardingWithoutTop,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
@@ -69,11 +69,11 @@ class _ChangeCollectionPopupState extends State<ChangeCollectionPopup> {
                 ),
                 OutlinedButton(
                   onPressed: () async {
-                    if (_textEditingCollection.text.isNotEmpty) {
+                    if (_textEditingCollection.text.trim().isNotEmpty) {
                       if (_textEditingCollection.text != widget.model.title) {
                         final CollectionChangeEntity model = CollectionChangeEntity(
                           id: widget.model.id,
-                          title: _textEditingCollection.text,
+                          title: _textEditingCollection.text.trim(),
                         );
                         Navigator.pop(context);
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -89,7 +89,7 @@ class _ChangeCollectionPopupState extends State<ChangeCollectionPopup> {
                       } else {
                         Navigator.pop(context);
                       }
-                    } else if (_textEditingCollection.text.isEmpty) {
+                    } else {
                       collectionState.setCollectionState = '';
                       _focusCollection.requestFocus();
                     }

@@ -31,7 +31,7 @@ class _AddCollectionPopupState extends State<AddCollectionPopup> {
       child: Consumer<InputCollectionState>(
         builder: (BuildContext context, collectionState, _) {
           return Container(
-            padding: AppStyles.mainMarding,
+            padding: AppStyles.mainMardingWithoutTop,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
@@ -64,9 +64,9 @@ class _AddCollectionPopupState extends State<AddCollectionPopup> {
                 ),
                 OutlinedButton(
                   onPressed: () async {
-                    if (_textEditingCollection.text.isNotEmpty) {
+                    if (_textEditingCollection.text.trim().isNotEmpty) {
                       final CollectionAddEntity model = CollectionAddEntity(
-                        title: _textEditingCollection.text,
+                        title: _textEditingCollection.text.trim(),
                       );
                       Navigator.pop(context);
                       ScaffoldMessenger.of(context).showSnackBar(
@@ -79,7 +79,7 @@ class _AddCollectionPopupState extends State<AddCollectionPopup> {
                         ),
                       );
                       Provider.of<CollectionState>(context, listen: false).addCollection(model: model);
-                    } else if (_textEditingCollection.text.isEmpty) {
+                    } else {
                       collectionState.setCollectionState = '';
                       _focusCollection.requestFocus();
                     }

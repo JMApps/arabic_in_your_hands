@@ -1,8 +1,6 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
-import 'package:arabicinyourhands/data/repositories/arabicDictionary/collections_data_repository.dart';
 import 'package:arabicinyourhands/data/state/collection_state.dart';
 import 'package:arabicinyourhands/domain/entities/arabicDictionary/collection_entity.dart';
-import 'package:arabicinyourhands/domain/usecases/arabicDictionary/coolections_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/change_collection_popup.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
@@ -10,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-class CollectionOptions extends StatefulWidget {
+class CollectionOptions extends StatelessWidget {
   const CollectionOptions({
     super.key,
     required this.collectionId,
@@ -19,31 +17,18 @@ class CollectionOptions extends StatefulWidget {
   final int collectionId;
 
   @override
-  State<CollectionOptions> createState() => _CollectionOptionsState();
-}
-
-class _CollectionOptionsState extends State<CollectionOptions> {
-  late final CollectionsUseCase _collectionsUseCase;
-
-  @override
-  void initState() {
-    _collectionsUseCase = CollectionsUseCase(CollectionsDataReposioty());
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
     final AppLocalizations locale = AppLocalizations.of(context)!;
     return FutureBuilder<CollectionEntity>(
-      future: _collectionsUseCase.fetchCollectionById(
-        collectionId: widget.collectionId,
+      future: Provider.of<CollectionState>(context, listen: false).fetchCollectionById(
+        collectionId: collectionId,
       ),
       builder: (BuildContext context, AsyncSnapshot<CollectionEntity> snapshot) {
         if (snapshot.hasData) {
           final CollectionEntity model = snapshot.data!;
           return Container(
-            padding: AppStyles.mainMarding,
+            padding: AppStyles.mainMardingWithoutTop,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.min,
@@ -51,9 +36,9 @@ class _CollectionOptionsState extends State<CollectionOptions> {
                 Text(
                   model.title,
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: appColors.error,
+                    color: appColors.secondary,
                   ),
                   textAlign: TextAlign.center,
                 ),
@@ -65,13 +50,11 @@ class _CollectionOptionsState extends State<CollectionOptions> {
                       context: context,
                       isScrollControlled: true,
                       builder: (context) {
-                        return SingleChildScrollView(
-                          child: AnimatedPadding(
-                            padding: MediaQuery.of(context).viewInsets,
-                            duration: const Duration(milliseconds: 250),
-                            curve: Curves.decelerate,
-                            child: ChangeCollectionPopup(model: model),
-                          ),
+                        return AnimatedPadding(
+                          padding: MediaQuery.of(context).viewInsets,
+                          duration: const Duration(milliseconds: 250),
+                          curve: Curves.decelerate,
+                          child: ChangeCollectionPopup(model: model),
                         );
                       },
                     );
@@ -85,8 +68,9 @@ class _CollectionOptionsState extends State<CollectionOptions> {
                   onPressed: () {
                     showModalBottomSheet(
                       context: context,
-                      builder: (_) => Padding(
-                        padding: AppStyles.mainMardingMini,
+                      isScrollControlled: true,
+                      builder: (context) => Padding(
+                        padding: AppStyles.mainMardingWithoutTop,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           mainAxisSize: MainAxisSize.min,
@@ -147,8 +131,9 @@ class _CollectionOptionsState extends State<CollectionOptions> {
                   onPressed: () {
                     showModalBottomSheet(
                       context: context,
+                      isScrollControlled: true,
                       builder: (_) => Padding(
-                        padding: AppStyles.mainMardingMini,
+                        padding: AppStyles.mainMardingWithoutTop,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           mainAxisSize: MainAxisSize.min,

@@ -21,29 +21,28 @@ class CollectionItem extends StatelessWidget {
     final Color itemEvenColor = appColors.primary.withOpacity(0.15);
     return Container(
       margin: const EdgeInsets.only(bottom: 8),
-      child: InkWell(
-        onTap: () {
-          Navigator.pushNamed(
-            context,
-            '/collection_detail_page',
-            arguments: CollectionArgs(model: model),
-          );
-        },
-        onLongPress: () {
-          showModalBottomSheet(
-            context: context,
-            isScrollControlled: true,
-            builder: (_) => CollectionOptions(collectionId: model.id),
-          );
-        },
-        borderRadius: AppStyles.mainBorder,
-        child: Container(
-          padding: AppStyles.mainMarding,
-          decoration: BoxDecoration(
-            color: index.isOdd ? itemOddColor : itemEvenColor,
-            borderRadius: AppStyles.mainBorder,
-          ),
-          child: Text(
+      child: Container(
+        decoration: BoxDecoration(
+          color: index.isOdd ? itemOddColor : itemEvenColor,
+          borderRadius: AppStyles.mainBorder,
+        ),
+        child: ListTile(
+          onTap: () {
+            Navigator.pushNamed(
+              context,
+              '/collection_detail_page',
+              arguments: CollectionArgs(model: model),
+            );
+          },
+          onLongPress: () {
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              builder: (_) => CollectionOptions(collectionId: model.id),
+            );
+          },
+          shape: AppStyles.mainShape,
+          title: Text(
             model.title,
             style: const TextStyle(fontSize: 16),
           ),
