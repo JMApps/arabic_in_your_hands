@@ -33,7 +33,7 @@ class SettingsContentPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 CupertinoSlidingSegmentedControl(
-                  thumbColor: appColors.inversePrimary,
+                  thumbColor: appColors.secondary,
                   padding: const EdgeInsets.all(4),
                   children: const <int, Widget>{
                     0: Text(
@@ -61,7 +61,7 @@ class SettingsContentPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 CupertinoSlidingSegmentedControl(
-                  thumbColor: appColors.inversePrimary,
+                  thumbColor: appColors.secondary,
                   padding: const EdgeInsets.all(4),
                   children: const <int, Widget>{
                     0: Text(
@@ -89,7 +89,7 @@ class SettingsContentPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 8),
                 CupertinoSlidingSegmentedControl(
-                  thumbColor: appColors.inversePrimary,
+                  thumbColor: appColors.secondary,
                   padding: const EdgeInsets.all(4),
                   children: const <int, Widget>{
                     0: Icon(CupertinoIcons.text_alignleft),

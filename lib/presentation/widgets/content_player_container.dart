@@ -20,7 +20,7 @@ class ContentPlayerContaier extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           FloatingActionButton.small(
-            backgroundColor: appColors.mainCardColor,
+            backgroundColor: appColors.secondary,
             elevation: 0,
             heroTag: 'media_1',
             child: const Icon(CupertinoIcons.eye_fill),
@@ -74,7 +74,7 @@ class ContentPlayerContaier extends StatelessWidget {
             onPressed: () {},
           ),
           FloatingActionButton.small(
-            backgroundColor: appColors.mainCardColor,
+            backgroundColor: appColors.secondary,
             elevation: 0,
             heroTag: 'media_4',
             child: const Icon(

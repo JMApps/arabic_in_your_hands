@@ -58,7 +58,7 @@ class FirstVolContentsPage extends StatelessWidget {
               SliverToBoxAdapter(
                 child: Card(
                   margin: AppStyles.mainMardingMini,
-                  color: appColors.inversePrimary,
+                  color: appColors.secondary,
                   child: Padding(
                     padding: AppStyles.mainMarding,
                     child: Text(

@@ -1,5 +1,7 @@
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/search_words_future.dart';
+import 'package:arabicinyourhands/presentation/widgets/future_is_empty.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchWordsDelegate extends SearchDelegate {
   SearchWordsDelegate({
@@ -63,6 +65,7 @@ class SearchWordsDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return SearchWordsFuture(query: query);
+    final AppLocalizations? locale = AppLocalizations.of(context);
+    return FutureIsEmpty(message: locale!.startSearch);
   }
 }
