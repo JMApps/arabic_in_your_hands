@@ -5,6 +5,7 @@ import 'package:arabicinyourhands/domain/usecases/firstVolume/first_vol_contents
 import 'package:arabicinyourhands/presentation/pages/firstVolume/items/first_vol_content_item_left.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/items/first_vol_content_item_right.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -34,21 +35,23 @@ class _FirstVolContentsListState extends State<FirstVolContentsList> {
       ),
       builder: (BuildContext context, AsyncSnapshot<List<FirstVolContentEntity>> snapshot) {
         if (snapshot.hasData) {
-          return ListView.builder(
-            padding: AppStyles.mainMardingHorizontalMini,
-            itemCount: snapshot.data!.length,
-            itemBuilder: (BuildContext context, index) {
-              final FirstVolContentEntity model = snapshot.data![index];
-              return index.isOdd
-                  ? FirstVoContentItemLeft(
-                model: model,
-                index: index,
-              )
-                  : FirstVolContentItemRight(
-                model: model,
-                index: index,
-              );
-            },
+          return CupertinoScrollbar(
+            child: ListView.builder(
+              padding: AppStyles.mainMardingHorizontalMini,
+              itemCount: snapshot.data!.length,
+              itemBuilder: (BuildContext context, index) {
+                final FirstVolContentEntity model = snapshot.data![index];
+                return index.isOdd
+                    ? FirstVoContentItemLeft(
+                  model: model,
+                  index: index,
+                )
+                    : FirstVolContentItemRight(
+                  model: model,
+                  index: index,
+                );
+              },
+            ),
           );
         } else if (snapshot.hasError) {
           return ErrorDataText(error: snapshot.error.toString());
