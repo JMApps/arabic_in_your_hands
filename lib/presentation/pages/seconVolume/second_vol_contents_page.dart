@@ -4,7 +4,6 @@ import 'package:arabicinyourhands/domain/arguments/second_sub_chapter_args.dart'
 import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_sub_chapter_entity.dart';
 import 'package:arabicinyourhands/presentation/pages/seconVolume/lists/second_vol_content_list.dart';
 import 'package:arabicinyourhands/presentation/uiState/content_player_state.dart';
-import 'package:arabicinyourhands/presentation/widgets/content_player_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -84,7 +83,7 @@ class SecondVolContentsPage extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: const ContentPlayerContaier(),
+        //bottomNavigationBar: const ContentPlayerContaier(),
       ),
     );
   }

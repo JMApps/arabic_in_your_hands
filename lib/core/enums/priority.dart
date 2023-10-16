@@ -1,6 +1,1 @@
-enum Priorities {
-  without,
-  low,
-  medium,
-  high,
-}
+enum Priorities { without, low, medium, high }

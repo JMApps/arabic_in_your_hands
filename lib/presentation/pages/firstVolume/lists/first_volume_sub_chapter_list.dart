@@ -20,8 +20,16 @@ class _FirstVolSubChapterListState extends State<FirstVolSubChapterList> {
   late final FirstVolSubChaptersUseCase _firstVolSubChaptersUseCase;
   final PageController _pageController = PageController();
 
-  _FirstVolSubChapterListState() {
+  @override
+  void initState() {
+    super.initState();
     _firstVolSubChaptersUseCase = FirstVolSubChaptersUseCase(FirstVolSubChaptersDataRepository());
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
@@ -34,55 +42,54 @@ class _FirstVolSubChapterListState extends State<FirstVolSubChapterList> {
       ),
       builder: (BuildContext context, AsyncSnapshot<List<FirstVolSubChapterEntity>> snapshot) {
         if (snapshot.hasData) {
-          return Column(
-            children: [
-              Expanded(
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        if (_pageController.hasClients) {
-                          _pageController.previousPage(
-                            duration: const Duration(milliseconds: 150),
-                            curve: Curves.easeInCubic,
-                          );
-                        }
-                      },
-                      icon: const Icon(Icons.arrow_back_ios_outlined),
-                    ),
-                    Expanded(
-                      child: PageStorage(
-                        bucket: globalBucketFirstVolumeSubChapters,
+          return PageStorage(
+            bucket: globalBucketFirstVolumeSubChapters,
+            child: Column(
+              key: PageStorageKey<int>(widget.firstChapterId),
+              children: [
+                Expanded(
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          if (_pageController.hasClients) {
+                            _pageController.previousPage(
+                              duration: const Duration(milliseconds: 150),
+                              curve: Curves.easeInCubic,
+                            );
+                          }
+                        },
+                        icon: const Icon(Icons.arrow_back_ios_outlined),
+                      ),
+                      Expanded(
                         child: PageView.builder(
-                          key: PageStorageKey<int>(widget.firstChapterId),
                           controller: _pageController,
                           scrollDirection: Axis.horizontal,
                           itemCount: snapshot.data!.length,
                           itemBuilder: (context, index) {
-                            final FirstVolSubChapterEntity model = snapshot.data![index];
-                            return FirstVolumeSubChapterItem(
-                              model: model,
-                            );
+                            final FirstVolSubChapterEntity model =
+                                snapshot.data![index];
+                            return FirstVolumeSubChapterItem(model: model);
                           },
                         ),
                       ),
-                    ),
-                    IconButton(
-                      onPressed: () {
-                        if (_pageController.hasClients) {
-                          _pageController.nextPage(
-                            duration: const Duration(milliseconds: 150),
-                            curve: Curves.easeInCubic,
-                          );
-                        }
-                      },
-                      icon: const Icon(Icons.arrow_forward_ios_outlined),
-                    ),
-                  ],
+                      IconButton(
+                        onPressed: () {
+                          if (_pageController.hasClients) {
+                            _pageController.nextPage(
+                              duration: const Duration(milliseconds: 150),
+                              curve: Curves.easeInCubic,
+                            );
+                          }
+                        },
+                        icon: const Icon(Icons.arrow_forward_ios_outlined),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              const SizedBox(height: 8),
-            ],
+                const SizedBox(height: 8),
+              ],
+            ),
           );
         } else if (snapshot.hasError) {
           return ErrorDataText(error: snapshot.error.toString());

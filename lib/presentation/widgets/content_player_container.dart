@@ -1,18 +1,24 @@
 import 'package:arabicinyourhands/core/colors/app_colors.dart';
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
+import 'package:arabicinyourhands/presentation/uiState/content_player_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/dialog_visibility.dart';
-import 'package:arabicinyourhands/presentation/widgets/play_speed.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class ContentPlayerContaier extends StatelessWidget {
-  const ContentPlayerContaier({super.key});
+  const ContentPlayerContaier({
+    super.key,
+    required this.snapshot,
+  });
+
+  final AsyncSnapshot<List<dynamic>> snapshot;
 
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
-    //final ContentPlayerState playerState = Provider.of<ContentPlayerState>(context);
+    final ContentPlayerState playerState = Provider.of<ContentPlayerState>(context);
     return Container(
       padding: AppStyles.mainMardingMini,
       color: appColors.primaryColor,
@@ -22,7 +28,7 @@ class ContentPlayerContaier extends StatelessWidget {
           FloatingActionButton.small(
             backgroundColor: appColors.secondary,
             elevation: 0,
-            heroTag: 'media_1',
+            heroTag: 'media_0',
             child: const Icon(CupertinoIcons.eye_fill),
             onPressed: () {
               showModalBottomSheet(
@@ -35,11 +41,13 @@ class ContentPlayerContaier extends StatelessWidget {
             },
           ),
           IconButton(
-            icon: const Icon(
+            icon: Icon(
               CupertinoIcons.arrow_2_squarepath,
-              color: AppColors.whiteColor,
+              color: playerState.getAllRepeat ? appColors.error : AppColors.whiteColor,
             ),
-            onPressed: () {},
+            onPressed: () {
+              playerState.repeatAll();
+            },
           ),
           FloatingActionButton.small(
             backgroundColor: appColors.secondary,
@@ -48,14 +56,18 @@ class ContentPlayerContaier extends StatelessWidget {
             child: const Icon(
               CupertinoIcons.backward_end,
             ),
-            onPressed: () {},
+            onPressed: () {
+              playerState.getPlayer.seekToPrevious();
+            },
           ),
           FloatingActionButton.small(
             backgroundColor: appColors.secondary,
             elevation: 0,
             heroTag: 'media_2',
-            child: const Icon(CupertinoIcons.play),
-            onPressed: () {},
+            child: Icon(playerState.getIsPlaying ? CupertinoIcons.pause : CupertinoIcons.play),
+            onPressed: () {
+              playerState.playAll();
+            },
           ),
           FloatingActionButton.small(
             backgroundColor: appColors.secondary,
@@ -64,14 +76,18 @@ class ContentPlayerContaier extends StatelessWidget {
             child: const Icon(
               CupertinoIcons.forward_end,
             ),
-            onPressed: () {},
+            onPressed: () {
+              playerState.getPlayer.seekToNext();
+            },
           ),
           IconButton(
-            icon: const Icon(
+            icon: Icon(
               CupertinoIcons.arrow_counterclockwise,
-              color: AppColors.whiteColor,
+              color: playerState.getOneRepeat ? appColors.error : AppColors.whiteColor,
             ),
-            onPressed: () {},
+            onPressed: () {
+              playerState.repeatOne();
+            },
           ),
           FloatingActionButton.small(
             backgroundColor: appColors.secondary,
@@ -85,7 +101,7 @@ class ContentPlayerContaier extends StatelessWidget {
                 context: context,
                 isScrollControlled: true,
                 builder: (BuildContext context) {
-                  return const PlaySpeed();
+                  return const SizedBox();
                 },
               );
             },

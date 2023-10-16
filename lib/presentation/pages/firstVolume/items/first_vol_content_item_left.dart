@@ -1,6 +1,7 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_content_entity.dart';
+import 'package:arabicinyourhands/presentation/uiState/content_player_state.dart';
 import 'package:arabicinyourhands/presentation/uiState/content_settings_state.dart';
 import 'package:arabicinyourhands/presentation/uiState/dialog_show_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/first_vol_share_copy.dart';
@@ -22,6 +23,7 @@ class FirstVoContentItemLeft extends StatelessWidget {
     final ColorScheme appColors = Theme.of(context).colorScheme;
     final ContentSettingsState settingsState = Provider.of<ContentSettingsState>(context);
     final DialogShowState dialogShowState = Provider.of<DialogShowState>(context);
+    final ContentPlayerState playerState = Provider.of<ContentPlayerState>(context);
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
       elevation: 0,
@@ -29,6 +31,18 @@ class FirstVoContentItemLeft extends StatelessWidget {
       child: Card(
         margin: const EdgeInsets.only(right: 5),
         child: InkWell(
+          onTap: () {
+            playerState.playOne(trackIndex: index);
+          },
+          onLongPress: () {
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              builder: (BuildContext context) {
+                return FirstVolShareCopy(model: model);
+              },
+            );
+          },
           borderRadius: AppStyles.mainBorder,
           child: AnimatedContainer(
             padding: AppStyles.mainMarding,
@@ -96,16 +110,6 @@ class FirstVoContentItemLeft extends StatelessWidget {
               ],
             ),
           ),
-          onTap: () {},
-          onLongPress: () {
-            showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              builder: (BuildContext context) {
-                return FirstVolShareCopy(model: model);
-              },
-            );
-          },
         ),
       ),
     );
