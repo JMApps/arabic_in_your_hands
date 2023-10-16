@@ -30,6 +30,12 @@ class _SeconVolSubChapterListState extends State<SeconVolSubChapterList> {
   }
 
   @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final AppLocalizations locale = AppLocalizations.of(context)!;
     return FutureBuilder<List<SecondVolSubChapterEntity>>(

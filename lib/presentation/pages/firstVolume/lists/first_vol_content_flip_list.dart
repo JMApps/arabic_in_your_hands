@@ -36,6 +36,12 @@ class _FirstVolContentFlipListState extends State<FirstVolContentFlipList> {
   }
 
   @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final AppLocalizations? locale = AppLocalizations.of(context);
     return FutureBuilder<List<FirstVolContentEntity>>(
