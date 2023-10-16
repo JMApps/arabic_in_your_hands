@@ -20,7 +20,7 @@ class FirstVolShareCopy extends StatelessWidget {
     final ColorScheme appColors = Theme.of(context).colorScheme;
     final AppLocalizations? locale = AppLocalizations.of(context);
     return Container(
-      padding: AppStyles.mainMarding,
+      padding: AppStyles.mainMardingWithoutTop,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [

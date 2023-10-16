@@ -13,7 +13,7 @@ class DialogVisibility extends StatelessWidget {
     final AppLocalizations? locale = AppLocalizations.of(context);
     final DialogShowState dialogShowState = Provider.of<DialogShowState>(context);
     return Container(
-      padding: AppStyles.mainMarding,
+      padding: AppStyles.mainMardingWithoutTop,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
