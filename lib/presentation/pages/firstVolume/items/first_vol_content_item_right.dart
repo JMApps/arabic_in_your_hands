@@ -30,6 +30,9 @@ class FirstVolContentItemRight extends StatelessWidget {
       color: appColors.rightDialogColor,
       child: Card(
         margin: const EdgeInsets.only(left: 5),
+        color: playerState.getIsPlaying && playerState.getCurrentTrackIndex == index
+            ? appColors.playingColor
+            : appColors.notPlayingColor,
         child: InkWell(
           onTap: () {
             playerState.playOne(trackIndex: index);

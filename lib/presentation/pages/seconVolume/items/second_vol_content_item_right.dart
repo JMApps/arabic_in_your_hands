@@ -3,6 +3,7 @@ import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_content_entity.dart';
 import 'package:arabicinyourhands/presentation/uiState/content_settings_state.dart';
 import 'package:arabicinyourhands/presentation/uiState/dialog_show_state.dart';
+import 'package:arabicinyourhands/presentation/uiState/player/content_player_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/second_vol_share_copy.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -22,13 +23,29 @@ class SecondVolContentItemRight extends StatelessWidget {
     final ColorScheme appColors = Theme.of(context).colorScheme;
     final ContentSettingsState settingsState = Provider.of<ContentSettingsState>(context);
     final DialogShowState dialogShowState = Provider.of<DialogShowState>(context);
+    final ContentPlayerState playerState = Provider.of<ContentPlayerState>(context);
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
       elevation: 0,
       color: appColors.rightDialogColor,
       child: Card(
         margin: const EdgeInsets.only(right: 5),
+        color: playerState.getIsPlaying && playerState.getCurrentTrackIndex == index
+            ? appColors.playingColor
+            : appColors.notPlayingColor,
         child: InkWell(
+          onTap: () {
+            playerState.playOne(trackIndex: index);
+          },
+          onLongPress: () {
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              builder: (BuildContext context) {
+                return SecondVolShareCopy(model: model);
+              },
+            );
+          },
           borderRadius: AppStyles.mainBorder,
           child: AnimatedContainer(
             padding: AppStyles.mainMarding,
@@ -96,16 +113,6 @@ class SecondVolContentItemRight extends StatelessWidget {
               ],
             ),
           ),
-          onTap: () {},
-          onLongPress: () {
-            showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              builder: (BuildContext context) {
-                return SecondVolShareCopy(model: model);
-              },
-            );
-          },
         ),
       ),
     );

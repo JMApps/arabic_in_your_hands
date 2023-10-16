@@ -1,9 +1,9 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_content_entity.dart';
-import 'package:arabicinyourhands/presentation/uiState/player/content_player_state.dart';
 import 'package:arabicinyourhands/presentation/uiState/content_settings_state.dart';
 import 'package:arabicinyourhands/presentation/uiState/dialog_show_state.dart';
+import 'package:arabicinyourhands/presentation/uiState/player/content_player_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/first_vol_share_copy.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -30,6 +30,9 @@ class FirstVoContentItemLeft extends StatelessWidget {
       color: appColors.leftDialogColor,
       child: Card(
         margin: const EdgeInsets.only(right: 5),
+        color: playerState.getIsPlaying && playerState.getCurrentTrackIndex == index
+            ? appColors.playingColor
+            : appColors.notPlayingColor,
         child: InkWell(
           onTap: () {
             playerState.playOne(trackIndex: index);

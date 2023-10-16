@@ -128,6 +128,14 @@ extension ColorSchemeS on ColorScheme {
       ? const Color(0xFF0B8FE8)
       : const Color(0xFF209372);
 
+  Color get playingColor => brightness == Brightness.light
+      ? const Color(0xFFFFF4DA)
+      : const Color(0xFF233B3D);
+
+  Color get notPlayingColor => brightness == Brightness.light
+      ? const Color(0xFFFFFFFF)
+      : const Color(0xFF131B1E);
+
   LinearGradient get mainGradient => brightness == Brightness.light
       ? const LinearGradient(
           colors: [

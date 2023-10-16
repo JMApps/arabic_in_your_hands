@@ -53,15 +53,17 @@ class ContentPlayerContaier extends StatelessWidget {
               color: playerState.getAllRepeat ? appColors.error : AppColors.whiteColor,
             ),
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  backgroundColor: appColors.secondary,
-                  duration: const Duration(milliseconds: 500),
-                  content: SnackBarMessage(
-                    message: locale!.allRepet,
+              if (!playerState.getAllRepeat) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: appColors.secondary,
+                    duration: const Duration(milliseconds: 500),
+                    content: SnackBarMessage(
+                      message: locale!.allRepet,
+                    ),
                   ),
-                ),
-              );
+                );
+              }
               playerState.repeatAll();
             },
           ),
@@ -102,15 +104,17 @@ class ContentPlayerContaier extends StatelessWidget {
               color: playerState.getOneRepeat ? appColors.error : AppColors.whiteColor,
             ),
             onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  backgroundColor: appColors.secondary,
-                  duration: const Duration(milliseconds: 500),
-                  content: SnackBarMessage(
-                    message: locale!.oneRepet,
+              if (!playerState.getOneRepeat) {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: appColors.secondary,
+                    duration: const Duration(milliseconds: 500),
+                    content: SnackBarMessage(
+                      message: locale!.oneRepet,
+                    ),
                   ),
-                ),
-              );
+                );
+              }
               playerState.repeatOne();
             },
           ),
