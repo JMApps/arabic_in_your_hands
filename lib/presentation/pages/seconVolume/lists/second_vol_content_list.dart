@@ -20,7 +20,9 @@ class SecondVolContentList extends StatefulWidget {
 class _SecondVolContentListState extends State<SecondVolContentList> {
   late final SecondVolContentsUseCase _secondVolContentsUseCase;
 
-  _SecondVolContentListState() {
+  @override
+  void initState() {
+    super.initState();
     _secondVolContentsUseCase = SecondVolContentsUseCase(SecondVolContentsDataRepository());
   }
 

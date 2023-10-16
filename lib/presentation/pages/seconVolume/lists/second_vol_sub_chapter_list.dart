@@ -23,7 +23,9 @@ class _SeconVolSubChapterListState extends State<SeconVolSubChapterList> {
   late final SecondVolSubChaptersUseCase _secondVolSubChaptersUseCase;
   final PageController _pageController = PageController();
 
-  _SeconVolSubChapterListState() {
+  @override
+  void initState() {
+    super.initState();
     _secondVolSubChaptersUseCase = SecondVolSubChaptersUseCase(SecondVolSubChaptersDataRepository());
   }
 

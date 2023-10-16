@@ -21,8 +21,7 @@ class FirstVolContentFlipList extends StatefulWidget {
   final int firstSubChapterId;
 
   @override
-  State<FirstVolContentFlipList> createState() =>
-      _FirstVolContentFlipListState();
+  State<FirstVolContentFlipList> createState() => _FirstVolContentFlipListState();
 }
 
 class _FirstVolContentFlipListState extends State<FirstVolContentFlipList> {
@@ -30,7 +29,9 @@ class _FirstVolContentFlipListState extends State<FirstVolContentFlipList> {
   late final PageController _pageController = PageController();
   final FlipCardController _flipCardController = FlipCardController();
 
-  _FirstVolContentFlipListState() {
+  @override
+  void initState() {
+    super.initState();
     _firstVolContentsUseCase = FirstVolContentsUseCase(FirstVolContentsDataRepository());
   }
 

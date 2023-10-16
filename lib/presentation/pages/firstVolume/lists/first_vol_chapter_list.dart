@@ -19,7 +19,9 @@ class FirstVolChapterList extends StatefulWidget {
 class _FirstVolChapterListState extends State<FirstVolChapterList> {
   late final FirstVolChaptersUseCase _firstVolChaptersUseCase;
 
-  _FirstVolChapterListState() {
+  @override
+  void initState() {
+    super.initState();
     _firstVolChaptersUseCase = FirstVolChaptersUseCase(FirstVolChaptersDataRepository());
   }
 
@@ -30,8 +32,7 @@ class _FirstVolChapterListState extends State<FirstVolChapterList> {
       future: _firstVolChaptersUseCase.fetchFirstChapters(
         tableName: locale!.tableNameFirstVolChapters,
       ),
-      builder: (BuildContext context,
-          AsyncSnapshot<List<FirstVolChapterEntity>> snapshot) {
+      builder: (BuildContext context, AsyncSnapshot<List<FirstVolChapterEntity>> snapshot) {
         if (snapshot.hasData) {
           return AnimationLimiter(
             child: PageStorage(

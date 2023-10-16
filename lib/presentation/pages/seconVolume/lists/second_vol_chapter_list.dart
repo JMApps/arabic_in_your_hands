@@ -19,7 +19,9 @@ class SecondVolChapterList extends StatefulWidget {
 class _SecondVolChapterListState extends State<SecondVolChapterList> {
   late final SecondVolChaptersUseCase _secondVolChaptersUseCase;
 
-  _SecondVolChapterListState() {
+  @override
+  void initState() {
+    super.initState();
     _secondVolChaptersUseCase = SecondVolChaptersUseCase(SecondVolChaptersDataRepository());
   }
 
