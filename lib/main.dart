@@ -10,6 +10,7 @@ import 'package:arabicinyourhands/presentation/pages/root_page.dart';
 import 'package:arabicinyourhands/presentation/uiState/content_settings_state.dart';
 import 'package:arabicinyourhands/presentation/uiState/dialog_show_state.dart';
 import 'package:arabicinyourhands/presentation/uiState/main_navigation_state.dart';
+import 'package:arabicinyourhands/presentation/uiState/player/play_speed_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -56,6 +57,9 @@ void main() async {
         ),
         ChangeNotifierProvider(
           create: (_) => WordCollectionState(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => PlaySpeedState(),
         ),
       ],
       child: const RootPage(),

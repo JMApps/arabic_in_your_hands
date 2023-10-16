@@ -24,8 +24,9 @@ class ContentPlayerState with ChangeNotifier {
 
   Future<void> initPlayer({required AsyncSnapshot snapshot}) async {
     _audioSources = List.generate(
-      snapshot.data.length,
-      (index) => AudioSource.asset('assets/audios/${snapshot.data[index].audioName}.mp3'));
+        snapshot.data.length,
+        (index) => AudioSource.asset(
+            'assets/audios/${snapshot.data[index].audioName}.mp3'));
 
     _audioSource = ConcatenatingAudioSource(
       children: _audioSources,
@@ -34,26 +35,34 @@ class ContentPlayerState with ChangeNotifier {
     await _player.setAudioSource(_audioSource, initialIndex: 0, initialPosition: Duration.zero);
     _player.playingStream.listen((event) {
       _isPlaying = event;
-     notifyListeners();
+      notifyListeners();
     });
 
-    _player.playerStateStream.listen((event) {
-      if (event.processingState == ProcessingState.completed) {
+    _player.processingStateStream.listen((event) {
+      if (event == ProcessingState.completed) {
         _isPlaying = false;
+        _player.stop();
+        _player.seek(Duration.zero, index: 0);
         notifyListeners();
       }
     });
   }
 
   Future<void> playAll() async {
-    _player.play();
+    if (!_isPlaying) {
+      _player.play();
+    } else {
+      _player.pause();
+    }
   }
 
   Future<void> playOne({required int trackIndex}) async {
-    await _player.setAudioSource(_audioSource[trackIndex]);
-    _isPlaying = true;
-    notifyListeners();
-    _player.play();
+    _player.seek(Duration.zero, index: trackIndex);
+    if (!_isPlaying) {
+      _player.play();
+    } else {
+      _player.pause();
+    }
   }
 
   Future<void> repeatAll() async {
@@ -82,8 +91,14 @@ class ContentPlayerState with ChangeNotifier {
     }
   }
 
+  playingSpeed({required double playingSpeed}) {
+    _player.setSpeed(playingSpeed);
+  }
+
   Future<void> stopDispose() async {
-    await _player.dispose();
+    _isPlaying = false;
+    await _player.stop();
+    notifyListeners();
   }
 
   @override

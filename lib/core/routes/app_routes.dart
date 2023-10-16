@@ -21,7 +21,7 @@ class AppRoutes {
             routeSettings.arguments as FirstSubChapterArgs;
         return MaterialPageRoute(
           builder: (_) => FirstVolContentsPage(
-            firstVolSubChapterEntity: firstSubChapterArgs.model,
+            firstSubChapterEntity: firstSubChapterArgs.model,
           ),
           settings: routeSettings,
         );
@@ -41,7 +41,7 @@ class AppRoutes {
             routeSettings.arguments as SecondSubChapterArgs;
         return MaterialPageRoute(
           builder: (_) => SecondVolContentsPage(
-            secondVolSubChapterEntity: secondubChapterArgs.model,
+            secondSubChapterEntity: secondubChapterArgs.model,
           ),
           settings: routeSettings,
         );

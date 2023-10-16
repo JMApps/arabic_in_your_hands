@@ -1,24 +1,43 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
+import 'package:arabicinyourhands/data/repositories/secondVolume/second_vol_contents_data_repository.dart';
 import 'package:arabicinyourhands/domain/arguments/second_sub_chapter_args.dart';
+import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_content_entity.dart';
 import 'package:arabicinyourhands/domain/entities/secondVolume/second_vol_sub_chapter_entity.dart';
+import 'package:arabicinyourhands/domain/usecases/seconVolume/second_vol_contents_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/seconVolume/lists/second_vol_content_list.dart';
-import 'package:arabicinyourhands/presentation/uiState/content_player_state.dart';
+import 'package:arabicinyourhands/presentation/uiState/player/content_player_state.dart';
+import 'package:arabicinyourhands/presentation/widgets/content_player_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 
-class SecondVolContentsPage extends StatelessWidget {
+class SecondVolContentsPage extends StatefulWidget {
   const SecondVolContentsPage({
     super.key,
-    required this.secondVolSubChapterEntity,
+    required this.secondSubChapterEntity,
   });
 
-  final SecondVolSubChapterEntity secondVolSubChapterEntity;
+  final SecondVolSubChapterEntity secondSubChapterEntity;
+
+  @override
+  State<SecondVolContentsPage> createState() => _SecondVolContentsPageState();
+}
+
+class _SecondVolContentsPageState extends State<SecondVolContentsPage> {
+  late final SecondVolContentsUseCase _contentsUseCase;
+
+  @override
+  void initState() {
+    super.initState();
+    _contentsUseCase = SecondVolContentsUseCase(SecondVolContentsDataRepository());
+  }
 
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
+    final AppLocalizations? locale = AppLocalizations.of(context);
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
@@ -38,7 +57,7 @@ class SecondVolContentsPage extends StatelessWidget {
                 snap: false,
                 forceElevated: innerBoxIsScrolled,
                 expandedHeight: 60,
-                title: Text(secondVolSubChapterEntity.dialogTitle),
+                title: Text(widget.secondSubChapterEntity.dialogTitle),
                 actions: [
                   IconButton(
                     onPressed: () {
@@ -46,9 +65,10 @@ class SecondVolContentsPage extends StatelessWidget {
                         context,
                         '/second_vol_contents_flip_page',
                         arguments: SecondSubChapterArgs(
-                          model: secondVolSubChapterEntity,
+                          model: widget.secondSubChapterEntity,
                         ),
                       );
+                      Provider.of<ContentPlayerState>(context, listen: false).dispose();
                     },
                     icon: const Icon(CupertinoIcons.creditcard),
                   ),
@@ -61,7 +81,7 @@ class SecondVolContentsPage extends StatelessWidget {
                   child: Padding(
                     padding: AppStyles.mainMarding,
                     child: Text(
-                      secondVolSubChapterEntity.dialogSubTitle,
+                      widget.secondSubChapterEntity.dialogSubTitle,
                       style: const TextStyle(
                         fontSize: 18,
                       ),
@@ -78,12 +98,25 @@ class SecondVolContentsPage extends StatelessWidget {
             removeTop: true,
             child: CupertinoScrollbar(
               child: SecondVolContentList(
-                secondSubChapterId: secondVolSubChapterEntity.id,
+                secondSubChapterId: widget.secondSubChapterEntity.id,
               ),
             ),
           ),
         ),
-        //bottomNavigationBar: const ContentPlayerContaier(),
+        bottomNavigationBar: FutureBuilder<List<SecondVolContentEntity>>(
+          future: _contentsUseCase.fetchSecondContentsById(
+            tableName: locale!.tableNameSecondVolContents,
+            secondSubChapterId: widget.secondSubChapterEntity.id,
+          ),
+          builder: (BuildContext context, AsyncSnapshot<List<SecondVolContentEntity>> snapshot) {
+            if (snapshot.hasData) {
+              Provider.of<ContentPlayerState>(context, listen: false).initPlayer(snapshot: snapshot);
+              return ContentPlayerContaier(snapshot: snapshot);
+            } else {
+              return const SizedBox();
+            }
+          },
+        ),
       ),
     );
   }

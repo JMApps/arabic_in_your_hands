@@ -6,7 +6,7 @@ import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_content_
 import 'package:arabicinyourhands/domain/entities/firstVolume/first_vol_sub_chapter_entity.dart';
 import 'package:arabicinyourhands/domain/usecases/firstVolume/first_vol_contents_use_case.dart';
 import 'package:arabicinyourhands/presentation/pages/firstVolume/lists/first_vol_content_list.dart';
-import 'package:arabicinyourhands/presentation/uiState/content_player_state.dart';
+import 'package:arabicinyourhands/presentation/uiState/player/content_player_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/content_player_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -16,22 +16,22 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class FirstVolContentsPage extends StatefulWidget {
   const FirstVolContentsPage({
     super.key,
-    required this.firstVolSubChapterEntity,
+    required this.firstSubChapterEntity,
   });
 
-  final FirstVolSubChapterEntity firstVolSubChapterEntity;
+  final FirstVolSubChapterEntity firstSubChapterEntity;
 
   @override
   State<FirstVolContentsPage> createState() => _FirstVolContentsPageState();
 }
 
 class _FirstVolContentsPageState extends State<FirstVolContentsPage> {
-  late final FirstVolContentsUseCase _firstVolContentsUseCase;
+  late final FirstVolContentsUseCase _contentsUseCase;
 
   @override
   void initState() {
     super.initState();
-    _firstVolContentsUseCase = FirstVolContentsUseCase(FirstVolContentsDataRepository());
+    _contentsUseCase = FirstVolContentsUseCase(FirstVolContentsDataRepository());
   }
 
   @override
@@ -57,7 +57,7 @@ class _FirstVolContentsPageState extends State<FirstVolContentsPage> {
                 snap: false,
                 forceElevated: innerBoxIsScrolled,
                 expandedHeight: 60,
-                title: Text(widget.firstVolSubChapterEntity.dialogTitle),
+                title: Text(widget.firstSubChapterEntity.dialogTitle),
                 actions: [
                   IconButton(
                     onPressed: () {
@@ -65,9 +65,10 @@ class _FirstVolContentsPageState extends State<FirstVolContentsPage> {
                         context,
                         '/first_vol_contents_flip_page',
                         arguments: FirstSubChapterArgs(
-                          model: widget.firstVolSubChapterEntity,
+                          model: widget.firstSubChapterEntity,
                         ),
                       );
+                      Provider.of<ContentPlayerState>(context, listen: false).stopDispose();
                     },
                     icon: const Icon(CupertinoIcons.creditcard),
                   ),
@@ -80,7 +81,7 @@ class _FirstVolContentsPageState extends State<FirstVolContentsPage> {
                   child: Padding(
                     padding: AppStyles.mainMarding,
                     child: Text(
-                      widget.firstVolSubChapterEntity.dialogSubTitle,
+                      widget.firstSubChapterEntity.dialogSubTitle,
                       style: const TextStyle(
                         fontSize: 18,
                       ),
@@ -96,14 +97,14 @@ class _FirstVolContentsPageState extends State<FirstVolContentsPage> {
             removeBottom: true,
             removeTop: true,
             child: FirstVolContentsList(
-              firstSubChapterId: widget.firstVolSubChapterEntity.id,
+              firstSubChapterId: widget.firstSubChapterEntity.id,
             ),
           ),
         ),
         bottomNavigationBar: FutureBuilder<List<FirstVolContentEntity>>(
-          future: _firstVolContentsUseCase.fetchFirstContentsById(
+          future: _contentsUseCase.fetchFirstContentsById(
             tableName: locale!.tableNameFirstVolContents,
-            firstSubChapterId: widget.firstVolSubChapterEntity.id,
+            firstSubChapterId: widget.firstSubChapterEntity.id,
           ),
           builder: (BuildContext context, AsyncSnapshot<List<FirstVolContentEntity>> snapshot) {
             if (snapshot.hasData) {
