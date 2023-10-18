@@ -9,17 +9,16 @@ class ErrorDataText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
-    return Padding(
+    return Container(
       padding: AppStyles.mainMarding,
-      child: Center(
-        child: SelectableText(
-          error,
-          style: TextStyle(
-            fontSize: 18,
-            color: appColors.error,
-          ),
-          textAlign: TextAlign.center,
+      alignment: Alignment.center,
+      child: SelectableText(
+        error,
+        style: TextStyle(
+          fontSize: 18,
+          color: appColors.error,
         ),
+        textAlign: TextAlign.center,
       ),
     );
   }

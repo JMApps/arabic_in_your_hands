@@ -11,14 +11,15 @@ class FutureIsEmpty extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Padding(
-        padding: AppStyles.mainMarding,
-        child: SelectableText(
-          message,
-          style: const TextStyle(fontSize: 18),
-          textAlign: TextAlign.center,
+    return Container(
+      padding: AppStyles.mainMarding,
+      alignment: Alignment.center,
+      child: SelectableText(
+        message,
+        style: const TextStyle(
+          fontSize: 18,
         ),
+        textAlign: TextAlign.center,
       ),
     );
   }
