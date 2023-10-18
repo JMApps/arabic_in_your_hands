@@ -20,7 +20,6 @@ class PlaySpeedRadioButton extends StatelessWidget {
     final ColorScheme appColors = Theme.of(context).colorScheme;
     return RadioListTile(
       activeColor: appColors.secondary,
-      contentPadding: AppStyles.mainMardingHorizontal,
       shape: AppStyles.mainShape,
       title: Text(title),
       value: groupIndex,

@@ -43,7 +43,7 @@ class WordCollectionOptions extends StatelessWidget {
                   textDirection: TextDirection.rtl,
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height: 16),
                 OutlinedButton(
                   onPressed: () {
                     showModalBottomSheet(

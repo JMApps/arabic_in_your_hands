@@ -1,4 +1,3 @@
-import 'package:arabicinyourhands/core/colors/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class SnackBarMessage extends StatelessWidget {
@@ -15,7 +14,6 @@ class SnackBarMessage extends StatelessWidget {
       message,
       style: const TextStyle(
         fontSize: 18,
-        color: AppColors.whiteColor,
       ),
     );
   }

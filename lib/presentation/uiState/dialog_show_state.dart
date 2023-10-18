@@ -9,7 +9,7 @@ class DialogShowState extends ChangeNotifier {
 
   bool get getDialogTranslationIsShow => _dialogTranslationIsShow;
 
-  changeArabicShowing() {
+  get changeArabicShowing {
     _dialogArabicIsShow = !_dialogArabicIsShow;
     if (!_dialogArabicIsShow) {
       if (!_dialogTranslationIsShow) {
@@ -19,7 +19,7 @@ class DialogShowState extends ChangeNotifier {
     notifyListeners();
   }
 
-  changeTranslationShowing() {
+  get changeTranslationShowing {
     _dialogTranslationIsShow = !_dialogTranslationIsShow;
     if (!_dialogTranslationIsShow) {
       if (!_dialogArabicIsShow) {

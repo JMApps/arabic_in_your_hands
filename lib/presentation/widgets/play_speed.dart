@@ -13,7 +13,7 @@ class PlaySpeed extends StatelessWidget {
     final ColorScheme appColors = Theme.of(context).colorScheme;
     final AppLocalizations locale = AppLocalizations.of(context)!;
     return Container(
-      padding: AppStyles.mainMardingWithoutTop,
+      padding: AppStyles.mainMardingWithoutTopMini,
       child: Consumer<PlaySpeedState>(
         builder: (parentContext, playingSpeedState, _) {
           return Column(
@@ -22,7 +22,7 @@ class PlaySpeed extends StatelessWidget {
               Text(
                 locale.playSpeed,
                 style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                   color: appColors.secondary,
                 ),

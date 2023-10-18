@@ -26,7 +26,7 @@ class CollectionDetailFlipPage extends StatelessWidget {
           title: Text(model.title),
           actions: [
             Consumer<ContentFlipState>(
-              builder: (BuildContext context, flipState, Widget? child) {
+              builder: (BuildContext context, flipState, _) {
                 return IconButton(
                   icon: Icon(
                     flipState.getCardSideMode

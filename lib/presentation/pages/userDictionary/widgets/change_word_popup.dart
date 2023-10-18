@@ -73,7 +73,7 @@ class _ChangeWordPopupState extends State<ChangeWordPopup> {
                   decoration: InputDecoration(
                     errorText: wordState.getWordState ? locale!.enterWord : null,
                     label: Text(locale!.enterWord),
-                    suffixIcon: IconButton(
+                    prefixIcon: IconButton(
                       onPressed: () {
                         showDialog(
                           context: context,

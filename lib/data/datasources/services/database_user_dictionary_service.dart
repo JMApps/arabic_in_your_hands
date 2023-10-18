@@ -26,27 +26,29 @@ class DatabaseUserDictionaryService {
         ? await getExternalStorageDirectory()
         : await getApplicationSupportDirectory();
 
-    String pathDictionary = join(documentDirectory!.path, 'WordsDatabase.db');
+    const String databaseName = 'WordsDatabase.db';
+
+    String pathDictionary = join(documentDirectory!.path, databaseName);
     String pathDictionaryData = join('/data/data/jmapps.arabicinyourhands/databases', 'WordsDatabase');
 
-    var existsDictionary = await databaseExists(pathDictionary);
-    var existsDictionaryData = await databaseExists(pathDictionaryData);
+    var exists = await databaseExists(pathDictionary);
+    var existsAndroidData = await databaseExists(pathDictionaryData);
 
-    if (!existsDictionaryData) {
-      if (!existsDictionary) {
+    if (!existsAndroidData) {
+      if (!exists) {
         try {
           await Directory(dirname(pathDictionary)).create(recursive: true);
         } catch (_) {
-          Exception('Invalid database from storage');
+          Exception('Invalid database');
         }
 
-        ByteData data = await rootBundle.load(join('assets/databases', 'WordsDatabase.db'));
+        ByteData data = await rootBundle.load(join('assets/databases', databaseName));
         List<int> bytes = data.buffer.asUint8List(data.offsetInBytes, data.lengthInBytes);
         await File(pathDictionary).writeAsBytes(bytes, flush: true);
       }
     }
 
-    var onOpen = await openDatabase(existsDictionaryData ? pathDictionaryData : pathDictionary);
+    var onOpen = await openDatabase(existsAndroidData ? pathDictionaryData : pathDictionary);
     return onOpen;
   }
 }

@@ -68,7 +68,7 @@ class _SecondVolContentsPageState extends State<SecondVolContentsPage> {
                           model: widget.secondSubChapterEntity,
                         ),
                       );
-                      Provider.of<ContentPlayerState>(context, listen: false).dispose();
+                      Provider.of<ContentPlayerState>(context, listen: false).stopDispose();
                     },
                     icon: const Icon(CupertinoIcons.creditcard),
                   ),
@@ -96,10 +96,8 @@ class _SecondVolContentsPageState extends State<SecondVolContentsPage> {
             context: context,
             removeBottom: true,
             removeTop: true,
-            child: CupertinoScrollbar(
-              child: SecondVolContentList(
-                secondSubChapterId: widget.secondSubChapterEntity.id,
-              ),
+            child: SecondVolContentList(
+              secondSubChapterId: widget.secondSubChapterEntity.id,
             ),
           ),
         ),

@@ -66,11 +66,7 @@ class ContentPlayerState with ChangeNotifier {
 
   Future<void> playOne({required int trackIndex}) async {
     _player.seek(Duration.zero, index: trackIndex);
-    if (!_isPlaying) {
-      _player.play();
-    } else {
-      _player.pause();
-    }
+    _player.play();
   }
 
   Future<void> repeatAll() async {

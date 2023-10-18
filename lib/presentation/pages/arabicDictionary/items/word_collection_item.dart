@@ -133,11 +133,7 @@ class WordCollectionItem extends StatelessWidget {
                       Provider.of<WordCollectionState>(context, listen: false)
                           .deleteWordFromCollection(wordId: model.id);
                     },
-                    icon: Icon(
-                      CupertinoIcons.minus_circle,
-                      size: 30,
-                      color: appColors.primaryColor,
-                    ),
+                    icon: const Icon(CupertinoIcons.minus_circle),
                   ),
                 ],
               ),

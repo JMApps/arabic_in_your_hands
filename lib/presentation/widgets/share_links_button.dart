@@ -13,7 +13,6 @@ class ShareLinksButton extends StatelessWidget {
       tooltip: locale!.share,
       icon: const Icon(
         CupertinoIcons.share,
-        color: Colors.white,
       ),
       onPressed: () {
         Share.share(

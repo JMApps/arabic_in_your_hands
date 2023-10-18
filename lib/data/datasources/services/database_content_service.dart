@@ -32,7 +32,7 @@ class DatabaseContentService {
     String path = join(documentDirectory!.path, databaseName);
     var exists = await databaseExists(path);
 
-    // String toDeleteDB = '${documentDirectory.path}/arabic_in_your_hands.db';
+    // String toDeleteDB = '${documentDirectory.path}/arabic_database.db';
     //
     // var delDB = await databaseExists(toDeleteDB);
     //

@@ -27,7 +27,7 @@ class SecondVolShareCopy extends StatelessWidget {
           Text(
             locale!.share,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
               color: appColors.secondary,
             ),

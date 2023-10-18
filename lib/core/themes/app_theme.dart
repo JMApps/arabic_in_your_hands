@@ -1,4 +1,3 @@
-import 'package:arabicinyourhands/core/colors/app_colors.dart';
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:flutter/material.dart';
 
@@ -6,7 +5,7 @@ class AppTheme {
   static final lightTheme = ThemeData(
     colorScheme: ColorScheme.fromSeed(
       brightness: Brightness.light,
-      seedColor: const Color(0xFF0A4B3A),
+      seedColor: const Color(0xFF0D5D47),
       secondary: const Color(0xFF15A180),
     ),
     useMaterial3: true,
@@ -17,12 +16,12 @@ class AppTheme {
       elevation: 0,
       backgroundColor: Color(0xFF202C31),
       iconTheme: IconThemeData(
-        color: AppColors.whiteColor,
+        color: Colors.white,
       ),
       titleTextStyle: TextStyle(
         fontSize: 20,
         fontFamily: 'Montserrat',
-        color: AppColors.whiteColor,
+        color: Colors.white,
       ),
     ),
     inputDecorationTheme: const InputDecorationTheme(
@@ -55,12 +54,12 @@ class AppTheme {
       elevation: 0,
       backgroundColor: Color(0xFF192226),
       iconTheme: IconThemeData(
-        color: AppColors.whiteColor,
+        color: Colors.white,
       ),
       titleTextStyle: TextStyle(
         fontSize: 20,
         fontFamily: 'Montserrat',
-        color: AppColors.whiteColor,
+        color: Colors.white,
       ),
     ),
     inputDecorationTheme: const InputDecorationTheme(
@@ -97,8 +96,8 @@ extension HexColor on Color {
 
 extension ColorSchemeS on ColorScheme {
   Color get primaryColor => brightness == Brightness.light
-      ? const Color(0xFF202C31)
-      : const Color(0xFF192226);
+      ? const Color(0xFF243438)
+      : const Color(0xFF1E282D);
 
   Color get primaryDark => brightness == Brightness.light
       ? const Color(0xFF2C3F42)
@@ -121,12 +120,12 @@ extension ColorSchemeS on ColorScheme {
       : const Color(0xFF202C31);
 
   Color get leftDialogColor => brightness == Brightness.light
-      ? const Color(0xFF166551)
+      ? const Color(0xFF0D5D47)
       : const Color(0xFF0B8FE8);
 
   Color get rightDialogColor => brightness == Brightness.light
       ? const Color(0xFF0B8FE8)
-      : const Color(0xFF209372);
+      : const Color(0xFF0D5D47);
 
   Color get playingColor => brightness == Brightness.light
       ? const Color(0xFFFFF4DA)

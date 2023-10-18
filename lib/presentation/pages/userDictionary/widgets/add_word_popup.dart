@@ -79,7 +79,6 @@ class _AddWordPopupState extends State<AddWordPopup> {
                                 elevation: 0.5,
                                 allowShades: false,
                                 onMainColorChange: (ColorSwatch? color) {
-                                  debugPrint(color.toString());
                                   wordState.setWordColor = color!;
                                 },
                                 selectedColor: wordState.getWordColor,

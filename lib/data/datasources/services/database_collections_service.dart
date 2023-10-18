@@ -32,6 +32,14 @@ class DatabaseCollectionsService {
     String path = join(documentDirectory!.path, databaseName);
     var exists = await databaseExists(path);
 
+    // String toDeleteDB = '${documentDirectory.path}/collections.db';
+    //
+    // var delDB = await databaseExists(toDeleteDB);
+    //
+    // if (delDB) {
+    //   await deleteDatabase(toDeleteDB);
+    // }
+
     if (!exists) {
       try {
         await Directory(dirname(path)).create(recursive: true);

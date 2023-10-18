@@ -1,4 +1,3 @@
-import 'package:arabicinyourhands/core/colors/app_colors.dart';
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/uiState/main_navigation_state.dart';
@@ -29,7 +28,7 @@ class MainPage extends StatelessWidget {
         itemShape: AppStyles.mainShapeMini,
         backgroundColor: appColors.primaryColor,
         selectedItemColor: appColors.secondary,
-        unselectedItemColor: AppColors.whiteColor,
+        unselectedItemColor: Colors.white,
         items: [
           SalomonBottomBarItem(
             icon: const Icon(Icons.filter_1_outlined),
@@ -54,7 +53,7 @@ class MainPage extends StatelessWidget {
         ],
         currentIndex: navigationState.getCurrentIndex,
         onTap: (int index) {
-          navigationState.changeCurrentIndex(index);
+          navigationState.setCurrentIndex = index;
         },
       ),
     );

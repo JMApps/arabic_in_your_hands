@@ -30,12 +30,9 @@ class SecondVolContentsFlipPage extends StatelessWidget {
           backgroundColor: appColors.primaryColor,
           actions: [
             Consumer<ContentFlipState>(
-              builder: (BuildContext context, flipState, Widget? child) {
+              builder: (BuildContext context, flipState, _) {
                 return IconButton(
-                  icon: const Icon(
-                    CupertinoIcons.rotate_right,
-                    color: Colors.white,
-                  ),
+                  icon: Icon(flipState.getCardSideMode ? CupertinoIcons.rotate_right : CupertinoIcons.rotate_left),
                   onPressed: () {
                     flipState.changeFlipSide();
                   },

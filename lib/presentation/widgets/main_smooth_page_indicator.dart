@@ -19,13 +19,13 @@ class MainSmoothPageIndicator extends StatelessWidget {
       controller: controller,
       onDotClicked: (index) => controller.animateToPage(
         index,
-        duration: const Duration(milliseconds: 50),
+        duration: const Duration(milliseconds: 75),
         curve: Curves.slowMiddle,
       ),
       effect: ScrollingDotsEffect(
         maxVisibleDots: 5,
         dotWidth: 8,
-        dotHeight: 8,
+        dotHeight: 12,
         activeDotColor: appColors.secondary,
       ),
     );

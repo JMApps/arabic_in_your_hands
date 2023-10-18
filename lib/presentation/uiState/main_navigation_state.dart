@@ -5,7 +5,7 @@ class MainNavigationState with ChangeNotifier {
 
   int get getCurrentIndex => _currentIndex;
 
-  changeCurrentIndex(int index) {
+  set setCurrentIndex(int index) {
     _currentIndex = index;
     notifyListeners();
   }

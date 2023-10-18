@@ -20,7 +20,7 @@ class DialogVisibility extends StatelessWidget {
           Text(
             locale!.visibleMode,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
               color: appColors.secondary,
             ),
@@ -38,8 +38,8 @@ class DialogVisibility extends StatelessWidget {
             ),
             activeColor: appColors.secondary,
             value: dialogShowState.getDialogArabicIsShow,
-            onChanged: (bool? value) {
-              dialogShowState.changeArabicShowing();
+            onChanged: (bool value) {
+              dialogShowState.changeArabicShowing;
             },
           ),
           SwitchListTile.adaptive(
@@ -53,8 +53,8 @@ class DialogVisibility extends StatelessWidget {
             ),
             activeColor: appColors.secondary,
             value: dialogShowState.getDialogTranslationIsShow,
-            onChanged: (bool? value) {
-              dialogShowState.changeTranslationShowing();
+            onChanged: (bool value) {
+              dialogShowState.changeTranslationShowing;
             },
           ),
         ],

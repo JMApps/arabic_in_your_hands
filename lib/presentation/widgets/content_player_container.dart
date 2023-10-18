@@ -1,4 +1,3 @@
-import 'package:arabicinyourhands/core/colors/app_colors.dart';
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/core/themes/app_theme.dart';
 import 'package:arabicinyourhands/presentation/uiState/player/content_player_state.dart';
@@ -8,8 +7,8 @@ import 'package:arabicinyourhands/presentation/widgets/play_speed.dart';
 import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class ContentPlayerContaier extends StatelessWidget {
   const ContentPlayerContaier({
@@ -22,7 +21,8 @@ class ContentPlayerContaier extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ColorScheme appColors = Theme.of(context).colorScheme;
-    final ContentPlayerState playerState = Provider.of<ContentPlayerState>(context);
+    final ContentPlayerState playerState =
+        Provider.of<ContentPlayerState>(context);
     final AppLocalizations? locale = AppLocalizations.of(context);
     final PlaySpeedState playSpeedState = Provider.of<PlaySpeedState>(context);
     playerState.playingSpeed(playingSpeed: playSpeedState.getPlaySpeed);
@@ -50,7 +50,7 @@ class ContentPlayerContaier extends StatelessWidget {
           IconButton(
             icon: Icon(
               CupertinoIcons.arrow_2_squarepath,
-              color: playerState.getAllRepeat ? appColors.error : AppColors.whiteColor,
+              color: playerState.getAllRepeat ? appColors.error : Colors.white,
             ),
             onPressed: () {
               if (!playerState.getAllRepeat) {
@@ -82,7 +82,9 @@ class ContentPlayerContaier extends StatelessWidget {
             backgroundColor: appColors.secondary,
             elevation: 0,
             heroTag: 'media_2',
-            child: Icon(playerState.getIsPlaying ? CupertinoIcons.pause : CupertinoIcons.play),
+            child: Icon(playerState.getIsPlaying
+                ? CupertinoIcons.pause
+                : CupertinoIcons.play),
             onPressed: () {
               playerState.playAll();
             },
@@ -101,7 +103,7 @@ class ContentPlayerContaier extends StatelessWidget {
           IconButton(
             icon: Icon(
               CupertinoIcons.arrow_counterclockwise,
-              color: playerState.getOneRepeat ? appColors.error : AppColors.whiteColor,
+              color: playerState.getOneRepeat ? appColors.error : Colors.white,
             ),
             onPressed: () {
               if (!playerState.getOneRepeat) {
@@ -130,7 +132,9 @@ class ContentPlayerContaier extends StatelessWidget {
                 context: context,
                 isScrollControlled: true,
                 builder: (BuildContext context) {
-                  return const PlaySpeed();
+                  return const SingleChildScrollView(
+                    child: PlaySpeed(),
+                  );
                 },
               );
             },
