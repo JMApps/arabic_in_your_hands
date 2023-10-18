@@ -6,8 +6,11 @@ class MainAppIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Transform.scale(
-      scale: 0.85,
-      child: Image.asset('assets/icons/arabic_in_origin.png'),
+      scale: 0.75,
+      child: Image.asset(
+        'assets/icons/arabic_in_origin.png',
+        color: Colors.amber,
+      ),
     );
   }
 }
