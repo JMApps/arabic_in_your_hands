@@ -41,7 +41,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "jmapps.arabicInYourHands"
+        applicationId "jmapps.arabicinyourhands"
         compileSdk 33
         minSdkVersion 23
         targetSdkVersion flutter.targetSdkVersion
