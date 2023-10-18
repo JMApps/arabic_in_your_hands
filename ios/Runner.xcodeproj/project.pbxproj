@@ -66,10 +66,10 @@
 		CD9ADF5F5393270AF1445894 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		D2A815A09AFF4A74E697922E /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E59430852ADFEE48009D3894 /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
-		E594308E2ADFEED1009D3894 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		E59430902ADFEEF9009D3894 /* uz-Cyrl-UZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "uz-Cyrl-UZ"; path = "uz-Cyrl-UZ.lproj/Main.strings"; sourceTree = "<group>"; };
 		E59430912ADFEEF9009D3894 /* uz-Cyrl-UZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "uz-Cyrl-UZ"; path = "uz-Cyrl-UZ.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		E59430922ADFEEFA009D3894 /* uz-Cyrl-UZ */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "uz-Cyrl-UZ"; path = "uz-Cyrl-UZ.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		E59430952ADFF5E0009D3894 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EA5D002AD3D8918F006E5367 /* Pods-RunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,7 +223,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1430;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					331C8080294A63A400263BE5 = {
@@ -238,12 +238,12 @@
 			};
 			buildConfigurationList = 97C146E91CF9000F007C117D /* Build configuration list for PBXProject "Runner" */;
 			compatibilityVersion = "Xcode 9.3";
-			developmentRegion = en;
+			developmentRegion = ru;
 			hasScannedForEncodings = 0;
 			knownRegions = (
-				en,
 				Base,
 				"uz-Cyrl-UZ",
+				ru,
 			);
 			mainGroup = 97C146E51CF9000F007C117D;
 			productRefGroup = 97C146EF1CF9000F007C117D /* Products */;
@@ -423,8 +423,8 @@
 		E594308F2ADFEED1009D3894 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E594308E2ADFEED1009D3894 /* en */,
 				E59430922ADFEEFA009D3894 /* uz-Cyrl-UZ */,
+				E59430952ADFF5E0009D3894 /* ru */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -501,7 +501,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jmapps.arabicInYourHands;
+				PRODUCT_BUNDLE_IDENTIFIER = jmapps.arabicinyourhandss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
@@ -687,7 +687,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jmapps.arabicInYourHands;
+				PRODUCT_BUNDLE_IDENTIFIER = jmapps.arabicinyourhandss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -713,7 +713,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.3.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jmapps.arabicInYourHands;
+				PRODUCT_BUNDLE_IDENTIFIER = jmapps.arabicinyourhandss;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
