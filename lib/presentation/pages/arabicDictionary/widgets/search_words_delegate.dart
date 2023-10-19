@@ -65,7 +65,11 @@ class SearchWordsDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    final AppLocalizations? locale = AppLocalizations.of(context);
-    return FutureIsEmpty(message: locale!.startSearch);
+    if (query.length > 3) {
+      return SearchWordsFuture(query: query);
+    } else {
+      final AppLocalizations? locale = AppLocalizations.of(context);
+      return FutureIsEmpty(message: locale!.startSearch);
+    }
   }
 }

@@ -10,8 +10,8 @@ import 'package:arabicinyourhands/presentation/uiState/player/content_player_sta
 import 'package:arabicinyourhands/presentation/widgets/content_player_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 
 class FirstVolContentsPage extends StatefulWidget {
   const FirstVolContentsPage({
