@@ -30,9 +30,11 @@ class _SearchWordsFutureState extends State<SearchWordsFuture> {
   }
 
   // Функция для удаления огласок из арабских слов
-  String removeDiacritics(String input) {
-    final diacriticsPattern = RegExp(r'[ًٌٍَُِّْ]');
-    return input.replaceAll(diacriticsPattern, '');
+  String removeDiacriticsAndNormalize(String input) {
+    final diacriticsPattern = RegExp(r'[ًٌٍَُِّْ]');
+    String withoutDiacritics = input.replaceAll(diacriticsPattern, '');
+    String normalized = withoutDiacritics.replaceAll(RegExp(r'[أإآ]'), 'ا');
+    return normalized;
   }
 
   @override
@@ -46,7 +48,7 @@ class _SearchWordsFutureState extends State<SearchWordsFuture> {
           _recentWords = widget.query.isEmpty
               ? []
               : _words.where((element) {
-                  final word = removeDiacritics(element.word);
+                  final word = removeDiacriticsAndNormalize(element.word);
                   final shortMeaning = element.shortMeaning?.toLowerCase();
                   // final meaning = element.meaning?.toLowerCase();
                   return (word.contains(widget.query.toLowerCase())) || (shortMeaning?.contains(widget.query.toLowerCase()) ?? false);}).toList();
