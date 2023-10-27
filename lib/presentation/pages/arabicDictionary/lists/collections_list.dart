@@ -44,7 +44,7 @@ class CollectionsList extends StatelessWidget {
         } else if (snapshot.hasError) {
           return ErrorDataText(error: snapshot.error.toString());
         } {
-          return FutureIsEmpty(message: locale!.addFirstCollection);
+          return FutureIsEmpty(message: locale!.startSearch);
         }
       },
     );
