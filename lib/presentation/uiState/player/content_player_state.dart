@@ -33,7 +33,8 @@ class ContentPlayerState with ChangeNotifier {
       children: _audioSources,
     );
 
-    await _player.setAudioSource(_audioSource, initialIndex: 0, initialPosition: Duration.zero);
+    await _player.setAudioSource(_audioSource, initialIndex: 0);
+
     _player.playingStream.listen((event) {
       _isPlaying = event;
       notifyListeners();
@@ -51,6 +52,8 @@ class ContentPlayerState with ChangeNotifier {
         _isPlaying = false;
         _player.stop();
         _player.seek(Duration.zero, index: 0);
+        _player.setAudioSource(_audioSource, initialIndex: 0);
+        _currentTrackIndex = 0;
         notifyListeners();
       }
     });
@@ -65,7 +68,9 @@ class ContentPlayerState with ChangeNotifier {
   }
 
   Future<void> playOne({required int trackIndex}) async {
-    _player.seek(Duration.zero, index: trackIndex);
+    await _player.setAudioSource(_audioSource[trackIndex]);
+    _currentTrackIndex = trackIndex;
+    notifyListeners();
     _player.play();
   }
 
