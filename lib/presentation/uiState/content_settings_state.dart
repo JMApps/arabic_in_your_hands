@@ -88,6 +88,16 @@ class ContentSettingsState with ChangeNotifier {
     notifyListeners();
   }
 
+  bool _isRunDictionary = true;
+
+  bool get getIsRubDictionary => _isRunDictionary;
+
+  set changeRunDictionary(bool onChanged) {
+    _isRunDictionary = onChanged;
+    _contentSettingsBox.put(AppConstraints.keyIsRunDictionary, onChanged);
+    notifyListeners();
+  }
+
   ContentSettingsState() {
     _arabicFontIndex = _contentSettingsBox.get(AppConstraints.keyArabicFontIndex, defaultValue: 0);
     _fontIndex = _contentSettingsBox.get(AppConstraints.keyTranslationFontIndex, defaultValue: 0);
@@ -98,5 +108,6 @@ class ContentSettingsState with ChangeNotifier {
     _darkTheme = _contentSettingsBox.get(AppConstraints.keyThemeIsUser, defaultValue: false);
     _wakeLock = _contentSettingsBox.get(AppConstraints.keyDisplayWakeClock, defaultValue: true);
     _wakeLock ? WakelockPlus.enable() : WakelockPlus.disable();
+    _isRunDictionary = _contentSettingsBox.get(AppConstraints.keyIsRunDictionary, defaultValue: true);
   }
 }

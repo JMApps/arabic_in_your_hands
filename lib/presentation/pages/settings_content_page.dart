@@ -167,6 +167,17 @@ class SettingsContentPage extends StatelessWidget {
                     style: AppStyles.mainTextStyle,
                   ),
                 ),
+                SwitchListTile(
+                  value: settingsState.getIsRubDictionary,
+                  onChanged: (bool? onChanged) {
+                    settingsState.changeRunDictionary = onChanged!;
+                  },
+                  contentPadding: AppStyles.mainMardingHorizontalMini,
+                  title: Text(
+                    locale.saveLastBottomNavIndex,
+                    style: AppStyles.mainTextStyle,
+                  ),
+                ),
               ],
             );
           },
