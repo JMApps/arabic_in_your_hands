@@ -26,13 +26,7 @@ class FirstVolContentsPage extends StatefulWidget {
 }
 
 class _FirstVolContentsPageState extends State<FirstVolContentsPage> {
-  late final FirstVolContentsUseCase _contentsUseCase;
-
-  @override
-  void initState() {
-    super.initState();
-    _contentsUseCase = FirstVolContentsUseCase(FirstVolContentsDataRepository());
-  }
+  final FirstVolContentsUseCase _contentsUseCase = FirstVolContentsUseCase(FirstVolContentsDataRepository());
 
   @override
   Widget build(BuildContext context) {
