@@ -14,31 +14,30 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
-  intl: ^0.18.1
+  intl: ^0.19.0
   path: ^1.9.0
-  cupertino_icons: ^1.0.6
-  provider: ^6.1.1
-  sqflite: ^2.3.2
-  path_provider: ^2.1.2
+  cupertino_icons: ^1.0.8
+  provider: ^6.1.2
+  sqflite: ^2.4.1
+  path_provider: ^2.1.5
   salomon_bottom_bar: ^3.3.2
-  flutter_svg: ^2.0.9
-  url_launcher: ^6.2.4
-  share_plus: ^7.2.2
+  flutter_svg: ^2.0.14
+  url_launcher: ^6.3.1
+  share_plus: ^10.1.2
   clipboard: ^0.1.3
   flutter_staggered_animations: ^1.1.1
-  wakelock_plus: ^1.1.5
+  wakelock_plus: ^1.2.8
   hive_flutter: ^1.1.0
-  just_audio: ^0.9.36
-  flutter_flip_card: ^0.0.5
-  smooth_page_indicator: ^1.1.0
+  just_audio: ^0.9.42
+  flutter_flip_card: ^0.0.6
+  smooth_page_indicator: ^1.2.0+3
   flutter_material_color_picker: ^1.2.0
-  screenshot: ^2.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^3.0.1
+  flutter_lints: ^5.0.0
 
 flutter:
 

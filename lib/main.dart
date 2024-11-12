@@ -11,7 +11,6 @@ import 'package:arabicinyourhands/presentation/uiState/dialog_show_state.dart';
 import 'package:arabicinyourhands/presentation/uiState/main_navigation_state.dart';
 import 'package:arabicinyourhands/presentation/uiState/player/play_speed_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -22,17 +21,10 @@ final PageStorageBucket globalBucketSecondVolumeChapters = PageStorageBucket();
 final PageStorageBucket globalBucketSecondVolumeSubChapters = PageStorageBucket();
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  if (Platform.isAndroid) {
-    SystemChrome.setSystemUIOverlayStyle(
-      const SystemUiOverlayStyle(
-        statusBarColor: Colors.transparent,
-        systemNavigationBarColor: Colors.transparent,
-      ),
-    );
-  }
+
   await Hive.initFlutter();
   await Hive.openBox(AppConstraints.keyMainSettingBox);
+
   runApp(
     MultiProvider(
       providers: [
