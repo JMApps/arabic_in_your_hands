@@ -5,9 +5,10 @@ import 'package:arabicinyourhands/presentation/pages/userDictionary/items/dictio
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:arabicinyourhands/presentation/widgets/future_is_empty.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../l10n/app_localizations.dart';
 
 class DictionaryWordsList extends StatelessWidget {
   const DictionaryWordsList({

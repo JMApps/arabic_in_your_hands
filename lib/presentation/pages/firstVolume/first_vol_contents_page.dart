@@ -10,8 +10,9 @@ import 'package:arabicinyourhands/presentation/uiState/player/content_player_sta
 import 'package:arabicinyourhands/presentation/widgets/content_player_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+
+import '../../../l10n/app_localizations.dart';
 
 class FirstVolContentsPage extends StatefulWidget {
   const FirstVolContentsPage({
@@ -86,13 +87,8 @@ class _FirstVolContentsPageState extends State<FirstVolContentsPage> {
               ),
             ];
           },
-          body: MediaQuery.removePadding(
-            context: context,
-            removeBottom: true,
-            removeTop: true,
-            child: FirstVolContentsList(
-              firstSubChapterId: widget.firstSubChapterEntity.id,
-            ),
+          body: FirstVolContentsList(
+            firstSubChapterId: widget.firstSubChapterEntity.id,
           ),
         ),
         bottomNavigationBar: FutureBuilder<List<FirstVolContentEntity>>(

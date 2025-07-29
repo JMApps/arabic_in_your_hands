@@ -4,7 +4,8 @@ import 'package:arabicinyourhands/presentation/pages/arabicDictionary/lists/word
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/search_words_delegate.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../l10n/app_localizations.dart';
 
 class CollectionDetailPage extends StatelessWidget {
   const CollectionDetailPage({

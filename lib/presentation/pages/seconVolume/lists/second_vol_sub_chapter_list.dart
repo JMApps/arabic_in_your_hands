@@ -5,10 +5,11 @@ import 'package:arabicinyourhands/main.dart';
 import 'package:arabicinyourhands/presentation/pages/seconVolume/items/second_vol_sub_chapter_item.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class SeconVolSubChapterList extends StatefulWidget {
-  const SeconVolSubChapterList({
+import '../../../../l10n/app_localizations.dart';
+
+class SecondVolSubChapterList extends StatefulWidget {
+  const SecondVolSubChapterList({
     super.key,
     required this.secondChapterId,
   });
@@ -16,10 +17,10 @@ class SeconVolSubChapterList extends StatefulWidget {
   final int secondChapterId;
 
   @override
-  State<SeconVolSubChapterList> createState() => _SeconVolSubChapterListState();
+  State<SecondVolSubChapterList> createState() => _SecondVolSubChapterListState();
 }
 
-class _SeconVolSubChapterListState extends State<SeconVolSubChapterList> {
+class _SecondVolSubChapterListState extends State<SecondVolSubChapterList> {
   late final SecondVolSubChaptersUseCase _secondVolSubChaptersUseCase;
   final PageController _pageController = PageController();
 

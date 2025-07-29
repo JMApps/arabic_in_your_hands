@@ -83,7 +83,7 @@ class SecondVolChapterItem extends StatelessWidget {
           ),
           SizedBox(
             height: 215,
-            child: SeconVolSubChapterList(
+            child: SecondVolSubChapterList(
               secondChapterId: model.id,
             ),
           ),

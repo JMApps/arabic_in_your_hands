@@ -1,10 +1,13 @@
-import 'package:arabicinyourhands/core/routes/app_routes.dart';
-import 'package:arabicinyourhands/core/themes/app_theme.dart';
-import 'package:arabicinyourhands/presentation/pages/main_page.dart';
-import 'package:arabicinyourhands/presentation/uiState/content_settings_state.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+
+import '../../core/routes/app_routes.dart';
+import '../../core/themes/app_theme.dart';
+import '../../l10n/app_localizations.dart';
+import '../uiState/content_settings_state.dart';
+import 'main_page.dart';
 
 class RootPage extends StatelessWidget {
   const RootPage({super.key});
@@ -20,11 +23,16 @@ class RootPage extends StatelessWidget {
       onGenerateRoute: AppRoutes.appGeneratorRoute,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: settings.getAdaptiveTheme
-          ? ThemeMode.system
-          : settings.getDarkTheme
-          ? ThemeMode.dark
-          : ThemeMode.light,
+      themeMode: settings.getAdaptiveTheme ? ThemeMode.system : settings.getDarkTheme ? ThemeMode.dark : ThemeMode.light,
+      builder: (context, child) {
+        final bottomInset = MediaQuery.of(context).viewPadding.bottom;
+        final needsBottomPadding = Platform.isAndroid && bottomInset > 0;
+
+        return Padding(
+          padding: EdgeInsets.only(bottom: needsBottomPadding ? bottomInset : 0),
+          child: child!,
+        );
+      },
       home: const MainPage(),
     );
   }

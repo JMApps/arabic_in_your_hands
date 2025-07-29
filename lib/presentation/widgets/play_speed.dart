@@ -2,8 +2,9 @@ import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/presentation/uiState/player/play_speed_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/play_speed_radio_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+
+import '../../l10n/app_localizations.dart';
 
 class PlaySpeed extends StatelessWidget {
   const PlaySpeed({super.key});

@@ -4,8 +4,9 @@ import 'package:arabicinyourhands/domain/entities/arabicDictionary/collection_ad
 import 'package:arabicinyourhands/presentation/uiState/dictionary/input_collection_state.dart';
 import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../l10n/app_localizations.dart';
 
 class AddCollectionPopup extends StatefulWidget {
   const AddCollectionPopup({super.key});

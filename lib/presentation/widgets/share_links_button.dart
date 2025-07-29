@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:share_plus/share_plus.dart';
+
+import '../../l10n/app_localizations.dart';
 
 class ShareLinksButton extends StatelessWidget {
   const ShareLinksButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final AppLocalizations? locale = AppLocalizations.of(context);
+    final AppLocalizations locale = AppLocalizations.of(context)!;
     return IconButton(
       tooltip: locale!.share,
       icon: const Icon(

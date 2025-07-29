@@ -108,6 +108,7 @@ coverage/
 
 # Symbols
 app.*.symbols
+.aab
 
 # Exceptions to above rules.
 !**/ios/**/default.mode1v3

@@ -9,8 +9,9 @@ import 'package:arabicinyourhands/presentation/widgets/first_vol_share_copy.dart
 import 'package:arabicinyourhands/presentation/widgets/main_smooth_page_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_flip_card/flutter_flip_card.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../l10n/app_localizations.dart';
 
 class FirstVolContentFlipList extends StatefulWidget {
   const FirstVolContentFlipList({

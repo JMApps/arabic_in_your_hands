@@ -4,7 +4,8 @@ import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/se
 import 'package:arabicinyourhands/presentation/widgets/main_app_icon.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../l10n/app_localizations.dart';
 
 class ArabicDictionaryPage extends StatelessWidget {
   const ArabicDictionaryPage({super.key});

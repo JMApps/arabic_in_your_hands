@@ -6,7 +6,8 @@ import 'package:arabicinyourhands/presentation/pages/seconVolume/items/second_vo
 import 'package:arabicinyourhands/presentation/pages/seconVolume/items/second_vol_content_item_right.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../../l10n/app_localizations.dart';
 
 class SecondVolContentList extends StatefulWidget {
   const SecondVolContentList({super.key, required this.secondSubChapterId});

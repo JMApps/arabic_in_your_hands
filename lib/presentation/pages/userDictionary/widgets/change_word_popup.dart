@@ -7,9 +7,10 @@ import 'package:arabicinyourhands/presentation/uiState/dictionary/word_state.dar
 import 'package:arabicinyourhands/presentation/widgets/snack_bar_message.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:provider/provider.dart';
+
+import '../../../../l10n/app_localizations.dart';
 
 class ChangeWordPopup extends StatefulWidget {
   const ChangeWordPopup({

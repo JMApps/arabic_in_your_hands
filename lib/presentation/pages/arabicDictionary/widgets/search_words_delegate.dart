@@ -1,7 +1,8 @@
 import 'package:arabicinyourhands/presentation/pages/arabicDictionary/widgets/search_words_future.dart';
 import 'package:arabicinyourhands/presentation/widgets/future_is_empty.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../../l10n/app_localizations.dart';
 
 class SearchWordsDelegate extends SearchDelegate {
   SearchWordsDelegate({

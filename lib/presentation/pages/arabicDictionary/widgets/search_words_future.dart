@@ -6,7 +6,8 @@ import 'package:arabicinyourhands/presentation/pages/arabicDictionary/items/word
 import 'package:arabicinyourhands/presentation/widgets/future_is_empty.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../../l10n/app_localizations.dart';
 
 class SearchWordsFuture extends StatefulWidget {
   const SearchWordsFuture({super.key, required this.query});

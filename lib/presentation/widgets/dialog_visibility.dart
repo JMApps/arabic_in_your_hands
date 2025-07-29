@@ -1,8 +1,9 @@
 import 'package:arabicinyourhands/core/styles/app_styles.dart';
 import 'package:arabicinyourhands/presentation/uiState/dialog_show_state.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
+
+import '../../l10n/app_localizations.dart';
 
 class DialogVisibility extends StatelessWidget {
   const DialogVisibility({super.key});

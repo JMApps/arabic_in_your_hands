@@ -6,7 +6,8 @@ import 'package:arabicinyourhands/presentation/pages/firstVolume/items/first_vol
 import 'package:arabicinyourhands/presentation/pages/firstVolume/items/first_vol_content_item_right.dart';
 import 'package:arabicinyourhands/presentation/widgets/error_data_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
+import '../../../../l10n/app_localizations.dart';
 
 class FirstVolContentsList extends StatefulWidget {
   const FirstVolContentsList({super.key, required this.firstSubChapterId});
